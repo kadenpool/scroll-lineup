@@ -1,6 +1,6 @@
 name: checks
 
-# Two jobs. `offline` needs no scan data and finishes in seconds on four Python versions.
+# Two jobs. `offline` needs no scan data and finishes in seconds on five Python versions, 3.9 to 3.14.
 # `public-pair` registers one real pair from the public bucket and checks the answer against the
 # row committed in results/, so a change that moves a published number fails the build.
 on:
@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python: ["3.9", "3.11", "3.12", "3.13"]
+        python: ["3.9", "3.11", "3.12", "3.13", "3.14"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

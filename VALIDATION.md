@@ -176,21 +176,30 @@ issue.
 
 ## 3. Machines, Python versions and library sets
 
-| | machine A | machine B |
-|---|---|---|
-| operating system | Ubuntu 24.04.4 LTS | macOS 26.0.1 |
-| architecture | x86-64 | arm64 |
-| cores / RAM | 8 / 23 GiB | 8 / 8 GiB |
-| Python | 3.12.3 | 3.9.6 |
-| numpy | 2.5.3 | 2.0.2 |
-| scipy | 1.18.1 | 1.13.1 |
-| fsspec / s3fs | 2026.7.0 | 2025.10.0 |
-| pillow | 12.3.0 | 11.3.0 |
-| numcodecs | 0.16.5 | 0.12.1 |
-| what it ran | all 9 robustness pairs, and the clean-clone reproduction | 7 pairs as a second opinion, and every CI command |
+| | machine A | machine B | machine C |
+|---|---|---|---|
+| operating system | Ubuntu 24.04.4 LTS | macOS 26.0.1 | macOS 26.0.1 |
+| architecture | x86-64 | arm64 | arm64 |
+| cores / RAM | 8 / 23 GiB | 8 / 8 GiB | 8 / 8 GiB |
+| Python | 3.12.3 | 3.9.6 | 3.14.7 |
+| numpy | 2.5.3 | 2.0.2 | 2.5.3 |
+| scipy | 1.18.1 | 1.13.1 | 1.18.1 |
+| fsspec / s3fs | 2026.7.0 | 2025.10.0 | 2026.7.0 |
+| pillow | 12.3.0 | 11.3.0 | 12.3.0 |
+| numcodecs | 0.16.5 | 0.12.1 | not installed |
+| what it ran | all 9 robustness pairs, and the clean-clone reproduction | 7 pairs as a second opinion, and every CI command | the offline suite, 24 checks, all passed |
 
 Each set is what a plain `pip install numpy scipy fsspec s3fs Pillow`
-resolved to on that interpreter on 15 Sep 2026. Nothing was pinned.
+resolved to on that interpreter. Nothing was pinned. Machines A and B
+were measured on 15 Sep 2026, machine C later the same day.
+
+Machine C is the oldest and the newest interpreter question answered
+from the other end: 3.14 is one version beyond the newest in the CI
+matrix at the time, and the five packages installed on it without
+complaint and gave the same answers. That is the reason 3.14 was then
+added to the matrix. What machine C has **not** done is a live pair
+against the open data, so treat it as evidence about portability of the
+code, not as a third independent reproduction of the results.
 
 ## 4. Does the answer move across library versions?
 

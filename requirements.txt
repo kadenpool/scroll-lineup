@@ -4,6 +4,8 @@
 # on Python 3.12.3 (x86-64 Linux), and numpy 2.0.2 / scipy 1.13.1 / fsspec 2025.10.0 / s3fs 2025.10.0 /
 # pillow 11.3.0 on Python 3.9.6 (arm64 macOS). Each is what a plain
 # `pip install numpy scipy fsspec s3fs Pillow` resolved to on that interpreter.
+# A third, Python 3.14.7 on arm64 macOS, installs all five cleanly and passes the offline suite, but has
+# not been run against live scan data, so it is portability evidence rather than a third reproduction.
 numpy>=1.24
 scipy>=1.10
 fsspec>=2023.1.0
