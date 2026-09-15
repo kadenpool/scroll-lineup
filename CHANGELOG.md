@@ -37,8 +37,14 @@ entry points at it.
 
 ## Known issues, found by running on the public catalogue (15 Sep 2026)
 
-Neither is fixed in 0.2.1: both were found after the validated version was frozen, and a code change
-would invalidate the runs committed here. Both are in `VALIDATION.md` with the run that found them.
+Both were found after the validated version was frozen, and both are in `VALIDATION.md` with the run
+that found them. One is fixed and one is not, for the same reason in both cases: a change that could
+alter a committed result is not made, because it would invalidate the runs this package is graded on.
+
+- The `datacheck.py` crash **is** fixed. Its guard sits in front of the failing array access and
+  changes no other path, so no committed result can move.
+- The `numcodecs` gap is **not** a code change at all. It was a wrong comment in
+  `requirements.txt`, and the comment is corrected.
 
 - **Fixed 15 Sep 2026: `datacheck.py --at-landmarks` on a reference with no landmarks.**
   `PHerc0172 7.91 -> 7.91` is the only pair in the catalogue whose official transform publishes none:
