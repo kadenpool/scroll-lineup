@@ -1,0 +1,488 @@
+{
+ "tool": "scroll-lineup",
+ "version": "0.2.1",
+ "started": "2026-09-14 16:35:22 UTC",
+ "args": {
+  "moving": "s3://vesuvius-challenge-open-data/PHerc0500P2/volumes/20250821110041-0.550um-0.1m-65keV-masked.zarr",
+  "fixed": "s3://vesuvius-challenge-open-data/PHerc0500P2/volumes/20250526151718-2.215um-0.4m-111keV-masked.zarr",
+  "out": "runs/r3_0500hi",
+  "um_moving": null,
+  "um_fixed": null,
+  "g1_um": 300.0,
+  "g2_um": 150.0,
+  "g1_keep": 6,
+  "block_levels_um": "75,37,19",
+  "blocks": 36,
+  "block_size": 48,
+  "radius": 6,
+  "dog": [
+   1.0,
+   4.0
+  ],
+  "min_material": 0.35,
+  "min_ncc": 0.15,
+  "min_peak_gap": 0.03,
+  "similarity": false,
+  "fixed_name": null,
+  "write_inverse": false,
+  "stop_after": null,
+  "seed": 0
+ },
+ "volumes": {
+  "moving": {
+   "url": "s3://vesuvius-challenge-open-data/PHerc0500P2/volumes/20250821110041-0.550um-0.1m-65keV-masked.zarr",
+   "um": 0.55,
+   "shape": [
+    12320,
+    10813,
+    3891
+   ]
+  },
+  "fixed": {
+   "url": "s3://vesuvius-challenge-open-data/PHerc0500P2/volumes/20250526151718-2.215um-0.4m-111keV-masked.zarr",
+   "um": 2.215,
+   "shape": [
+    28096,
+    18209,
+    18209
+   ]
+  },
+  "short_is_moving": 1.0
+ },
+ "grids": {
+  "short_material_extent_um": 5948.8,
+  "g1_um": 60.0,
+  "g2_um": 30.0,
+  "tall_level": 5,
+  "short_to_tall_area_ratio": 0.11092765586462412,
+  "partial_field_of_view": true
+ },
+ "g1": {
+  "grid_um": 60.0,
+  "tall_level": 5,
+  "n_tall_slices": 878,
+  "usable_tall_slices": 874,
+  "short_level": 5,
+  "short_z_um": [
+   677.325,
+   2032.525,
+   3387.7250000000004,
+   4742.925,
+   6098.125000000001
+  ],
+  "short_area_px": [
+   3430.0,
+   3430.0,
+   3430.0,
+   3430.0,
+   3430.0
+  ],
+  "tall_area_ref_px": 32042.5,
+  "partial_field_of_view": true,
+  "radius_px": 53.79711888196245,
+  "polar_best_vs_second": [
+   7.524746566460658,
+   7.498599504757423
+  ],
+  "search_2d": "partial field of view",
+  "candidates": [
+   {
+    "score": 4.534800789311486,
+    "sgn": 1,
+    "eps": 0.0,
+    "mirror": 0,
+    "rot_deg": 235.0,
+    "z_mid_tall_um": 61203.7725,
+    "source": "2d",
+    "outline": null,
+    "detail": 4.534800789311486
+   },
+   {
+    "score": 4.5252894929550775,
+    "sgn": -1,
+    "eps": 0.0,
+    "mirror": 0,
+    "rot_deg": 235.0,
+    "z_mid_tall_um": 61203.7725,
+    "source": "2d",
+    "outline": null,
+    "detail": 4.5252894929550775
+   },
+   {
+    "score": 4.524692022932583,
+    "sgn": -1,
+    "eps": 0.0,
+    "mirror": 1,
+    "rot_deg": 55.0,
+    "z_mid_tall_um": 61203.7725,
+    "source": "2d",
+    "outline": null,
+    "detail": 4.524692022932583
+   },
+   {
+    "score": 4.521674723175817,
+    "sgn": 1,
+    "eps": 0.0,
+    "mirror": 1,
+    "rot_deg": 55.0,
+    "z_mid_tall_um": 61203.7725,
+    "source": "2d",
+    "outline": null,
+    "detail": 4.521674723175817
+   },
+   {
+    "score": 7.524746566460658,
+    "sgn": -1,
+    "eps": 0.0,
+    "mirror": 0,
+    "rot_deg": 303.0,
+    "z_mid_tall_um": 2515.1324999999997,
+    "source": "polar",
+    "outline": -0.5009236067170497,
+    "detail": 8.025670173177708
+   },
+   {
+    "score": 7.498599504757423,
+    "sgn": -1,
+    "eps": 0.0,
+    "mirror": 1,
+    "rot_deg": 123.0,
+    "z_mid_tall_um": 2515.1324999999997,
+    "source": "polar",
+    "outline": -0.5009233299445903,
+    "detail": 7.999522834702013
+   },
+   {
+    "score": 7.485377552829794,
+    "sgn": 1,
+    "eps": 0.0,
+    "mirror": 1,
+    "rot_deg": 123.0,
+    "z_mid_tall_um": 2515.1324999999997,
+    "source": "polar",
+    "outline": -0.50092346833082,
+    "detail": 7.986301021160614
+   },
+   {
+    "score": 7.481191547618773,
+    "sgn": 1,
+    "eps": 0.0,
+    "mirror": 0,
+    "rot_deg": 303.0,
+    "z_mid_tall_um": 2515.1324999999997,
+    "source": "polar",
+    "outline": -0.5009236759101645,
+    "detail": 7.982115223528938
+   }
+  ]
+ },
+ "g2": {
+  "grid_um": 30.0,
+  "tall_level": 5,
+  "results": [
+   {
+    "cand": 3,
+    "score": 0.18274222811063132,
+    "sgn": 1,
+    "mirror": 1,
+    "eps": -0.005,
+    "rot_deg": 56.0,
+    "z_mid_tall_um": 61203.7725,
+    "ct": [
+     26670.72972092518,
+     21114.717260288846
+    ],
+    "per_height": [
+     {
+      "k": 0,
+      "short_z_um": 677.325,
+      "short_xy_um": [
+       1080.0,
+       2970.0
+      ],
+      "tall_z_um": 58512.41202957032,
+      "tall_xy_um": [
+       33703.23843512425,
+       21056.964096936237
+      ],
+      "ncc": 0.19516263902187347
+     },
+     {
+      "k": 1,
+      "short_z_um": 2032.525,
+      "short_xy_um": [
+       1080.0,
+       2970.0
+      ],
+      "tall_z_um": 59847.42908564881,
+      "tall_xy_um": [
+       34800.16582950691,
+       21143.702049541127
+      ],
+      "ncc": 0.2039898782968521
+     },
+     {
+      "k": 2,
+      "short_z_um": 3387.7250000000004,
+      "short_xy_um": [
+       1080.0,
+       2970.0
+      ],
+      "tall_z_um": 60920.252499999995,
+      "tall_xy_um": [
+       35056.53215292582,
+       21079.797560113322
+      ],
+      "ncc": 0.17455437779426575
+     }
+    ]
+   },
+   {
+    "cand": 1,
+    "score": 0.18074933687845865,
+    "sgn": -1,
+    "mirror": 0,
+    "eps": -0.005,
+    "rot_deg": 236.0,
+    "z_mid_tall_um": 61203.7725,
+    "ct": [
+     26670.72972092518,
+     21114.717260288846
+    ]
+   },
+   {
+    "cand": 0,
+    "score": 0.18058103819688162,
+    "sgn": 1,
+    "mirror": 0,
+    "eps": -0.005,
+    "rot_deg": 236.25,
+    "z_mid_tall_um": 61203.7725,
+    "ct": [
+     26670.72972092518,
+     21114.717260288846
+    ]
+   },
+   {
+    "cand": 2,
+    "score": 0.17956516643365225,
+    "sgn": -1,
+    "mirror": 1,
+    "eps": -0.005,
+    "rot_deg": 56.0,
+    "z_mid_tall_um": 61203.7725,
+    "ct": [
+     26670.72972092518,
+     21114.717260288846
+    ]
+   },
+   {
+    "cand": 5,
+    "score": 0.09256198406219482,
+    "sgn": -1,
+    "mirror": 1,
+    "eps": -0.005,
+    "rot_deg": 120.0,
+    "z_mid_tall_um": 2798.6524999999997,
+    "ct": [
+     21284.998268053932,
+     17472.668608156822
+    ]
+   },
+   {
+    "cand": 6,
+    "score": 0.09223550856113434,
+    "sgn": 1,
+    "mirror": 1,
+    "eps": -0.005,
+    "rot_deg": 120.25,
+    "z_mid_tall_um": 2798.6524999999997,
+    "ct": [
+     21284.998268053932,
+     17472.668608156822
+    ]
+   },
+   {
+    "cand": 4,
+    "score": 0.09149917215108871,
+    "sgn": -1,
+    "mirror": 0,
+    "eps": -0.005,
+    "rot_deg": 300.0,
+    "z_mid_tall_um": 2798.6524999999997,
+    "ct": [
+     21284.998268053932,
+     17472.668608156822
+    ]
+   },
+   {
+    "cand": 7,
+    "score": 0.09101347029209136,
+    "sgn": 1,
+    "mirror": 0,
+    "eps": -0.005,
+    "rot_deg": 300.5,
+    "z_mid_tall_um": 2798.6524999999997,
+    "ct": [
+     21284.998268053932,
+     17472.668608156822
+    ]
+   }
+  ],
+  "margin": 0.0019928912321726666,
+  "initial_T_short_to_tall_um": [
+   [
+    -0.4476759625224339,
+    -0.767372170314623,
+    0.4992966786457975,
+    36547.918233101016
+   ],
+   [
+    -0.8778332567407806,
+    0.5175990644650703,
+    0.00842438871645631,
+    20537.369964683996
+   ],
+   [
+    0.2599345964660619,
+    0.42638263237612806,
+    0.88837089375357,
+    56494.70725248189
+   ],
+   [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  ],
+  "initial_decomposition": {
+   "scale": 1.019103031346923,
+   "improper": true,
+   "z_axis_flipped": false,
+   "rot_deg": -117.02059751940725,
+   "tilt_deg": 29.341049714906564,
+   "column_scales": [
+    1.019103031346923,
+    1.0191030313469227,
+    1.019103031346923
+   ]
+  }
+ },
+ "blocks": [
+  {
+   "level_um": 17.6,
+   "short_level": 5,
+   "tall_level": 3,
+   "round": 0,
+   "radius_vox": 32,
+   "n_tried": 25,
+   "n_matched": 25,
+   "n_used": 0,
+   "ncc_median": 0.09877679497003555,
+   "status": "too few good blocks; transform unchanged"
+  },
+  {
+   "level_um": 17.6,
+   "short_level": 5,
+   "tall_level": 3,
+   "round": 1,
+   "radius_vox": 32,
+   "n_tried": 25,
+   "n_matched": 25,
+   "n_used": 0,
+   "ncc_median": 0.09877679497003555,
+   "status": "too few good blocks; transform unchanged"
+  },
+  {
+   "level_um": 17.6,
+   "short_level": 5,
+   "tall_level": 3,
+   "round": 0,
+   "radius_vox": 24,
+   "n_tried": 4,
+   "n_matched": 4,
+   "n_used": 0,
+   "ncc_median": 0.1003083623945713,
+   "status": "too few good blocks; transform unchanged"
+  },
+  {
+   "level_um": 17.6,
+   "short_level": 5,
+   "tall_level": 3,
+   "round": 1,
+   "radius_vox": 24,
+   "n_tried": 4,
+   "n_matched": 4,
+   "n_used": 0,
+   "ncc_median": 0.1003083623945713,
+   "status": "too few good blocks; transform unchanged"
+  },
+  {
+   "level_um": 17.6,
+   "short_level": 5,
+   "tall_level": 3,
+   "round": 0,
+   "radius_vox": 24,
+   "n_tried": 4,
+   "n_matched": 4,
+   "n_used": 0,
+   "ncc_median": 0.1003083623945713,
+   "status": "too few good blocks; transform unchanged"
+  },
+  {
+   "level_um": 17.6,
+   "short_level": 5,
+   "tall_level": 3,
+   "round": 1,
+   "radius_vox": 24,
+   "n_tried": 4,
+   "n_matched": 4,
+   "n_used": 0,
+   "ncc_median": 0.1003083623945713,
+   "status": "too few good blocks; transform unchanged"
+  }
+ ],
+ "confidence": {
+  "level": "CHECK",
+  "reasons": [
+   "placement margin small: G2 winner beats the runner-up by only 0.00",
+   "block matching never produced a fit: the transform is the coarse G2 estimate"
+  ]
+ },
+ "transform_moving_to_fixed_voxels_xyz": [
+  [
+   -0.1111610742155028,
+   -0.19054387976209605,
+   0.12397885925742151,
+   16500.188818555765
+  ],
+  [
+   -0.21797214049996813,
+   0.12852346973173306,
+   0.0020918346700004387,
+   9271.950322656432
+  ],
+  [
+   0.06454357925793862,
+   0.10587379133493023,
+   0.22058870950991583,
+   25505.51117493539
+  ]
+ ],
+ "decomposition_moving_to_fixed_um": {
+  "scale": 1.019103031346923,
+  "improper": true,
+  "z_axis_flipped": false,
+  "rot_deg": -117.02059751940725,
+  "tilt_deg": 29.341049714906564,
+  "column_scales": [
+   1.019103031346923,
+   1.0191030313469227,
+   1.019103031346923
+  ]
+ },
+ "downloaded_MB": 201.326592,
+ "seconds": 1030.998079776764,
+ "finished": "2026-09-14 16:52:33 UTC"
+}

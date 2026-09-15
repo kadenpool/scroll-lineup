@@ -1,0 +1,26 @@
+{
+ "schema_version": "1.0.0",
+ "source": "open-data metadata.json, PHerc0172 20241024131839->20241024131838 (direct)",
+ "transformation_matrix": [
+  [
+   1.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  [
+   0.0,
+   1.0,
+   0.0,
+   0.0
+  ],
+  [
+   0.0,
+   0.0,
+   1.0,
+   0.0
+  ]
+ ],
+ "moving_landmarks": [],
+ "fixed_landmarks": []
+}

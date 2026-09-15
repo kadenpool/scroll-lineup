@@ -1,0 +1,418 @@
+# Validation and reproduction
+
+Every run this tool has been through, the machines and library sets
+they ran on, what each cost, and what failed. The README carries the
+results; this file carries the evidence and the commands.
+
+## 1. What has been run
+
+| round | pairs | outputs | what it establishes |
+|---|---|---|---|
+| validation, 12-13 Sep 2026 | 12 official pairs on 7 objects | `results/`, table in `results/table.md` | the graded result against the challenge's own transforms, under a rule fixed in advance (`PREREG.md`) |
+| worked example, 11-15 Sep 2026 | PHerc1203, for which no official transform exists | `examples/pherc1203/` | five runs over four days, three of them from a clean clone into an empty environment; all five byte-identical |
+| robustness, 15 Sep 2026 | the 9 remaining official pairs in the catalogue | `robustness/`, table in `robustness/table.md` | every publishable official pair now has a graded result, including three the tool gets wrong |
+
+The open-data `metadata.json` carries **26 official transforms**.
+Twenty-one of them now have a graded result here. The other five are
+on two objects this repository does not discuss.
+
+## 2. The robustness round
+
+### 2.1 What was run, and why those pairs
+
+All nine of the remaining publishable pairs were run, rather than a
+chosen subset, so there is no question of picking the ones that work.
+The pair list is `pairs_robustness.txt` and the command is the same
+one the twelve used:
+
+```
+bash run_validation.sh pairs_robustness.txt
+```
+
+Between them the nine add: two objects the tool had never seen; two
+voxel sizes it had never seen (0.55 and 3.24 um) and a third on the
+fixed side (9.366 um); two pairs at the same resolution on both sides,
+where the scale ratio is exactly 1; a 73 degree turn with an 8.6
+degree tilt; the first pair whose official transform is a **mirror**;
+a pair whose official transform publishes **no landmarks at all**; a
+**blosc-compressed** volume, which the five-package install cannot
+open; and a 0.55 um field of view 5.9 mm across looking into a 62 mm
+scan.
+
+### 2.2 What each one stresses, and how it came out
+
+| pair | moving -> fixed (um) | what it stresses that the twelve did not | confidence | verdict |
+|---|---|---|---|---|
+| `r1_0841` | PHerc0841 2.403 -> 9.366 | a new object, and a fixed voxel size not seen before | HIGH | PASS |
+| `r2_0172` | PHerc0172 7.91 -> 7.91 | a new object; the same resolution on both sides, so the scale ratio is exactly 1; an official transform with **no landmarks**; a **blosc-compressed** fixed volume that the five-package install cannot open | HIGH | PASS |
+| `r3_0500hi` | PHerc0500P2 0.55 -> 2.215 | 0.55 um, four times finer than anything tried before; a 73 degree turn with an 8.6 degree tilt; the only official transform in the catalogue that is a **mirror**; a 5.9 mm field of view inside a 62 mm scan | **CHECK** | **FAIL** |
+| `r4_0332c` | PHerc0332 3.24 -> 3.24 | a new voxel size; same resolution both sides; two scans of one object at different energies | HIGH | PASS |
+| `r5_0332b` | PHerc0332 3.24 -> 7.91 | a new moving resolution onto the 2023 7.91 um scan | HIGH | WEAK |
+| `r6_1667roi` | PHerc1667 1.129 -> 2.399 | a partial-view tile on an object whose other pair passed | HIGH | **FAIL**, see below |
+| `r7_1667b` | PHerc1667 3.24 -> 7.91 | the 3.24 um to 7.91 um step on a second object | **CHECK** | **FAIL** |
+| `r8_0139d` | PHerc0139 2.403 -> 9.362 | a third 2.403 um scan of an object already in the twelve, so a direct test of run-to-run consistency on one geometry | HIGH | PASS |
+| `r9_0139e` | PHerc0139 2.403 -> 9.362 | a fourth, same | HIGH | WEAK |
+
+### 2.3 The generated table
+
+`robustness/table.md` is produced by the repository's own
+`summarize.py`, the same code that produces `results/table.md`, so
+these rows are built exactly like the committed twelve:
+
+```
+python summarize.py robustness/r1_0841 robustness/r2_0172 ... > robustness/table.md
+```
+
+| run | scroll: moving -> fixed (um) | official geometry | G2 score: winner / runner-up | confidence | error vs official: median / p95 / max um | verdict | at official landmarks: ours / official RMS um | held-out image blocks must move: ours / official (median um) | image blocks at the official landmarks must move: ours / official (median um) | tool | min | MB |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| r1_0841 | PHerc0841: 2.403 -> 9.366 | rot -0, tilt 0.0 | 0.85 / 0.15 | HIGH | 13 / 23 / 28 | PASS | 19 / 14 (n=7) | 10 / 19 (n=38) | 9 / 5 (n=7) | 0.2.1 | 3.2 | 958 |
+| r2_0172 | PHerc0172: 7.91 -> 7.91 | rot 0, tilt 0.0 | 0.37 / 0.17 | HIGH | 0 / 1 / 1 | PASS | - | 0 / 0 (n=13) | - | 0.2.1 | 7.2 | 867 |
+| r3_0500hi | PHerc0500P2: 0.55 -> 2.215 | rot 73, tilt 8.6, mirror | 0.18 / 0.18 | CHECK | 22521 / 25762 / 26989 | FAIL | 22431 / 9 (n=7) | n=0 | n=0 | 0.2.1 | 17.2 | 201 |
+| r4_0332c | PHerc0332: 3.24 -> 3.24 | rot 0, tilt 0.0 | 0.89 / 0.38 | HIGH | 4 / 5 / 7 | PASS | 4 / 2 (n=6) | 3 / 5 (n=39) | 4 / 4 (n=6) | 0.2.1 | 1.2 | 531 |
+| r5_0332b | PHerc0332: 3.24 -> 7.91 | rot -0, tilt 0.0 | 0.78 / 0.35 | HIGH | 16 / 40 / 53 | WEAK | 18 / 9 (n=8) | 6 / 19 (n=42) | 7 / 10 (n=7) | 0.2.1 | 1.0 | 694 |
+| r6_1667roi | PHerc1667: 1.129 -> 2.399 | rot 0, tilt 0.4 | 0.81 / 0.29 | HIGH | 162 / 417 / 566 | FAIL | 6 / 123 (n=6) | 6 / 103 (n=23) | 4 / 61 (n=5) | 0.2.1 | 2.8 | 1030 |
+| r7_1667b | PHerc1667: 3.24 -> 7.91 | rot 0, tilt 0.4 | 0.65 / 0.32 | CHECK | 6398 / 12361 / 14272 | FAIL | 10357 / 13 (n=5) | n=0 | n=0 | 0.2.1 | 1.9 | 770 |
+| r8_0139d | PHerc0139: 2.403 -> 9.362 | rot -0, tilt 0.2 | 0.91 / 0.25 | HIGH | 13 / 24 / 35 | PASS | 16 / 9 (n=7) | 9 / 17 (n=41) | 8 / 6 (n=7) | 0.2.1 | 3.2 | 1093 |
+| r9_0139e | PHerc0139: 2.403 -> 9.362 | rot 0, tilt 0.1 | 0.86 / 0.25 | HIGH | 41 / 103 / 147 | WEAK | 60 / 25 (n=8) | 22 / 41 (n=42) | 21 / 21 (n=8) | 0.2.1 | 3.8 | 1162 |
+
+### 2.4 What each one cost
+
+Wall clock and peak resident memory from `/usr/bin/time` around every
+invocation; megabytes from each run's own `report.json`. One machine,
+one software stack, 8 cores.
+
+| pair | scroll, moving -> fixed um | scroll-lineup wall s | peak RSS GiB | MB read | whole pair wall s | peak RSS GiB, whole pair |
+|---|---|---|---|---|---|---|
+| r1_0841 | PHerc0841: 2.403 -> 9.366 | 194 | 2.67 | 958 | 320 | 2.67 |
+| r2_0172 | PHerc0172: 7.91 -> 7.91 | 435 | 3.47 | 867 | 519 | 3.47 |
+| r3_0500hi | PHerc0500P2: 0.55 -> 2.215 | 1032 | 8.18 | 201 | 1101 | 8.18 |
+| r4_0332c | PHerc0332: 3.24 -> 3.24 | 70 | 1.05 | 531 | 147 | 1.34 |
+| r5_0332b | PHerc0332: 3.24 -> 7.91 | 60 | 1.00 | 694 | 91 | 1.00 |
+| r6_1667roi | PHerc1667: 1.129 -> 2.399 | 166 | 2.69 | 1030 | 308 | 2.69 |
+| r7_1667b | PHerc1667: 3.24 -> 7.91 | 117 | 1.13 | 770 | 156 | 1.13 |
+| r8_0139d | PHerc0139: 2.403 -> 9.362 | 194 | 2.54 | 1093 | 322 | 2.54 |
+| r9_0139e | PHerc0139: 2.403 -> 9.362 | 227 | 2.51 | 1162 | 366 | 2.51 |
+
+Totals for the nine: 55 minutes of compute, 7.1 GB read, one non-zero
+exit (the `datacheck.py` bug in 2.6). Peak resident memory is 1.0 to
+3.5 GiB on eight of the nine and **8.2 GiB on the 0.55 um pair**,
+which is the one that needs the slow 2D search and also the one that
+fails. Across all twenty-one pairs the per-pair range is 1 to 17
+minutes and 0.2 to 2.0 GB, and the whole set is 2.3 hours of compute
+and 21.2 GB read.
+
+### 2.5 The failures, stated plainly
+
+Four PASS, two WEAK, three FAIL.
+
+**PHerc0500P2 0.55 -> 2.215 um, FAIL, flagged `CHECK`.** A 5.9 mm
+field of view looking into a 62 mm scan, at a resolution four times
+finer than anything tried before, with a 73 degree turn, an 8.6 degree
+tilt and a mirror. The whole-scroll search cannot separate its
+candidates: the top four score 0.1827, 0.1807, 0.1806 and 0.1796, a
+margin of 0.002. Block matching then produced no fit at any of its six
+rounds ("too few good blocks; transform unchanged", 0 of 25 used at a
+median correlation of 0.099), so the answer is the coarse G2 estimate
+and it is 22.5 mm out. The tool reported `CHECK` and named both
+reasons. This is also the only pair whose official transform is a
+mirror, and the tool's answer is a mirror too, so the branch fires;
+nothing here shows it producing a correct transform.
+
+**PHerc1667 3.24 -> 7.91 um, FAIL, flagged `CHECK`.** Block matching
+again produced no fit; the answer is 6.4 mm out and its landmark RMS
+is 10,357 um against the official transform's own 13.4 um. `CHECK`,
+with the reason.
+
+**PHerc1667 1.129 -> 2.399 um, FAIL, reported `HIGH`, and the
+reference is the thing at fault.** Graded FAIL at 162 / 417 / 566 um.
+Three instruments disagree with the grade:
+
+| instrument | ours | the official transform |
+|---|---|---|
+| block residual of the fit (25 blocks, ncc 0.99) | 4.6 um RMS | not applicable |
+| the official transform's own 6 hand-placed landmarks | 6.3 um RMS (3 to 10 um apiece) | **123 um RMS (42 to 213 um apiece)** |
+| 23 held-out image cubes, how far they must move | 6.0 um median | 103 um median |
+| 5 image cubes at the official landmarks | 3.9 um median | 61 um median |
+
+The landmark row is the one that matters, because it is independent of
+this tool's method entirely: those are the points a person clicked,
+published alongside the official matrix, and that matrix does not fit
+them. Two committed files and six subtractions reproduce it
+(`robustness/r6_1667roi/official_transform.json` and `transform.json`).
+
+The verdict stays FAIL. The rule measures distance from the official
+transform, and `PREREG.md` says a noisy reference is reported beside
+the verdict and never used to excuse it.
+
+**The honest reading of `CHECK` after this round.** It caught both
+failures where the tool really did fail, and named the reason each
+time. It reported `HIGH` on a pair the rule grades FAIL, and on the
+evidence above it was right to. `confidence` is a statement about the
+fit; it says nothing about the reference. Read it next to
+`blocks[-1]`.
+
+### 2.6 A bug in one of the checkers
+
+`PHerc0172 7.91 -> 7.91` is the only pair in the catalogue whose
+official transform publishes no landmarks: `moving_landmarks` and
+`fixed_landmarks` are both `[]`. Until 15 Sep 2026 `datacheck.py
+--at-landmarks official` indexed that empty array and raised
+`IndexError`. It now exits with a message naming the missing field
+and pointing at the held-out mode, verified by running it on this
+pair (exit 0, no traceback). The guard sits in front of the array
+access, so no other code path and no committed result changed. The
+column stays blank in `robustness/table.md` because this reference
+genuinely has no landmarks to check against.
+
+`scroll_lineup.py` and `validate.py` handle the pair normally, and so
+does `datacheck.py` in its held-out mode, so only the third check is
+affected. `robustness/r2_0172/` therefore has no
+`datacheck_landmarks.json` and that column of its row is blank.
+
+The fix is one guard, and it is **not** in 0.2.1: the version in this
+repository is the one all twenty-one runs were made with, and changing
+the code would invalidate them. `CHANGELOG.md` records it as a known
+issue.
+
+## 3. Machines, Python versions and library sets
+
+| | machine A | machine B |
+|---|---|---|
+| operating system | Ubuntu 24.04.4 LTS | macOS 26.0.1 |
+| architecture | x86-64 | arm64 |
+| cores / RAM | 8 / 23 GiB | 8 / 8 GiB |
+| Python | 3.12.3 | 3.9.6 |
+| numpy | 2.5.3 | 2.0.2 |
+| scipy | 1.18.1 | 1.13.1 |
+| fsspec / s3fs | 2026.7.0 | 2025.10.0 |
+| pillow | 12.3.0 | 11.3.0 |
+| numcodecs | 0.16.5 | 0.12.1 |
+| what it ran | all 9 robustness pairs, and the clean-clone reproduction | 7 pairs as a second opinion, and every CI command |
+
+Each set is what a plain `pip install numpy scipy fsspec s3fs Pillow`
+resolved to on that interpreter on 15 Sep 2026. Nothing was pinned.
+
+## 4. Does the answer move across library versions?
+
+The committed example reproduces byte for byte, five times over four
+days. Every one of those runs resolved to the same package versions,
+so byte-identity is a statement about one software stack. This is the
+test that was missing.
+
+Seven pairs were run on both machines. For each, the two transforms
+were applied to the eight corners of the moving volume and the largest
+disagreement measured in fixed micrometres.
+| pair | md5 equal? | largest disagreement over the moving volume | median error vs official, A / B | p95, A / B |
+|---|---|---|---|---|
+| v9_MANBp | no | 0.000118 um | 6.219120 / 6.219146 | 13.010421 / 13.010422 |
+| r1_0841 | no | 0.000022 um | 12.577754 / 12.577757 | 23.343845 / 23.343847 |
+| r4_0332c | no | 0.000012 um | 3.558476 / 3.558479 | 5.394179 / 5.394181 |
+| r5_0332b | no | 0.000020 um | 15.786112 / 15.786114 | 39.679895 / 39.679898 |
+| r7_1667b | no | 0.000259 um | 6398.397023 / 6398.397135 | 12360.528365 / 12360.528423 |
+| r8_0139d | no | 0.000031 um | 12.779028 / 12.779028 | 24.284073 / 24.284076 |
+| r9_0139e | no | 0.000033 um | 41.242640 / 41.242642 | 103.482018 / 103.482026 |
+
+**Reading.** Byte-identity holds within a stack. Across stacks the
+md5 changes and the physical answer does not: the largest disagreement
+is about one ten-thousandth of a micrometre, on pairs whose voxels are
+one to three micrometres, and every published figure for those rows is
+unchanged to six decimal places.
+
+The transforms from machine B are committed under
+`robustness/second_stack/<pair>/transform.json`, so the comparison can
+be redone from this repository with no network and no scan data;
+`tests/test_offline.py` does exactly that on every run.
+
+## 5. The clean-clone reproduction
+
+Run on 15 Sep 2026 after every change below, in a directory created
+for it on the Linux box and deleted afterwards. Nothing from the
+author's working copy was on the path: the tree arrived by `tar`, its
+206 files were checked byte-identical on arrival (one md5 over all the
+md5s, matching), a new virtual environment was built inside it, and
+only the five packages the README names were installed.
+
+```
+=== A clean clone. 2026-09-14 17:22:57 UTC          (the box runs UTC; 15 Sep local)
+Python 3.12.3
+
+$ python3 -m venv .venv
+  (the stock-Ubuntu ensurepip wrinkle again; the README's apt note applies)
+$ pip install numpy scipy fsspec s3fs Pillow
+  7.71 s -> numpy 2.5.3  scipy 1.18.1  fsspec 2026.7.0  s3fs 2026.7.0  pillow 12.3.0
+$ python scroll_lineup.py --version
+scroll-lineup 0.2.1
+
+=== the offline checks
+all offline checks passed                            wall 1.33 s   peakRSS 71096 KiB
+
+=== the documented example, end to end
+$ PY=.venv/bin/python bash run_1203.sh
+scroll-lineup exit 0
+[  216.7s] CONFIDENCE: HIGH
+[  217.2s] wrote out_1203/transform.json (1260 MB downloaded)
+compare exit 0
+7jycwjmbfn    vs scroll-lineup: median    3.5 um  p95    5.2  max    6.0
+flummoxjr     vs scroll-lineup: median   29.3 um  p95   46.5  max   54.5
+datacheck scroll-lineup: 45/48 blocks, must move median 4.6 um
+datacheck 7jycwjmbfn   : 45/48 blocks, must move median 5.0 um
+datacheck flummoxjr    : 46/48 blocks, must move median 33.1 um
+        Elapsed (wall clock) time: 6:11.55
+        Maximum resident set size: 2691208 kbytes  (2.57 GiB)
+
+=== md5, fresh run against the committed example
+  MATCH    e278bd0e692ba9b47f531d51d93e2cd6  transform.json
+  MATCH    1751e7551fd456662dbd924f87f895bc  transform_inverse.json
+  MATCH    532261b826fdc4627e42aeb90191d6d0  qc.png
+
+=== summarize.py regenerates the tables from the committed results
+  IDENTICAL to the committed results/table.md
+  IDENTICAL to the committed robustness/table.md
+=== END 2026-09-14 17:29:27 UTC
+```
+
+Every comparison figure is identical to the 14 and 15 Sep transcripts
+to the last decimal place, and all three md5s match the committed
+example, so nothing in tonight's work moved a number the tool
+computes. `summarize.py` now regenerates **both** tables byte for
+byte, when the run folders are passed in the order of their pairs
+file; the plain `results/*/` glob gives the same rows in a different
+order, which `CHANGELOG.md` notes.
+
+## 6. Continuous integration
+
+`.github/workflows/ci.yml` has two jobs.
+
+- **`offline`** installs `requirements.txt` and runs
+  `python tests/test_offline.py` on Python 3.9, 3.11, 3.12 and 3.13.
+  No network beyond pip, no scan data, a couple of seconds.
+- **`public-pair`** registers `PHercMANBp 1.129 um -> 2.399 um` from
+  the public bucket with the committed `run_validation.sh`, then runs
+  `tests/compare_run.py` against the committed row. It uploads the
+  fresh run as an artifact whether it passes or fails.
+
+**Every command in that workflow has been run locally, exactly as
+written, and passed. The workflow itself has never executed on GitHub,
+because this repository has never been pushed anywhere.** That is why
+there is no status badge: a badge for a workflow that has never run
+asserts something nobody has checked.
+
+The two steps with no local equivalent are `actions/checkout@v4` and
+`actions/setup-python@v5`; a fresh copy of the tree and a chosen
+interpreter stand in for them. Everything else below is the workflow's
+own text, in order.
+
+```
+$ pip install -r requirements.txt
+$ pip list
+$ python tests/test_offline.py
+  ...
+  all offline checks passed                                    (1.9 s)
+
+$ grep '^v9_MANBp ' pairs.txt > onepair.txt
+$ PY=python bash run_validation.sh onepair.txt
+  === v9_MANBp 2026-09-15 02:27:13
+  scroll-lineup exit 0 02:29:24
+  [  129.4s] CONFIDENCE: HIGH
+  [  130.0s] wrote runs/v9_MANBp/transform.json (482 MB downloaded)
+  validate exit 0
+    "median_um": 6.219145553734623
+  landmarks: ours rms 11.2 um vs official's own rms 8.6 um (n=15)
+  === BATCH DONE 2026-09-15 02:31:26
+
+$ python tests/compare_run.py runs/v9_MANBp results/v9_MANBp
+  transform.json md5   fresh fa4650fa86bdd6b4172898cf290b6266
+                   committed 014dc12f9953d40d2c8a03ac49ab2188   DIFFERENT
+  largest disagreement over the moving volume's corners: 0.000118 um
+  confidence: fresh HIGH, committed HIGH
+  error vs official, median_um: fresh 6.219146, committed 6.219120, moved 0.000025 um
+  the fresh run reproduces the committed one for v9_MANBp
+```
+
+Exit 0 throughout; 4 min 17 s end to end, of which 129 s is the
+registration itself.
+
+## 7. The offline checks, and proof they can fail
+
+`tests/test_offline.py` is in five parts.
+
+- **Geometry.** `fit_similarity`, `fit_affine`, `inv`, `decompose`,
+  `rot2`, `FFTCorr`, `masked_ncc_valid` and `nms` are each given a
+  transform or a shift chosen in advance and have to recover it. The
+  affine fit has to recover a sheared, anisotropic map the similarity
+  fit cannot, and has to ignore a zero-weighted outlier moved 10 mm.
+  The pre-registered verdict rule is checked at both boundaries.
+- **The committed evidence**, for `results/` and `robustness/` alike.
+  Every cell of each table that comes from a committed JSON file is
+  re-derived from that file: the error triple, the verdict from the
+  pre-registered rule, the confidence, the G2 winner and runner-up,
+  `g2.margin` as winner minus runner-up, the landmark RMS pair
+  recomputed from the two committed matrices and the committed
+  landmarks, both held-out block columns, the version, the minutes and
+  the megabytes. Block accounting is checked for every round of every
+  run: `n_used <= n_matched <= n_tried`, the listed blocks equal
+  `n_matched`, and the boolean mask sums to `n_used`.
+- **The worked example**: `transform_inverse.json` has to be the
+  actual inverse, and `report.json` has to carry the same matrix.
+- **The second stack**: every committed machine-B transform has to
+  agree with its machine-A counterpart to better than 0.01 um.
+- **The command line**: `--version`, `--help`, and a bare invocation
+  that must fail cleanly.
+
+A check that has never failed has not been tested. Four deliberate
+corruptions were planted in a throwaway copy of the tree; all four
+were caught and the run exited 1:
+
+```
+  planted: one digit changed in a table cell (a p95 of 24 -> 34)
+  planted: one landmark moved 3 voxels in an official_transform.json
+  planted: 1.0 added to the example's inverse matrix
+  planted: n_used raised above n_tried in one report.json
+
+  FAIL every cell of results/table.md is re-derived from the committed JSON
+       n3_0814roi: block round at 18.064 um: used/matched/tried out of order
+       n3_0814roi: block round at 18.064 um: 13 kept by the mask, n_used 37
+       v5_0139b: error column '12 / 34 / 33' != validation.json
+       v9_MANBp: landmark RMS in validation.json is not what the committed matrices give
+       v9_MANBp: the official landmark RMS in validation.json is not what its own matrix gives
+  FAIL the example's transform_inverse.json really is the inverse
+       max round-trip error 1.00e+00 moving voxels
+  exit 1
+```
+
+`tests/compare_run.py` was tested the same way: a transform shifted by
+0.834 fixed voxels, and a changed confidence level, both caught.
+
+## 8. Where the numbers come from
+
+Every number in the README traces to a file in this repository, with
+four exceptions.
+
+1. **The seating table** was measured outside this repository, with a
+   renderer and a control surface that are not part of it.
+   Reproducing it needs axiosdevs' `sheet_contrast` and a mesh. The
+   two transforms it grades **are** here (`results/v6_0139c/`,
+   `results/v2_0139a/`), so the half that is this tool's output is
+   checkable. `docs/seating-check.md` has the detail.
+2. **"About 19,000 block matches"** is a property of 7jycwjmbfn-eng's
+   own published file. `run_1203.sh` downloads it; its `P` and `D`
+   arrays are both (19116, 3).
+3. **The pyramid check** (0.50 grey levels, r = 0.99995) is a live
+   computation on the public PHerc1203 volume rather than a stored
+   result. It is a dozen lines and reads one 128-cubed block.
+4. **Timings, memory and download sizes** come from the runs described
+   in this file, except the per-pair minutes and megabytes in
+   `results/table.md` and `robustness/table.md`, which come from each
+   run's own `report.json`.
+
+Everything else, every row of both tables, every PHerc1203 figure,
+every residual, is in `results/`, `robustness/`, `examples/` or
+`PREREG.md`.
+
+## 9. A note on the committed logs
+
+Each run folder's `log.txt` and `report.json` say the run was written
+to `runs/<pair>`, because that is where `run_validation.sh` puts it.
+The folders were copied to `results/` and `robustness/` afterwards and
+the files were left exactly as the tool wrote them. Anyone re-running
+the batch will see `runs/<pair>` too.

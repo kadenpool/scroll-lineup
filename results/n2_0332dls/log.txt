@@ -1,0 +1,28 @@
+[    9.2s] moving: 20251211183505-2.399um-0.2m-78keV-masked.zarr 2.399 um, L0 (33592, 15761, 15761), levels 0..5, extent z 80.6 mm
+[    9.2s] fixed: 20231117143551-7.910um-53keV-masked.zarr 7.91 um, L0 (9777, 3550, 3400), levels 0..5, extent z 77.3 mm
+[    9.2s] short (sliding) scan: 20231117143551-7.910um-53keV-masked.zarr; tall scan: 20251211183505-2.399um-0.2m-78keV-masked.zarr
+[   20.1s] short L3 slices [122, 367, 611, 855, 1100] loaded (136 MB, 10s)
+[   34.6s] tall L5 (1050, 493, 493) loaded (187 MB, 14s)
+[   34.8s] material extent 25.2 mm -> search grids 210 / 101 um; area ratio 1.11
+[   64.0s] G1 cand (polar): score  24.14 UPSIDE-DOWN MIRROR rot  60.0 zscale 0.995 middle slice at tall z 42.95 mm
+[   64.0s] G1 cand (polar): score  11.58 UPSIDE-DOWN MIRROR rot  61.0 zscale 1.000 middle slice at tall z 37.88 mm
+[   64.0s] G1 cand (polar): score  10.01 UPSIDE-DOWN MIRROR rot  65.0 zscale 1.005 middle slice at tall z 48.25 mm
+[   64.0s] G1 cand (polar): score   9.32 MIRROR rot  59.0 zscale 1.000 middle slice at tall z 11.94 mm
+[   64.0s] G1 cand (polar): score   9.05 UPSIDE-DOWN MIRROR rot  40.0 zscale 1.000 middle slice at tall z 43.33 mm
+[   64.0s] G1 cand (polar): score   8.79 UPSIDE-DOWN MIRROR rot  62.0 zscale 1.010 middle slice at tall z 51.32 mm
+[   64.0s] G1 done (29s)
+[   71.1s] G2 cand 0: detail ncc 0.585 rot 59.25 zscale 0.9950 mid at 42.80 mm UPSIDE-DOWN MIRROR
+[   78.6s] G2 cand 1: detail ncc 0.152 rot 58.75 zscale 1.0000 mid at 37.73 mm UPSIDE-DOWN MIRROR
+[   85.9s] G2 cand 2: detail ncc 0.152 rot 62.75 zscale 1.0050 mid at 48.63 mm UPSIDE-DOWN MIRROR
+[   90.6s] G2 cand 3: detail ncc 0.289 rot 59.25 zscale 1.0050 mid at 11.86 mm MIRROR
+[   96.8s] G2 cand 4: detail ncc 0.184 rot 43.75 zscale 1.0000 mid at 42.95 mm UPSIDE-DOWN MIRROR
+[  102.9s] G2 cand 5: detail ncc 0.148 rot 64.00 zscale 1.0150 mid at 51.01 mm UPSIDE-DOWN MIRROR
+[  103.3s] G2 done (39s): {'scale': np.float64(0.9972127263410308), 'improper': False, 'z_axis_flipped': True, 'rot_deg': -120.75108224318167, 'tilt_deg': 2.240992266373841, 'column_scales': [0.9972127263410306, 0.9972127263410308, 0.9972127263410308]}
+[  184.8s] B 63 um round 0: 35/35 blocks used (tried 36), ncc med 0.93, resid rms 16.8 um max 33.8, moved median 199.9 um (78s)
+[  194.5s] B 63 um round 1: 35/35 blocks used (tried 36), ncc med 0.96, resid rms 9.9 um max 21.3, moved median 7.1 um (10s)
+[  348.1s] B 32 um round 0: 35/35 blocks used (tried 36), ncc med 0.95, resid rms 9.3 um max 18.3, moved median 4.2 um (154s)
+[  356.1s] B 32 um round 1: 35/35 blocks used (tried 36), ncc med 0.95, resid rms 9.6 um max 19.4, moved median 1.4 um (8s)
+[  536.8s] B 16 um round 0: 31/35 blocks used (tried 36), ncc med 0.94, resid rms 10.0 um max 16.4, moved median 5.7 um (181s)
+[  545.6s] B 16 um round 1: 32/35 blocks used (tried 36), ncc med 0.95, resid rms 11.2 um max 25.5, moved median 3.6 um (9s)
+[  545.6s] CONFIDENCE: HIGH
+[  546.5s] wrote results/n2_0332dls/transform.json (1237 MB downloaded)

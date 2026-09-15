@@ -1,0 +1,14 @@
+# The twelve validation pairs in the README table. Columns: TAG SAMPLE MOVING_URL FIXED_URL
+# Each pair has an official transform in the open-data metadata.json, which validate.py fetches.
+v2_0139a PHerc0139 s3://vesuvius-challenge-open-data/PHerc0139/volumes/20250820105138-2.403um-0.2m-77keV-masked.zarr s3://vesuvius-challenge-open-data/PHerc0139/volumes/20250728140407-9.362um-1.2m-113keV-masked.zarr
+v3_0009B PHerc0009B s3://vesuvius-challenge-open-data/PHerc0009B/volumes/20250521125136-8.640um-1.2m-116keV-masked.zarr s3://vesuvius-challenge-open-data/PHerc0009B/volumes/20250820154339-2.401um-0.3m-77keV-masked.zarr
+v4_0814 PHerc0814 s3://vesuvius-challenge-open-data/PHerc0814/volumes/20260309142202-2.399um-0.2m-78keV-masked.zarr s3://vesuvius-challenge-open-data/PHerc0814/volumes/20250804134230-9.362um-1.2m-113keV-masked.zarr
+v5_0139b PHerc0139 s3://vesuvius-challenge-open-data/PHerc0139/volumes/20250822062710-2.403um-0.2m-77keV-masked.zarr s3://vesuvius-challenge-open-data/PHerc0139/volumes/20250728140407-9.362um-1.2m-113keV-masked.zarr
+v6_0139c PHerc0139 s3://vesuvius-challenge-open-data/PHerc0139/volumes/20260102150214-2.399um-0.2m-78keV-masked.zarr s3://vesuvius-challenge-open-data/PHerc0139/volumes/20250728140407-9.362um-1.2m-113keV-masked.zarr
+v7_0500a PHerc0500P2 s3://vesuvius-challenge-open-data/PHerc0500P2/volumes/20250528085330-4.317um-1.2m-111keV-masked.zarr s3://vesuvius-challenge-open-data/PHerc0500P2/volumes/20250526151718-2.215um-0.4m-111keV-masked.zarr
+v8_0500b PHerc0500P2 s3://vesuvius-challenge-open-data/PHerc0500P2/volumes/20250526151718-2.215um-0.4m-111keV-masked.zarr s3://vesuvius-challenge-open-data/PHerc0500P2/volumes/20250820143440-9.362um-1.2m-113keV-masked.zarr
+v9_MANBp PHercMANBp s3://vesuvius-challenge-open-data/PHercMANBp/volumes/20260427100434-1.129um-0.2m-59keV-masked.zarr s3://vesuvius-challenge-open-data/PHercMANBp/volumes/20251216152116-2.399um-0.2m-78keV-masked.zarr
+n1_1667dls PHerc1667 s3://vesuvius-challenge-open-data/PHerc1667/volumes/20251217075048-2.399um-0.2m-78keV-masked.zarr https://data.aws.ash2txt.org/samples/PHerc1667/volumes/20231117161658-7.910um-53keV-masked.zarr
+n2_0332dls PHerc0332 s3://vesuvius-challenge-open-data/PHerc0332/volumes/20251211183505-2.399um-0.2m-78keV-masked.zarr https://data.aws.ash2txt.org/samples/PHerc0332/volumes/20231117143551-7.910um-53keV-masked.zarr
+n3_0814roi PHerc0814 s3://vesuvius-challenge-open-data/PHerc0814/volumes/20260521123630-1.129um-0.2m-59keV-masked.zarr s3://vesuvius-challenge-open-data/PHerc0814/volumes/20260309142202-2.399um-0.2m-78keV-masked.zarr
+n4c_0139roi PHerc0139 s3://vesuvius-challenge-open-data/PHerc0139/volumes/20260413113053-1.129um-0.2m-59keV-masked.zarr s3://vesuvius-challenge-open-data/PHerc0139/volumes/20260102150214-2.399um-0.2m-78keV-masked.zarr

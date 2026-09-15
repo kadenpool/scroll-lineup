@@ -1,0 +1,30 @@
+{
+ "moving": "https://data.aws.ash2txt.org/samples/PHerc1667/volumes/20231107190228-3.240um-88keV-masked.zarr",
+ "fixed": "https://data.aws.ash2txt.org/samples/PHerc1667/volumes/20231117161658-7.910um-53keV-masked.zarr",
+ "level_um": 25.92,
+ "radius_vox": 10,
+ "n_centres": 5,
+ "at_landmarks": "official",
+ "results": {
+  "official": {
+   "n_common": 0,
+   "n_matched": 4,
+   "median_move_um": null,
+   "p90_move_um": null,
+   "max_move_um": null,
+   "median_abs_zyx_um": null,
+   "ncc_median": null,
+   "per_block": []
+  },
+  "ours": {
+   "n_common": 0,
+   "n_matched": 2,
+   "median_move_um": null,
+   "p90_move_um": null,
+   "max_move_um": null,
+   "median_abs_zyx_um": null,
+   "ncc_median": null,
+   "per_block": []
+  }
+ }
+}

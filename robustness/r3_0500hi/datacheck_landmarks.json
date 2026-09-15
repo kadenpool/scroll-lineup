@@ -1,0 +1,30 @@
+{
+ "moving": "s3://vesuvius-challenge-open-data/PHerc0500P2/volumes/20250821110041-0.550um-0.1m-65keV-masked.zarr",
+ "fixed": "s3://vesuvius-challenge-open-data/PHerc0500P2/volumes/20250526151718-2.215um-0.4m-111keV-masked.zarr",
+ "level_um": 17.6,
+ "radius_vox": 10,
+ "n_centres": 7,
+ "at_landmarks": "official",
+ "results": {
+  "official": {
+   "n_common": 0,
+   "n_matched": 7,
+   "median_move_um": null,
+   "p90_move_um": null,
+   "max_move_um": null,
+   "median_abs_zyx_um": null,
+   "ncc_median": null,
+   "per_block": []
+  },
+  "ours": {
+   "n_common": 0,
+   "n_matched": 7,
+   "median_move_um": null,
+   "p90_move_um": null,
+   "max_move_um": null,
+   "median_abs_zyx_um": null,
+   "ncc_median": null,
+   "per_block": []
+  }
+ }
+}

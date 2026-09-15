@@ -1,0 +1,28 @@
+[    7.3s] moving: 20260319130212-2.403um-0.2m-77keV-masked.zarr 2.403 um, L0 (15137, 26493, 26493), levels 0..5, extent z 36.4 mm
+[    7.3s] fixed: 20250820131727-9.362um-1.2m-113keV-masked.zarr 9.362 um, L0 (18977, 6844, 6844), levels 0..5, extent z 177.7 mm
+[    7.3s] short (sliding) scan: 20260319130212-2.403um-0.2m-77keV-masked.zarr; tall scan: 20250820131727-9.362um-1.2m-113keV-masked.zarr
+[   20.8s] short L5 slices [47, 142, 236, 331, 426] loaded (164 MB, 13s)
+[   29.4s] tall L4 (1187, 428, 428) loaded (182 MB, 9s)
+[   29.5s] material extent 43.2 mm -> search grids 300 / 150 um; area ratio 0.71
+[   35.2s] G1 cand (polar): score  30.97 rot   0.0 zscale 1.000 middle slice at tall z 92.42 mm
+[   35.2s] G1 cand (polar): score  13.53 rot   1.0 zscale 1.000 middle slice at tall z 89.12 mm
+[   35.2s] G1 cand (polar): score  12.35 rot 358.0 zscale 1.000 middle slice at tall z 97.81 mm
+[   35.2s] G1 cand (polar): score  12.01 UPSIDE-DOWN rot   0.0 zscale 1.000 middle slice at tall z 107.10 mm
+[   35.2s] G1 cand (polar): score  10.57 rot   2.0 zscale 1.000 middle slice at tall z 85.83 mm
+[   35.2s] G1 cand (polar): score  10.39 UPSIDE-DOWN rot   0.0 zscale 1.000 middle slice at tall z 92.42 mm
+[   35.2s] G1 done (6s)
+[   38.9s] G2 cand 0: detail ncc 0.889 rot 0.00 zscale 1.0000 mid at 92.57 mm
+[   42.5s] G2 cand 1: detail ncc 0.149 rot 359.25 zscale 1.0000 mid at 89.87 mm
+[   46.0s] G2 cand 2: detail ncc 0.133 rot 357.50 zscale 1.0000 mid at 97.06 mm
+[   49.2s] G2 cand 3: detail ncc 0.256 rot 0.00 zscale 1.0050 mid at 107.25 mm UPSIDE-DOWN
+[   52.4s] G2 cand 4: detail ncc 0.140 rot 3.25 zscale 1.0050 mid at 86.72 mm
+[   55.3s] G2 cand 5: detail ncc 0.225 rot 0.00 zscale 1.0050 mid at 92.57 mm UPSIDE-DOWN
+[   55.4s] G2 done (20s): {'scale': np.float64(1.000288758315798), 'improper': False, 'z_axis_flipped': False, 'rot_deg': 3.600390993263495e-05, 'tilt_deg': 0.082933539194558, 'column_scales': [1.000288758315798, 1.000288758315798, 1.000288758315798]}
+[   87.3s] B 77 um round 0: 35/35 blocks used (tried 36), ncc med 0.96, resid rms 12.1 um max 29.5, moved median 19.2 um (31s)
+[   91.1s] B 77 um round 1: 35/35 blocks used (tried 36), ncc med 0.96, resid rms 8.9 um max 21.4, moved median 2.8 um (4s)
+[  134.9s] B 38 um round 0: 36/36 blocks used (tried 36), ncc med 0.97, resid rms 7.9 um max 16.7, moved median 5.9 um (44s)
+[  138.6s] B 38 um round 1: 36/36 blocks used (tried 36), ncc med 0.97, resid rms 5.5 um max 14.3, moved median 2.0 um (4s)
+[  190.0s] B 19 um round 0: 29/30 blocks used (tried 36), ncc med 0.98, resid rms 6.5 um max 14.4, moved median 1.8 um (51s)
+[  193.0s] B 19 um round 1: 29/30 blocks used (tried 36), ncc med 0.98, resid rms 5.8 um max 14.1, moved median 0.5 um (3s)
+[  193.0s] CONFIDENCE: HIGH
+[  193.5s] wrote out_1203/transform.json (1260 MB downloaded)

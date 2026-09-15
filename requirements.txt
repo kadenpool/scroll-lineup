@@ -1,0 +1,15 @@
+# scroll-lineup 0.2.1 — the five packages the README tells you to install.
+# The bounds below are floors, not tested minimums. Two combinations have been verified end to end,
+# both in VALIDATION.md: numpy 2.5.3 / scipy 1.18.1 / fsspec 2026.7.0 / s3fs 2026.7.0 / pillow 12.3.0
+# on Python 3.12.3 (x86-64 Linux), and numpy 2.0.2 / scipy 1.13.1 / fsspec 2025.10.0 / s3fs 2025.10.0 /
+# pillow 11.3.0 on Python 3.9.6 (arm64 macOS). Each is what a plain
+# `pip install numpy scipy fsspec s3fs Pillow` resolved to on that interpreter.
+numpy>=1.24
+scipy>=1.10
+fsspec>=2023.1.0
+s3fs>=2023.1.0
+Pillow>=9.0
+# Needed for a compressed volume. Most public masked zarrs store raw chunks, but not all:
+# PHerc0172/volumes/20241024131838-7.910um-53keV-masked.zarr is blosc-compressed at every pyramid
+# level, and without numcodecs the tool cannot open it.
+# numcodecs>=0.11

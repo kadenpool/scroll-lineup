@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+# run output and the public transforms run_1203.sh fetches
+out_1203/
+runs/
+_public1203/
+# the one-line pairs file the CI workflow writes before running a single pair
+onepair.txt

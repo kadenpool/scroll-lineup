@@ -1,0 +1,49 @@
+name: checks
+
+# Two jobs. `offline` needs no scan data and finishes in seconds on four Python versions.
+# `public-pair` registers one real pair from the public bucket and checks the answer against the
+# row committed in results/, so a change that moves a published number fails the build.
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  offline:
+    name: offline checks, python ${{ matrix.python }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.9", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: pip install -r requirements.txt
+      - run: pip list
+      - run: python tests/test_offline.py
+
+  public-pair:
+    name: one public pair, end to end
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: PHercMANBp, 1.129 um onto 2.399 um
+        run: |
+          grep '^v9_MANBp ' pairs.txt > onepair.txt
+          PY=python bash run_validation.sh onepair.txt
+      - name: does it still give the committed answer?
+        run: python tests/compare_run.py runs/v9_MANBp results/v9_MANBp
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v9_MANBp
+          path: runs/v9_MANBp

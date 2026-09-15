@@ -1,0 +1,34 @@
+[    1.7s] moving: 20231107190228-3.240um-88keV-masked.zarr 3.24 um, L0 (26132, 7960, 8120), levels 0..5, extent z 84.7 mm
+[    1.7s] fixed: 20231117161658-7.910um-53keV-masked.zarr 7.91 um, L0 (11173, 3340, 3440), levels 0..5, extent z 88.4 mm
+[    1.7s] short (sliding) scan: 20231107190228-3.240um-88keV-masked.zarr; tall scan: 20231117161658-7.910um-53keV-masked.zarr
+[    2.7s] short L5 slices [82, 245, 408, 571, 734] loaded (42 MB, 0s)
+[    2.9s] tall L4 (699, 209, 215) loaded (50 MB, 0s)
+[    2.9s] material extent 26.0 mm -> search grids 217 / 104 um; area ratio 1.00
+[    4.9s] G1 cand (polar): score  13.29 rot   0.0 zscale 1.010 middle slice at tall z 43.15 mm
+[    4.9s] G1 cand (polar): score   7.79 rot   2.0 zscale 0.990 middle slice at tall z 46.19 mm
+[    4.9s] G1 cand (polar): score   7.30 rot 183.0 zscale 0.990 middle slice at tall z 44.67 mm
+[    4.9s] G1 cand (polar): score   6.65 rot 353.0 zscale 1.010 middle slice at tall z 40.12 mm
+[    4.9s] G1 cand (polar): score   6.40 rot 176.0 zscale 1.010 middle slice at tall z 41.13 mm
+[    4.9s] G1 cand (polar): score   5.91 rot 171.0 zscale 1.010 middle slice at tall z 38.09 mm
+[    4.9s] G1 done (2s)
+[    6.4s] G2 cand 0: detail ncc 0.648 rot 359.75 zscale 1.0100 mid at 43.28 mm
+[    7.9s] G2 cand 1: detail ncc 0.324 rot 5.00 zscale 0.9950 mid at 45.56 mm
+[    9.3s] G2 cand 2: detail ncc 0.285 rot 180.00 zscale 0.9850 mid at 44.42 mm
+[   10.8s] G2 cand 3: detail ncc 0.193 rot 354.00 zscale 1.0100 mid at 40.75 mm
+[   12.1s] G2 cand 4: detail ncc 0.158 rot 174.75 zscale 1.0150 mid at 40.87 mm
+[   13.6s] G2 cand 5: detail ncc 0.177 rot 172.25 zscale 1.0150 mid at 38.60 mm
+[   13.7s] G2 done (9s): {'scale': np.float64(1.02), 'improper': False, 'z_axis_flipped': False, 'rot_deg': 2.9423765814829284, 'tilt_deg': 19.493720629191618, 'column_scales': [1.02, 1.02, 1.0199999999999998]}
+[   19.7s] B 104 um: only 0 good blocks of 31; search radius -> 16 voxels
+[   24.7s] B 104 um: only 0 good blocks of 31; search radius -> 32 voxels
+[   35.3s] B 75.0 um round 0: only 1 good blocks of 31; unchanged
+[   46.0s] B 75.0 um round 1: only 1 good blocks of 31; unchanged
+[   62.8s] B 52 um: only 1 good blocks of 28; search radius -> 12 voxels
+[   66.5s] B 52 um: only 1 good blocks of 28; search radius -> 24 voxels
+[   77.8s] B 37.0 um round 0: only 1 good blocks of 28; unchanged
+[   84.2s] B 37.0 um round 1: only 1 good blocks of 28; unchanged
+[   93.2s] B 26 um: only 0 good blocks of 23; search radius -> 12 voxels
+[   97.1s] B 26 um: only 0 good blocks of 23; search radius -> 24 voxels
+[  110.8s] B 19.0 um round 0: only 0 good blocks of 23; unchanged
+[  116.1s] B 19.0 um round 1: only 0 good blocks of 23; unchanged
+[  116.1s] CONFIDENCE: CHECK: block matching never produced a fit: the transform is the coarse G2 estimate
+[  116.3s] wrote runs/r7_1667b/transform.json (770 MB downloaded)

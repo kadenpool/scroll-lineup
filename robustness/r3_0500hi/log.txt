@@ -1,0 +1,39 @@
+[    7.4s] moving: 20250821110041-0.550um-0.1m-65keV-masked.zarr 0.55 um, L0 (12320, 10813, 3891), levels 0..5, extent z 6.8 mm
+[    7.4s] fixed: 20250526151718-2.215um-0.4m-111keV-masked.zarr 2.215 um, L0 (28096, 18209, 18209), levels 0..5, extent z 62.2 mm
+[    7.4s] short (sliding) scan: 20250821110041-0.550um-0.1m-65keV-masked.zarr; tall scan: 20250526151718-2.215um-0.4m-111keV-masked.zarr
+[   12.3s] short L5 slices [38, 115, 192, 269, 346] loaded (19 MB, 5s)
+[   23.8s] tall L5 (878, 570, 570) loaded (105 MB, 12s)
+[   23.9s] material extent 5.9 mm -> search grids 60 / 30 um; area ratio 0.11 (partial field of view: adding the 2D search)
+[  844.5s] G1 2D search added: partial field of view (781s)
+[  844.5s] G1 cand (2d): score   4.53 rot 235.0 zscale 1.000 middle slice at tall z 61.20 mm
+[  844.5s] G1 cand (2d): score   4.53 UPSIDE-DOWN rot 235.0 zscale 1.000 middle slice at tall z 61.20 mm
+[  844.5s] G1 cand (2d): score   4.52 UPSIDE-DOWN MIRROR rot  55.0 zscale 1.000 middle slice at tall z 61.20 mm
+[  844.5s] G1 cand (2d): score   4.52 MIRROR rot  55.0 zscale 1.000 middle slice at tall z 61.20 mm
+[  844.5s] G1 cand (polar): score   7.52 UPSIDE-DOWN rot 303.0 zscale 1.000 middle slice at tall z 2.52 mm
+[  844.5s] G1 cand (polar): score   7.50 UPSIDE-DOWN MIRROR rot 123.0 zscale 1.000 middle slice at tall z 2.52 mm
+[  844.5s] G1 cand (polar): score   7.49 MIRROR rot 123.0 zscale 1.000 middle slice at tall z 2.52 mm
+[  844.5s] G1 cand (polar): score   7.48 rot 303.0 zscale 1.000 middle slice at tall z 2.52 mm
+[  844.6s] G1 done (821s)
+[  862.7s] G2 cand 0: detail ncc 0.181 rot 236.25 zscale 0.9950 mid at 61.20 mm
+[  876.7s] G2 cand 1: detail ncc 0.181 rot 236.00 zscale 0.9950 mid at 61.20 mm UPSIDE-DOWN
+[  890.6s] G2 cand 2: detail ncc 0.180 rot 56.00 zscale 0.9950 mid at 61.20 mm UPSIDE-DOWN MIRROR
+[  904.6s] G2 cand 3: detail ncc 0.183 rot 56.00 zscale 0.9950 mid at 61.20 mm MIRROR
+[  928.1s] G2 cand 4: detail ncc 0.091 rot 300.00 zscale 0.9950 mid at 2.80 mm UPSIDE-DOWN
+[  945.9s] G2 cand 5: detail ncc 0.093 rot 120.00 zscale 0.9950 mid at 2.80 mm UPSIDE-DOWN MIRROR
+[  963.7s] G2 cand 6: detail ncc 0.092 rot 120.25 zscale 0.9950 mid at 2.80 mm MIRROR
+[  981.5s] G2 cand 7: detail ncc 0.091 rot 300.50 zscale 0.9950 mid at 2.80 mm
+[  982.0s] G2 done (137s): {'scale': np.float64(1.019103031346923), 'improper': True, 'z_axis_flipped': False, 'rot_deg': -117.02059751940725, 'tilt_deg': 29.341049714906564, 'column_scales': [1.019103031346923, 1.0191030313469227, 1.019103031346923]}
+[  996.7s] B 18 um: only 0 good blocks of 25; search radius -> 16 voxels
+[ 1002.4s] B 18 um: only 0 good blocks of 25; search radius -> 32 voxels
+[ 1015.9s] B 75.0 um round 0: only 1 good blocks of 25; unchanged
+[ 1024.6s] B 75.0 um round 1: only 1 good blocks of 25; unchanged
+[ 1025.0s] B 18 um: only 0 good blocks of 4; search radius -> 12 voxels
+[ 1025.6s] B 18 um: only 0 good blocks of 4; search radius -> 24 voxels
+[ 1026.5s] B 37.0 um round 0: only 0 good blocks of 4; unchanged
+[ 1027.5s] B 37.0 um round 1: only 0 good blocks of 4; unchanged
+[ 1027.9s] B 18 um: only 0 good blocks of 4; search radius -> 12 voxels
+[ 1028.4s] B 18 um: only 0 good blocks of 4; search radius -> 24 voxels
+[ 1029.4s] B 19.0 um round 0: only 0 good blocks of 4; unchanged
+[ 1030.3s] B 19.0 um round 1: only 0 good blocks of 4; unchanged
+[ 1030.3s] CONFIDENCE: CHECK: placement margin small: G2 winner beats the runner-up by only 0.00; block matching never produced a fit: the transform is the coarse G2 estimate
+[ 1031.0s] wrote runs/r3_0500hi/transform.json (201 MB downloaded)

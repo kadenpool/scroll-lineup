@@ -1,0 +1,13 @@
+# Robustness round, 15 Sep 2026. Every official transform in the open-data catalogue that was NOT in
+# the first twelve of pairs.txt, apart from five on two objects this repository does not discuss.
+# Columns: TAG SAMPLE MOVING_URL FIXED_URL. Same format and same script as pairs.txt:
+#   bash run_validation.sh pairs_robustness.txt
+r1_0841 PHerc0841 s3://vesuvius-challenge-open-data/PHerc0841/volumes/20260319124803-2.403um-0.2m-77keV-masked.zarr s3://vesuvius-challenge-open-data/PHerc0841/volumes/20250821151531-9.366um-1.2m-113keV-masked.zarr
+r2_0172 PHerc0172 s3://vesuvius-challenge-open-data/PHerc0172/volumes/20241024131839-7.910um-53keV-masked.zarr s3://vesuvius-challenge-open-data/PHerc0172/volumes/20241024131838-7.910um-53keV-masked.zarr
+r3_0500hi PHerc0500P2 s3://vesuvius-challenge-open-data/PHerc0500P2/volumes/20250821110041-0.550um-0.1m-65keV-masked.zarr s3://vesuvius-challenge-open-data/PHerc0500P2/volumes/20250526151718-2.215um-0.4m-111keV-masked.zarr
+r4_0332c PHerc0332 https://data.aws.ash2txt.org/samples/PHerc0332/volumes/20231027191953-3.240um-53keV-masked.zarr https://data.aws.ash2txt.org/samples/PHerc0332/volumes/20231201141544-3.240um-70keV-masked.zarr
+r5_0332b PHerc0332 https://data.aws.ash2txt.org/samples/PHerc0332/volumes/20231027191953-3.240um-53keV-masked.zarr https://data.aws.ash2txt.org/samples/PHerc0332/volumes/20231117143551-7.910um-53keV-masked.zarr
+r6_1667roi PHerc1667 s3://vesuvius-challenge-open-data/PHerc1667/volumes/20260323082859-1.129um-0.2m-59keV-masked.zarr s3://vesuvius-challenge-open-data/PHerc1667/volumes/20251217075048-2.399um-0.2m-78keV-masked.zarr
+r7_1667b PHerc1667 https://data.aws.ash2txt.org/samples/PHerc1667/volumes/20231107190228-3.240um-88keV-masked.zarr https://data.aws.ash2txt.org/samples/PHerc1667/volumes/20231117161658-7.910um-53keV-masked.zarr
+r8_0139d PHerc0139 s3://vesuvius-challenge-open-data/PHerc0139/volumes/20260319133050-2.403um-0.2m-77keV-masked.zarr s3://vesuvius-challenge-open-data/PHerc0139/volumes/20250728140407-9.362um-1.2m-113keV-masked.zarr
+r9_0139e PHerc0139 s3://vesuvius-challenge-open-data/PHerc0139/volumes/20260319133554-2.403um-0.2m-77keV-masked.zarr s3://vesuvius-challenge-open-data/PHerc0139/volumes/20250728140407-9.362um-1.2m-113keV-masked.zarr
