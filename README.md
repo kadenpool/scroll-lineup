@@ -79,10 +79,15 @@ python scroll_lineup.py $B/20260427100434-1.129um-0.2m-59keV-masked.zarr \
                         $B/20251216152116-2.399um-0.2m-78keV-masked.zarr --out out_MANBp
 ```
 
-**482 MB and 3.8 minutes**, the smallest
-pair here, and the one the automated checks
-run on every push. `results/v9_MANBp/` holds
-the committed answer to compare against.
+**482 MB and 3.8 minutes**, and the pair the
+automated checks run on every push, so it is
+the one with the best-tested answer to
+compare against in `results/v9_MANBp/`.
+It is not the very cheapest run in the
+tables: `r3_0500hi` reads less (201 MB) and
+`r5_0332b` finishes faster (1.0 min), but
+the first of those is a pair the tool fails
+on and neither is exercised by the checks.
 Add `--stop-after g1` to any run to stop
 after the first stage, which tells you in
 under a minute whether the tool is finding
@@ -139,8 +144,9 @@ voxel z 7935.3 (74.29 mm along the scroll),
 scale 0.03 % under nominal, tilt 0.09
 degrees. That whole run is in
 `examples/pherc1203/`. `bash run_1203.sh`
-reruns it and then the comparison below: 5
-min 09 s end to end, peak 2.6 GiB.
+reruns it and then the comparison below: 6
+min 12 s end to end, peak 2.6 GiB
+(`VALIDATION.md`, section 5).
 
 **Reproducibility.** The tool is
 deterministic at a given `--seed` (default
@@ -163,7 +169,7 @@ moves and the answer holds: on Python 3.9
 with numpy 2.0.2 and scipy 1.13.1, on arm64
 macOS instead of x86-64 Linux, the largest
 disagreement anywhere in the volume is
-0.0001 um (`VALIDATION.md`).
+0.000259 um (`VALIDATION.md`), on `r7_1667b`.
 
 **Against the two public PHerc1203
 registrations** (`compare1203.py`, 5000
@@ -280,11 +286,18 @@ and 178 degree turns, a 14 degree tilt, and
 1.129 um tiles that see only part of the
 cross-section. Eight of the twelve ran on
 0.2.1 and four on 0.2.0, which the `tool`
-column records per row. The only change
-between them affects partial fields of
-view, and one of the four is such a tile:
-its row is therefore the one that would
-most likely move on a rerun:
+column records per row. 0.2.1 widened when
+the slow 2D search runs: it now also fires
+when the quick search has no clear winner,
+not only when the field of view is partial.
+The field that records whether that would
+have happened was added in 0.2.1, so **it
+cannot be checked from the committed data
+whether any of the four 0.2.0 rows would
+move on a rerun.** Two of those four are the
+upside-down pairs and one is the 14 degree
+tilt, so those three capabilities rest on
+runs the shipped version has not produced:
 
 | pair (moving to fixed, um) | what the official transform says | error vs official: median / 95th pct / max (um) | verdict | held-out image cubes must move: ours / official (median um) |
 |---|---|---|---|---|
@@ -315,10 +328,25 @@ or any subset of it.
 **What the WEAK verdicts mean.** In all 7,
 the held-out image cubes need less
 correction under our transform than under
-the official one (right-hand column). That
-referee shares the block-matching idea of
-the fit itself, so read it as a hint about
-which the images prefer. Two WEAKs have a
+the official one (right-hand column).
+
+**Do not put weight on that.** The referee
+is biased towards us in a way that is easy
+to miss: `datacheck.py` chooses where to put
+its test cubes by mapping candidate points
+through the **first** transform it is given,
+and `run_validation.sh` always passes ours
+first. So the cubes sit where our transform
+says there is material, and the official one
+is then scored on our chosen ground. Across
+all 21 pairs it prefers ours 16 times,
+prefers the official 3 times and ties twice.
+It is not quite a referee that cannot lose,
+and two of the three it calls against us are
+pairs we fail, which is the right answer.
+But the sampling is ours, so treat the
+column as weak evidence at best, and do not
+let it soften a verdict. Two WEAKs have a
 visible cause. For PHerc0332 the official
 transform's own landmarks sit 103 um RMS off
 its own matrix, though ours sit 104 um off
@@ -373,6 +401,21 @@ table is `robustness/table.md`, and
 Four PASS, two WEAK, three FAIL. The three
 that did not pass are the useful part.
 
+**One of the four passes is much easier than
+the other three, and should be discounted.**
+The PHerc0172 pair is two acquisitions one
+second apart at the same voxel size and
+energy, and its official transform is the
+identity matrix with no landmarks at all.
+Recovering the identity between back to back
+scans is a sanity check, not a registration
+test. It is kept in the table because it was
+run under the same pre-registered rule as
+everything else and dropping a passing row
+after the fact is exactly what the
+pre-registration exists to prevent. Read the
+score as three real passes out of eight.
+
 **Two are real failures, and the tool said
 so.** On PHerc0500P2 0.55 to 2.215 um the
 whole-scroll search has nothing to separate
@@ -407,6 +450,22 @@ to excuse it. This paragraph is that report.
 The numbers are in
 `robustness/r6_1667roi/validation.json` and
 `datacheck_heldout.json`.
+
+**And the context that paragraph needs.**
+This is the only pair of the 21 where our
+landmark error beats the official matrix's.
+On 19 of the others ours is worse, and on
+one they tie. That column is also not a fair
+fight in our favour or theirs: it compares
+our out-of-sample error against the official
+matrix's own residual on the very points it
+was fitted to, which is the easier side of
+the comparison for them. Both facts belong
+next to the PHerc1667 case, because a reader
+who meets that case alone would take away
+something the full table does not support.
+The per-pair figures are the `at official
+landmarks` column of both tables.
 
 ## Does a transferred surface still sit on a sheet?
 
@@ -526,11 +585,17 @@ working is in `docs/alignment-budget.md`.
   shows it producing a **correct**
   transform. Upside-down placements are
   exercised, by the two 2023 pairs.
-- **Partial fields of view**: three 1.129 um
-  tiles and one 0.55 um tile. The 2D search
-  they need took 3, 16 and 17 minutes on the
-  three tiles, and 17 on the 0.55 um tile
-  that fails.
+- **Partial fields of view**: four 1.129 um
+  tiles and one 0.55 um tile. The slow 2D
+  search ran on five of the 21 pairs and
+  took 4.2 to 13.0 minutes. Only two of
+  those five were triggered by a partial
+  field of view; the other three fired
+  because the quick search had no clear
+  winner, and one of them (`v3_0009B`) is a
+  full view larger than its reference. Two
+  of the tiles (`v9_MANBp`, `r6_1667roi`)
+  ran no 2D search at all.
 - **Input assumptions**: zarr v2 pyramids
   with a `0..N` level layout, and masked
   volumes, zero outside the scroll. The

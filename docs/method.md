@@ -23,7 +23,8 @@ A full 2D search is added in two cases: when the best answer does not
 stand clearly above the next one, and when the shorter scan sees only
 part of the cross-section, as the 1.129 um and 0.55 um mosaic tiles
 do. That search is every 5 degrees, both mirror images, every height,
-and it is the slow path: 10 to 20 minutes rather than 3 to 7.
+and it is the slow path. Measured on the five runs that took it, it
+cost 4.2 to 13.0 minutes.
 
 ## G2: re-score the best answers, about 150 um
 

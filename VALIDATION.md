@@ -98,7 +98,7 @@ exit (the `datacheck.py` bug in 2.6). Peak resident memory is 1.0 to
 3.5 GiB on eight of the nine and **8.2 GiB on the 0.55 um pair**,
 which is the one that needs the slow 2D search and also the one that
 fails. Across all twenty-one pairs the per-pair range is 1 to 17
-minutes and 0.2 to 2.0 GB, and the whole set is 2.3 hours of compute
+minutes and 0.2 to 2.1 GB, and the whole set is 2.3 hours of compute
 and 21.2 GB read.
 
 ### 2.5 The failures, stated plainly
@@ -187,7 +187,7 @@ issue.
 | fsspec / s3fs | 2026.7.0 | 2025.10.0 | 2026.7.0 |
 | pillow | 12.3.0 | 11.3.0 | 12.3.0 |
 | numcodecs | 0.16.5 | 0.12.1 | not installed |
-| what it ran | all 9 robustness pairs, and the clean-clone reproduction | 7 pairs as a second opinion, and every CI command | the offline suite, 24 checks, all passed |
+| what it ran | all 9 robustness pairs, and the clean-clone reproduction | 7 pairs as a second opinion, and every CI command | the offline suite, 36 checks, all passed |
 
 Each set is what a plain `pip install numpy scipy fsspec s3fs Pillow`
 resolved to on that interpreter. Nothing was pinned. Machines A and B
@@ -293,7 +293,7 @@ order, which `CHANGELOG.md` notes.
 `.github/workflows/ci.yml` has two jobs.
 
 - **`offline`** installs `requirements.txt` and runs
-  `python tests/test_offline.py` on Python 3.9, 3.11, 3.12 and 3.13.
+  `python tests/test_offline.py` on Python 3.9, 3.11, 3.12, 3.13 and 3.14.
   No network beyond pip, no scan data, a couple of seconds.
 - **`public-pair`** registers `PHercMANBp 1.129 um -> 2.399 um` from
   the public bucket with the committed `run_validation.sh`, then runs
