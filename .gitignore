@@ -8,3 +8,7 @@ runs/
 _public1203/
 # the one-line pairs file the CI workflow writes before running a single pair
 onepair.txt
+# generated tables written to the repo root by the summarize command
+/table.md
+# macOS
+.DS_Store

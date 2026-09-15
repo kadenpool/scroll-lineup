@@ -2,8 +2,11 @@
 # The README's worked example: PHerc1203 (no official transform exists for this pair).
 # 1. scroll-lineup on the 2.403 um scan onto the 9.362 um scan  (~200 s, ~1.3 GB read)
 # 2. compare1203.py against the two public PHerc1203 registrations, fetched from their own repos
-#    (~4 min more, reads another ~1 GB for the held-out image check)
+#    (~2 min 30 s more, reads another ~1 GB for the held-out image check)
+# Whole script measured at 6 min 12 s end to end: VALIDATION.md section 5.
 # Usage:  bash run_1203.sh            (set PY=... to choose an interpreter, OUT=... for the folder)
+# Note: `set -e` below means the script aborts on the first failure, so the
+# "exit $?" lines further down only ever print 0. They are a progress marker, not a check.
 set -e
 cd "$(dirname "$0")"
 PY=${PY:-python3}

@@ -21,8 +21,10 @@ matches in many places, five at a fixed spacing do not.
 
 A full 2D search is added in two cases: when the best answer does not
 stand clearly above the next one, and when the shorter scan sees only
-part of the cross-section, as the 1.129 um and 0.55 um mosaic tiles
-do. That search is every 5 degrees, both mirror images, every height,
+part of the cross-section. In practice the first case is the common
+one: of the five runs that took the 2D search, only two were triggered
+by a partial field of view, and two of the 1.129 um tiles never took
+it at all. That search is every 5 degrees, both mirror images, every height,
 and it is the slow path. Measured on the five runs that took it, it
 cost 4.2 to 13.0 minutes.
 
@@ -77,8 +79,16 @@ pre-registered rule grades FAIL. On that pair the tool's own block
 residual is 4.6 um RMS at correlation 0.99, and at the official
 transform's own landmarks the tool's answer sits 6.3 um off while the
 official matrix sits 123 um off its own landmarks. `HIGH` is a
-statement about the fit, not about the reference. Read `confidence`
-next to `blocks[-1]`, never alone.
+statement about the fit, not about the reference.
+
+**One outright miss is known.** In the coverage round,
+`coverage/x3_Paris4` is graded FAIL at 215 um p95 and reported `HIGH`
+with no reasons at all. There the reference is sound: it hits its own
+landmarks at 35 um RMS where the tool manages 57. It is a 45.532 um
+overview scan matched onto a 7.91 um scan, a scale jump of nearly six,
+well outside anything else attempted. Nothing in the confidence
+machinery notices that regime. Read `confidence` next to `blocks[-1]`,
+never alone, and treat a large scale ratio as unverified.
 
 ## The half-voxel convention
 

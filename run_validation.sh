@@ -2,7 +2,8 @@
 # The validation batch behind the README table: the twelve pairs in pairs.txt, each against the
 # official transform in the open-data metadata.json, plus the two held-out image checks.
 # Reads about 15 GB from the public bucket in total and takes a few hours on 8 cores.
-# Usage:  bash run_validation.sh [pairs.txt]        (set PY=... to choose an interpreter)
+# Usage:  bash run_validation.sh [pairs.txt]        (set PY=... to choose an interpreter,
+#                                                    OUTROOT=... to choose the output folder, default runs/)
 cd "$(dirname "$0")"
 PY=${PY:-python3}
 PAIRS=${1:-pairs.txt}
@@ -29,3 +30,6 @@ while read -r TAG SAMPLE MOV FIX; do
 done < "$PAIRS"
 echo "=== BATCH DONE $(date '+%F %T %Z')" | tee -a "$OUTROOT/batch.log"
 echo "Table:  $PY summarize.py $OUTROOT/*/ > table.md"
+echo "  (the bare glob orders runs alphabetically; the committed tables list them in pair-file order,"
+echo "   so name the folders explicitly to reproduce those byte for byte. summarize.py needs the network"
+echo "   unless META points at a local metadata.json.)"

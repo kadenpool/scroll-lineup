@@ -299,8 +299,10 @@ not only when the field of view is partial.
 The field that records whether that would
 have happened was added in 0.2.1, so **it
 cannot be checked from the committed data
-whether any of the four 0.2.0 rows would
-move on a rerun.** Two of those four are the
+whether three of the four 0.2.0 rows would
+move on a rerun. The fourth, `n3_0814roi`,
+already took the slow path on the old
+trigger, so the new one is redundant there.** Two of those four are the
 upside-down pairs and one is the 14 degree
 tilt, so those three capabilities rest on
 runs the shipped version has not produced:
@@ -341,8 +343,10 @@ is biased towards us in a way that is easy
 to miss: `datacheck.py` chooses where to put
 its test cubes by mapping candidate points
 through the **first** transform it is given,
-and `run_validation.sh` always passes ours
-first. So the cubes sit where our transform
+and `run_validation.sh` passes ours first
+on that call. (It passes the official one
+first on the separate at-landmarks call,
+which is therefore not affected.) So the cubes sit where our transform
 says there is material, and the official one
 is then scored on our chosen ground. Across
 all 21 pairs it prefers ours 16 times and
@@ -690,7 +694,7 @@ working is in `docs/alignment-budget.md`.
 | `VALIDATION.md` | every run, machine, Python version and library set, with commands and costs |
 | `CHANGELOG.md` | what each version fixed, and the run that found it |
 | `LICENSE` | MIT |
-| `tests/`, `.github/workflows/ci.yml` | the offline checks and the fresh-run comparison. The workflow runs them on five Python versions, 3.9 through 3.14, plus one public pair end to end. Every command in it was also run by hand on this machine and passed in 4 min 17 s. On GitHub it has run and passed on every one of those six jobs, which is what the badge at the top reports. |
+| `tests/`, `.github/workflows/ci.yml` | the offline checks and the fresh-run comparison. The workflow runs them on five Python versions, 3.9, 3.11, 3.12, 3.13 and 3.14, plus one public pair end to end. 3.10 is not in the matrix and has never been tried. Every command in it was also run by hand on this machine and passed in 4 min 17 s. On GitHub it has run and passed on every one of those six jobs, which is what the badge at the top reports. |
 | `docs/` | method in full, the seating check in full, the ink alignment budget |
 | `examples/pherc1203/` | one complete PHerc1203 run |
 | `results/<pair>/` | the 12 validation runs, complete; `results/table.md` is generated from them. Their `qc.png` title strips carry the working name this tool had before it was renamed, and `CHANGELOG.md` says so |
@@ -744,6 +748,6 @@ machine, not a tidied-up one.
 
 Every number in this file traces to a
 committed file, with six named exceptions
-listed at the end of `VALIDATION.md`. If you
+listed in section 8 of `VALIDATION.md`. If you
 find a seventh, that is a bug and I would like
 to know.

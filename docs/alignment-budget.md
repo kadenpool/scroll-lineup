@@ -24,7 +24,8 @@ chance one 10-layer step away: 0.571 at -10 layers, 0.537 at +10.
 
 Nearer in, flummoxjr measured the same thing finely on 17 Aug 2026
 in `measure-before-you-hunt` and found a gentle decay out to +/- 6
-voxels.
+layers. (Layers, not voxels: one layer of the rendered surface, which
+is what the depth window is counted in throughout this page.)
 
 Put together: **the tolerance is about +/- 6 layers, and it is gone
 by 10.**
