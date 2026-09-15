@@ -401,7 +401,7 @@ were caught and the run exited 1:
 ## 8. Where the numbers come from
 
 Every number in the README traces to a file in this repository, with
-four exceptions.
+five exceptions.
 
 1. **The seating table** was measured outside this repository, with a
    renderer and a control surface that are not part of it.
@@ -419,6 +419,14 @@ four exceptions.
    in this file, except the per-pair minutes and megabytes in
    `results/table.md` and `robustness/table.md`, which come from each
    run's own `report.json`.
+5. **The ink detection figures behind the alignment budget** (pixel
+   AUC 0.877 at the sheet centre, and the two values one and two
+   depth steps away) were measured in separate work on public data
+   with the challenge's own released model and labels. They are not
+   in this repository, and at the time of writing the repository they
+   cite is not published either. They are the basis for the 50 um
+   budget in the README, so treat that budget as resting on a source
+   you cannot yet check. Nothing else in this package depends on them.
 
 Everything else, every row of both tables, every PHerc1203 figure,
 every residual, is in `results/`, `robustness/`, `examples/` or

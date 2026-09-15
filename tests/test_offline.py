@@ -14,8 +14,9 @@
 A reviewer can run all of it before downloading a single voxel.
 
 Run:  python tests/test_offline.py
-Exit 0 if every check passes, 1 otherwise. Needs numpy and scipy (fsspec and s3fs are imported by the
-tool but not used here).
+Exit 0 if every check passes, 1 otherwise. Needs numpy, scipy and fsspec: nothing here touches the
+network, but fsspec is imported at the top of scroll_lineup.py, so importing the tool needs it present.
+s3fs and Pillow are not needed to run this file.
 """
 import json
 import re

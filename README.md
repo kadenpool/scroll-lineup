@@ -60,7 +60,35 @@ that is blosc-compressed. On Debian and
 Ubuntu, `python3 -m venv` needs `sudo apt
 install python3-venv` first.
 
-A pair reads 0.2 to 2.0 GB straight from the
+### Check it works before you download anything
+
+```
+python tests/test_offline.py
+```
+
+Seconds, no network. It re-derives every
+number in the tables below from the
+committed run data and checks the geometry
+the tool rests on.
+
+### The cheapest real run
+
+```
+B=s3://vesuvius-challenge-open-data/PHercMANBp/volumes
+python scroll_lineup.py $B/20260427100434-1.129um-0.2m-59keV-masked.zarr \
+                        $B/20251216152116-2.399um-0.2m-78keV-masked.zarr --out out_MANBp
+```
+
+**482 MB and 3.8 minutes**, the smallest
+pair here, and the one the automated checks
+run on every push. `results/v9_MANBp/` holds
+the committed answer to compare against.
+Add `--stop-after g1` to any run to stop
+after the first stage, which tells you in
+under a minute whether the tool is finding
+your scroll at all.
+
+A pair reads 0.2 to 2.1 GB straight from the
 public bucket, streams it through memory,
 and takes 1 to 17 minutes on 8 cores: the
 range over the twenty-one pairs in
@@ -75,7 +103,18 @@ example peaks at 2.6 GiB.
 URLs become anonymous S3 reads. Other
 `https://` hosts, such as the 2023 scans on
 `https://data.aws.ash2txt.org/samples/...`,
-are read over plain HTTP.
+are read over plain HTTP. **Anything that is
+not a URL is treated as a path on your own
+disk**, so a zarr you hold locally works the
+same way, with no bucket involved.
+
+Worth knowing if you are working from the
+challenge's `metadata.json`: the catalogue
+spans two hosts. Three of its official
+transforms name a volume that is not in the
+S3 bucket at all, and you only find it by
+reading the access root the metadata gives
+rather than assuming one bucket.
 
 ## Example: PHerc1203
 
@@ -239,8 +278,13 @@ Twelve official pairs on 7 objects, 1.129 to
 (turned over, 81 and 121 degree turns), 176
 and 178 degree turns, a 14 degree tilt, and
 1.129 um tiles that see only part of the
-cross-section. Current version (0.2.1) on
-all twelve:
+cross-section. Eight of the twelve ran on
+0.2.1 and four on 0.2.0, which the `tool`
+column records per row. The only change
+between them affects partial fields of
+view, and one of the four is such a tile:
+its row is therefore the one that would
+most likely move on a rerun:
 
 | pair (moving to fixed, um) | what the official transform says | error vs official: median / 95th pct / max (um) | verdict | held-out image cubes must move: ours / official (median um) |
 |---|---|---|---|---|
@@ -275,9 +319,12 @@ the official one (right-hand column). That
 referee shares the block-matching idea of
 the fit itself, so read it as a hint about
 which the images prefer. Two WEAKs have a
-visible cause: for PHerc0332 the official
+visible cause. For PHerc0332 the official
 transform's own landmarks sit 103 um RMS off
-its own matrix, and for PHerc0139 2.403 to
+its own matrix, though ours sit 104 um off
+the same six points, so that is a hard
+region for both of us and not a defect in
+the reference. For PHerc0139 2.403 to
 9.362 (Aug 2025) the two scans bend, which
 shows in our own fit as the worst block
 residuals in the table, 21.7 um RMS against
@@ -481,8 +528,9 @@ working is in `docs/alignment-budget.md`.
   exercised, by the two 2023 pairs.
 - **Partial fields of view**: three 1.129 um
   tiles and one 0.55 um tile. The 2D search
-  they need takes 10 to 20 minutes, and 17
-  on the 0.55 um tile that fails.
+  they need took 3, 16 and 17 minutes on the
+  three tiles, and 17 on the 0.55 um tile
+  that fails.
 - **Input assumptions**: zarr v2 pyramids
   with a `0..N` level layout, and masked
   volumes, zero outside the scroll. The
@@ -590,7 +638,7 @@ I ran it on the public PHerc1203 pair myself, and I went over the QC image and t
 machine, not a tidied-up one.
 
 Every number in this file traces to a
-committed file, with four named exceptions
+committed file, with five named exceptions
 listed at the end of `VALIDATION.md`. If you
-find a fifth, that is a bug and I would like
+find a sixth, that is a bug and I would like
 to know.
