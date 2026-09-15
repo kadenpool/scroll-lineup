@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """summarize.py - one markdown table from runs*/<tag>/{report,validation,datacheck_*}.json.
-Verdict rules were fixed before the first validation run (PREREG_0912.md): p95 error vs the official transform
+Verdict rules were fixed before the first validation run (PREREG.md): p95 error vs the official transform
 <= 30 um PASS, <= 150 um WEAK, else FAIL.
 Usage: python summarize.py results/v2_0139a results/v3_0009B ... > table.md"""
 import json

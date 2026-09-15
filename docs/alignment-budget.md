@@ -61,8 +61,12 @@ The failure mode to fear is the other one: the transform that lands
 
 ## Sources
 
-- The depth measurement is in the companion write-up at
-  github.com/kadenpool/ink-finding-checks, measured on public data
-  with the challenge's own labels.
+- The depth measurement is in a companion write-up, measured on public
+  data with the challenge's own labels. **That write-up is not
+  published yet, so this figure is the one number on this page you
+  cannot currently check.** It is listed as exception 5 in section 8
+  of `VALIDATION.md`. Treat the 50 um budget below as resting on it.
+  When the write-up goes up it will be at
+  github.com/kadenpool/ink-finding-checks.
 - flummoxjr's finer curve is `hunt/depth_offset_plan.md` in
   `measure-before-you-hunt`, 17 Aug 2026.

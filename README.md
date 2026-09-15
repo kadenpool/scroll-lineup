@@ -586,6 +586,7 @@ working is in `docs/alignment-budget.md`.
 | `PREREG.md` | the pass/fail rule, as written before validation ran |
 | `VALIDATION.md` | every run, machine, Python version and library set, with commands and costs |
 | `CHANGELOG.md` | what each version fixed, and the run that found it |
+| `LICENSE` | MIT |
 | `tests/`, `.github/workflows/ci.yml` | the offline checks and the fresh-run comparison. The workflow runs them on five Python versions, 3.9 through 3.14, plus one public pair end to end. Every command in it was also run by hand on this machine and passed in 4 min 17 s. On GitHub it has run and passed on every one of those six jobs, which is what the badge at the top reports. |
 | `docs/` | method in full, the seating check in full, the ink alignment budget |
 | `examples/pherc1203/` | one complete PHerc1203 run |
