@@ -53,8 +53,10 @@ distribution rather than a single score.
 ## A worked example of the size of error that matters
 
 The hand-made PHerc1203 alignment that this tool replaced was 29 um
-out, mostly in height. That is about 3 layers, roughly a third of the
-depth budget. Real, worth catching, survivable.
+out, split about evenly between height (18 um) and across (21 um).
+The height part is about 2 layers and the whole error about 3, so
+against the 6-layer tolerance above it is roughly half the budget.
+Real, worth catching, survivable.
 
 The failure mode to fear is the other one: the transform that lands
 150 um out while still passing a correlation check.
@@ -63,10 +65,11 @@ The failure mode to fear is the other one: the transform that lands
 
 - The depth measurement is in a companion write-up, measured on public
   data with the challenge's own labels. **That write-up is not
-  published yet, so this figure is the one number on this page you
-  cannot currently check.** It is listed as exception 5 in section 8
-  of `VALIDATION.md`. Treat the 50 um budget below as resting on it.
-  When the write-up goes up it will be at
+  published yet, so every ink detection figure on this page is
+  currently uncheckable**: the three AUC values, and the share of
+  labelled ink marked at the sheet centre. It is listed as exception 5
+  in section 8 of `VALIDATION.md`. The 50 um budget above rests on
+  them. When the write-up goes up it will be at
   github.com/kadenpool/ink-finding-checks.
 - flummoxjr's finer curve is `hunt/depth_offset_plan.md` in
   `measure-before-you-hunt`, 17 Aug 2026.

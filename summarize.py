@@ -2,7 +2,12 @@
 """summarize.py - one markdown table from runs*/<tag>/{report,validation,datacheck_*}.json.
 Verdict rules were fixed before the first validation run (PREREG.md): p95 error vs the official transform
 <= 30 um PASS, <= 150 um WEAK, else FAIL.
-Usage: python summarize.py results/v2_0139a results/v3_0009B ... > table.md"""
+Usage: python summarize.py results/v2_0139a results/v3_0009B ... > table.md
+
+NEEDS NETWORK unless META is set. The official geometry column is read from the open-data
+metadata.json, which is fetched anonymously from the public bucket. Point META at a local copy
+to run offline:  META=/path/to/metadata.json python summarize.py ...
+The offline test suite does not call this script, so `tests/test_offline.py` stays network-free."""
 import json
 import os
 import sys

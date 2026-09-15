@@ -40,9 +40,15 @@ and y with height gives the tilt.
 
 ## B: 3D block matching, about 75, 37 and 19 um
 
-Dozens of cubes of the shorter scan, one per storage chunk, spread
-over height and area and inside material, are matched in the other
-scan by masked normalised cross-correlation with a sub-voxel peak fit.
+Dozens of cubes of the shorter scan, spread over height and area and
+inside material, are matched in the other scan by masked normalised
+cross-correlation with a sub-voxel peak fit.
+
+One cube is taken per storage chunk, so a cube costs one chunk read.
+The exception is the coarsest of the three block levels, where two are
+taken per chunk and axis, because a small scan has very few chunks at
+that level. That was half of the 0.2.0 fix; the widening search box
+below was the other half.
 
 Each match is a landmark pair. A 12-parameter affine is fitted to them
 with outlier rejection, two rounds per resolution, each round starting
@@ -85,7 +91,7 @@ block of the PHerc1203 9.362 um scan, level 1 equals the 2x2x2 mean of
 level 0 to within 8-bit rounding: largest difference 0.50 grey levels,
 mean difference 0.25, r = 0.99995.
 
-Getting this offset wrong costs half a level-1 voxel, 4.7 um on a
+Getting this offset wrong costs half a level-0 voxel, 4.7 um on a
 9.362 um scan. That is the size of the block residuals the tool
 reports, so it would be invisible in the residuals and wrong in the
 answer.

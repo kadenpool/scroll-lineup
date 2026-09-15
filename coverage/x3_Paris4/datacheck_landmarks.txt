@@ -1,0 +1,2 @@
+official    : 8 common blocks at 16 um; must move median 34.4 um, p90 60.7, max 76.3 (|z,y,x| median [31.8, 5.0, 10.6]), ncc 0.59
+ours        : 8 common blocks at 16 um; must move median 16.1 um, p90 29.1, max 47.9 (|z,y,x| median [5.8, 13.5, 9.1]), ncc 0.59

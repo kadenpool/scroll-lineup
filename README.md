@@ -89,17 +89,21 @@ tables: `r3_0500hi` reads less (201 MB) and
 the first of those is a pair the tool fails
 on and neither is exercised by the checks.
 Add `--stop-after g1` to any run to stop
-after the first stage, which tells you in
-under a minute whether the tool is finding
-your scroll at all.
+after the first stage, which tells you
+whether the tool is finding your scroll at
+all before you wait for the rest. That stage
+took under a minute on 12 of the 21 pairs
+and 1 to 2 minutes on four more, but on the
+five that need the slow 2D search it is the
+slow part, 5 to 14 minutes.
 
 A pair reads 0.2 to 2.1 GB straight from the
 public bucket, streams it through memory,
 and takes 1 to 17 minutes on 8 cores: the
 range over the twenty-one pairs in
 `VALIDATION.md`. Peak resident memory was
-measured on ten of them and runs 1.0 to 3.5
-GiB, with one exception, the 0.55 um
+measured on nine of them and runs 1.0 to 3.5
+GiB on eight, the exception being the 0.55 um
 partial-view pair at 8.2 GiB, which is also
 the pair the tool fails on. The PHerc1203
 example peaks at 2.6 GiB.
@@ -178,8 +182,10 @@ points in scroll material): ours agrees with
 to 3.5 / 5.2 / 6.0 um (median / 95th / max),
 and differs from flummoxjr's by 29 um
 median, split evenly between height (18 um)
-and across (21 um). On 48 held-out image
-cubes the correction still needed is 4.6 um
+and across (21 um). Of 48 held-out image
+cubes tried, 45 to 46 matched for each
+transform, and on those the correction still
+needed is 4.6 um
 (ours), 5.0 um (7jycwjmbfn-eng), 33 um
 (flummoxjr). My own first attempt at this
 pair, by hand before this tool existed, sits
@@ -339,12 +345,15 @@ and `run_validation.sh` always passes ours
 first. So the cubes sit where our transform
 says there is material, and the official one
 is then scored on our chosen ground. Across
-all 21 pairs it prefers ours 16 times,
-prefers the official 3 times and ties twice.
-It is not quite a referee that cannot lose,
-and two of the three it calls against us are
-pairs we fail, which is the right answer.
-But the sampling is ours, so treat the
+all 21 pairs it prefers ours 16 times and
+the official 3 times, and on the remaining
+two it produced no comparable blocks at all,
+so it made no call. Every one of those three
+official wins is on a pair we already pass,
+and the two it could not judge are the two
+we fail. **So it has never once called
+against us on a pair that was wrong.**
+The sampling is ours, so treat the
 column as weak evidence at best, and do not
 let it soften a verdict. Two WEAKs have a
 visible cause. For PHerc0332 the official
@@ -365,9 +374,13 @@ the pre-set rule gives them.
 pairs no version of the tool had seen: 7 of
 8, then 3 of 4, placed right first time.
 Both failures were fixed in code and re-run
-(`CHANGELOG.md`), so the table is the
-current version on all 12, which makes it a
-re-run. `PREREG.md` lists what was named in
+(`CHANGELOG.md`), so those two rows are
+post-fix re-runs rather than blind results.
+The table as a whole is **not** all one
+version: eight rows are 0.2.1 and four are
+0.2.0, as the `tool` column says and as the
+section above sets out. `PREREG.md` lists
+what was named in
 advance and what came later. The nine pairs
 below are the blind round: no fix, no
 re-run, nothing dropped.
@@ -418,9 +431,11 @@ score as three real passes out of eight.
 
 **Two are real failures, and the tool said
 so.** On PHerc0500P2 0.55 to 2.215 um the
-whole-scroll search has nothing to separate
+refinement stage has nothing to separate
 its candidates, the top four scoring 0.1827,
-0.1807, 0.1806 and 0.1796, and block
+0.1807, 0.1806 and 0.1796 (the whole-scroll
+stage before it is near-tied too, at 4.5348
+to 4.5217), and block
 matching then produced no fit at all, so the
 answer is the coarse estimate and it is 22.5
 mm out. On PHerc1667 3.24 to 7.91 um block
@@ -455,7 +470,9 @@ The numbers are in
 This is the only pair of the 21 where our
 landmark error beats the official matrix's.
 On 19 of the others ours is worse, and on
-one they tie. That column is also not a fair
+one there is nothing to compare, because its
+official transform publishes no landmarks at
+all. That column is also not a fair
 fight in our favour or theirs: it compares
 our out-of-sample error against the official
 matrix's own residual on the very points it
@@ -556,16 +573,20 @@ working is in `docs/alignment-budget.md`.
   itself, so it says which the images prefer
   and stops.
 - **`CHECK` catches most failures, and it
-  has missed one.** It is cautious in one
-  direction: one pair in the twelve is
-  flagged and is right. In the other
-  direction it caught both genuine failures
-  in the nine below, naming the reason each
-  time, and it reported `HIGH` on a third
-  pair the rule grades FAIL, where the
-  tool's own residuals and the reference's
-  own landmarks say the reference is the one
-  at fault. Read `confidence` next to
+  has missed one outright.** It caught both
+  genuine failures in the nine, naming the
+  reason each time. It reported `HIGH` on
+  PHerc1667 1.129 to 2.399 um, which the
+  rule grades FAIL but where the tool's own
+  residuals and the reference's own
+  landmarks say the reference is at fault,
+  so that one is arguable. **The real miss
+  is `coverage/x3_Paris4`**: FAIL at 215 um,
+  `HIGH` with no reasons, and the reference
+  there is better than we are. It is also
+  cautious in the other direction, flagging
+  one pair in the twelve that turned out
+  fine. Read `confidence` next to
   `blocks[-1]`, never alone.
 - **Resolutions tested: 0.55, 1.129, 2.215,
   2.399, 2.401, 2.403, 3.24, 4.317, 7.91,
@@ -576,15 +597,32 @@ working is in `docs/alignment-budget.md`.
 - **Tilt validated to 14 degrees**, one
   pair, after the v0.2 fix. Larger tilts are
   untested.
-- **Mirror images.** One pair in the
-  catalogue has a mirror in its official
-  transform, PHerc0500P2 0.55 to 2.215 um,
-  and it is one of the pairs the tool fails
-  on. The tool's own answer there is also a
-  mirror, so the branch fires, but no pair
-  shows it producing a **correct**
-  transform. Upside-down placements are
-  exercised, by the two 2023 pairs.
+- **Mirror images: tested, and it works.**
+  Four of the 26 official transforms are
+  mirrors, one on PHerc0500P2 and three on
+  PHercParis4. The tool recovers the flip on
+  all four, and two of them pass outright
+  (`coverage/x4_Paris4`, `x5_Paris4`). Of
+  the two it gets wrong, one is the 0.55 um
+  pair that fails for unrelated reasons and
+  the other is the 45 um overview below.
+  Earlier versions of this file said there
+  was one mirror in the catalogue and that
+  the tool had never produced a correct one.
+  Both were wrong, and the evidence that
+  corrected them is in `coverage/`.
+  Upside-down placements are exercised, by
+  the two 2023 pairs.
+- **A confidence miss you should know
+  about.** On `coverage/x3_Paris4`, a
+  45.532 um overview scan onto a 7.91 um
+  scan, the tool is graded FAIL at 215 um
+  and reports `HIGH` with no reasons. The
+  reference is sound there: it hits its own
+  landmarks at 35 um where we manage 57. A
+  scale jump of nearly six is outside
+  anything else tried, and **the confidence
+  signal does not cover it.**
 - **Partial fields of view**: four 1.129 um
   tiles and one 0.55 um tile. The slow 2D
   search ran on five of the 21 pairs and
@@ -647,7 +685,7 @@ working is in `docs/alignment-budget.md`.
 | file | what |
 |---|---|
 | `scroll_lineup.py` | the tool. `validate.py`, `datacheck.py`, `compare1203.py` and `summarize.py` are the checkers and the table generator |
-| `run_validation.sh`, `pairs.txt`, `pairs_robustness.txt` | the two validation batches: 12 pairs, then 9 more. `run_1203.sh` is the example |
+| `run_validation.sh`, `pairs.txt`, `pairs_robustness.txt`, `pairs_coverage.txt` | the three validation batches: 12 pairs, then 9, then the last 5. `run_1203.sh` is the example |
 | `PREREG.md` | the pass/fail rule, as written before validation ran |
 | `VALIDATION.md` | every run, machine, Python version and library set, with commands and costs |
 | `CHANGELOG.md` | what each version fixed, and the run that found it |
@@ -657,6 +695,7 @@ working is in `docs/alignment-budget.md`.
 | `examples/pherc1203/` | one complete PHerc1203 run |
 | `results/<pair>/` | the 12 validation runs, complete; `results/table.md` is generated from them. Their `qc.png` title strips carry the working name this tool had before it was renamed, and `CHANGELOG.md` says so |
 | `robustness/<pair>/` | the 9 further runs, same layout, `robustness/table.md` generated the same way |
+| `coverage/<pair>/` | the last 5, so that all 26 official transforms are graded. `coverage/table.md`, same generator |
 
 ## Credits and disclosure
 
@@ -704,7 +743,7 @@ I ran it on the public PHerc1203 pair myself, and I went over the QC image and t
 machine, not a tidied-up one.
 
 Every number in this file traces to a
-committed file, with five named exceptions
+committed file, with six named exceptions
 listed at the end of `VALIDATION.md`. If you
-find a sixth, that is a bug and I would like
+find a seventh, that is a bug and I would like
 to know.

@@ -1,0 +1,20 @@
+{
+ "sample": "PHerc0343P",
+ "moving": "20250521134555-8.640um-1.2m-116keV-masked.zarr",
+ "fixed": "20260304131111-2.215um-0.4m-111keV-masked.zarr",
+ "n_points": 4000,
+ "error": {
+  "median_vox": 7.2770445604471075,
+  "p95_vox": 11.818481222337285,
+  "max_vox": 14.971915760759817,
+  "median_um": 16.118653701390343,
+  "p95_um": 26.177935907477085,
+  "max_um": 33.16279341008299
+ }
+}
+landmarks: ours rms 12.1 um vs official's own rms 2.3 um (n=5)
+  height band moving z 0-799: median 18.7 um, max 29.2 um
+  height band moving z 799-1792: median 12.5 um, max 23.2 um
+  height band moving z 1792-2671: median 11.3 um, max 20.7 um
+  height band moving z 2671-4143: median 14.7 um, max 23.8 um
+  height band moving z 4143-5141: median 22.9 um, max 33.2 um

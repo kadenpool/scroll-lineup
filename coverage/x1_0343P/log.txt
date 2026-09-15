@@ -1,0 +1,33 @@
+[    7.9s] moving: 20250521134555-8.640um-1.2m-116keV-masked.zarr 8.64 um, L0 (5398, 5057, 5057), levels 0..5, extent z 46.6 mm
+[    7.9s] fixed: 20260304131111-2.215um-0.4m-111keV-masked.zarr 2.215 um, L0 (20714, 13155, 13155), levels 0..5, extent z 45.9 mm
+[    7.9s] short (sliding) scan: 20260304131111-2.215um-0.4m-111keV-masked.zarr; tall scan: 20250521134555-8.640um-1.2m-116keV-masked.zarr
+[   23.3s] short L5 slices [65, 194, 324, 453, 582] loaded (84 MB, 15s)
+[   25.6s] tall L4 (338, 317, 317) loaded (40 MB, 2s)
+[   25.7s] material extent 28.6 mm -> search grids 239 / 115 um; area ratio 1.10
+[  214.0s] G1 2D search added: polar search inconclusive (9.3 vs 8.2) (185s)
+[  214.0s] G1 cand (2d): score   7.33 rot   0.0 zscale 1.000 middle slice at tall z 21.42 mm
+[  214.0s] G1 cand (2d): score   5.69 rot   0.0 zscale 1.000 middle slice at tall z 18.11 mm
+[  214.0s] G1 cand (2d): score   5.48 rot   0.0 zscale 1.000 middle slice at tall z 24.74 mm
+[  214.0s] G1 cand (2d): score   4.65 UPSIDE-DOWN rot   0.0 zscale 1.000 middle slice at tall z 3.18 mm
+[  214.0s] G1 cand (polar): score   7.31 UPSIDE-DOWN rot 358.0 zscale 1.000 middle slice at tall z 16.45 mm
+[  214.0s] G1 cand (polar): score   6.98 UPSIDE-DOWN rot   0.0 zscale 1.000 middle slice at tall z 23.36 mm
+[  214.0s] G1 cand (polar): score   6.97 UPSIDE-DOWN MIRROR rot 174.0 zscale 1.000 middle slice at tall z 8.98 mm
+[  214.0s] G1 cand (polar): score   6.72 UPSIDE-DOWN rot   8.0 zscale 1.000 middle slice at tall z 13.13 mm
+[  214.0s] G1 done (188s)
+[  226.5s] G2 cand 0: detail ncc 0.473 rot 359.75 zscale 0.9950 mid at 21.56 mm
+[  237.6s] G2 cand 1: detail ncc 0.296 rot 0.50 zscale 1.0000 mid at 18.11 mm
+[  249.6s] G2 cand 2: detail ncc 0.303 rot 1.25 zscale 1.0000 mid at 24.05 mm
+[  257.5s] G2 cand 3: detail ncc 0.334 rot 359.75 zscale 1.0050 mid at 3.18 mm UPSIDE-DOWN
+[  267.4s] G2 cand 4: detail ncc 0.274 rot 0.00 zscale 1.0050 mid at 15.89 mm UPSIDE-DOWN
+[  277.7s] G2 cand 5: detail ncc 0.258 rot 0.25 zscale 1.0050 mid at 22.94 mm UPSIDE-DOWN
+[  284.9s] G2 cand 6: detail ncc 0.219 rot 177.75 zscale 1.0050 mid at 8.29 mm UPSIDE-DOWN MIRROR
+[  291.3s] G2 cand 7: detail ncc 0.219 rot 5.50 zscale 1.0050 mid at 13.54 mm UPSIDE-DOWN
+[  291.7s] G2 done (78s): {'scale': np.float64(0.9826366586562822), 'improper': False, 'z_axis_flipped': False, 'rot_deg': -0.25887812164839713, 'tilt_deg': 1.8761401149739556, 'column_scales': [0.9826366586562822, 0.9826366586562821, 0.9826366586562822]}
+[  321.6s] B 71 um round 0: 18/27 blocks used (tried 32), ncc med 0.83, resid rms 23.1 um max 44.8, moved median 412.5 um (30s)
+[  326.5s] B 71 um round 1: 18/27 blocks used (tried 32), ncc med 0.86, resid rms 9.7 um max 16.5, moved median 13.3 um (5s)
+[  381.0s] B 35 um round 0: 19/27 blocks used (tried 29), ncc med 0.79, resid rms 11.9 um max 24.8, moved median 15.0 um (55s)
+[  385.7s] B 35 um round 1: 20/27 blocks used (tried 29), ncc med 0.78, resid rms 10.0 um max 21.8, moved median 4.0 um (5s)
+[  468.6s] B 18 um round 0: 24/34 blocks used (tried 36), ncc med 0.66, resid rms 12.9 um max 27.2, moved median 8.1 um (83s)
+[  475.7s] B 18 um round 1: 24/34 blocks used (tried 36), ncc med 0.66, resid rms 12.4 um max 26.0, moved median 2.5 um (7s)
+[  475.7s] CONFIDENCE: CHECK: placement margin small: G2 winner beats the runner-up by only 0.14
+[  475.9s] wrote coverage/x1_0343P/transform.json (1091 MB downloaded)

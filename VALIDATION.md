@@ -12,9 +12,19 @@ results; this file carries the evidence and the commands.
 | worked example, 11-15 Sep 2026 | PHerc1203, for which no official transform exists | `examples/pherc1203/` | five runs over four days, three of them from a clean clone into an empty environment; all five byte-identical |
 | robustness, 15 Sep 2026 | the 9 remaining official pairs in the catalogue | `robustness/`, table in `robustness/table.md` | every publishable official pair now has a graded result, including three the tool gets wrong |
 
-The open-data `metadata.json` carries **26 official transforms**.
-Twenty-one of them now have a graded result here. The other five are
-on two objects this repository does not discuss.
+The open-data `metadata.json` carries **26 official transforms**, and
+**all 26 now have a graded result here**, with nothing excluded. An
+earlier version of this file said five were "on two objects this
+repository does not discuss". That was an unexplained exclusion in a
+package whose whole claim is that nothing is hidden, so the five were
+run. They are in `coverage/`, listed in `pairs_coverage.txt`, and
+section 2.7 says what they cost and what they showed.
+
+Three of those five take their fixed volume from a **second access
+root** that the metadata names, `data.aws.ash2txt.org`, rather than
+from the S3 bucket. Anyone enumerating the catalogue on the assumption
+that it lives in one bucket will silently miss them and will most
+likely conclude the data is broken.
 
 ## 2. The robustness round
 
@@ -33,7 +43,7 @@ Between them the nine add: two objects the tool had never seen; two
 voxel sizes it had never seen (0.55 and 3.24 um) and a third on the
 fixed side (9.366 um); two pairs at the same resolution on both sides,
 where the scale ratio is exactly 1; a 73 degree turn with an 8.6
-degree tilt; the first pair whose official transform is a **mirror**;
+degree tilt; the first pair whose official transform is a **mirror** (section 2.7 found three more);
 a pair whose official transform publishes **no landmarks at all**; a
 **blosc-compressed** volume, which the five-package install cannot
 open; and a 0.55 um field of view 5.9 mm across looking into a 62 mm
@@ -45,7 +55,7 @@ scan.
 |---|---|---|---|---|
 | `r1_0841` | PHerc0841 2.403 -> 9.366 | a new object, and a fixed voxel size not seen before | HIGH | PASS |
 | `r2_0172` | PHerc0172 7.91 -> 7.91 | a new object; the same resolution on both sides, so the scale ratio is exactly 1; an official transform with **no landmarks**; a **blosc-compressed** fixed volume that the five-package install cannot open | HIGH | PASS |
-| `r3_0500hi` | PHerc0500P2 0.55 -> 2.215 | 0.55 um, four times finer than anything tried before; a 73 degree turn with an 8.6 degree tilt; the only official transform in the catalogue that is a **mirror**; a 5.9 mm field of view inside a 62 mm scan | **CHECK** | **FAIL** |
+| `r3_0500hi` | PHerc0500P2 0.55 -> 2.215 | 0.55 um, four times finer than anything tried before; a 73 degree turn with an 8.6 degree tilt; one of the four official transforms in the catalogue that are **mirrors**; a 5.9 mm field of view inside a 62 mm scan | **CHECK** | **FAIL** |
 | `r4_0332c` | PHerc0332 3.24 -> 3.24 | a new voxel size; same resolution both sides; two scans of one object at different energies | HIGH | PASS |
 | `r5_0332b` | PHerc0332 3.24 -> 7.91 | a new moving resolution onto the 2023 7.91 um scan | HIGH | WEAK |
 | `r6_1667roi` | PHerc1667 1.129 -> 2.399 | a partial-view tile on an object whose other pair passed | HIGH | **FAIL**, see below |
@@ -93,13 +103,13 @@ one software stack, 8 cores.
 | r8_0139d | PHerc0139: 2.403 -> 9.362 | 194 | 2.54 | 1093 | 322 | 2.54 |
 | r9_0139e | PHerc0139: 2.403 -> 9.362 | 227 | 2.51 | 1162 | 366 | 2.51 |
 
-Totals for the nine: 55 minutes of compute, 7.1 GB read, one non-zero
+Totals for the nine: 55 minutes of wall clock for the whole pairs, 7.3 GB read, one non-zero
 exit (the `datacheck.py` bug in 2.6). Peak resident memory is 1.0 to
 3.5 GiB on eight of the nine and **8.2 GiB on the 0.55 um pair**,
 which is the one that needs the slow 2D search and also the one that
 fails. Across all twenty-one pairs the per-pair range is 1 to 17
 minutes and 0.2 to 2.1 GB, and the whole set is 2.3 hours of compute
-and 21.2 GB read.
+and 21.7 GB read. The two totals are on different bases: 55 minutes is whole-pair wall clock, 2.3 hours is scroll-lineup time only.
 
 ### 2.5 The failures, stated plainly
 
@@ -108,9 +118,11 @@ Four PASS, two WEAK, three FAIL.
 **PHerc0500P2 0.55 -> 2.215 um, FAIL, flagged `CHECK`.** A 5.9 mm
 field of view looking into a 62 mm scan, at a resolution four times
 finer than anything tried before, with a 73 degree turn, an 8.6 degree
-tilt and a mirror. The whole-scroll search cannot separate its
-candidates: the top four score 0.1827, 0.1807, 0.1806 and 0.1796, a
-margin of 0.002. Block matching then produced no fit at any of its six
+tilt and a mirror. Neither search stage can separate its candidates.
+The whole-scroll stage scores its top four at 4.5348, 4.5253, 4.5247
+and 4.5217, and the refinement stage at 0.1827, 0.1807, 0.1806 and
+0.1796, a margin of 0.002. It is the refinement scores that the tool
+quotes in its CHECK reason. Block matching then produced no fit at any of its six
 rounds ("too few good blocks; transform unchanged", 0 of 25 used at a
 median correlation of 0.099), so the answer is the coarse G2 estimate
 and it is 22.5 mm out. The tool reported `CHECK` and named both
@@ -174,20 +186,66 @@ repository is the one all twenty-one runs were made with, and changing
 the code would invalidate them. `CHANGELOG.md` records it as a known
 issue.
 
+### 2.7 The coverage round: the last five, 15-16 Sep 2026
+
+Run so that no official transform is left ungraded. Same command, same
+pre-registered rule, on an ARM Linux machine (machine D below):
+
+```
+bash run_validation.sh pairs_coverage.txt
+```
+
+| run | scroll: moving -> fixed (um) | official geometry | confidence | error: median / p95 / max um | verdict |
+|---|---|---|---|---|---|
+| `x1_0343P` | PHerc0343P 8.64 -> 2.215 | rot -0, tilt 0.0 | **CHECK** | 16 / 26 / 33 | PASS |
+| `x2_Paris4` | PHercParis4 1.129 -> 2.4 | rot -1, tilt 0.1 | HIGH | 5 / 9 / 11 | PASS |
+| `x3_Paris4` | PHercParis4 45.532 -> 7.91 | rot -141, tilt 0.8, **mirror** | HIGH | 97 / 215 / 259 | **FAIL** |
+| `x4_Paris4` | PHercParis4 2.4 -> 7.91 | rot -141, tilt 0.8, **mirror** | HIGH | 17 / 26 / 33 | PASS |
+| `x5_Paris4` | PHercParis4 2.4 -> 7.91 | rot -140, tilt 0.9, **mirror** | HIGH | 11 / 24 / 30 | PASS |
+
+The full generated row for each is in `coverage/table.md`.
+
+**Four PASS, one FAIL.** Two things came out of this round that change
+what the rest of this file says.
+
+**1. The mirror claim was wrong, in our own favour and against it.**
+Section 2.2 called PHerc0500P2 "the only official transform in the
+catalogue that is a mirror", and the README said no pair had shown the
+tool producing a correct mirrored transform. Neither is true. Taking
+the determinant of all 26 official matrices, **four are mirrors**: one
+on PHerc0500P2 and three on PHercParis4. The tool recovers the flip on
+all four, matching the sign of the determinant every time, and two of
+the four now pass outright. So the mirror path is exercised and works,
+which the package previously declared as an untested weakness.
+
+**2. A genuine confidence miss, the first one.** `x3_Paris4` is graded
+FAIL at 215 um p95 and the tool reported `HIGH` with no reasons. This
+is not the PHerc1667 situation where the reference is at fault: here
+the official transform hits its own landmarks at 35 um RMS and ours at
+57, so ours is simply the worse of the two. It is a 45.532 um overview
+scan onto a 7.91 um scan, a scale jump of nearly six, which is further
+than anything else attempted. **The confidence signal does not cover
+that regime, and says nothing to warn you.** That is now the clearest
+known limitation of the tool.
+
 ## 3. Machines, Python versions and library sets
 
-| | machine A | machine B | machine C |
-|---|---|---|---|
-| operating system | Ubuntu 24.04.4 LTS | macOS 26.0.1 | macOS 26.0.1 |
-| architecture | x86-64 | arm64 | arm64 |
-| cores / RAM | 8 / 23 GiB | 8 / 8 GiB | 8 / 8 GiB |
-| Python | 3.12.3 | 3.9.6 | 3.14.7 |
-| numpy | 2.5.3 | 2.0.2 | 2.5.3 |
-| scipy | 1.18.1 | 1.13.1 | 1.18.1 |
-| fsspec / s3fs | 2026.7.0 | 2025.10.0 | 2026.7.0 |
-| pillow | 12.3.0 | 11.3.0 | 12.3.0 |
-| numcodecs | 0.16.5 | 0.12.1 | not installed |
-| what it ran | all 9 robustness pairs, and the clean-clone reproduction | 7 pairs as a second opinion, and every CI command | the offline suite, 36 checks, all passed |
+| | machine A | machine B | machine C | machine D |
+|---|---|---|---|---|
+| operating system | Ubuntu 24.04.4 LTS | macOS 26.0.1 | macOS 26.0.1 | Ubuntu 24.04.4 LTS |
+| architecture | x86-64 | arm64 | arm64 | **aarch64** |
+| cores / RAM | 8 / 23 GiB | 8 / 8 GiB | 8 / 8 GiB | 8 / 46 GiB |
+| Python | 3.12.3 | 3.9.6 | 3.14.7 | 3.12.3 |
+| numpy | 2.5.3 | 2.0.2 | 2.5.3 | 2.5.3 |
+| scipy | 1.18.1 | 1.13.1 | 1.18.1 | 1.18.1 |
+| fsspec / s3fs | 2026.7.0 | 2025.10.0 | 2026.7.0 | 2026.7.0 |
+| pillow | 12.3.0 | 11.3.0 | 12.3.0 | 12.3.0 |
+| numcodecs | 0.16.5 | 0.12.1 | not installed | not installed |
+| what it ran | all 9 robustness pairs, and the clean-clone reproduction | 7 pairs as a second opinion, and every CI command | the offline suite, 36 checks, all passed | all 5 coverage pairs (section 2.7) |
+
+Machine D is **ARM Linux**, a third architecture. The five pairs it
+graded went through the same pre-registered rule as every other pair
+and came out consistent with the rest.
 
 Each set is what a plain `pip install numpy scipy fsspec s3fs Pillow`
 resolved to on that interpreter. Nothing was pinned. Machines A and B
@@ -420,13 +478,20 @@ five exceptions.
    `results/table.md` and `robustness/table.md`, which come from each
    run's own `report.json`.
 5. **The ink detection figures behind the alignment budget** (pixel
-   AUC 0.877 at the sheet centre, and the two values one and two
-   depth steps away) were measured in separate work on public data
-   with the challenge's own released model and labels. They are not
-   in this repository, and at the time of writing the repository they
-   cite is not published either. They are the basis for the 50 um
-   budget in the README, so treat that budget as resting on a source
-   you cannot yet check. Nothing else in this package depends on them.
+   AUC 0.877 at the sheet centre with 57 % of labelled ink marked,
+   and 0.571 and 0.537 one 10-layer step away in each direction) were
+   measured in separate work on public data with the challenge's own
+   released model and labels. They are not in this repository, and at
+   the time of writing the repository they cite is not published
+   either. They are the basis for the 50 um budget in the README, so
+   treat that budget as resting on a source you cannot yet check.
+   Nothing else in this package depends on them.
+6. **The author's own hand-made PHerc1203 alignment**, quoted in the
+   README as 29 um from this tool's answer and needing 27 um on the
+   same held-out cubes. That transform predates the tool and is not
+   committed here, so `compare1203.py` cannot reproduce those two
+   numbers from this repository alone. It is the one comparison in
+   the README that rests only on the author's word.
 
 Everything else, every row of both tables, every PHerc1203 figure,
 every residual, is in `results/`, `robustness/`, `examples/` or

@@ -1,0 +1,10 @@
+# The five official transforms that pairs.txt and pairs_robustness.txt do not cover, so that all 26
+# in the open-data metadata.json now have a graded result.
+# Three of them (x3, x4, x5) take their fixed volume from the SECOND access root named in the
+# metadata, data.aws.ash2txt.org, not from the S3 bucket. A reader who assumes one bucket misses them.
+# Columns: TAG SAMPLE MOVING_URL FIXED_URL
+x1_0343P PHerc0343P s3://vesuvius-challenge-open-data/PHerc0343P/volumes/20250521134555-8.640um-1.2m-116keV-masked.zarr/ s3://vesuvius-challenge-open-data/PHerc0343P/volumes/20260304131111-2.215um-0.4m-111keV-masked.zarr/
+x2_Paris4 PHercParis4 s3://vesuvius-challenge-open-data/PHercParis4/volumes/20260608103018-1.129um-0.2m-78keV-masked.zarr/ s3://vesuvius-challenge-open-data/PHercParis4/volumes/20260411134726-2.400um-0.2m-78keV-masked.zarr/
+x3_Paris4 PHercParis4 s3://vesuvius-challenge-open-data/PHercParis4/volumes/20260310170716-45.532um-11.0m-74keV-masked.zarr/ https://data.aws.ash2txt.org/samples/PHercParis4/volumes/20230205180739-7.910um-54keV-masked.zarr/
+x4_Paris4 PHercParis4 s3://vesuvius-challenge-open-data/PHercParis4/volumes/20260411134726-2.400um-0.2m-78keV-masked.zarr/ https://data.aws.ash2txt.org/samples/PHercParis4/volumes/20230205180739-7.910um-54keV-masked.zarr/
+x5_Paris4 PHercParis4 s3://vesuvius-challenge-open-data/PHercParis4/volumes/20260323153942-2.400um-0.2m-137keV-masked.zarr/ https://data.aws.ash2txt.org/samples/PHercParis4/volumes/20230205180739-7.910um-54keV-masked.zarr/

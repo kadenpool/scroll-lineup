@@ -1,0 +1,20 @@
+{
+ "sample": "PHercParis4",
+ "moving": "20260608103018-1.129um-0.2m-78keV-masked.zarr",
+ "fixed": "20260411134726-2.400um-0.2m-78keV-masked.zarr",
+ "n_points": 4000,
+ "error": {
+  "median_vox": 2.1425695094931285,
+  "p95_vox": 3.76329995312371,
+  "max_vox": 4.670087071029011,
+  "median_um": 5.1421668227835085,
+  "p95_um": 9.031919887496905,
+  "max_um": 11.208208970469625
+ }
+}
+landmarks: ours rms 6.5 um vs official's own rms 2.9 um (n=16)
+  height band moving z 40-13495: median 6.4 um, max 11.2 um
+  height band moving z 13495-25736: median 5.8 um, max 10.6 um
+  height band moving z 25736-37564: median 4.9 um, max 10.5 um
+  height band moving z 37564-49154: median 4.5 um, max 10.2 um
+  height band moving z 49154-59959: median 4.0 um, max 9.0 um
