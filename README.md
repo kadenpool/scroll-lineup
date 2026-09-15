@@ -1,5 +1,7 @@
 # scroll-lineup: line up two CT scans of the same scroll
 
+[![checks](https://github.com/kadenpool/scroll-lineup/actions/workflows/ci.yml/badge.svg)](https://github.com/kadenpool/scroll-lineup/actions/workflows/ci.yml)
+
 One command. Two public OME-Zarr volumes of
 the same scroll in, a `transform.json` in
 the Vesuvius Challenge's own format out,
@@ -536,7 +538,7 @@ working is in `docs/alignment-budget.md`.
 | `PREREG.md` | the pass/fail rule, as written before validation ran |
 | `VALIDATION.md` | every run, machine, Python version and library set, with commands and costs |
 | `CHANGELOG.md` | what each version fixed, and the run that found it |
-| `tests/`, `.github/workflows/ci.yml` | the offline checks and the fresh-run comparison. The workflow runs them on five Python versions, 3.9 through 3.14, plus one public pair. Every command in it was run by hand on this machine and passed in 4 min 17 s, and the offline suite was run again on a clean 3.14 install to check the newest interpreter before adding it. It has not yet run on GitHub, because this repository is new, so there is no badge here and nothing claims a green build. |
+| `tests/`, `.github/workflows/ci.yml` | the offline checks and the fresh-run comparison. The workflow runs them on five Python versions, 3.9 through 3.14, plus one public pair end to end. Every command in it was also run by hand on this machine and passed in 4 min 17 s. On GitHub it has run and passed on every one of those six jobs, which is what the badge at the top reports. |
 | `docs/` | method in full, the seating check in full, the ink alignment budget |
 | `examples/pherc1203/` | one complete PHerc1203 run |
 | `results/<pair>/` | the 12 validation runs, complete; `results/table.md` is generated from them. Their `qc.png` title strips carry the working name this tool had before it was renamed, and `CHANGELOG.md` says so |

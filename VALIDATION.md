@@ -300,11 +300,17 @@ order, which `CHANGELOG.md` notes.
   `tests/compare_run.py` against the committed row. It uploads the
   fresh run as an artifact whether it passes or fails.
 
-**Every command in that workflow has been run locally, exactly as
-written, and passed. The workflow itself has never executed on GitHub,
-because this repository has never been pushed anywhere.** That is why
-there is no status badge: a badge for a workflow that has never run
-asserts something nobody has checked.
+**Every command in that workflow was first run locally, exactly as
+written, and passed.** For a time this section said the workflow had
+never executed on GitHub, because the repository had never been pushed,
+and that there was therefore no badge, since a badge for a workflow
+nobody has run asserts something nobody has checked.
+
+That is no longer the state. On the first push, 15 Sep 2026, the
+workflow ran on GitHub and **all six jobs passed**: the offline suite on
+Python 3.9, 3.11, 3.12, 3.13 and 3.14, and one public pair end to end.
+The badge at the top of the README reports that run and every one after
+it.
 
 The two steps with no local equivalent are `actions/checkout@v4` and
 `actions/setup-python@v5`; a fresh copy of the tree and a chosen

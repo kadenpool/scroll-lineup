@@ -74,9 +74,9 @@ would invalidate the runs committed here. Both are in `VALIDATION.md` with the r
   every cell of `results/table.md` from the committed per-pair JSON and checks the geometry the tool
   rests on; it needs no network and takes a couple of seconds. `tests/compare_run.py` compares a fresh
   run with a committed one. `.github/workflows/ci.yml` runs the offline checks on Python 3.9, 3.11,
-  3.12 and 3.13 and then one public pair end to end. **Every command in that workflow has been run
-  locally, exactly as written, and passed; the workflow itself has never run on GitHub, because this
-  repository has never been pushed. There is no badge for that reason.** The transcript is in
+  3.12, 3.13 and 3.14 and then one public pair end to end. **Every command in that workflow was first
+  run locally, exactly as written, and passed. On the first push, 15 Sep 2026, it then ran on GitHub
+  and all six jobs passed**, which is what the README badge reports. The local transcript is in
   `VALIDATION.md`.
 - **Nine further pairs, 15 Sep 2026.** `pairs_robustness.txt` and `robustness/` hold every official
   transform in the open-data catalogue that was not in the first twelve, apart from five on two
