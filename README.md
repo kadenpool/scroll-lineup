@@ -820,3 +820,11 @@ committed file, with five named exceptions
 listed in section 8 of `VALIDATION.md`. If you
 find a sixth, that is a bug and I would like
 to know.
+
+**Getting hold of me.** Open an issue here,
+which is the best way because the answer is
+then public and useful to the next person.
+If you would rather not, my address is
+squiffymccat@gmail.com. The address on the
+commits is GitHub's no-reply alias and
+nothing sent there arrives anywhere.
