@@ -43,6 +43,46 @@ across the seams, which is what a correct
 alignment looks like. This is a zoom of the
 qc image the tool writes on every run.*
 
+## The most useful thing in here, if you only read one part
+
+Grading itself against the published
+transforms turned up something about the
+published transforms.
+
+25 of the 26 official transforms in
+`metadata.json` ship the landmark pairs they
+were built from. Applying each matrix to its
+own landmarks should land on its own
+targets. **Four of the 25 miss by more than
+30 um**, the worst by 123 um RMS with one
+point 212 um out.
+
+| object | moving to fixed (um) | RMS um |
+|---|---|---|
+| PHerc1667 | 1.129 to 2.399 | **123.3** |
+| PHerc0332 | 2.399 to 7.91 | **103.1** |
+| PHerc1667 | 2.399 to 7.91 | **53.6** |
+| PHercParis4 | 45.532 to 7.91 | **35.1** |
+
+The other 21 sit between 0.0 and 25.3 um, so
+the four are separated by a gap rather than
+by where a line was drawn.
+
+```
+python audit/audit_landmarks.py
+```
+
+One file, a minute, no dependency on this
+tool, reading only their own published data.
+`audit/` has the detail, including the two
+cases where this tool is no better than the
+reference it is grading.
+
+**Why it matters:** a surface carried between
+scans on one of those four lands somewhere
+the landmarks say it should not, and nothing
+in the pipeline says so.
+
 ## Install
 
 Python 3.9 or newer, and
@@ -563,6 +603,33 @@ working is in `docs/alignment-budget.md`.
 
 ## Limits
 
+**The biggest one first, because a reviewer
+should not have to find it.** Everything here
+stops at a matrix. It shows that this tool's
+transforms agree with the challenge's own to
+a few microns, that they reproduce landmarks,
+and that a seating test does not break under
+them. **It does not show that a better
+alignment produces a better reading.** No
+figure in this repository takes a surface
+through a transform, runs an ink model on it,
+and scores the result against published
+labels.
+
+That experiment is well defined and the
+pieces exist. PHerc0139 w016 has published
+ink labels, and two of this tool's own
+transforms for that object are graded PASS
+and WEAK, with a seating check that already
+separates them. Running both through the ink
+model and scoring against the labels would
+settle it with a real referee. It is not done
+because it needs a fine-resolution render,
+which is hours of streaming on the hardware
+available here. Until it is done, read this
+package as evidence about transforms and not
+as evidence about reading.
+
 - **One affine matrix. No bending, no
   warping, no per-region correction.**
   axiosdevs published a measured case where
@@ -694,6 +761,7 @@ working is in `docs/alignment-budget.md`.
 | `VALIDATION.md` | every run, machine, Python version and library set, with commands and costs |
 | `CHANGELOG.md` | what each version fixed, and the run that found it |
 | `LICENSE` | MIT |
+| `audit/` | a standalone check of whether the challenge's published transforms fit their own published landmarks, with the committed result |
 | `tests/`, `.github/workflows/ci.yml` | the offline checks and the fresh-run comparison. The workflow runs them on five Python versions, 3.9, 3.11, 3.12, 3.13 and 3.14, plus one public pair end to end. 3.10 is not in the matrix and has never been tried. Every command in it was also run by hand on this machine and passed in 4 min 17 s. On GitHub it has run and passed on every one of those six jobs, which is what the badge at the top reports. |
 | `docs/` | method in full, the seating check in full, the ink alignment budget |
 | `examples/pherc1203/` | one complete PHerc1203 run |
