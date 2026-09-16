@@ -348,63 +348,161 @@ def test_cli():
     check("no arguments is an error, not a crash", r.returncode != 0 and "usage:" in r.stderr.lower())
 
 
-def test_audit():
-    """The landmark audit's committed result must agree with the README and its own README.
+def audit_rows():
+    """Every row of audit/results.txt, read BY COLUMN POSITION from its header.
 
-    The audit reads the live catalogue, so it cannot be re-run here without the network. What CAN be
-    checked offline is that the committed output, the table in the main README and the table in
-    audit/README.md are the same four rows with the same numbers. That is the drift these tables
-    would otherwise be free to have.
+    Never by regex match: a pattern that fails to find the cell it wants does not error, it matches
+    a different cell. That mistake has already produced a wrong number in this repository once.
+    """
+    lines = [l.rstrip("\n") for l in open(os.path.join(ROOT, "audit", "results.txt")) if l.startswith("|")]
+    hdr = [c.strip() for c in lines[0].strip("|").split("|")]
+    idx = {h.lower(): i for i, h in enumerate(hdr)}
+    i_obj = next(i for h, i in idx.items() if h.startswith("object"))
+    i_pair = next(i for h, i in idx.items() if "moving" in h)
+    i_rms = next(i for h, i in idx.items() if h.startswith("rms"))
+    i_worst = next(i for h, i in idx.items() if h.startswith("worst"))
+    out = []
+    for l in lines[2:]:
+        c = [x.strip() for x in l.strip("|").split("|")]
+        if len(c) <= i_worst:
+            continue
+        clean = lambda s: s.replace("**", "").strip()
+        out.append(dict(obj=clean(c[i_obj]), pair=clean(c[i_pair]),
+                        rms=float(clean(c[i_rms])), worst=float(clean(c[i_worst]))))
+    return out
+
+
+def test_audit():
+    """The audit's numbers must be RE-DERIVED from its committed output, not compared to constants.
+
+    An earlier version of this test asserted against values typed into the test itself. A reviewer
+    planted eight false numbers in the documents, including swapped scroll names and an invented
+    extra row, and every check still passed. Nothing below is allowed to know an answer in advance:
+    the counts, the range and the flagged set all come out of results.txt, and the documents are
+    then required to agree with what came out.
     """
     print("F. the landmark audit")
     res = os.path.join(ROOT, "audit", "results.txt")
     check("audit/results.txt is committed", os.path.exists(res))
     if not os.path.exists(res):
         return
+    rows = audit_rows()
     txt = open(res).read()
-    m = re.search(r"(\d+) of (\d+) sit further than", txt)
-    check("the audit states how many transforms it flagged", m is not None,
-          m.group(0) if m else "")
+
+    # the threshold the audit itself declares, taken from its own output
+    m = re.search(r"sit further than (\d+) um", txt)
+    check("the output states its own threshold", m is not None)
     if not m:
         return
-    n_flag, n_total = int(m.group(1)), int(m.group(2))
-    check("four of twenty five are flagged", (n_flag, n_total) == (4, 25), f"{n_flag} of {n_total}")
+    thr = float(m.group(1))
 
-    # every flagged RMS in the committed output must appear in both READMEs
-    rms = sorted({round(float(x), 1) for x in
-                  re.findall(r"RMS (\d+\.\d) um, worst", txt)}, reverse=True)
-    check("the output lists one RMS per flagged transform", len(rms) == n_flag, str(rms))
+    flagged = sorted([r for r in rows if r["rms"] > thr], key=lambda r: -r["rms"])
+    rest = [r["rms"] for r in rows if r["rms"] <= thr]
+
+    # the output's own summary line must match the rows above it in the same file
+    m2 = re.search(r"(\d+) of (\d+) sit further than", txt)
+    check("the summary line matches the rows in the same file",
+          m2 and (int(m2.group(1)), int(m2.group(2))) == (len(flagged), len(rows)),
+          f"says {m2.group(0) if m2 else '?'}, rows give {len(flagged)} of {len(rows)}")
+
+    # both documents must reproduce the flagged set exactly: object, pair and RMS on one line
     for doc in ("README.md", os.path.join("audit", "README.md")):
         body = open(os.path.join(ROOT, doc)).read()
-        missing = [v for v in rms if f"{v}" not in body]
-        check(f"{doc} quotes every flagged RMS", not missing, f"missing {missing}")
+        bad = []
+        norm = lambda s: s.replace("->", "to").replace("  ", " ")
+        for r in flagged:
+            pair = norm(r["pair"])
+            hit = [l for l in body.splitlines()
+                   if r["obj"] in l and f"{r['rms']:.1f}" in l and pair in norm(l)]
+            if not hit:
+                bad.append(f"{r['obj']} {pair} {r['rms']:.1f}")
+        check(f"{doc} carries each flagged row with its own object and value", not bad, str(bad))
+
+    # the prose counts, derived rather than assumed
+    for doc in (os.path.join("audit", "README.md"),):
+        body = open(os.path.join(ROOT, doc)).read()
+        words = {11: "eleven", 12: "twelve", 13: "thirteen", 14: "fourteen", 15: "fifteen",
+                 16: "sixteen", 17: "seventeen"}
+        n_under = len([v for v in rest if v < 10])
+        w = words.get(n_under, str(n_under))
+        check(f"{doc} states the right count under 10 um ({n_under})",
+              w in body or str(n_under) in body, f"expected '{w}'")
+        span = f"{min(rest):.1f} and {max(rest):.1f}"
+        check(f"{doc} states the right range for the unflagged", span in body,
+              f"expected '{span}'")
+        check(f"{doc} states the right number of unflagged rows ({len(rest)})",
+              f"other {len(rest)} " in body or f"The other {len(rest)}" in body)
+
+    # and the honest comparison: this tool is worse on most pairs, so the documents must say so
+    ours_better, official_better, nolm = 0, 0, 0
+    for folder in ("results", "robustness"):
+        tbl = os.path.join(ROOT, folder, "table.md")
+        if not os.path.exists(tbl):
+            continue
+        lines = [l for l in open(tbl) if l.startswith("|")]
+        hdr = [c.strip().lower() for c in lines[0].strip("|").split("|")]
+        i_lm = next((i for i, h in enumerate(hdr) if "at official landmarks" in h), None)
+        if i_lm is None:
+            continue
+        for l in lines[2:]:
+            c = [x.strip() for x in l.strip("|").split("|")]
+            mm = re.match(r"^([\d.]+) / ([\d.]+) \(n=(\d+)\)$", c[i_lm]) if len(c) > i_lm else None
+            if not mm or int(mm.group(3)) == 0:
+                nolm += 1
+                continue
+            a, b = float(mm.group(1)), float(mm.group(2))
+            if a < b:
+                ours_better += 1
+            elif a > b:
+                official_better += 1
+    check("the tool loses the landmark comparison on most pairs, as the documents must admit",
+          official_better > ours_better, f"ours {ours_better}, official {official_better}, no data {nolm}")
+    for doc in ("README.md", os.path.join("audit", "README.md")):
+        body = open(os.path.join(ROOT, doc)).read()
+        check(f"{doc} states how many pairs the tool is worse on ({official_better})",
+              f"{official_better} of the" in body or f"worse on {official_better}" in body
+              or f"on 19 of the" in body and official_better == 19)
 
 
 def test_depth():
-    """The depth curve behind the alignment budget must match what the documents claim about it."""
+    """The depth claims must be re-derived from ctl_curve.json, not compared to constants."""
     print("G. the depth measurement")
     p = os.path.join(ROOT, "depth", "ctl_curve.json")
     check("depth/ctl_curve.json is committed", os.path.exists(p))
     if not os.path.exists(p):
         return
-    rows = json.load(open(p))["rows"]
-    check("nine depth windows", len(rows) == 9, str(len(rows)))
+    data = json.load(open(p))
+    rows = sorted(data["rows"], key=lambda r: r["start"])
+    body = open(os.path.join(ROOT, "depth", "README.md")).read()
+
+    # every row must appear in the document, with its own window and both its own AUCs
+    missing = []
+    for r in rows:
+        lo, hi = r["layers"]
+        want = [f"{lo} to {hi}", f"{r['auc_forward']:.3f}", f"{r['auc_reverse']:.3f}"]
+        if not any(all(w in line for w in want) for line in body.splitlines()):
+            missing.append(f"{lo}-{hi}")
+    check("depth/README reproduces every row of the committed curve", not missing, str(missing))
+
     peak = max(rows, key=lambda r: r["auc_forward"])
     others = [r["auc_forward"] for r in rows if r is not peak]
-    check("exactly one window reads, at AUC 0.877",
-          round(peak["auc_forward"], 3) == 0.877, f"{peak['auc_forward']:.3f} at {peak['layers']}")
-    check("every other window is under 0.60",
-          max(others) < 0.60, f"worst other {max(others):.3f}")
-    rev = max(r["auc_reverse"] for r in rows)
-    check("reversed depth order never rises above 0.56 anywhere", rev < 0.56, f"{rev:.3f}")
-    # the two numbers the budget quotes, one step either side of the peak
-    order = sorted(rows, key=lambda r: r["start"])
-    i = order.index(peak)
-    for side, j in (("below", i - 1), ("above", i + 1)):
-        if 0 <= j < len(order):
-            v = round(order[j]["auc_forward"], 3)
-            body = open(os.path.join(ROOT, "depth", "README.md")).read()
-            check(f"depth/README quotes the window one step {side} ({v})", f"{v}" in body)
+    revs = [r["auc_reverse"] for r in rows]
+    check("exactly one window stands clear of the rest",
+          peak["auc_forward"] - max(others) > 0.25,
+          f"peak {peak['auc_forward']:.3f} at {peak['layers']}, next {max(others):.3f}")
+    check("the reverse arm never reaches the peak", max(revs) < peak["auc_forward"] - 0.25,
+          f"reverse max {max(revs):.3f}")
+    # the document must not overstate the off-peak band: state the real spread
+    check("depth/README states the real off-peak range",
+          f"{min(others):.3f}" in body and f"{max(others):.3f}" in body,
+          f"expected {min(others):.3f} and {max(others):.3f}")
+    check("depth/README states the real reverse maximum", f"{max(revs):.3f}" in body,
+          f"expected {max(revs):.3f}")
+
+    # any gate shipped in the data file has to be documented, or it is a hidden bar
+    if "G0" in data:
+        check("the gate shipped in ctl_curve.json is documented in depth/README",
+              "G0" in body, "ctl_curve.json carries a G0 gate that the README does not mention")
 
 
 if __name__ == "__main__":

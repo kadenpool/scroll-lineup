@@ -55,7 +55,7 @@ were built from. Applying each matrix to its
 own landmarks should land on its own
 targets. **Four of the 25 miss by more than
 30 um**, the worst by 123 um RMS with one
-point 212 um out.
+point 212.5 um out.
 
 | object | moving to fixed (um) | RMS um |
 |---|---|---|
@@ -72,16 +72,30 @@ by where a line was drawn.
 python audit/audit_landmarks.py
 ```
 
-One file, a minute, no dependency on this
+One file, about four seconds, no dependency on this
 tool, reading only their own published data.
-`audit/` has the detail, including the two
-cases where this tool is no better than the
-reference it is grading.
 
-**Why it matters:** a surface carried between
-scans on one of those four lands somewhere
-the landmarks say it should not, and nothing
-in the pipeline says so.
+**Read this before you read the table as a
+boast.** It measures a transform against the
+points it was *fitted to*, which is the
+easiest test a fit can be given. This tool's
+own numbers are measured the hard way, on
+points it never saw, and on that basis
+**ours is worse than the official transform
+on 19 of the 21 pairs that publish
+landmarks.** The one pair where ours wins is
+PHerc1667 1.129 to 2.399, and on PHerc0332
+ours is 104 um from the same six points the
+official matrix misses by 103. So this is
+not a claim to be better. It is a claim that
+four published transforms do not do the one
+thing their own landmarks say they should.
+
+**Why that matters:** a surface carried
+between scans on one of those four lands
+somewhere the landmarks say it should not,
+and nothing in the pipeline says so.
+`audit/` has the detail and the same caveat.
 
 ## Install
 
@@ -433,9 +447,11 @@ re-run, nothing dropped.
 
 The open-data `metadata.json` carries 26
 official transforms. Twelve are in the table
-above; five are on two objects this
-repository keeps private. **The other nine
-were all run**, on 15 Sep 2026, same script,
+above and five more are in `coverage/`,
+which an earlier version of this sentence
+described as being kept private; they are
+not, and all 26 are graded here. **The other
+nine were all run**, on 15 Sep 2026, same script,
 same rule, this same version, no fixes and
 no re-runs. Running the whole remainder is
 the point: there is nothing to pick. The

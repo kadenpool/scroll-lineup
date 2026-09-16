@@ -1,5 +1,9 @@
-"""Plot the stage-1 control depth curve (evidence_0913/PLAN_D_STAGE1_CONTROL.md) as one picture.
-usage: plot_ctl_curve.py <ctl_curve.json> <out.png>"""
+"""Redraw ctl_curve.png from ctl_curve.json: AUC against the depth window, forward and reversed.
+
+usage: python depth/plot_ctl_curve.py depth/ctl_curve.json out.png
+
+Needs matplotlib, which the tool itself does not, so it is not in requirements.txt. The picture is
+committed, so nobody has to run this to see it."""
 import json, sys
 import matplotlib
 matplotlib.use("Agg")
