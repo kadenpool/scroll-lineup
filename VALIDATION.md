@@ -477,16 +477,7 @@ five exceptions.
    in this file, except the per-pair minutes and megabytes in
    `results/table.md` and `robustness/table.md`, which come from each
    run's own `report.json`.
-5. **The ink detection figures behind the alignment budget** (pixel
-   AUC 0.877 at the sheet centre with 57 % of labelled ink marked,
-   and 0.571 and 0.537 one 10-layer step away in each direction) were
-   measured in separate work on public data with the challenge's own
-   released model and labels. They are not in this repository, and at
-   the time of writing the repository they cite is not published
-   either. They are the basis for the 50 um budget in the README, so
-   treat that budget as resting on a source you cannot yet check.
-   Nothing else in this package depends on them.
-6. **The author's own hand-made PHerc1203 alignment**, quoted in the
+5. **The author's own hand-made PHerc1203 alignment**, quoted in the
    README as 29 um from this tool's answer and needing 27 um on the
    same held-out cubes. That transform predates the tool and is not
    committed here, so `compare1203.py` cannot reproduce those two

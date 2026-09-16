@@ -64,13 +64,9 @@ The failure mode to fear is the other one: the transform that lands
 
 ## Sources
 
-- The depth measurement is in a companion write-up, measured on public
-  data with the challenge's own labels. **That write-up is not
-  published yet, so every ink detection figure on this page is
-  currently uncheckable**: the three AUC values, and the share of
-  labelled ink marked at the sheet centre. It is listed as exception 5
-  in section 8 of `VALIDATION.md`. The 50 um budget above rests on
-  them. When the write-up goes up it will be at
-  github.com/kadenpool/ink-finding-checks.
+- The depth measurement is in `depth/` in this repository: `ctl_curve.json` is the nine
+  windows, `ctl_curve.png` is the plot, `depth/README.md` explains what was measured.
+  It used to be cited to an unpublished repository, which made it the one figure here a
+  reader could not check. It is checkable now.
 - flummoxjr's finer curve is `hunt/depth_offset_plan.md` in
   `measure-before-you-hunt`, 17 Aug 2026.

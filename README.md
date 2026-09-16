@@ -762,6 +762,7 @@ as evidence about reading.
 | `CHANGELOG.md` | what each version fixed, and the run that found it |
 | `LICENSE` | MIT |
 | `audit/` | a standalone check of whether the challenge's published transforms fit their own published landmarks, with the committed result |
+| `depth/` | the measurement behind the 50 um alignment budget: nine depth windows on known text, scored against published labels |
 | `tests/`, `.github/workflows/ci.yml` | the offline checks and the fresh-run comparison. The workflow runs them on five Python versions, 3.9, 3.11, 3.12, 3.13 and 3.14, plus one public pair end to end. 3.10 is not in the matrix and has never been tried. Every command in it was also run by hand on this machine and passed in 4 min 17 s. On GitHub it has run and passed on every one of those six jobs, which is what the badge at the top reports. |
 | `docs/` | method in full, the seating check in full, the ink alignment budget |
 | `examples/pherc1203/` | one complete PHerc1203 run |
@@ -815,7 +816,7 @@ I ran it on the public PHerc1203 pair myself, and I went over the QC image and t
 machine, not a tidied-up one.
 
 Every number in this file traces to a
-committed file, with six named exceptions
+committed file, with five named exceptions
 listed in section 8 of `VALIDATION.md`. If you
-find a seventh, that is a bug and I would like
+find a sixth, that is a bug and I would like
 to know.
