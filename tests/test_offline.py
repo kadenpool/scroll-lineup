@@ -509,6 +509,7 @@ if __name__ == "__main__":
     test_geometry()
     test_committed("results", "pairs.txt")
     test_committed("robustness", "pairs_robustness.txt")
+    test_committed("coverage", "pairs_coverage.txt")
     test_example()
     test_readme_table()
     test_cross_stack()

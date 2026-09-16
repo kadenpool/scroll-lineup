@@ -31,8 +31,10 @@ the rest by a clear gap rather than by where a threshold was drawn.
 ## Why 30 um
 
 The released ink models are documented as sensitive to depth offset, and flummoxjr published a
-measurement on 17 August 2026 of how the response decays inside plus or minus 6 voxels. Six layers of
-a 9.362 um scan is about 56 um, so 30 um is a little over half of the window that public
+measurement on 17 August 2026 of how the response decays inside plus or minus 6 layers. (Layers of
+the rendered surface, not voxels of the volume; on a 9.362 um scan one layer of that render is one
+9.362 um step, which is the equivalence the budget rests on and the reason it is stated here rather
+than assumed.) Six layers is about 56 um, so 30 um is a little over half of the window that public
 measurement covers. Half would be 28; 30 is a round number near it and nothing turns on the
 difference, since the four flagged sit at 35 and above while the next is 25.3.
 
