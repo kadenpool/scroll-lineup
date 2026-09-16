@@ -10,6 +10,10 @@
   D.  The same pairs run on a second Python and a second numpy/scipy, committed under
       robustness/second_stack/, must agree with the first to better than 0.01 um.
   E.  The command line.
+  F.  The landmark audit: the committed result, the README table and audit/README.md must be the
+      same four rows with the same numbers.
+  G.  The depth measurement behind the alignment budget: one window reads, the rest are at chance,
+      and reversed depth order never rises anywhere.
 
 A reviewer can run all of it before downloading a single voxel.
 
@@ -344,6 +348,65 @@ def test_cli():
     check("no arguments is an error, not a crash", r.returncode != 0 and "usage:" in r.stderr.lower())
 
 
+def test_audit():
+    """The landmark audit's committed result must agree with the README and its own README.
+
+    The audit reads the live catalogue, so it cannot be re-run here without the network. What CAN be
+    checked offline is that the committed output, the table in the main README and the table in
+    audit/README.md are the same four rows with the same numbers. That is the drift these tables
+    would otherwise be free to have.
+    """
+    print("F. the landmark audit")
+    res = os.path.join(ROOT, "audit", "results.txt")
+    check("audit/results.txt is committed", os.path.exists(res))
+    if not os.path.exists(res):
+        return
+    txt = open(res).read()
+    m = re.search(r"(\d+) of (\d+) sit further than", txt)
+    check("the audit states how many transforms it flagged", m is not None,
+          m.group(0) if m else "")
+    if not m:
+        return
+    n_flag, n_total = int(m.group(1)), int(m.group(2))
+    check("four of twenty five are flagged", (n_flag, n_total) == (4, 25), f"{n_flag} of {n_total}")
+
+    # every flagged RMS in the committed output must appear in both READMEs
+    rms = sorted({round(float(x), 1) for x in
+                  re.findall(r"RMS (\d+\.\d) um, worst", txt)}, reverse=True)
+    check("the output lists one RMS per flagged transform", len(rms) == n_flag, str(rms))
+    for doc in ("README.md", os.path.join("audit", "README.md")):
+        body = open(os.path.join(ROOT, doc)).read()
+        missing = [v for v in rms if f"{v}" not in body]
+        check(f"{doc} quotes every flagged RMS", not missing, f"missing {missing}")
+
+
+def test_depth():
+    """The depth curve behind the alignment budget must match what the documents claim about it."""
+    print("G. the depth measurement")
+    p = os.path.join(ROOT, "depth", "ctl_curve.json")
+    check("depth/ctl_curve.json is committed", os.path.exists(p))
+    if not os.path.exists(p):
+        return
+    rows = json.load(open(p))["rows"]
+    check("nine depth windows", len(rows) == 9, str(len(rows)))
+    peak = max(rows, key=lambda r: r["auc_forward"])
+    others = [r["auc_forward"] for r in rows if r is not peak]
+    check("exactly one window reads, at AUC 0.877",
+          round(peak["auc_forward"], 3) == 0.877, f"{peak['auc_forward']:.3f} at {peak['layers']}")
+    check("every other window is under 0.60",
+          max(others) < 0.60, f"worst other {max(others):.3f}")
+    rev = max(r["auc_reverse"] for r in rows)
+    check("reversed depth order never rises above 0.56 anywhere", rev < 0.56, f"{rev:.3f}")
+    # the two numbers the budget quotes, one step either side of the peak
+    order = sorted(rows, key=lambda r: r["start"])
+    i = order.index(peak)
+    for side, j in (("below", i - 1), ("above", i + 1)):
+        if 0 <= j < len(order):
+            v = round(order[j]["auc_forward"], 3)
+            body = open(os.path.join(ROOT, "depth", "README.md")).read()
+            check(f"depth/README quotes the window one step {side} ({v})", f"{v}" in body)
+
+
 if __name__ == "__main__":
     test_geometry()
     test_committed("results", "pairs.txt")
@@ -352,6 +415,8 @@ if __name__ == "__main__":
     test_readme_table()
     test_cross_stack()
     test_cli()
+    test_audit()
+    test_depth()
     print()
     if FAILED:
         print(f"{len(FAILED)} FAILED: " + "; ".join(FAILED))
