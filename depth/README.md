@@ -45,6 +45,19 @@ segment of one scroll with no repeats, and there are no error bars on any of it.
 Ten layers of a 9.362 um scan is 94 um. So the usable window is narrower than 94 um, and this
 measurement puts no bound tighter than that on its own.
 
+## How this differs from the other depth-window work
+
+Two published pieces sit close to this, and a reader who has seen them should know how this differs.
+
+- **pscamillo, `ink9-depth-window`** (awarded in August 2026) varies the window's **width**, 5 to 17
+  slices, during **training**, with small position jitter as augmentation, and finds five slices are
+  enough if the jitter shrinks with them. It does not report how far a trained model's window can be
+  moved off the sheet at inference. This does, and only that: the width is fixed at 21 layers and
+  the **position** moves.
+- **flummoxjr, `measure-before-you-hunt`** (17 August 2026) measures the position question at fine
+  steps inside plus or minus 6 voxels. This measures it at coarse steps out to plus or minus 40
+  layers. The two are the two halves of one curve, which is how the budget below is built.
+
 ## Where the 50 um budget comes from
 
 flummoxjr measured the inside of the same curve on 17 August 2026, at one-voxel steps from minus 6 to
