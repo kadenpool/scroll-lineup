@@ -1,0 +1,472 @@
+{
+ "labels": "PHerc0139 w016, challenge's published ink labels, held-out validation mask",
+ "checkpoint": "ink_9um hybrid_3d2d-seed43 step-060000",
+ "arms": {
+  "ctl": {
+   "label": "official mesh in its own 9.362 um scan, no transform",
+   "curve": [
+    {
+     "layers": [
+      0,
+      21
+     ],
+     "auc_forward": 0.5390120148658752,
+     "auc_reverse": 0.5523384809494019
+    },
+    {
+     "layers": [
+      10,
+      31
+     ],
+     "auc_forward": 0.525214672088623,
+     "auc_reverse": 0.48959630727767944
+    },
+    {
+     "layers": [
+      20,
+      41
+     ],
+     "auc_forward": 0.5565102696418762,
+     "auc_reverse": 0.529212236404419
+    },
+    {
+     "layers": [
+      30,
+      51
+     ],
+     "auc_forward": 0.5713554620742798,
+     "auc_reverse": 0.46353909373283386
+    },
+    {
+     "layers": [
+      40,
+      61
+     ],
+     "auc_forward": 0.877403199672699,
+     "auc_reverse": 0.5253061056137085
+    },
+    {
+     "layers": [
+      50,
+      71
+     ],
+     "auc_forward": 0.5366732478141785,
+     "auc_reverse": 0.4694381654262543
+    },
+    {
+     "layers": [
+      60,
+      81
+     ],
+     "auc_forward": 0.4222148060798645,
+     "auc_reverse": 0.4561420679092407
+    },
+    {
+     "layers": [
+      70,
+      91
+     ],
+     "auc_forward": 0.38522428274154663,
+     "auc_reverse": 0.5011313557624817
+    },
+    {
+     "layers": [
+      80,
+      101
+     ],
+     "auc_forward": 0.4647972285747528,
+     "auc_reverse": 0.5302548408508301
+    }
+   ],
+   "where": "depth/ctl_curve.json in this repository"
+  },
+  "aligned": {
+   "label": "challenge's own pooled 2.4 um input (official transform, their pipeline)",
+   "centre": {
+    "auc_forward": 0.9123288989067078,
+    "auc_reverse": 0.5197716951370239,
+    "share_on_ink_forward": 0.707633384238722,
+    "share_on_bg_forward": 0.07215124221106996
+   },
+   "n_val_px": 178146,
+   "where": "re-scored on the same machine as the three arms below"
+  },
+  "official": {
+   "label": "official transform, our pipeline",
+   "transform_file": "transforms/official_9to2.json",
+   "scan": "20260102150214-2.399um",
+   "graded": null,
+   "n_val_px": 178146,
+   "curve": [
+    {
+     "layers": [
+      0,
+      21
+     ],
+     "auc_forward": 0.612569272518158,
+     "auc_reverse": 0.588085949420929,
+     "share_on_ink_forward": 0.0,
+     "share_on_bg_forward": 0.0013002856245388735
+    },
+    {
+     "layers": [
+      10,
+      31
+     ],
+     "auc_forward": 0.4629334807395935,
+     "auc_reverse": 0.5856719613075256,
+     "share_on_ink_forward": 0.06329236661576128,
+     "share_on_bg_forward": 0.01740045144748088
+    },
+    {
+     "layers": [
+      20,
+      41
+     ],
+     "auc_forward": 0.6113408207893372,
+     "auc_reverse": 0.5640532970428467,
+     "share_on_ink_forward": 0.037766950282403705,
+     "share_on_bg_forward": 0.037408779119458266
+    },
+    {
+     "layers": [
+      30,
+      51
+     ],
+     "auc_forward": 0.5765360593795776,
+     "auc_reverse": 0.47165805101394653,
+     "share_on_ink_forward": 0.24718202312559087,
+     "share_on_bg_forward": 0.14658894172821108
+    },
+    {
+     "layers": [
+      40,
+      61
+     ],
+     "auc_forward": 0.857180118560791,
+     "auc_reverse": 0.603061318397522,
+     "share_on_ink_forward": 0.5437422732892153,
+     "share_on_bg_forward": 0.08165501523087375
+    },
+    {
+     "layers": [
+      50,
+      71
+     ],
+     "auc_forward": 0.5899518728256226,
+     "auc_reverse": 0.5080394148826599,
+     "share_on_ink_forward": 0.12496060892541148,
+     "share_on_bg_forward": 0.12408231246301857
+    },
+    {
+     "layers": [
+      60,
+      81
+     ],
+     "auc_forward": 0.5886968970298767,
+     "auc_reverse": 0.4457595646381378,
+     "share_on_ink_forward": 0.19933095774852738,
+     "share_on_bg_forward": 0.12170089047650355
+    },
+    {
+     "layers": [
+      70,
+      91
+     ],
+     "auc_forward": 0.6173645853996277,
+     "auc_reverse": 0.46447575092315674,
+     "share_on_ink_forward": 0.13089957094029525,
+     "share_on_bg_forward": 0.05569313259260882
+    },
+    {
+     "layers": [
+      80,
+      101
+     ],
+     "auc_forward": 0.47128233313560486,
+     "auc_reverse": 0.5008038878440857,
+     "share_on_ink_forward": 0.0054541487891789685,
+     "share_on_bg_forward": 0.01615130065087331
+    }
+   ],
+   "peak": {
+    "layers": [
+     40,
+     61
+    ],
+    "auc_forward": 0.857180118560791,
+    "auc_reverse": 0.603061318397522,
+    "share_on_ink_forward": 0.5437422732892153,
+    "share_on_bg_forward": 0.08165501523087375
+   },
+   "registration": {
+    "sy": 1.001,
+    "sx": 1.0,
+    "ty": -199.49522227200032,
+    "tx": -200.4984074240001,
+    "ncc": 0.8573276996612549,
+    "worst_subwindow_px": 1
+   },
+   "depth_match": {
+    "best_layer": 50,
+    "offset_layers": 0,
+    "ncc_best": 0.8740703463554382,
+    "ncc_layer50": 0.8740703463554382
+   }
+  },
+  "v6_0139c": {
+   "label": "v6_0139c, our pipeline",
+   "transform_file": "transforms/v6_0139c_9to2.json",
+   "scan": "20260102150214-2.399um",
+   "graded": {
+    "error_median_p95_max_um": "18 / 31 / 38",
+    "verdict": "WEAK",
+    "moving": "20260102150214-2.399um-0.2m-78keV-masked.zarr"
+   },
+   "n_val_px": 178721,
+   "curve": [
+    {
+     "layers": [
+      0,
+      21
+     ],
+     "auc_forward": 0.596084475517273,
+     "auc_reverse": 0.6065230965614319,
+     "share_on_ink_forward": 0.031558090083123914,
+     "share_on_bg_forward": 0.006677006196436503
+    },
+    {
+     "layers": [
+      10,
+      31
+     ],
+     "auc_forward": 0.5793020725250244,
+     "auc_reverse": 0.5811667442321777,
+     "share_on_ink_forward": 0.0,
+     "share_on_bg_forward": 0.008963352920189025
+    },
+    {
+     "layers": [
+      20,
+      41
+     ],
+     "auc_forward": 0.530053436756134,
+     "auc_reverse": 0.5845752954483032,
+     "share_on_ink_forward": 0.0011115406920549004,
+     "share_on_bg_forward": 0.04976080735708513
+    },
+    {
+     "layers": [
+      30,
+      51
+     ],
+     "auc_forward": 0.6427444219589233,
+     "auc_reverse": 0.6045494079589844,
+     "share_on_ink_forward": 0.2996810361492364,
+     "share_on_bg_forward": 0.16827948768358125
+    },
+    {
+     "layers": [
+      40,
+      61
+     ],
+     "auc_forward": 0.8124644160270691,
+     "auc_reverse": 0.6281601190567017,
+     "share_on_ink_forward": 0.5699304078871061,
+     "share_on_bg_forward": 0.13307411695318813
+    },
+    {
+     "layers": [
+      50,
+      71
+     ],
+     "auc_forward": 0.4545269012451172,
+     "auc_reverse": 0.4472024440765381,
+     "share_on_ink_forward": 0.02551710806108641,
+     "share_on_bg_forward": 0.10397780641778982
+    },
+    {
+     "layers": [
+      60,
+      81
+     ],
+     "auc_forward": 0.4550979435443878,
+     "auc_reverse": 0.5099511742591858,
+     "share_on_ink_forward": 0.0036245892132225014,
+     "share_on_bg_forward": 0.09666732198897603
+    },
+    {
+     "layers": [
+      70,
+      91
+     ],
+     "auc_forward": 0.47051626443862915,
+     "auc_reverse": 0.44076788425445557,
+     "share_on_ink_forward": 0.09211289387202784,
+     "share_on_bg_forward": 0.05845474999453898
+    },
+    {
+     "layers": [
+      80,
+      101
+     ],
+     "auc_forward": 0.4944451153278351,
+     "auc_reverse": 0.5165489912033081,
+     "share_on_ink_forward": 0.0,
+     "share_on_bg_forward": 0.003007201264043921
+    }
+   ],
+   "peak": {
+    "layers": [
+     40,
+     61
+    ],
+    "auc_forward": 0.8124644160270691,
+    "auc_reverse": 0.6281601190567017,
+    "share_on_ink_forward": 0.5699304078871061,
+    "share_on_bg_forward": 0.13307411695318813
+   },
+   "registration": {
+    "sy": 1.0,
+    "sx": 1.001,
+    "ty": -201.6178969599996,
+    "tx": -200.87263231999987,
+    "ncc": 0.4866965711116791,
+    "worst_subwindow_px": 1
+   },
+   "depth_match": {
+    "best_layer": 51,
+    "offset_layers": 1,
+    "ncc_best": 0.5731188058853149,
+    "ncc_layer50": 0.49664467573165894
+   }
+  },
+  "v2_0139a": {
+   "label": "v2_0139a, our pipeline",
+   "transform_file": "transforms/v2_0139a_9to2.json",
+   "scan": "20250820105138-2.403um",
+   "graded": {
+    "error_median_p95_max_um": "43 / 107 / 152",
+    "verdict": "WEAK",
+    "moving": "20250820105138-2.403um-0.2m-77keV-masked.zarr"
+   },
+   "n_val_px": 178476,
+   "curve": [
+    {
+     "layers": [
+      0,
+      21
+     ],
+     "auc_forward": 0.5511797666549683,
+     "auc_reverse": 0.6084060072898865,
+     "share_on_ink_forward": 0.008810891710519964,
+     "share_on_bg_forward": 0.012980663991244071
+    },
+    {
+     "layers": [
+      10,
+      31
+     ],
+     "auc_forward": 0.4932159185409546,
+     "auc_reverse": 0.5754953622817993,
+     "share_on_ink_forward": 0.0,
+     "share_on_bg_forward": 0.0
+    },
+    {
+     "layers": [
+      20,
+      41
+     ],
+     "auc_forward": 0.521990180015564,
+     "auc_reverse": 0.6251729726791382,
+     "share_on_ink_forward": 0.06923188335827742,
+     "share_on_bg_forward": 0.09194454578620942
+    },
+    {
+     "layers": [
+      30,
+      51
+     ],
+     "auc_forward": 0.5650808215141296,
+     "auc_reverse": 0.5888563990592957,
+     "share_on_ink_forward": 0.13566359291266356,
+     "share_on_bg_forward": 0.13826340751550528
+    },
+    {
+     "layers": [
+      40,
+      61
+     ],
+     "auc_forward": 0.790279746055603,
+     "auc_reverse": 0.6270427107810974,
+     "share_on_ink_forward": 0.29906339014145705,
+     "share_on_bg_forward": 0.05462969719080628
+    },
+    {
+     "layers": [
+      50,
+      71
+     ],
+     "auc_forward": 0.31689777970314026,
+     "auc_reverse": 0.5018079280853271,
+     "share_on_ink_forward": 0.019673634915270605,
+     "share_on_bg_forward": 0.0965487048522437
+    },
+    {
+     "layers": [
+      60,
+      81
+     ],
+     "auc_forward": 0.5038878321647644,
+     "auc_reverse": 0.5117497444152832,
+     "share_on_ink_forward": 0.05501375947472602,
+     "share_on_bg_forward": 0.0806493980299161
+    },
+    {
+     "layers": [
+      70,
+      91
+     ],
+     "auc_forward": 0.5228850841522217,
+     "auc_reverse": 0.4746761918067932,
+     "share_on_ink_forward": 0.016100999372374837,
+     "share_on_bg_forward": 0.03747537395111273
+    },
+    {
+     "layers": [
+      80,
+      101
+     ],
+     "auc_forward": 0.5259090662002563,
+     "auc_reverse": 0.5274791717529297,
+     "share_on_ink_forward": 0.028629363201853907,
+     "share_on_bg_forward": 0.01395840933965706
+    }
+   ],
+   "peak": {
+    "layers": [
+     40,
+     61
+    ],
+    "auc_forward": 0.790279746055603,
+    "auc_reverse": 0.6270427107810974,
+    "share_on_ink_forward": 0.29906339014145705,
+    "share_on_bg_forward": 0.05462969719080628
+   },
+   "registration": {
+    "sy": 1.003,
+    "sx": 1.001,
+    "ty": -183.01086668800053,
+    "tx": -193.6702888960001,
+    "ncc": 0.3610996603965759,
+    "worst_subwindow_px": 1
+   },
+   "depth_match": {
+    "best_layer": 49,
+    "offset_layers": -1,
+    "ncc_best": 0.47424718737602234,
+    "ncc_layer50": 0.36780986189842224
+   }
+  }
+ }
+}

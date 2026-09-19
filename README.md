@@ -630,36 +630,42 @@ looks right by eye.** That is why this tool
 reports the whole error distribution. The
 working is in `docs/alignment-budget.md`.
 
+**Measured once since, and it qualifies
+that.** The budget treats the whole error as
+if it were depth. In `downstream/`, with the
+sideways part registered away against the
+labels, the 43 / 107 / 152 um transform still
+read 0.790 against the official transform's
+0.857, finding about half as much ink at the
+model's threshold, and its error in depth was
+about a fifth of the total. So for reading
+the budget is conservative. For carrying a
+label or a segment between scans, where the
+sideways error counts too, it holds as stated.
+
 ## Limits
 
 **The biggest one first, because a reviewer
-should not have to find it.** Everything here
-stops at a matrix. It shows that this tool's
-transforms agree with the challenge's own to
-a few microns, that they reproduce landmarks,
-and that a seating test does not break under
-them. **It does not show that a better
-alignment produces a better reading.** No
-figure in this repository takes a surface
-through a transform, runs an ink model on it,
-and scores the result against published
-labels.
-
-That experiment is well defined and the
-pieces exist. PHerc0139 w016 has published
-ink labels, and two of this tool's own
-transforms for that object, one a micron
-over the PASS bar (31 um at the 95th
-percentile) and one well into WEAK (107 um),
-have a seating check that already separates
-them. Running both through the ink
-model and scoring against the labels would
-settle it with a real referee. It is not done
-because it needs a fine-resolution render,
-which is hours of streaming on the hardware
-available here. Until it is done, read this
-package as evidence about transforms and not
-as evidence about reading.
+should not have to find it.** Most of this
+package stops at a matrix: agreement with the
+challenge's transforms, landmarks, a seating
+test. **Whether a better alignment gives a
+better reading has been measured once, on one
+segment, and the answer is a direction, not a
+number to lean on.** `downstream/` carries the
+PHerc0139 w016 surface to the 2.4 um scan by
+three matrices, renders all three the same
+way, runs the challenge's ink model and
+scores against its published labels. The
+official transform reads 0.857, this tool's
+18 / 31 / 38 um transform 0.812, its
+43 / 107 / 152 um transform 0.790: the order
+of their error. Block by block the gap
+between the first two is not significant (a
+95 % interval of -0.013 to +0.115). And the
+render path matters as much: the challenge's
+own pipeline reads 0.912 from the same
+official transform.
 
 - **One affine matrix. No bending, no
   warping, no per-region correction.**
@@ -794,6 +800,7 @@ as evidence about reading.
 | `LICENSE` | MIT |
 | `audit/` | two standalone checks on the challenge's published transforms: whether each fits its own published landmarks, and whether the two published copies of each agree. Committed results in `results.txt` and `copies.txt` |
 | `depth/` | the measurement behind the 50 um alignment budget: nine depth windows on known text, scored against published labels |
+| `downstream/` | the one test of reading: the same surface carried by three transforms, rendered alike, run through the ink model and scored against published labels |
 | `tests/`, `.github/workflows/ci.yml` | the offline checks and the fresh-run comparison. The workflow runs them on five Python versions, 3.9, 3.11, 3.12, 3.13 and 3.14, plus one public pair end to end. 3.10 is not in the matrix and has never been tried. Every command in it was also run by hand on this machine and passed in 4 min 17 s. On GitHub it has run and passed on every one of those six jobs, which is what the badge at the top reports. |
 | `docs/` | method in full, the seating check in full, the ink alignment budget |
 | `examples/pherc1203/` | one complete PHerc1203 run |

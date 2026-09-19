@@ -4,7 +4,7 @@
 Every entry below is a failure seen on real scan data, not a refactor, and where the re-run is published the
 entry points at it.
 
-## 0.2.1 — 12 Sep 2026 (current)
+## 0.2.1, 12 Sep 2026 (current)
 
 - **Fix: a partial field of view could be missed.** A 1.129 um mosaic tile of PHerc0139 sees only part
   of the cross-section. The area-ratio test did not catch that, the quick polar search picked the wrong
@@ -12,7 +12,7 @@ entry points at it.
   whenever the quick search has no clear winner, not only when the area ratio says "partial". That pair
   is now 5 um median (`results/n4c_0139roi/`).
 
-## 0.2.0 — 12 Sep 2026
+## 0.2.0, 12 Sep 2026
 
 - **Fix: the fine fit failed on a 14 degree tilt.** On PHerc0500P2 2.215 -> 9.362 um the rotation and
   most of the tilt were found, but only 6-7 blocks matched and the edges were 1-2 mm out. Now two blocks
@@ -23,13 +23,13 @@ entry points at it.
 - Capped the 8-bit reads and the per-volume cache at 1.2 GB after a validation step read a whole volume
   as float64 and was killed by the OOM killer.
 
-## 0.1.1 — 12 Sep 2026
+## 0.1.1, 12 Sep 2026
 
 - **Fix: one unmasked slice hijacked the search.** In one 8.64 um scan a single slice is 80 % "material"
   where every other slice is a few per cent. The search used the largest slice as its yardstick, so every
   normal slice was discarded and the answer was 26 mm out. The yardstick is now the 75th-percentile slice.
 
-## 0.1.0 — 12 Sep 2026
+## 0.1.0, 12 Sep 2026
 
 - First working version. Hand-tested on PHerc1203 only, which has no official transform, so nothing in
   that testing could tune the tool towards the published answers. The pass/fail rule (`PREREG.md`) was
@@ -72,8 +72,8 @@ alter a committed result is not made, because it would invalidate the runs this 
 - Verified from a clean clone into an empty virtual environment on 14 and again on 15 Sep 2026: Python 3.12.3
   on 8 CPU cores, with numpy 2.5.3, scipy 1.18.1, fsspec 2026.7.0, s3fs 2026.7.0 and pillow 12.3.0 installed by
   the README's own `pip install` line. `run_1203.sh` reproduced the committed example byte for byte (md5s are in
-  the README), and `summarize.py` regenerated `results/table.md` from the committed results unchanged —
-  byte for byte when the run folders are passed in `pairs.txt` order, which is the order the table is in.
+  the README), and `summarize.py` regenerated `results/table.md` from the committed results unchanged,
+  byte for byte, when the run folders are passed in `pairs.txt` order, which is the order the table is in.
 - Known wrinkle, not a bug in this tool: on Debian and Ubuntu `python3 -m venv` fails until the separate
   `python3-venv` package is installed, because those distributions ship `python3` without `ensurepip`.
 - **Continuous integration and offline checks, added 15 Sep 2026.** `tests/test_offline.py` re-derives

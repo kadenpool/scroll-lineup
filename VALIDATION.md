@@ -15,6 +15,7 @@ results; this file carries the evidence and the commands.
 | landmark audit, 16 Sep 2026 | all 26 official transforms, no scan data read | `audit/`, output in `audit/results.txt` | whether each published transform fits the landmarks published with it. 4 of the 25 that carry landmarks do not |
 | copy comparison, 19 Sep 2026 | all 26 catalogue transforms against their per-volume `transform.json` | `audit/compare_copies.py`, output in `audit/copies.txt` | 18 per-volume copies exist; 17 match the catalogue; PHercParis4 45.532 -> 7.91 does not, 518.3 um RMS against 35.1. About 20 s, one small fetch per volume |
 | depth curve, 13 Sep 2026 | PHerc0139 w016, 9 depth windows on known text | `depth/`, data in `depth/ctl_curve.json` | how far the ink model's window can move before it stops reading. The basis of the 50 um alignment budget |
+| reading test, 19 Sep 2026 | PHerc0139 w016 carried by three transforms through one render path, plus the challenge's own aligned input | `downstream/`, data in `downstream/results.json` | whether a better alignment gives a better reading: official 0.857, v6_0139c 0.812, v2_0139a 0.790, and 0.912 through the challenge's own pipeline. The order holds; the gap between the first two is inside the block-to-block noise |
 
 **The two rounds added on 16 Sep, and their costs.** The landmark audit reads only
 `metadata.json` and does one matrix multiply per landmark: **4 seconds**, no scan data, no GPU, on
@@ -23,6 +24,16 @@ machine B. The depth curve was produced on 13 Sep on a Kaggle T4 with the releas
 against the published labels for that segment. Neither is a scan-alignment run, so neither has a
 transform, a verdict or a place in the tables above; both are evidence the README leans on and are
 therefore recorded here.
+
+**The reading test, 19 Sep, and its costs.** Run on an 8-core arm64 Mac with 8 GiB, in its own Python
+3.12 environment with torch 2.14.0 for the ink model, which the tool itself does not need. Each arm is 12
+tiles of 384 px rendered with `vc_render_tifxyz` straight from the public bucket, 87 to 248 s a tile, then
+nine windows scored both ways on CPU, 20 to 31 minutes an arm. At the ink model's default batch of 8 with
+2 workers the scoring passed 4.9 GB and was stopped; batch 2 with no workers holds about 1.7 GB, and at
+batch 2 the aligned input re-scored at 0.9123 against 0.912 at batch 8 on another machine. Two render
+settings cost a full re-render before they were understood, and `downstream/README.md` states both:
+`--slice-step` counts voxels of the level being read, and the region has to be located on a canvas that
+the affine rescales.
 
 **One blemish in the coverage round, stated rather than tidied away.** `coverage/x5_Paris4` has a
 zero-byte `datacheck_landmarks.txt` and no corresponding json, so the last column of its row in
@@ -427,7 +438,7 @@ registration itself.
 
 ## 7. The offline checks, and proof they can fail
 
-`tests/test_offline.py` is in eight parts.
+`tests/test_offline.py` is in nine parts.
 
 - **Geometry.** `fit_similarity`, `fit_affine`, `inv`, `decompose`,
   `rot2`, `FFTCorr`, `masked_ncc_valid` and `nms` are each given a
@@ -466,6 +477,12 @@ registration itself.
   must fit exactly as the catalogue copy does, the catalogue column
   must equal the landmark audit row for row, and the differing pair's
   numbers must reach all three documents.
+- **The reading test.** Each arm's peak is re-derived from its nine-window
+  curve rather than read from the stored field; every row of the
+  downstream table, each difference and ordering its prose states, the
+  block tests and intervals, and the depth-offset table are re-derived
+  from `downstream/`'s files; and the three matrices in
+  `downstream/transforms/` must be the inverses of committed transforms.
 
 A check that has never failed has not been tested. Four deliberate
 corruptions were planted in a throwaway copy of the tree; all four
@@ -501,6 +518,12 @@ landmarks, and the count left out the five coverage pairs. The
 sentence now reads 24 of 25, counted over all 26, and the check is
 bound to it; the same corruption and four others aimed at it are now
 caught.
+
+Part I was tested the same way on 19 Sep: ten corruptions, nine caught.
+The miss changed an arm's AUC in its curve, and the check read the
+stored peak instead of the curve, so it could not see it. The check now
+derives the peak from the curve, and the same corruption fails three
+checks.
 
 ## 8. Where the numbers come from
 

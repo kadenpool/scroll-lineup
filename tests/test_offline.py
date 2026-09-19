@@ -14,6 +14,10 @@
       same four rows with the same numbers.
   G.  The depth measurement behind the alignment budget: one window reads, the rest are at chance,
       and reversed depth order never rises anywhere.
+  H.  The two published copies of each transform: counts, the differing pair's numbers, and agreement
+      with the landmark audit, all re-derived from audit/copies.txt.
+  I.  The reading test in downstream/: every row, difference, interval and depth figure in its README
+      re-derived from its committed files, and its transforms checked against the committed ones.
 
 A reviewer can run all of it before downloading a single voxel.
 
@@ -604,6 +608,110 @@ def test_copies():
               f"{v_rms:.1f}" in top and f"{c_rms:.1f}" in top)
 
 
+def test_downstream():
+    """The reading test: every number in downstream/README.md re-derived from its committed files.
+
+    Same rule as the audit and depth parts: the documents are required to agree with the data, and
+    each ordering or difference the prose states is computed here rather than trusted.
+    """
+    print("I. the downstream reading test")
+    D = os.path.join(ROOT, "downstream")
+    p = os.path.join(D, "results.json")
+    check("downstream/results.json is committed", os.path.exists(p))
+    if not os.path.exists(p):
+        return
+    res = json.load(open(p))
+    blk = json.load(open(os.path.join(D, "per_block.json")))
+    dmaps = json.load(open(os.path.join(D, "depth_maps.json")))
+    flat = lambda path: " ".join(open(path).read().split())
+    doc = flat(os.path.join(D, "README.md"))
+    top = flat(os.path.join(ROOT, "README.md"))
+    doc_lines = open(os.path.join(D, "README.md")).read().splitlines()
+    arms = res["arms"]
+
+    # the three rendered arms: peak must be the centre window, and its row must carry its own numbers
+    rendered = {"official": "the official transform | this folder", "v6_0139c": "v6_0139c", "v2_0139a": "v2_0139a"}
+    for tag, key in rendered.items():
+        a = arms[tag]
+        # the stored peak is a convenience; the curve is the record, so derive the peak from it
+        derived = max(a["curve"], key=lambda r: r["auc_forward"])
+        check(f"{tag}: the stored peak is the curve's maximum", derived == a["peak"],
+              f"curve max {derived['layers']} {derived['auc_forward']:.4f}, stored {a['peak']['auc_forward']:.4f}")
+        a = dict(a, peak=derived)
+        arms[tag] = a
+        check(f"{tag} peaks at the centre window", a["peak"]["layers"] == [40, 61], str(a["peak"]["layers"]))
+        want = [f"{a['peak']['auc_forward']:.3f}", f"{a['peak']['auc_reverse']:.3f}",
+                f"{100 * a['peak']['share_on_ink_forward']:.1f} %", f"{100 * a['peak']['share_on_bg_forward']:.1f} %"]
+        hit = [l for l in doc_lines if l.startswith("|") and key in l and all(w in l for w in want)]
+        check(f"downstream/README's {tag} row carries its own four numbers", bool(hit), str(want))
+        check(f"{tag} registers within 1 px in every sub-window", a["registration"]["worst_subwindow_px"] <= 1)
+        if a.get("graded"):
+            check(f"{tag}'s grade in results.json matches results/table.md",
+                  a["graded"]["error_median_p95_max_um"] in open(os.path.join(ROOT, "results", "table.md")).read())
+            check(f"downstream/README states {tag}'s grade", a["graded"]["error_median_p95_max_um"] in doc)
+    al = arms["aligned"]["centre"]
+    want = [f"{al['auc_forward']:.3f}", f"{al['auc_reverse']:.3f}", f"{100 * al['share_on_ink_forward']:.1f} %",
+            f"{100 * al['share_on_bg_forward']:.1f} %"]
+    check("downstream/README's aligned row carries its own four numbers",
+          any(l.startswith("|") and "the challenge (its own aligned input)" in l and all(x in l for x in want)
+              for l in doc_lines), str(want))
+    ctl = next(r for r in arms["ctl"]["curve"] if r["layers"][0] == 40)
+    check("downstream/README quotes the no-transform control", f"reads {ctl['auc_forward']:.3f}" in doc)
+    check("the validation pixel count is stated", f"{arms['aligned']['n_val_px']:,} pixels" in doc)
+
+    # every ordering and difference the prose states, computed
+    o, c, w = (arms[t]["peak"]["auc_forward"] for t in ("official", "v6_0139c", "v2_0139a"))
+    check("the stated order holds: official > v6_0139c > v2_0139a", o > c > w, f"{o:.4f} {c:.4f} {w:.4f}")
+    check("the render-path cost and both transform costs are the real differences",
+          f"costs {al['auc_forward'] - o:.3f}" in doc and f"{o - c:.3f} and {o - w:.3f}" in doc)
+    check("the v6/v2 AUC gap is the real one", f"only {c - w:.3f} lower" in doc)
+    s6, s2 = arms["v6_0139c"]["peak"]["share_on_ink_forward"], arms["v2_0139a"]["peak"]["share_on_ink_forward"]
+    check("'about half as much ink' is true", 0.4 < s2 / s6 < 0.6, f"{s2 / s6:.2f}")
+
+    # the paired block tests
+    for B, tag_ in ((64, "v6_0139c"), (96, "v6_0139c")):
+        t = blk["paired_tests"][f"B{B}_{tag_}"]
+        lo, hi = t["ci95"]
+        phrase_n = f"{t['worse']} of {t['n_blocks']}"
+        check(f"{B} px blocks: counts, p and interval as stated",
+              phrase_n in doc and f"{t['sign_p']:.2f}" in doc and f"{lo:+.3f}".replace("+", "") in doc.replace("+", "")
+              and f"{hi:+.3f}" in doc, f"{phrase_n}, p {t['sign_p']:.2f}, {lo:+.3f} to {hi:+.3f}")
+    wh = blk["per_block_128px"]["whole"]
+    check("whole-region AUCs on the label grid as stated",
+          f"({wh['official']:.3f}, {wh['v6_0139c']:.3f}, {wh['v2_0139a']:.3f})" in doc)
+    check("the label-grid AUCs agree with the render-frame ones to 0.002",
+          all(abs(wh[t] - arms[t]["peak"]["auc_forward"]) < 0.002 for t in ("official", "v6_0139c", "v2_0139a")))
+
+    # the depth maps table, re-derived
+    for tag in ("v6_0139c", "v2_0139a"):
+        m = dmaps[tag]
+        off = np.array(m["offset_layers"], float) * m["um_per_layer"]
+        pk = np.array(m["peak_ncc"], float)
+        ok = np.isfinite(pk) & (pk >= 0.5)
+        o_ = off[ok]
+        row = [f"{int(ok.sum())} of {ok.size}", f"{np.median(o_):+.1f} um", f"{o_.min():+.0f} to {o_.max():+.0f} um",
+               f"{np.percentile(np.abs(o_), 90):.0f} um"]
+        hit = [l for l in doc_lines if l.startswith(f"| {tag} |") and all(x in l for x in row)]
+        check(f"downstream/README's depth row for {tag} is the real one", bool(hit), str(row))
+    o6 = np.array(dmaps["v6_0139c"]["offset_layers"], float) * dmaps["v6_0139c"]["um_per_layer"]
+    check("the stated end-to-end tilt of v6_0139c is the real span", f"({o6.max() - o6.min():.0f} um)" in doc)
+
+    # the transforms really are the inverses of committed ones
+    for f, src in (("v6_0139c_9to2.json", "results/v6_0139c/transform.json"),
+                   ("v2_0139a_9to2.json", "results/v2_0139a/transform.json"),
+                   ("official_9to2.json", "results/v6_0139c/official_transform.json")):
+        M = to4(np.array(json.load(open(os.path.join(ROOT, src)))["transformation_matrix"], float))
+        A = np.array(json.load(open(os.path.join(D, "transforms", f)))["transformation_matrix"], float)
+        check(f"transforms/{f} is the inverse of {src}", np.allclose(np.linalg.inv(M)[:3], A[:3], atol=1e-6))
+
+    # the main README's two new passages carry the same numbers
+    check("README Limits carries the three arms and the interval",
+          f"reads {o:.3f}" in top and f"transform {c:.3f}" in top and f"transform {w:.3f}" in top
+          and f"{blk['paired_tests']['B64_v6_0139c']['ci95'][1]:+.3f}" in top and f"reads {al['auc_forward']:.3f}" in top)
+    check("README budget note carries the v2 and official numbers",
+          f"read {w:.3f} against the official transform's {o:.3f}" in top)
+
+
 if __name__ == "__main__":
     test_geometry()
     test_committed("results", "pairs.txt")
@@ -616,6 +724,7 @@ if __name__ == "__main__":
     test_audit()
     test_depth()
     test_copies()
+    test_downstream()
     print()
     if FAILED:
         print(f"{len(FAILED)} FAILED: " + "; ".join(FAILED))
