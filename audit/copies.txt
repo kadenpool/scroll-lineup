@@ -1,0 +1,40 @@
+catalogue transforms: 26
+  with a per-volume transform.json: 18
+  of those, identical to the catalogue: 17
+  of those, DIFFERENT from the catalogue: 1
+
+| object | moving -> fixed (um) | per-volume copy | catalogue fit RMS um | copy fit RMS um |
+|---|---|---|---|---|
+| PHerc0009B | 8.64 -> 2.401 | identical | 22.7 | 22.7 |
+| PHerc0139 | 2.403 -> 9.362 | no per-volume copy | 9.4 | - |
+| PHerc0139 | 2.399 -> 9.362 | identical | 24.3 | 24.3 |
+| PHerc0139 | 2.403 -> 9.362 | identical | 9.4 | 9.4 |
+| PHerc0139 | 2.403 -> 9.362 | identical | 25.3 | 25.3 |
+| PHerc0139 | 1.129 -> 2.399 | identical | 2.8 | 2.8 |
+| PHerc0139 | 2.403 -> 9.362 | no per-volume copy | 25.3 | - |
+| PHerc0172 | 7.91 -> 7.91 | no per-volume copy | - | - |
+| PHerc0332 | 2.399 -> 7.91 | identical | 103.1 | 103.1 |
+| PHerc0332 | 3.24 -> 7.91 | no per-volume copy | 8.9 | - |
+| PHerc0332 | 3.24 -> 3.24 | no per-volume copy | 1.7 | - |
+| PHerc0343P | 8.64 -> 2.215 | identical | 2.3 | 2.3 |
+| PHerc0500P2 | 2.215 -> 9.362 | identical | 0.0 | 0.0 |
+| PHerc0500P2 | 4.317 -> 2.215 | identical | 6.8 | 6.8 |
+| PHerc0500P2 | 0.55 -> 2.215 | identical | 9.1 | 9.1 |
+| PHerc0814 | 2.399 -> 9.362 | no per-volume copy | 9.2 | - |
+| PHerc0814 | 1.129 -> 2.399 | identical | 2.6 | 2.6 |
+| PHerc0841 | 2.403 -> 9.366 | no per-volume copy | 14.1 | - |
+| PHerc1667 | 3.24 -> 7.91 | no per-volume copy | 13.4 | - |
+| PHerc1667 | 1.129 -> 2.399 | identical | 123.3 | 123.3 |
+| PHerc1667 | 2.399 -> 7.91 | identical | 53.6 | 53.6 |
+| PHercMANBp | 1.129 -> 2.399 | identical | 8.6 | 8.6 |
+| PHercParis4 | 1.129 -> 2.4 | identical | 2.9 | 2.9 |
+| PHercParis4 ** | 45.532 -> 7.91 | DIFFERS | 35.1 | 518.3 ** |
+| PHercParis4 | 2.4 -> 7.91 | identical | 19.4 | 19.4 |
+| PHercParis4 | 2.4 -> 7.91 | identical | 6.0 | 6.0 |
+
+PHercParis4  20260310170716 -> 20230205180739   45.532 -> 7.91 um
+   catalogue copy : 8 landmarks, RMS 35.1 um, median 28.3 um
+   per-volume copy: 15 landmarks, RMS 518.3 um, median 356.8 um
+   per-volume copy read the other way (inverse, target to source): RMS 509.2 um, median 351.0 um in source microns
+   same matrix: False   same landmarks: False   copy names target: PHerc4Paris-20230205180739_masked
+   copy read from: s3://vesuvius-challenge-open-data/PHercParis4/volumes/20260310170716-45.532um-11.0m-74keV-masked.zarr/transform.json

@@ -13,6 +13,7 @@ results; this file carries the evidence and the commands.
 | robustness, 15 Sep 2026 | the 9 remaining official pairs in the catalogue | `robustness/`, table in `robustness/table.md` | every publishable official pair now has a graded result, including three the tool gets wrong |
 | coverage, 15-16 Sep 2026 | the last 5, on PHerc0343P and PHercParis4 | `coverage/`, table in `coverage/table.md` | all 26 official transforms are now graded, with nothing excluded. Machine D, section 3 |
 | landmark audit, 16 Sep 2026 | all 26 official transforms, no scan data read | `audit/`, output in `audit/results.txt` | whether each published transform fits the landmarks published with it. 4 of the 25 that carry landmarks do not |
+| copy comparison, 19 Sep 2026 | all 26 catalogue transforms against their per-volume `transform.json` | `audit/compare_copies.py`, output in `audit/copies.txt` | 18 per-volume copies exist; 17 match the catalogue; PHercParis4 45.532 -> 7.91 does not, 518.3 um RMS against 35.1. About 20 s, one small fetch per volume |
 | depth curve, 13 Sep 2026 | PHerc0139 w016, 9 depth windows on known text | `depth/`, data in `depth/ctl_curve.json` | how far the ink model's window can move before it stops reading. The basis of the 50 um alignment budget |
 
 **The two rounds added on 16 Sep, and their costs.** The landmark audit reads only
@@ -426,7 +427,7 @@ registration itself.
 
 ## 7. The offline checks, and proof they can fail
 
-`tests/test_offline.py` is in five parts.
+`tests/test_offline.py` is in eight parts.
 
 - **Geometry.** `fit_similarity`, `fit_affine`, `inv`, `decompose`,
   `rot2`, `FFTCorr`, `masked_ncc_valid` and `nms` are each given a
@@ -450,6 +451,21 @@ registration itself.
   agree with its machine-A counterpart to better than 0.01 um.
 - **The command line**: `--version`, `--help`, and a bare invocation
   that must fail cleanly.
+- **The landmark audit.** The flagged set, the count under 10 um, the
+  range of the rest and the summary line are re-derived from
+  `audit/results.txt`, and both READMEs must carry them. Ours against
+  the official transform is counted from the `at official landmarks`
+  column of all three tables, and the sentence that reports it must
+  use that count and no other.
+- **The depth curve.** Every row of `depth/ctl_curve.json` must appear
+  in `depth/README.md` with both its AUCs, the off-peak range and the
+  reverse maximum must be the real ones, and the gate shipped inside
+  the json must be documented.
+- **The two published copies.** The counts at the top of
+  `audit/copies.txt` must match its own rows, a copy marked identical
+  must fit exactly as the catalogue copy does, the catalogue column
+  must equal the landmark audit row for row, and the differing pair's
+  numbers must reach all three documents.
 
 A check that has never failed has not been tested. Four deliberate
 corruptions were planted in a throwaway copy of the tree; all four
@@ -474,6 +490,17 @@ were caught and the run exited 1:
 
 `tests/compare_run.py` was tested the same way: a transform shifted by
 0.834 fixed voxels, and a changed confidence level, both caught.
+
+The last three parts were tested the same way on 19 Sep 2026: 23
+corruptions, one at a time, each in a fresh copy of the tree. 22 were
+caught. The one that was not is the useful result. Changing "worse on
+19 of the 21 pairs" to 17 in the README passed, because the check
+accepted any "19 of the" anywhere in the file. Following that up found
+the sentence itself was wrong: of those 21 pairs only 20 publish
+landmarks, and the count left out the five coverage pairs. The
+sentence now reads 24 of 25, counted over all 26, and the check is
+bound to it; the same corruption and four others aimed at it are now
+caught.
 
 ## 8. Where the numbers come from
 

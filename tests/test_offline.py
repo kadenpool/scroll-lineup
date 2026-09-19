@@ -435,7 +435,7 @@ def test_audit():
 
     # and the honest comparison: this tool is worse on most pairs, so the documents must say so
     ours_better, official_better, nolm = 0, 0, 0
-    for folder in ("results", "robustness"):
+    for folder in ("results", "robustness", "coverage"):
         tbl = os.path.join(ROOT, folder, "table.md")
         if not os.path.exists(tbl):
             continue
@@ -457,11 +457,22 @@ def test_audit():
                 official_better += 1
     check("the tool loses the landmark comparison on most pairs, as the documents must admit",
           official_better > ours_better, f"ours {ours_better}, official {official_better}, no data {nolm}")
+    # the count has to be bound to the claim it belongs to: an earlier version of this check passed
+    # on any "19 of the" anywhere in the README, and so missed that the sentence said 21 pairs
+    # publish landmarks when 20 of those did, and that it left out the five coverage pairs
+    n_lm = ours_better + official_better
+    n_all = n_lm + nolm
     for doc in ("README.md", os.path.join("audit", "README.md")):
-        body = open(os.path.join(ROOT, doc)).read()
-        check(f"{doc} states how many pairs the tool is worse on ({official_better})",
-              f"{official_better} of the" in body or f"worse on {official_better}" in body
-              or f"on 19 of the" in body and official_better == 19)
+        flat = " ".join(open(os.path.join(ROOT, doc)).read().replace("**", "").split())
+        check(f"{doc} states the tool is worse on {official_better} of the {n_lm} pairs with landmarks",
+              f"worse than the official transform on {official_better} of the {n_lm} pairs" in flat
+              or (f"on {ours_better} of the {n_lm} pairs" in flat and f"worse on the other {official_better}" in flat))
+        stated = sorted(set(re.findall(r"of the (\d+) pairs that publish", flat)))
+        check(f"{doc}: every 'of the N pairs that publish' uses the real N ({n_lm})",
+              stated == [str(n_lm)], f"found {stated}")
+    flat = " ".join(open(os.path.join(ROOT, "README.md")).read().split())
+    check(f"README's context paragraph counts all {n_all} pairs",
+          f"the only pair of the {n_all} where our" in flat and f"On {official_better} of the others" in flat)
 
 
 def test_depth():
@@ -505,6 +516,94 @@ def test_depth():
               "G0" in body, "ctl_curve.json carries a G0 gate that the README does not mention")
 
 
+def test_copies():
+    """The two-copy finding must be re-derived from audit/copies.txt, and must agree with the audit.
+
+    Same rule as test_audit: nothing here knows an answer in advance. Counts come from the table
+    rows, the differing pair's numbers come from its own detail block, and the catalogue column is
+    required to match audit/results.txt row for row, since two scripts reading one catalogue should
+    get one answer.
+    """
+    print("H. the two published copies of each transform")
+    p = os.path.join(ROOT, "audit", "copies.txt")
+    check("audit/copies.txt is committed", os.path.exists(p))
+    if not os.path.exists(p):
+        return
+    txt = open(p).read()
+    lines = [l.rstrip("\n") for l in txt.splitlines() if l.startswith("|")]
+    hdr = [c.strip().lower() for c in lines[0].strip("|").split("|")]
+    i_obj = next(i for i, h in enumerate(hdr) if h.startswith("object"))
+    i_pair = next(i for i, h in enumerate(hdr) if "moving" in h)
+    i_stat = next(i for i, h in enumerate(hdr) if h.startswith("per-volume"))
+    i_cat = next(i for i, h in enumerate(hdr) if h.startswith("catalogue fit"))
+    i_cp = next(i for i, h in enumerate(hdr) if h.startswith("copy fit"))
+    clean = lambda s: s.replace("**", "").strip()
+    rows = []
+    for l in lines[2:]:
+        c = [clean(x) for x in l.strip("|").split("|")]
+        if len(c) > i_cp:
+            rows.append(dict(obj=c[i_obj], pair=c[i_pair], status=c[i_stat], cat=c[i_cat], copy=c[i_cp]))
+
+    have = [r for r in rows if r["status"] != "no per-volume copy"]
+    diff = [r for r in have if r["status"] == "DIFFERS"]
+    ident = [r for r in have if r["status"] == "identical"]
+    check("every row with a copy is either identical or DIFFERS", len(ident) + len(diff) == len(have),
+          str(sorted({r["status"] for r in have})))
+    said = [int(x) for x in re.findall(r":\s*(\d+)\s*$", txt.split("|")[0], re.M)]
+    check("the summary lines match the rows in the same file",
+          said == [len(rows), len(have), len(ident), len(diff)],
+          f"says {said}, rows give {[len(rows), len(have), len(ident), len(diff)]}")
+    # an identical copy must fit exactly as the catalogue does, or 'identical' is not true
+    bad = [f"{r['obj']} {r['pair']}" for r in ident if r["cat"] != r["copy"]]
+    check("every copy marked identical fits exactly as the catalogue copy does", not bad, str(bad))
+
+    # the catalogue column must be the landmark audit, row for row
+    audit = sorted((r["obj"], r["pair"], f"{r['rms']:.1f}") for r in audit_rows())
+    here = sorted((r["obj"], r["pair"], r["cat"]) for r in rows if r["cat"] != "-")
+    check("the catalogue fits here are exactly the landmark audit's", audit == here,
+          f"{len(audit)} rows in results.txt, {len(here)} here")
+
+    # the documents must carry the counts and the differing pair's own numbers
+    flat = lambda doc: " ".join(open(os.path.join(ROOT, doc)).read().split())
+    aud, top, val = flat(os.path.join("audit", "README.md")), flat("README.md"), flat("VALIDATION.md")
+    check("audit/README states the copy counts",
+          f"{len(have)} also have a per-volume copy; {len(ident)} are identical" in aud)
+    check("README states the copy counts",
+          f"{len(have)} of the {len(rows)} transforms" in top and f"{len(ident)} match the catalogue" in top)
+    check("VALIDATION states the copy counts",
+          f"{len(have)} per-volume copies exist; {len(ident)} match" in val)
+
+    thr = float(re.search(r"sit further than (\d+) um", open(os.path.join(ROOT, "audit", "results.txt")).read()).group(1))
+    blocks = txt.split("\n\n")
+    for r in diff:
+        blk = next((b for b in blocks if b.startswith(r["obj"] + " ") and r["pair"] + " um" in b), "")
+        cat = re.search(r"catalogue copy : (\d+) landmarks, RMS ([\d.]+) um, median ([\d.]+)", blk)
+        cpy = re.search(r"per-volume copy: (\d+) landmarks, RMS ([\d.]+) um, median ([\d.]+)", blk)
+        inv = re.search(r"other way .*?RMS ([\d.]+) um", blk)
+        check(f"{r['obj']} {r['pair']}: the detail block is complete", bool(cat and cpy and inv))
+        if not (cat and cpy and inv):
+            continue
+        check(f"{r['obj']}: the table and the detail block agree",
+              (r["cat"], r["copy"]) == (cat.group(2), cpy.group(2)))
+        for label, m in (("catalogue", cat), ("per-volume", cpy)):
+            n, rms, med = m.groups()
+            hit = [l for l in open(os.path.join(ROOT, "audit", "README.md")).read().splitlines()
+                   if label in l and f"| {n} |" in l and rms in l and med in l]
+            check(f"audit/README carries the {label} copy's own landmarks, RMS and median", bool(hit),
+                  f"expected {n} / {rms} / {med}")
+        c_rms, v_rms, i_rms = float(cat.group(2)), float(cpy.group(2)), float(inv.group(1))
+        # 'it is not simply stored backwards' needs the inverse reading to miss too, and by far more
+        # than the audit's own threshold
+        check("the inverse reading also misses, so 'not stored backwards' holds",
+              i_rms - c_rms > thr, f"inverse {i_rms}, catalogue {c_rms}, threshold {thr}")
+        check("audit/README states the inverse result", f"{i_rms:.1f}" in aud)
+        k = round(v_rms / c_rms)
+        check(f"audit/README's 'about {k} times' is the real ratio ({v_rms / c_rms:.2f})",
+              f"about {k} times" in aud)
+        check("README carries both fits for the differing pair",
+              f"{v_rms:.1f}" in top and f"{c_rms:.1f}" in top)
+
+
 if __name__ == "__main__":
     test_geometry()
     test_committed("results", "pairs.txt")
@@ -516,6 +615,7 @@ if __name__ == "__main__":
     test_cli()
     test_audit()
     test_depth()
+    test_copies()
     print()
     if FAILED:
         print(f"{len(FAILED)} FAILED: " + "; ".join(FAILED))

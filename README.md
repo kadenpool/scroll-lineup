@@ -82,7 +82,7 @@ easiest test a fit can be given. This tool's
 own numbers are measured the hard way, on
 points it never saw, and on that basis
 **ours is worse than the official transform
-on 19 of the 21 pairs that publish
+on 24 of the 25 pairs that publish
 landmarks.** The one pair where ours wins is
 PHerc1667 1.129 to 2.399, and on PHerc0332
 ours is 104 um from the same six points the
@@ -96,6 +96,18 @@ between scans on one of those four lands
 somewhere the landmarks say it should not,
 and nothing in the pipeline says so.
 `audit/` has the detail and the same caveat.
+
+**And the catalogue is not the only copy.**
+18 of the 26 transforms are also stored as a
+`transform.json` next to their volume. 17
+match the catalogue exactly. One does not:
+for PHercParis4 45.532 to 7.91 um the
+per-volume copy is a different matrix that
+misses its own landmarks by 518.3 um RMS,
+where the catalogue copy misses by 35.1.
+Which one you get depends on which file you
+read. `audit/compare_copies.py` checks all
+of them in about 20 seconds.
 
 ## Install
 
@@ -527,9 +539,9 @@ The numbers are in
 `datacheck_heldout.json`.
 
 **And the context that paragraph needs.**
-This is the only pair of the 21 where our
+This is the only pair of the 26 where our
 landmark error beats the official matrix's.
-On 19 of the others ours is worse, and on
+On 24 of the others ours is worse, and on
 one there is nothing to compare, because its
 official transform publishes no landmarks at
 all. That column is also not a fair
@@ -542,7 +554,8 @@ next to the PHerc1667 case, because a reader
 who meets that case alone would take away
 something the full table does not support.
 The per-pair figures are the `at official
-landmarks` column of both tables.
+landmarks` column of both tables and of
+`coverage/table.md`.
 
 ## Does a transferred surface still sit on a sheet?
 
@@ -777,7 +790,7 @@ as evidence about reading.
 | `VALIDATION.md` | every run, machine, Python version and library set, with commands and costs |
 | `CHANGELOG.md` | what each version fixed, and the run that found it |
 | `LICENSE` | MIT |
-| `audit/` | a standalone check of whether the challenge's published transforms fit their own published landmarks, with the committed result |
+| `audit/` | two standalone checks on the challenge's published transforms: whether each fits its own published landmarks, and whether the two published copies of each agree. Committed results in `results.txt` and `copies.txt` |
 | `depth/` | the measurement behind the 50 um alignment budget: nine depth windows on known text, scored against published labels |
 | `tests/`, `.github/workflows/ci.yml` | the offline checks and the fresh-run comparison. The workflow runs them on five Python versions, 3.9, 3.11, 3.12, 3.13 and 3.14, plus one public pair end to end. 3.10 is not in the matrix and has never been tried. Every command in it was also run by hand on this machine and passed in 4 min 17 s. On GitHub it has run and passed on every one of those six jobs, which is what the badge at the top reports. |
 | `docs/` | method in full, the seating check in full, the ink alignment budget |

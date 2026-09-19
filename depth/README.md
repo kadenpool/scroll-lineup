@@ -47,7 +47,7 @@ measurement puts no bound tighter than that on its own.
 
 ## How this differs from the other depth-window work
 
-Two published pieces sit close to this, and a reader who has seen them should know how this differs.
+Four published pieces sit close to this, and a reader who has seen them should know how this differs.
 
 - **pscamillo, `ink9-depth-window`** (awarded in August 2026) varies the window's **width**, 5 to 17
   slices, during **training**, with small position jitter as augmentation, and finds five slices are
@@ -57,6 +57,18 @@ Two published pieces sit close to this, and a reader who has seen them should kn
 - **flummoxjr, `measure-before-you-hunt`** (17 August 2026) measures the position question at fine
   steps inside plus or minus 6 voxels. This measures it at coarse steps out to plus or minus 40
   layers. The two are the two halves of one curve, which is how the budget below is built.
+- **tarikcankorkmaz00, `ink9um-z-window-selection`** (18 September 2026) finds each tile's best
+  window within plus or minus 47.98 um and reports that **50 of 160 tiles, 31.2 %, put their best
+  window on the edge of that range**, the most the released surface volumes contain, and asks for
+  renders with more layers. This one has 101 layers, so it reaches where his cannot. But be exact
+  about what that does and does not answer: his measurement is **per tile** and this one is **one
+  AUC over a whole held-out region**. This shows the region-level response is gone by 10 layers
+  (94 um). It does not show where any individual tile's best window lies, so it complements his
+  question rather than settling it.
+- **tarikcankorkmaz00, `ink9um-depth-calibration`** (6 September 2026) found that on this very
+  segment, w016, two patches want offsets of **minus 28.8 and plus 28.8 um**, opposite signs, 57.6 um
+  apart. So the best depth moves by tens of microns **within one segment**, and "fine within about
+  6 layers" below describes the region as a whole, not every patch in it.
 
 ## Where the 50 um budget comes from
 

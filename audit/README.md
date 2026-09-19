@@ -28,6 +28,44 @@ landmarks and 4 of those miss their own by more than 30 um**:
 The other 21 sit between 0.0 and 25.3 um, and fourteen are under 10. So the four are separated from
 the rest by a clear gap rather than by where a threshold was drawn.
 
+## Which copy: the challenge publishes two, and for one pair they disagree
+
+A transform is published in two places: in the catalogue, `metadata.json`, and as a `transform.json`
+inside the moving volume's own zarr folder. **The table above audits the catalogue copy.**
+`compare_copies.py` checks the other one:
+
+```
+python audit/compare_copies.py            # about 20 s, one small fetch per volume
+```
+
+Its committed output is `copies.txt`. Of the 26 catalogue transforms, **18 also have a per-volume
+copy; 17 are identical to the catalogue, and one is not.**
+
+| PHercParis4, 45.532 to 7.91 um | landmarks | RMS um | median um |
+|---|---|---|---|
+| catalogue copy, `metadata.json` | 8 | 35.1 | 28.3 |
+| per-volume copy, `transform.json` | 15 | **518.3** | **356.8** |
+
+Different matrix, different landmarks. The per-volume copy was also tested the other way round,
+target to source through its inverse, in case it is simply stored backwards: it still misses by
+509.2 um RMS, so it is not. It names its target in an older style,
+`PHerc4Paris-20230205180739_masked`, which suggests it predates the catalogue entry.
+
+**Why this matters beyond one pair:** someone reading the per-volume file and someone reading the
+catalogue get transforms about 15 times apart in fit (518.3 against 35.1 um RMS), with nothing to tell them which they have. It is
+also why a published number can look like it contradicts this audit when it does not: Wadoekeani's
+`vc-segqa` (13 Sep 2026) reports this pair at about 356 um, measured on the per-volume
+`transform.json`, which is the same file and the same figure as the second row above.
+
+## Prior work
+
+- **villa #791** (jrudolph, March 2026), "registration: provide tools to review landmark matching
+  errors", added per-landmark error reporting when a transform is fitted. The team can already see
+  this for any transform it fits; what is new here is applying the check to every transform the
+  catalogue publishes, and to both published copies.
+- **Wadoekeani, `vc-segqa`**, measured two PHercParis4 transforms against their own landmarks in
+  passing, as part of a cross-resolution segment check. Covered above.
+
 ## Why 30 um
 
 The released ink models are documented as sensitive to depth offset, and flummoxjr published a
@@ -48,8 +86,8 @@ value down is 25.3.
 - **Not a claim the matrices are wrong for what they were fitted for.** A transform can be a good
   global fit and still miss individual clicked points, and landmark placement has its own error.
 - **Not a claim this tool does better. It is mostly worse.** Measured the same way against official
-  landmarks, this tool beats the official transform on **1 of the 21 pairs that publish them** and is
-  worse on 19, with one pair publishing none. On PHerc0332 ours sits 104 um from the same six points
+  landmarks, this tool beats the official transform on **1 of the 25 pairs that publish them** and is
+  worse on the other 24. The 26th publishes none. On PHerc0332 ours sits 104 um from the same six points
   the official matrix misses by 103. The one win is PHerc1667 1.129 to 2.399, at 6.3 um against
   123.3, and one pair is not a generalisation.
 - **And the comparison is not like for like, in the reference's favour.** This table measures each
