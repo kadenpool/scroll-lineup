@@ -43,8 +43,9 @@ renderer are held fixed, and only the transform changes.
 
 - **Own scan**: the surface rendered directly in the 9.362 um scan,
   with no transform at all.
-- **Through**: the same surface rendered from the 2.403 um scan
-  through the transform.
+- **Through**: the same surface rendered from the finer scan through
+  the transform: the 2.399 um scan for the first row below, the 2.403
+  um scan for the second.
 
 The two arms therefore read physically different scans, taken at
 different energies, of the same object.

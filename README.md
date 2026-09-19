@@ -648,9 +648,11 @@ labels.
 That experiment is well defined and the
 pieces exist. PHerc0139 w016 has published
 ink labels, and two of this tool's own
-transforms for that object are graded PASS
-and WEAK, with a seating check that already
-separates them. Running both through the ink
+transforms for that object, one a micron
+over the PASS bar (31 um at the 95th
+percentile) and one well into WEAK (107 um),
+have a seating check that already separates
+them. Running both through the ink
 model and scoring against the labels would
 settle it with a real referee. It is not done
 because it needs a fine-resolution render,
