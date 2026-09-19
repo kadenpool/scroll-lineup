@@ -83,8 +83,9 @@ statement about the fit, not about the reference.
 
 **One outright miss is known.** In the coverage round,
 `coverage/x3_Paris4` is graded FAIL at 215 um p95 and reported `HIGH`
-with no reasons at all. There the reference is sound: it hits its own
-landmarks at 35 um RMS where the tool manages 57. It is a 45.532 um
+with no reasons at all. There the reference is better than the tool,
+though not clean: it hits its own landmarks at 35 um RMS, one of the
+four misses in `audit/`, where the tool manages 57. It is a 45.532 um
 overview scan matched onto a 7.91 um scan, a scale jump of nearly six,
 well outside anything else attempted. Nothing in the confidence
 machinery notices that regime. Read `confidence` next to `blocks[-1]`,

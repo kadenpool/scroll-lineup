@@ -51,6 +51,21 @@ That is the number to check before trusting a map made through a
 transform, and it is why this tool reports the whole error
 distribution rather than a single score.
 
+## Measured once since, and it qualifies the budget
+
+The budget treats the whole error as if it were depth. `downstream/`
+tested that once, on the same segment. With the sideways part
+registered away against the labels, this tool's 43 / 107 / 152 um
+transform still read 0.790 against the official transform's 0.857,
+finding about half as much ink at the model's threshold, and its
+error in depth was about a fifth of the total. So for reading, the
+budget is conservative. For carrying a label or a segment between
+scans, where the sideways error counts too, it holds as stated.
+
+One segment gives a direction, not a number to lean on: block by
+block, the gap between the official transform and this tool's
+18 / 31 / 38 um transform (0.812) is not significant.
+
 ## A worked example of the size of error that matters
 
 The hand-made PHerc1203 alignment that this tool replaced was 29 um
@@ -70,3 +85,5 @@ The failure mode to fear is the other one: the transform that lands
   reader could not check. It is checkable now.
 - flummoxjr's finer curve is `hunt/depth_offset_plan.md` in
   `measure-before-you-hunt`, 17 Aug 2026.
+- The reading test is `downstream/` in this repository: `results.json` holds every arm,
+  `downstream/README.md` explains what was measured and its limits.

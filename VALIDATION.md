@@ -476,13 +476,17 @@ registration itself.
   `audit/copies.txt` must match its own rows, a copy marked identical
   must fit exactly as the catalogue copy does, the catalogue column
   must equal the landmark audit row for row, and the differing pair's
-  numbers must reach all three documents.
+  numbers must reach all three documents. No document may call a
+  reference sound when the audit counts it as a miss; four committed
+  runs use such a reference.
 - **The reading test.** Each arm's peak is re-derived from its nine-window
   curve rather than read from the stored field; every row of the
   downstream table, each difference and ordering its prose states, the
   block tests and intervals, and the depth-offset table are re-derived
-  from `downstream/`'s files; and the three matrices in
-  `downstream/transforms/` must be the inverses of committed transforms.
+  from `downstream/`'s files; the three matrices in
+  `downstream/transforms/` must be the inverses of committed transforms;
+  and `docs/alignment-budget.md` must carry the same qualification of the
+  budget as the README.
 
 A check that has never failed has not been tested. Four deliberate
 corruptions were planted in a throwaway copy of the tree; all four
@@ -524,6 +528,16 @@ The miss changed an arm's AUC in its curve, and the check read the
 stored peak instead of the curve, so it could not see it. The check now
 derives the peak from the curve, and the same corruption fails three
 checks.
+
+Two checks were added on 20 Sep 2026, after a read-through found the
+README and `docs/method.md` vouching for the `x3_Paris4` reference,
+which the audit counts among its four misses, and found the budget page
+without the qualification the README gives it. Six corruptions, one at
+a time, each in a fresh copy of the tree: all six caught. Before that,
+the first run of the new check looked at nothing, because it read the
+landmark fit from the wrong level of `validation.json`. A companion
+check, that there is at least one run to look at, failed on that run,
+and the check now covers the four runs whose reference is flagged.
 
 ## 8. Where the numbers come from
 

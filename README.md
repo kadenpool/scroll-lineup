@@ -728,8 +728,10 @@ including on this segment.
   45.532 um overview scan onto a 7.91 um
   scan, the tool is graded FAIL at 215 um
   and reports `HIGH` with no reasons. The
-  reference is sound there: it hits its own
-  landmarks at 35 um where we manage 57. A
+  reference there is better than we are,
+  though not clean: it hits its own
+  landmarks at 35 um, one of the four
+  misses above, where we manage 57. A
   scale jump of nearly six is outside
   anything else tried, and **the confidence
   signal does not cover it.**

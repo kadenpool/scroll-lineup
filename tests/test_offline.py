@@ -607,6 +607,20 @@ def test_copies():
         check("README carries both fits for the differing pair",
               f"{v_rms:.1f}" in top and f"{c_rms:.1f}" in top)
 
+    # no document may call a reference sound when the audit counts it as a miss. Two did, for
+    # coverage/x3_Paris4, whose catalogue copy misses its own landmarks by 35.1 um, until 20 Sep 2026
+    runs = []
+    for folder in ("results", "robustness", "coverage"):
+        for name in sorted(os.listdir(os.path.join(ROOT, folder))):
+            v = os.path.join(ROOT, folder, name, "validation.json")
+            if os.path.exists(v) and ((json.load(open(v)).get("landmarks") or {}).get("official_rms_um") or 0) > thr:
+                runs.append(name)
+    check("some committed run is compared against a flagged reference", bool(runs))
+    for d in ("README.md", os.path.join("docs", "method.md"), "VALIDATION.md"):
+        paras = open(os.path.join(ROOT, d)).read().split("\n\n")
+        bad = sorted({n for n in runs for p in paras if n in p and re.search(r"\bsound\b", p)})
+        check(f"{d} calls no flagged reference sound", not bad, str(bad))
+
 
 def test_downstream():
     """The reading test: every number in downstream/README.md re-derived from its committed files.
@@ -710,6 +724,11 @@ def test_downstream():
           and f"{blk['paired_tests']['B64_v6_0139c']['ci95'][1]:+.3f}" in top and f"reads {al['auc_forward']:.3f}" in top)
     check("README budget note carries the v2 and official numbers",
           f"read {w:.3f} against the official transform's {o:.3f}" in top)
+    # the budget's own page must carry the same qualification; it did not until 20 Sep 2026
+    bud = flat(os.path.join(ROOT, "docs", "alignment-budget.md"))
+    check("docs/alignment-budget.md carries the reading test's qualification",
+          f"read {w:.3f} against the official transform's {o:.3f}" in bud and f"({c:.3f})" in bud
+          and "downstream/" in bud)
 
 
 if __name__ == "__main__":
