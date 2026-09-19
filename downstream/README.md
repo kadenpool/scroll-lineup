@@ -3,7 +3,7 @@
 Everything else in this repository stops at a matrix. This folder carries a surface through a transform,
 runs the challenge's ink model on what comes out, and scores it against the challenge's own labels.
 
-**On one segment, through one render path, the reading follows the alignment, and the render path
+**On one segment, through one render path, the reading follows the alignment, and how the input is made
 matters about as much as the transform does.** PHerc0139 w016, scored against its published ink labels:
 
 | surface carried to the 2.4 um scan by | rendered by | AUC, forward | AUC, reversed | labelled ink called ink | background called ink |
@@ -20,7 +20,9 @@ own 9.362 um scan, with no transform at all, reads 0.877 (`depth/`).
 Read the middle three rows together: same render path, same model, same labels, only the matrix changes.
 The official transform reads best, this tool's better transform next, its worse one last, which is the
 order of their graded error. The first two rows differ only in how the image is rendered, and that
-costs 0.055, about what this tool's transforms cost against the official one: 0.045 and 0.067.
+costs 0.055, about what this tool's transforms cost against the official one: 0.045 and 0.067. Part of
+that may be home advantage: the model was trained on the challenge's own kind of input, including on
+this segment (below).
 
 ## How big the differences are, and how sure
 
@@ -92,7 +94,15 @@ that. It is not conservative for carrying labels or segments between scans, wher
 - **The render path is not the challenge's.** The official transform through this folder reads 0.857,
   through the challenge's own pipeline 0.912. The images agree closely (NCC 0.857 against the aligned
   input's centre slice), so the gap is in how the layers are formed, not where they are. Which step of
-  the challenge's pipeline makes the difference is not measured here.
+  the challenge's pipeline makes the difference is not measured here. nerln measured the same kind of
+  gap first, on PHerc0139 w035 (villa #1648): an input rendered at level 2 read 0.949 and 0.955 against
+  0.979 for the published volume.
+- **The aligned input has a home advantage.** w016 is one of the segments this checkpoint was trained on,
+  in exactly the aligned input's form (villa `aligned21_hybrid_3d2d.json`). The pixels scored here are its
+  held-out validation region, which shares no pixel with the trained region, but the model has seen the
+  rest of this segment in that form. So part of the 0.912 against 0.857 gap may be the model preferring
+  its training input rather than the other render being worse. The three arms rendered here share one
+  form, so their order is not affected.
 - **v6_0139c is graded WEAK by one micron** (31 um at the 95th percentile against a 30 um bar). There is no
   PASS-graded transform for this scan pair to compare.
 

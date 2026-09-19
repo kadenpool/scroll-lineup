@@ -662,10 +662,12 @@ official transform reads 0.857, this tool's
 43 / 107 / 152 um transform 0.790: the order
 of their error. Block by block the gap
 between the first two is not significant (a
-95 % interval of -0.013 to +0.115). And the
-render path matters as much: the challenge's
-own pipeline reads 0.912 from the same
-official transform.
+95 % interval of -0.013 to +0.115). And how
+the input is made matters as much: the
+challenge's own pipeline reads 0.912 from the
+same official transform, though the model
+was trained on that pipeline's output,
+including on this segment.
 
 - **One affine matrix. No bending, no
   warping, no per-region correction.**
