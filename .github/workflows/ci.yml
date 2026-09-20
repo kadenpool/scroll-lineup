@@ -11,7 +11,7 @@ on:
 jobs:
   offline:
     name: offline checks, python ${{ matrix.python }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04   # pinned: ubuntu-latest becomes Ubuntu 26 from 19 Oct 2026, and actions/python-versions publishes no 3.9 build for it
     timeout-minutes: 10
     strategy:
       fail-fast: false
@@ -28,7 +28,7 @@ jobs:
 
   public-pair:
     name: one public pair, end to end
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04   # pinned: ubuntu-latest becomes Ubuntu 26 from 19 Oct 2026, and actions/python-versions publishes no 3.9 build for it
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
