@@ -31,9 +31,12 @@ than one scan: a whole-scroll scan at about
 um. To use a surface found in one on the
 other you need the transform between them.
 The challenge publishes one for some pairs
-and none for others. This tool finds it for
-any two volumes of the same object, and
-grades itself against the published ones.
+and none for others. This tool looks for one
+from the two volumes alone, grades itself
+against the published ones, and says when it
+has not found one: 13 PASS, 9 WEAK and 4
+FAIL over all 26 official pairs, nothing
+excluded.
 
 ![Checkerboard check on the PHerc1203 example](docs/checker_zoom.png)
 
@@ -637,9 +640,15 @@ so that is an alignment budget:
 
 **A transform inside about 50 um at the 95th
 percentile is usable for ink detection at
-9.362 um; one at the WEAK bar is unusable
+9.362 um; one at the WEAK bar is much worse
 for it, though it is in the right place and
-looks right by eye.** That is why this tool
+looks right by eye.** "Unusable" was too
+strong, and this repository's own reading
+test later showed it: `downstream/` scores a
+43 / 107 / 152 um transform at AUC 0.790
+against the official transform's 0.857 on
+the same segment. A WEAK transform still
+reads. It reads worse. That is why this tool
 reports the whole error distribution. The
 working is in `docs/alignment-budget.md`.
 
@@ -689,7 +698,7 @@ changed, reads 0.897 and finds 72 % of the
 labelled ink against 54 %. Depth averaging
 and surface interpolation were tested the
 same way and are worth nothing and 0.019.
-`downstream/` has all five arms.
+`downstream/` has all eight arms.
 
 - **One affine matrix. No bending, no
   warping, no per-region correction.**
@@ -880,7 +889,7 @@ I ran it on the public PHerc1203 pair myself, and I went over the QC image and t
 machine, not a tidied-up one.
 
 Every number in this file traces to a
-committed file, with five named exceptions
+committed file, with six named exceptions
 listed in section 8 of `VALIDATION.md`. If you
 find a sixth, that is a bug and I would like
 to know.

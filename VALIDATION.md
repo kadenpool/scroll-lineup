@@ -573,7 +573,7 @@ and the check now covers the four runs whose reference is flagged.
 ## 8. Where the numbers come from
 
 Every number in the README traces to a file in this repository, with
-five exceptions.
+six exceptions.
 
 1. **The seating table** was measured outside this repository, with a
    renderer and a control surface that are not part of it.
@@ -597,6 +597,13 @@ five exceptions.
    committed here, so `compare1203.py` cannot reproduce those two
    numbers from this repository alone. It is the one comparison in
    the README that rests only on the author's word.
+6. **"The tolerance is about +/- 6 layers"**, which the alignment
+   budget leans on. This repository's own depth curve moves ten
+   layers at a time (`depth/ctl_curve.json`, nine windows at 0, 10,
+   20 ... 80), so nothing at +/- 6 was ever rendered here; the finer
+   figure is flummoxjr's, measured on 17 Aug 2026.
+   `depth/README.md` says so, but this list did not, and the README
+   said there were five exceptions when this was a sixth.
 
 Everything else, every row of both tables, every PHerc1203 figure,
 every residual, is in `results/`, `robustness/`, `examples/` or

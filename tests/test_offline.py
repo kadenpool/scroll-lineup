@@ -648,6 +648,71 @@ def test_copies():
         check(f"{d} calls no flagged reference sound", not bad, str(bad))
 
 
+
+def test_corrections():
+    """Six sentences that overstated what this repository had measured, and must not come back.
+
+    Each was found by reading our own public text against our own data on 21 Sep. Each check here
+    pins both halves: the wording, and the fact that made the old wording wrong.
+    """
+    readme = open(os.path.join(ROOT, "README.md")).read()
+    dsr = open(os.path.join(ROOT, "downstream", "README.md")).read()
+    chg = open(os.path.join(ROOT, "CHANGELOG.md")).read()
+    val = open(os.path.join(ROOT, "VALIDATION.md")).read()
+    arms = json.load(open(os.path.join(ROOT, "downstream", "results.json")))["arms"]
+
+    # 1. the lead sentence claimed it works for any pair; four of 26 are FAIL
+    grades = {}
+    for d in ("results", "robustness", "coverage"):
+        for line in open(os.path.join(ROOT, d, "table.md")):
+            m = re.findall(r"\b(PASS|WEAK|FAIL)\b", line)
+            if m:
+                grades[m[-1]] = grades.get(m[-1], 0) + 1
+    check("the lead sentence no longer claims it finds a transform for any pair",
+          "finds it for\nany two volumes" not in readme)
+    check("the lead sentence carries the real split",
+          "%d PASS, %d WEAK and %d\nFAIL over all %d official pairs"
+          % (grades["PASS"], grades["WEAK"], grades["FAIL"], sum(grades.values())) in readme,
+          str(grades))
+
+    # 2. "unusable" is contradicted by this repo's own reading test
+    check("the budget no longer calls a WEAK transform unusable",
+          "is unusable\nfor it" not in readme)
+    weak = arms["v2_0139a"]["peak"]["auc_forward"]
+    off = arms["official"]["peak"]["auc_forward"]
+    check("and quotes the reading that contradicted it", "0.790" in readme and "0.857" in readme,
+          "%.3f against %.3f" % (weak, off))
+    check("the WEAK arm really does read", 0.7 < weak < off, "%.4f" % weak)
+
+    # 3. the arm count
+    check("the arm count matches downstream/results.json",
+          "all %s arms" % {5: "five", 8: "eight"}.get(len(arms), len(arms)) in readme, str(len(arms)))
+
+    # 4. the changelog claimed every failure was flagged
+    rep = json.load(open(os.path.join(ROOT, "coverage", "x3_Paris4", "report.json")))
+    conf = rep.get("confidence", {})
+    unflagged = conf.get("level") == "HIGH" and not conf.get("reasons")
+    check("x3_Paris4 really is a failure that was not flagged", unflagged, str(conf))
+    check("and the changelog now says so", "x3_Paris4" in chg)
+
+    # 5. the mesh comparison changed two things
+    check("the two arms really do differ in transform as well as mesh",
+          arms["official"].get("transform_file") != arms["theirmesh"].get("transform_file"))
+    check("downstream/README.md calls 0.040 an upper bound on the grid step",
+          "upper bound on the grid step alone" in dsr)
+    check("and no longer says nothing else changed", "and changing nothing else" not in dsr)
+
+    # 6. the sixth external number
+    rows = json.load(open(os.path.join(ROOT, "depth", "ctl_curve.json")))
+    rows = rows if isinstance(rows, list) else rows.get("rows", [])
+    starts = sorted(r["layers"][0] for r in rows)
+    check("the depth curve really has no window at +/- 6 layers",
+          all(st % 10 == 0 for st in starts), str(starts))
+    check("VALIDATION section 8 now declares six exceptions", "six exceptions." in val)
+    check("and names the tolerance figure as one of them", "+/- 6 layers" in val)
+    check("the README's count agrees", "six named exceptions" in readme)
+
+
 def test_image_quality():
     """The last-0.016 paragraph is re-derived from downstream/image_quality.json, not typed in.
 
@@ -863,6 +928,7 @@ if __name__ == "__main__":
     test_copies()
     test_downstream()
     test_image_quality()
+    test_corrections()
     print()
     if FAILED:
         print(f"{len(FAILED)} FAILED: " + "; ".join(FAILED))

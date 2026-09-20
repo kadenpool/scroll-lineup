@@ -28,7 +28,7 @@ this segment (below).
 
 That 0.912 against 0.857 sat unexplained until 20 Sep. Three things differ between the challenge's own
 input and this folder's render of the same surface through the same matrix, and each was tested by
-changing only that one thing.
+changing that one thing, with one caveat on the mesh, stated where it arises below.
 
 | what changed, everything else held | AUC, forward | labelled ink called ink |
 |---|---|---|
@@ -51,10 +51,15 @@ It does find more of the labelled ink at the threshold, 61.7 % against 54.4 %.
 **How densely the surface is sampled is worth 0.040, which is 72 % of the gap.** Each segment is
 published as several meshes, one per frame, and their grid steps differ: the mesh in the 9.362 um frame
 steps 20 voxels, which is 187 um, while the mesh in the 2.399 um frame steps 20 voxels of 2.399 um,
-which is 48 um. Rendering the finer one, with no transform because it is already in that scan's frame,
-and changing nothing else, reads **0.897 against 0.857**, and finds **72.2 % of the labelled ink against
+which is 48 um. Rendering the finer one, which needs no transform because it is already in that scan's frame,
+reads **0.897 against 0.857**, and finds **72.2 % of the labelled ink against
 54.4 %**. Block by block it is better in 16 of 22 blocks of 64 px, mean 0.088 with a 95 % interval of
 -0.155 to -0.025, which excludes zero; at 96 px it is 11 of 17 and the interval crosses it.
+
+**The caveat, because two things change together here.** The finer mesh is finer *and* needs no
+transform, while the coarser one is carried by the catalogue's matrix. This folder has not separated
+those two effects, so **0.040 is their combined size and an upper bound on the grid step alone**.
+villa#1845 carries the same caveat; it belongs here too.
 
 The registration for that arm is also the tightest of any here: predicted scale 1.0000, found 0.999,
 shift (-192, -192), correlation 0.891, and **zero residual shift in all six sub-windows**. That is a

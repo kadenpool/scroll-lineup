@@ -19,7 +19,9 @@ entry points at it.
   are taken per storage chunk at the coarsest block level, and the search box widens (x2, then x4) when
   too few blocks match. That pair is now 7 um median (`results/v8_0500b/`).
 - Added the `CHECK` confidence flag with its reasons (small G2 margin, too few blocks, block residual
-  over 30 um). Every real failure from this version on was flagged.
+  over 30 um). Every real failure from this version on was flagged except one: `coverage/x3_Paris4`
+  is a FAIL reported at `HIGH` with no reasons, which `docs/method.md` records as the one outright
+  miss.
 - Capped the 8-bit reads and the per-volume cache at 1.2 GB after a validation step read a whole volume
   as float64 and was killed by the OOM killer.
 
