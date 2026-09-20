@@ -57,9 +57,12 @@ different energies, of the same object.
 | PHerc0139 2.399 to 9.362, inverted | 18 / 31 / 38 | +8.58 | +6.26 | 0.94 | 0.94 | 0.994 |
 | PHerc0139 2.403 to 9.362, inverted (the bending pair) | 43 / 107 / 152 | +8.58 | +0.18 | 0.94 | 0.60 | 0.718 |
 
-The test breaks a seated surface when the transform is poor and leaves
-it seated when the transform is good. This tool's own error numbers
-predicted which was which, before the seating test was run.
+On these two rows the test breaks a seated surface when the transform is
+poor and leaves it seated when the transform is good, and this tool's own
+error numbers predicted which was which before the seating test was run.
+Two rows on one control surface is not a general result, and the two arms
+also read different scans at different energies, so transform quality is
+confounded with scan identity here. It is evidence, not a demonstration.
 
 ## What it means in practice
 

@@ -54,7 +54,8 @@ section 2.7 says what they cost and what they showed.
 
 Three of those five take their fixed volume from a **second access
 root** that the metadata names, `data.aws.ash2txt.org`, rather than
-from the S3 bucket. Anyone enumerating the catalogue on the assumption
+from the S3 bucket. It is not only the coverage round: across all 26
+graded pairs, eight runs name six distinct volumes on that host. Anyone enumerating the catalogue on the assumption
 that it lives in one bucket will silently miss them and will most
 likely conclude the data is broken.
 
@@ -141,7 +142,10 @@ exit (the `datacheck.py` bug in 2.6). Peak resident memory is 1.0 to
 which is the one that needs the slow 2D search and also the one that
 fails. Across all twenty-one pairs the per-pair range is 1 to 17
 minutes and 0.2 to 2.1 GB, and the whole set is 2.3 hours of compute
-and 21.7 GB read. The two totals are on different bases: 55 minutes is whole-pair wall clock, 2.3 hours is scroll-lineup time only.
+and 21.7 GB read. The two totals are on different bases: 55 minutes is whole-pair wall clock, 2.3 hours is scroll-lineup time only. Those figures are for the twenty-one; across all
+26 graded pairs, coverage round included, the per-pair range is 1.0 to 22.6 minutes and the whole
+set is 3.4 hours of scroll-lineup time and 29.4 GB read, all of it derived from each run's own
+`report.json` (`seconds` and `downloaded_MB`).
 
 ### 2.5 The failures, stated plainly
 

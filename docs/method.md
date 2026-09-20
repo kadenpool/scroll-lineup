@@ -22,7 +22,7 @@ matches in many places, five at a fixed spacing do not.
 A full 2D search is added in two cases: when the best answer does not
 stand clearly above the next one, and when the shorter scan sees only
 part of the cross-section. In practice the first case is the common
-one: of the five runs that took the 2D search, only two were triggered
+one: of the seven runs that took the 2D search, only two were triggered
 by a partial field of view, and two of the 1.129 um tiles never took
 it at all. That search is every 5 degrees, both mirror images, every height,
 and it is the slow path. Measured on the five runs that took it, it

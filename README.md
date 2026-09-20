@@ -176,14 +176,19 @@ whether the tool is finding your scroll at
 all before you wait for the rest. That stage
 took under a minute on 12 of the 21 pairs
 and 1 to 2 minutes on four more, but on the
-five that need the slow 2D search it is the
-slow part, 5 to 14 minutes.
+ones that need the slow 2D search it is the
+slow part, 5 to 14 minutes. That split was
+counted before the coverage round: four of
+those 21 take the 2D search, and seven of
+all 26 do.
 
 A pair reads 0.2 to 2.1 GB straight from the
 public bucket, streams it through memory,
 and takes 1 to 17 minutes on 8 cores: the
 range over the twenty-one pairs in
-`VALIDATION.md`. Peak resident memory was
+`VALIDATION.md`. Over all 26 graded pairs,
+including the coverage round, it is 1.0 to
+22.6 minutes and 29.4 GB read in total. Peak resident memory was
 measured on nine of them and runs 1.0 to 3.5
 GiB on eight, the exception being the 0.55 um
 partial-view pair at 8.2 GiB, which is also
@@ -435,9 +440,13 @@ all 21 pairs it prefers ours 16 times and
 the official 3 times, and on the remaining
 two it produced no comparable blocks at all,
 so it made no call. Every one of those three
-official wins is on a pair we already pass,
-and the two it could not judge are the two
-we fail. **So it has never once called
+official wins is on a pair we already pass.
+The two it could not judge are two of the
+three we fail; on the third, `r6_1667roi`,
+it did judge, and it preferred ours by a
+wide margin, a 6.0 um median residual
+against the official transform's 102.6.
+**So it has never once called
 against us on a pair that was wrong.**
 The sampling is ours, so treat the
 column as weak evidence at best, and do not

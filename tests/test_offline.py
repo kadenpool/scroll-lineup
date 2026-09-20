@@ -712,6 +712,53 @@ def test_corrections():
     check("and names the tolerance figure as one of them", "+/- 6 layers" in val)
     check("the README's count agrees", "six named exceptions" in readme)
 
+    # 7. counts that were right for 21 pairs and read as if they covered all 26
+    import glob as _glob
+    graded = []
+    for rnd in ("results", "robustness", "coverage"):
+        graded += _glob.glob(os.path.join(ROOT, rnd, "*", "report.json"))
+    reports = [json.load(open(f)) for f in graded]
+    reports = [r for r in reports if "seconds" in r and "downloaded_MB" in r]
+    check("every graded run has a report with timings", len(reports) == 26, str(len(reports)))
+    mins = sorted(r["seconds"] / 60.0 for r in reports)
+    gb = sum(r["downloaded_MB"] for r in reports) / 1024.0
+    check("the README's all-26 runtime range is the real one",
+          "1.0 to\n22.6 minutes and %.1f GB read" % gb in readme, "%.1f to %.1f, %.1f GB"
+          % (mins[0], mins[-1], gb))
+    check("VALIDATION carries the same all-26 totals",
+          "1.0 to 22.6 minutes" in val and "%.1f GB read" % gb in val)
+
+    took2d = 0
+    for f in graded:
+        d2 = json.load(open(f))
+        def find(o):
+            if isinstance(o, dict):
+                if "search_2d" in o:
+                    return o["search_2d"]
+                for v2 in o.values():
+                    r2 = find(v2)
+                    if r2 is not None:
+                        return r2
+            elif isinstance(o, list):
+                for v2 in o:
+                    r2 = find(v2)
+                    if r2 is not None:
+                        return r2
+            return None
+        if find(d2):
+            took2d += 1
+    method = open(os.path.join(ROOT, "docs", "method.md")).read()
+    check("docs/method.md's 2D-search count matches the reports",
+          "of the %s runs that took the 2D search" % {5: "five", 7: "seven"}.get(took2d, took2d)
+          in method, str(took2d))
+
+    # 8. two wordings that claimed more than was tested
+    seating = open(os.path.join(ROOT, "docs", "seating-check.md")).read()
+    check("the seating check states its own limits",
+          "not a general result" in seating and "confounded with scan identity" in seating)
+    check("the second access root is no longer only a coverage-round figure",
+          "eight runs name six distinct volumes on that host" in val)
+
 
 def test_image_quality():
     """The last-0.016 paragraph is re-derived from downstream/image_quality.json, not typed in.
