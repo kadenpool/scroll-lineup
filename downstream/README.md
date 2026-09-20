@@ -64,7 +64,16 @@ lands on the label grid pixel for pixel.
 **So, practically:** render a segment from the finest published mesh of that segment rather than the one
 in the frame you happen to be working in. On this segment it is worth 0.04 AUC and 18 points of
 labelled ink, for no extra work and no transform at all. The remaining 0.016 between 0.897 and 0.912 is
-this folder's renderer against the challenge's own, on the same mesh, and is not explained here.
+this folder's renderer against the challenge's own, on the same mesh.
+
+**What that last 0.016 is, measured.** `image_quality.json` asks how much ink signal each image carries
+before any model sees it. No ink signal is being lost: the two classes sit almost the same distance
+apart in both, **6.97 grey levels here against 7.22** in the challenge's input. What differs is the
+spread around them, **7.8 % wider here**, and that is what drops the single-voxel separation from
+d 0.222 to d 0.199. One candidate cause was tested and **rejected**: rendering at the scan's native
+2.399 um and pooling afterwards, instead of sampling pyramid level 2, makes the image **21 %
+sharper** and separates ink **0.010 AUC worse**. So the sampling level is not the cause, and sharper is
+not the same as more signal.
 
 ## How big the differences are, and how sure
 

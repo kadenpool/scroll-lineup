@@ -648,6 +648,41 @@ def test_copies():
         check(f"{d} calls no flagged reference sound", not bad, str(bad))
 
 
+def test_image_quality_paragraph_matches_its_data():
+    """The last-0.016 paragraph is re-derived from downstream/image_quality.json, not typed in.
+
+    It used to say the gap was not explained. It now makes four quantitative claims, and each one
+    has to come back out of the measurement file or this fails.
+    """
+    q = json.load(open(os.path.join(ROOT, "downstream", "image_quality.json")))
+    a, t = q["arms"], q["pyramid_level_test"]
+    text = open(os.path.join(ROOT, "downstream", "README.md")).read()
+
+    assert "is not explained here" not in text, "the paragraph still says the gap is unexplained"
+
+    ours, theirs = a["ours_theirmesh"], a["challenge_input"]
+    assert "%.2f grey levels here against %.2f" % (ours["class_gap"], theirs["class_gap"]) in text
+    assert "d %.3f to d %.3f" % (theirs["cohens_d"], ours["cohens_d"]) in text
+
+    ours_sd = (ours["ink_std"] + ours["notink_std"]) / 2
+    their_sd = (theirs["ink_std"] + theirs["notink_std"]) / 2
+    wider = 100 * (ours_sd / their_sd - 1)
+    assert "%.1f %% wider here" % wider in text, "the spread figure does not match the data"
+
+    sharper = 100 * (t["sharpness_ratio_B_over_A"] - 1)
+    assert "%.0f %%\nsharper" % sharper in text or "%.0f %% sharper" % sharper in text
+    assert "%.3f AUC worse" % abs(t["raw_auc_B_minus_A"]) in text
+
+    # the direction is the whole point: sharper AND worse at separating ink
+    assert t["sharpness_ratio_B_over_A"] > 1, "B was supposed to be the sharper one"
+    assert t["raw_auc_B_minus_A"] < 0, "B was supposed to separate ink worse"
+    assert "rejected" in t["verdict"]
+
+    # and the claim that no signal is lost: the class gaps must really be close
+    assert abs(ours["class_gap"] - theirs["class_gap"]) < 0.5, (
+        "the class gaps are no longer close, so 'no ink signal is being lost' is wrong")
+
+
 def test_downstream():
     """The reading test: every number in downstream/README.md re-derived from its committed files.
 

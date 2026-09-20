@@ -1,0 +1,91 @@
+{
+  "what": "How much ink signal each render carries before any model sees it. Per layer, on that arm's own labelled pixels: the exact tie-corrected AUC of single-voxel brightness, the distance between the two class means in standard deviations, and the mean gradient magnitude. The layer reported is the one with the highest single-voxel AUC.",
+  "measured": "2026-09-20, PHerc0139 segment 20250108000004-w029_2025010827, ink_9um labels",
+  "arms": {
+    "challenge_input": {
+      "best_layer": 17,
+      "raw_auc": 0.5718,
+      "cohens_d": 0.2217,
+      "ink_mean": 55.07,
+      "ink_std": 31.46,
+      "notink_mean": 62.29,
+      "notink_std": 33.64,
+      "class_gap": 7.22,
+      "sharpness": 7.849,
+      "n_ink_px": 157837,
+      "n_notink_px": 383797
+    },
+    "challenge_input_nopool": {
+      "best_layer": 18,
+      "raw_auc": 0.5694,
+      "cohens_d": 0.2212,
+      "ink_mean": 55.86,
+      "ink_std": 32.78,
+      "notink_mean": 63.37,
+      "notink_std": 35.09,
+      "class_gap": 7.51,
+      "sharpness": 8.65,
+      "n_ink_px": 157837,
+      "n_notink_px": 383797
+    },
+    "ours_theirmesh": {
+      "best_layer": 41,
+      "raw_auc": 0.5585,
+      "cohens_d": 0.1988,
+      "ink_mean": 60.98,
+      "ink_std": 34.36,
+      "notink_mean": 67.95,
+      "notink_std": 35.79,
+      "class_gap": 6.97,
+      "sharpness": 7.213,
+      "n_ink_px": 156925,
+      "n_notink_px": 499040
+    },
+    "ours_official": {
+      "best_layer": 41,
+      "raw_auc": 0.5557,
+      "cohens_d": 0.1865,
+      "ink_mean": 61.52,
+      "ink_std": 34.57,
+      "notink_mean": 68.09,
+      "notink_std": 35.85,
+      "class_gap": 6.57,
+      "sharpness": 7.269,
+      "n_ink_px": 157837,
+      "n_notink_px": 500381
+    },
+    "ours_bicubic": {
+      "best_layer": 41,
+      "raw_auc": 0.5582,
+      "cohens_d": 0.1971,
+      "ink_mean": 61.03,
+      "ink_std": 34.33,
+      "notink_mean": 67.94,
+      "notink_std": 35.77,
+      "class_gap": 6.91,
+      "sharpness": 7.166,
+      "n_ink_px": 157837,
+      "n_notink_px": 500340
+    }
+  },
+  "pyramid_level_test": {
+    "what": "One candidate cause of the residual gap, tested on the best-labelled 384 px tile: our render samples pyramid level 2, where each voxel is already a 4x4x4 mean in the volume's axes; the challenge renders at the scan's native 2.399 um and pools afterwards, in the surface's axes. Same tile, same mesh, same scan, same final pixel size.",
+    "tile": [
+      5184,
+      3264
+    ],
+    "A_sample_level_2": {
+      "raw_auc": 0.6218,
+      "cohens_d": 0.5979,
+      "sharpness": 5.232
+    },
+    "B_level_0_then_pooled": {
+      "raw_auc": 0.6115,
+      "cohens_d": 0.5343,
+      "sharpness": 6.323
+    },
+    "verdict": "rejected: B is sharper and separates ink worse, so the pyramid level is not the cause and sharpness is not the same as signal here",
+    "sharpness_ratio_B_over_A": 1.209,
+    "raw_auc_B_minus_A": -0.0103
+  }
+}
