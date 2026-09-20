@@ -648,7 +648,7 @@ def test_copies():
         check(f"{d} calls no flagged reference sound", not bad, str(bad))
 
 
-def test_image_quality_paragraph_matches_its_data():
+def test_image_quality():
     """The last-0.016 paragraph is re-derived from downstream/image_quality.json, not typed in.
 
     It used to say the gap was not explained. It now makes four quantitative claims, and each one
@@ -658,30 +658,35 @@ def test_image_quality_paragraph_matches_its_data():
     a, t = q["arms"], q["pyramid_level_test"]
     text = open(os.path.join(ROOT, "downstream", "README.md")).read()
 
-    assert "is not explained here" not in text, "the paragraph still says the gap is unexplained"
+    check("downstream/README.md no longer says the residual gap is unexplained",
+          "is not explained here" not in text)
 
     ours, theirs = a["ours_theirmesh"], a["challenge_input"]
-    assert "%.2f grey levels here against %.2f" % (ours["class_gap"], theirs["class_gap"]) in text
-    assert "d %.3f to d %.3f" % (theirs["cohens_d"], ours["cohens_d"]) in text
+    check("the two class gaps in the paragraph match image_quality.json",
+          "%.2f grey levels here against %.2f" % (ours["class_gap"], theirs["class_gap"]) in text,
+          "%.2f and %.2f" % (ours["class_gap"], theirs["class_gap"]))
+    check("the two d values match",
+          "d %.3f to d %.3f" % (theirs["cohens_d"], ours["cohens_d"]) in text)
 
     ours_sd = (ours["ink_std"] + ours["notink_std"]) / 2
     their_sd = (theirs["ink_std"] + theirs["notink_std"]) / 2
     wider = 100 * (ours_sd / their_sd - 1)
-    assert "%.1f %% wider here" % wider in text, "the spread figure does not match the data"
+    check("the spread figure matches the two arms' standard deviations",
+          "%.1f %% wider here" % wider in text, "%.1f %%" % wider)
 
     sharper = 100 * (t["sharpness_ratio_B_over_A"] - 1)
-    assert "%.0f %%\nsharper" % sharper in text or "%.0f %% sharper" % sharper in text
-    assert "%.3f AUC worse" % abs(t["raw_auc_B_minus_A"]) in text
+    check("the pyramid-level test's sharpness figure matches",
+          ("%.0f %%\nsharper" % sharper) in text or ("%.0f %% sharper" % sharper) in text)
+    check("the pyramid-level test's AUC figure matches",
+          "%.3f AUC worse" % abs(t["raw_auc_B_minus_A"]) in text)
 
     # the direction is the whole point: sharper AND worse at separating ink
-    assert t["sharpness_ratio_B_over_A"] > 1, "B was supposed to be the sharper one"
-    assert t["raw_auc_B_minus_A"] < 0, "B was supposed to separate ink worse"
-    assert "rejected" in t["verdict"]
-
-    # and the claim that no signal is lost: the class gaps must really be close
-    assert abs(ours["class_gap"] - theirs["class_gap"]) < 0.5, (
-        "the class gaps are no longer close, so 'no ink signal is being lost' is wrong")
-
+    check("the rejected hypothesis really was sharper", t["sharpness_ratio_B_over_A"] > 1)
+    check("and really did separate ink worse", t["raw_auc_B_minus_A"] < 0)
+    check("its verdict is recorded as rejected", "rejected" in t["verdict"])
+    check("the class gaps are close, which is what 'no ink signal is lost' rests on",
+          abs(ours["class_gap"] - theirs["class_gap"]) < 0.5,
+          "%.2f apart" % abs(ours["class_gap"] - theirs["class_gap"]))
 
 def test_downstream():
     """The reading test: every number in downstream/README.md re-derived from its committed files.
@@ -857,6 +862,7 @@ if __name__ == "__main__":
     test_depth()
     test_copies()
     test_downstream()
+    test_image_quality()
     print()
     if FAILED:
         print(f"{len(FAILED)} FAILED: " + "; ".join(FAILED))
