@@ -91,6 +91,17 @@
    "n_val_px": 178146,
    "where": "re-scored on the same machine as the three arms below"
   },
+  "aligned_nopool": {
+   "label": "the challenge's own input with the 4-plane depth averaging removed",
+   "centre": {
+    "auc_forward": 0.9159955382347107,
+    "auc_reverse": 0.5772145390510559,
+    "share_on_ink_forward": 0.6942767798705549,
+    "share_on_bg_forward": 0.06862157659369246
+   },
+   "n_val_px": 178105,
+   "where": "the challenge's own input rebuilt with the depth averaging removed, scored on this machine"
+  },
   "official": {
    "label": "official transform, our pipeline",
    "transform_file": "transforms/official_9to2.json",
@@ -213,6 +224,254 @@
     "ncc_best": 0.8740703463554382,
     "ncc_layer50": 0.8740703463554382
    }
+  },
+  "theirmesh": {
+   "label": "the challenge's own published mesh of this segment in the 2.399 um frame, our pipeline",
+   "transform_file": "none: that mesh is already in the scan's own frame",
+   "scan": "20260102150214-2.399um",
+   "graded": null,
+   "n_val_px": 177635,
+   "curve": [
+    {
+     "layers": [
+      0,
+      21
+     ],
+     "auc_forward": 0.5248500108718872,
+     "auc_reverse": 0.4521353542804718,
+     "share_on_ink_forward": 0.0035536948690487783,
+     "share_on_bg_forward": 5.126289811132837e-05
+    },
+    {
+     "layers": [
+      10,
+      31
+     ],
+     "auc_forward": 0.46607306599617004,
+     "auc_reverse": 0.5436546802520752,
+     "share_on_ink_forward": 0.0,
+     "share_on_bg_forward": 0.004738156439718494
+    },
+    {
+     "layers": [
+      20,
+      41
+     ],
+     "auc_forward": 0.5172073841094971,
+     "auc_reverse": 0.5398176312446594,
+     "share_on_ink_forward": 0.10128030376789017,
+     "share_on_bg_forward": 0.059486931622617194
+    },
+    {
+     "layers": [
+      30,
+      51
+     ],
+     "auc_forward": 0.5343571901321411,
+     "auc_reverse": 0.4186539053916931,
+     "share_on_ink_forward": 0.06922402881900497,
+     "share_on_bg_forward": 0.14687552636011453
+    },
+    {
+     "layers": [
+      40,
+      61
+     ],
+     "auc_forward": 0.8967176079750061,
+     "auc_reverse": 0.5162746906280518,
+     "share_on_ink_forward": 0.7218625255573946,
+     "share_on_bg_forward": 0.09384039662836596
+    },
+    {
+     "layers": [
+      50,
+      71
+     ],
+     "auc_forward": 0.5365445613861084,
+     "auc_reverse": 0.5375544428825378,
+     "share_on_ink_forward": 0.11488657384870023,
+     "share_on_bg_forward": 0.13092544177633264
+    },
+    {
+     "layers": [
+      60,
+      81
+     ],
+     "auc_forward": 0.4385337829589844,
+     "auc_reverse": 0.438598096370697,
+     "share_on_ink_forward": 0.008251387401421478,
+     "share_on_bg_forward": 0.1188566909066942
+    },
+    {
+     "layers": [
+      70,
+      91
+     ],
+     "auc_forward": 0.5524135828018188,
+     "auc_reverse": 0.5066645741462708,
+     "share_on_ink_forward": 0.027796709181189757,
+     "share_on_bg_forward": 0.030105967733667274
+    },
+    {
+     "layers": [
+      80,
+      101
+     ],
+     "auc_forward": 0.5874736309051514,
+     "auc_reverse": 0.5405887961387634,
+     "share_on_ink_forward": 0.0,
+     "share_on_bg_forward": 0.007828576868715718
+    }
+   ],
+   "peak": {
+    "layers": [
+     40,
+     61
+    ],
+    "auc_forward": 0.8967176079750061,
+    "auc_reverse": 0.5162746906280518,
+    "share_on_ink_forward": 0.7218625255573946,
+    "share_on_bg_forward": 0.09384039662836596
+   },
+   "registration": {
+    "sy": 0.999,
+    "sx": 1.0,
+    "ty": -192.0,
+    "tx": -192.0,
+    "ncc": 0.8905131816864014,
+    "worst_subwindow_px": 0
+   },
+   "depth_match": {
+    "best_layer": 50,
+    "offset_layers": 0,
+    "ncc_best": 0.9055737853050232,
+    "ncc_layer50": 0.9055737853050232
+   },
+   "mesh": "PHerc0139/segments/20250108000004-w029_2025010827/mesh/20250108000004-on-20260102150214-2.399um.tifxyz, grid step 20 voxels = 48 um"
+  },
+  "official_bicubic": {
+   "label": "official transform, our pipeline, rendered with villa #1818's --surface-interpolation smooth",
+   "transform_file": "transforms/official_9to2.json",
+   "scan": "20260102150214-2.399um",
+   "graded": null,
+   "n_val_px": 178146,
+   "curve": [
+    {
+     "layers": [
+      0,
+      21
+     ],
+     "auc_forward": 0.5153735280036926,
+     "auc_reverse": 0.45623910427093506,
+     "share_on_ink_forward": 0.0,
+     "share_on_bg_forward": 0.00684476196737598
+    },
+    {
+     "layers": [
+      10,
+      31
+     ],
+     "auc_forward": 0.5355016589164734,
+     "auc_reverse": 0.6349694132804871,
+     "share_on_ink_forward": 0.05604440889147456,
+     "share_on_bg_forward": 0.03136756444814563
+    },
+    {
+     "layers": [
+      20,
+      41
+     ],
+     "auc_forward": 0.5582917332649231,
+     "auc_reverse": 0.5627572536468506,
+     "share_on_ink_forward": 0.13131166218214432,
+     "share_on_bg_forward": 0.08414601184867013
+    },
+    {
+     "layers": [
+      30,
+      51
+     ],
+     "auc_forward": 0.5407809019088745,
+     "auc_reverse": 0.5442825555801392,
+     "share_on_ink_forward": 0.26201730783215765,
+     "share_on_bg_forward": 0.21442294346679525
+    },
+    {
+     "layers": [
+      40,
+      61
+     ],
+     "auc_forward": 0.8755516409873962,
+     "auc_reverse": 0.6077568531036377,
+     "share_on_ink_forward": 0.6168278670642136,
+     "share_on_bg_forward": 0.09177971116127194
+    },
+    {
+     "layers": [
+      50,
+      71
+     ],
+     "auc_forward": 0.47778984904289246,
+     "auc_reverse": 0.49569475650787354,
+     "share_on_ink_forward": 0.03507623687974208,
+     "share_on_bg_forward": 0.11832599183303748
+    },
+    {
+     "layers": [
+      60,
+      81
+     ],
+     "auc_forward": 0.6044288873672485,
+     "auc_reverse": 0.44576531648635864,
+     "share_on_ink_forward": 0.2291954524519429,
+     "share_on_bg_forward": 0.11744939478278656
+    },
+    {
+     "layers": [
+      70,
+      91
+     ],
+     "auc_forward": 0.6568619608879089,
+     "auc_reverse": 0.46589985489845276,
+     "share_on_ink_forward": 0.14529852374372773,
+     "share_on_bg_forward": 0.03209075701460264
+    },
+    {
+     "layers": [
+      80,
+      101
+     ],
+     "auc_forward": 0.5264764428138733,
+     "auc_reverse": 0.6268555521965027,
+     "share_on_ink_forward": 0.043899837587569386,
+     "share_on_bg_forward": 0.11570350565770346
+    }
+   ],
+   "peak": {
+    "layers": [
+     40,
+     61
+    ],
+    "auc_forward": 0.8755516409873962,
+    "auc_reverse": 0.6077568531036377,
+    "share_on_ink_forward": 0.6168278670642136,
+    "share_on_bg_forward": 0.09177971116127194
+   },
+   "registration": {
+    "sy": 1.001,
+    "sx": 1.0,
+    "ty": -199.49522227200032,
+    "tx": -200.4984074240001,
+    "ncc": 0.8735682368278503,
+    "worst_subwindow_px": 1
+   },
+   "depth_match": {
+    "best_layer": 50,
+    "offset_layers": 0,
+    "ncc_best": 0.8897990584373474,
+    "ncc_layer50": 0.8897990584373474
+   },
+   "mesh": "PHerc0139/segments/20250108000004-w029_2025010827/mesh/20250108000004-on-20250728140407-9.362um.tifxyz, grid step 20 voxels = 187 um"
   },
   "v6_0139c": {
    "label": "v6_0139c, our pipeline",

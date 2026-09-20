@@ -15,6 +15,7 @@ results; this file carries the evidence and the commands.
 | landmark audit, 16 Sep 2026 | all 26 official transforms, no scan data read | `audit/`, output in `audit/results.txt` | whether each published transform fits the landmarks published with it. 4 of the 25 that carry landmarks do not |
 | copy comparison, 19 Sep 2026 | all 26 catalogue transforms against their per-volume `transform.json` | `audit/compare_copies.py`, output in `audit/copies.txt` | 18 per-volume copies exist; 17 match the catalogue; PHercParis4 45.532 -> 7.91 does not, 518.3 um RMS against 35.1. About 20 s, one small fetch per volume |
 | depth curve, 13 Sep 2026 | PHerc0139 w016, 9 depth windows on known text | `depth/`, data in `depth/ctl_curve.json` | how far the ink model's window can move before it stops reading. The basis of the 50 um alignment budget |
+| render-path decomposition, 20 Sep 2026 | the same PHerc0139 w016 surface, five renders differing in one thing each | `downstream/results.json`, arms `aligned_nopool`, `theirmesh`, `official_bicubic` | why the challenge's own input reads 0.912 where this folder's render of the same transform reads 0.857: depth averaging worth nothing (0.916 without it), smooth interpolation worth 0.019 and not significant block by block, and the mesh's grid step worth 0.040, which is 72 % of the gap |
 | reading test, 19 Sep 2026 | PHerc0139 w016 carried by three transforms through one render path, plus the challenge's own aligned input | `downstream/`, data in `downstream/results.json` | whether a better alignment gives a better reading: official 0.857, v6_0139c 0.812, v2_0139a 0.790, and 0.912 through the challenge's own pipeline. The order holds; the gap between the first two is inside the block-to-block noise |
 
 **The two rounds added on 16 Sep, and their costs.** The landmark audit reads only
@@ -491,7 +492,12 @@ registration itself.
   from `downstream/`'s files; the three matrices in
   `downstream/transforms/` must be the inverses of committed transforms;
   and `docs/alignment-budget.md` must carry the same qualification of the
-  budget as the README.
+  budget as the README. The three arms added on 20 Sep are checked the same
+  way: each must be in `results.json` with its own peak at the centre window
+  and its registration within a pixel, the README must state each one's own
+  AUC, the "72 % of the gap" must be the arithmetic of the file rather than a
+  number in prose, and the two new block tests must carry their own intervals,
+  with the finer mesh's excluding zero at 64 px and the interpolation's not.
 
 A check that has never failed has not been tested. Four deliberate
 corruptions were planted in a throwaway copy of the tree; all four
@@ -527,6 +533,17 @@ landmarks, and the count left out the five coverage pairs. The
 sentence now reads 24 of 25, counted over all 26, and the check is
 bound to it; the same corruption and four others aimed at it are now
 caught.
+
+The render-path arms were added on 20 Sep 2026. Six corruptions, one at a time,
+each in a fresh copy: the mesh arm's AUC changed in the prose, the 72 % claim
+changed to 80, the block interval's bound moved, the ink share changed, the
+mesh arm's AUC changed inside `results.json`, and the arm's peak window moved.
+The first two attempts at these checks were too weak to catch two of them,
+because they asked only whether a number appeared anywhere in the file; they
+now bind to the arm's own table row and to the sentence that compares two arms,
+and all six are caught. Writing them also caught two errors of mine before the
+push: the interpolation arm is better in 10 of 22 blocks, not 6, and the
+no-averaging arm finds 69.4 % of the labelled ink, not 71.4.
 
 The best-affine column was added on 20 Sep 2026, after
 [villa#1843](https://github.com/ScrollPrize/villa/issues/1843) showed that a

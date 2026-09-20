@@ -744,6 +744,58 @@ def test_downstream():
         A = np.array(json.load(open(os.path.join(D, "transforms", f)))["transformation_matrix"], float)
         check(f"transforms/{f} is the inverse of {src}", np.allclose(np.linalg.inv(M)[:3], A[:3], atol=1e-6))
 
+    # the render-path decomposition added on 20 Sep: every arm's own peak, and the two new block tests
+    doc_d = flat(os.path.join(D, "README.md"))
+    doc_lines_d = open(os.path.join(D, "README.md")).read().splitlines()
+    for tag, label in (("theirmesh", "the challenge's own 2.399 um mesh"),
+                       ("official_bicubic", "villa #1818's smooth surface interpolation"),
+                       ("aligned_nopool", "the 4-plane depth averaging removed")):
+        a = arms.get(tag)
+        check(f"{tag} is in results.json", a is not None)
+        if a is None:
+            continue
+        v = (a.get("peak") or a.get("centre"))["auc_forward"]
+        # the number must be on the arm's own row, not merely somewhere in the file: a wrong number
+        # in the prose passed a bare "is it present" check on 20 Sep
+        key = {"theirmesh": "48 um grid", "official_bicubic": "smooth surface interpolation",
+               "aligned_nopool": "depth averaging removed"}[tag]
+        row = [l for l in doc_lines_d if l.startswith("|") and key in l]
+        check(f"downstream/README's {tag} row carries its own AUC", bool(row) and any(f"{v:.3f}" in l for l in row),
+              f"{v:.3f} on a row mentioning {key!r}")
+        sh = (a.get("peak") or a.get("centre")).get("share_on_ink_forward")
+        if sh is not None:
+            check(f"downstream/README's {tag} row carries its own ink share",
+                  any(f"{100 * sh:.1f} %" in l for l in row), f"{100 * sh:.1f} %")
+        if "peak" in a:
+            check(f"{tag} peaks at the centre window", a["peak"]["layers"] == [40, 61], str(a["peak"]["layers"]))
+            check(f"{tag} registers within 1 px in every sub-window", a["registration"]["worst_subwindow_px"] <= 1)
+    # the gap arithmetic the prose states has to be the arithmetic of the file
+    g_all = arms["aligned"]["centre"]["auc_forward"] - arms["official"]["peak"]["auc_forward"]
+    g_mesh = arms["theirmesh"]["peak"]["auc_forward"] - arms["official"]["peak"]["auc_forward"]
+    check("the '72 % of the gap' claim is this file's arithmetic",
+          f"{round(100 * g_mesh / g_all)} % of the gap" in doc_d, f"{100 * g_mesh / g_all:.1f} %")
+    # and the sentence that compares the two arms must carry BOTH numbers, in that order
+    tm, of = arms["theirmesh"]["peak"], arms["official"]["peak"]
+    check("the prose sentence compares the two arms with their own AUCs",
+          f"reads **{tm['auc_forward']:.3f} against {of['auc_forward']:.3f}**" in doc_d,
+          f"{tm['auc_forward']:.3f} against {of['auc_forward']:.3f}")
+    check("and with their own ink shares",
+          f"**{100 * tm['share_on_ink_forward']:.1f} % of the labelled ink against\n{100 * of['share_on_ink_forward']:.1f} %**"
+          .replace("\n", " ") in doc_d,
+          f"{100 * tm['share_on_ink_forward']:.1f} % against {100 * of['share_on_ink_forward']:.1f} %")
+    check("the averaging arm really reads higher than the pooled one, as the prose says",
+          arms["aligned_nopool"]["centre"]["auc_forward"] > arms["aligned"]["centre"]["auc_forward"])
+    for key, expect_excludes_zero in (("B64_theirmesh", True), ("B64_official_bicubic", False)):
+        t = blk["paired_tests"][key]
+        lo, hi = t["ci95"]
+        check(f"{key}: the interval in the README is this file's", f"{lo:.3f}" in doc_d and f"{hi:.3f}" in doc_d,
+              f"{lo:.3f} to {hi:.3f}")
+        check(f"{key}: excludes zero is {expect_excludes_zero}", (lo < 0 and hi < 0) == expect_excludes_zero,
+              f"{lo:.3f} to {hi:.3f}")
+        check(f"{key}: the block count and the worse count are stated",
+              f"{t['worse']} of {t['n_blocks']}" in doc_d or f"{t['n_blocks'] - t['worse']} of {t['n_blocks']}" in doc_d,
+              f"{t['worse']}/{t['n_blocks']}")
+
     # the main README's two new passages carry the same numbers
     check("README Limits carries the three arms and the interval",
           f"reads {o:.3f}" in top and f"transform {c:.3f}" in top and f"transform {w:.3f}" in top

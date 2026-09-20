@@ -126,7 +126,47 @@
     5.941290189238224e-06,
     0.16205268399242087
    ]
+  },
+  "B64_theirmesh": {
+   "n_blocks": 22,
+   "worse": 6,
+   "sign_p": 0.052478790283203125,
+   "mean": -0.08830733326348392,
+   "ci95": [
+    -0.15502269904721866,
+    -0.02489732212641023
+   ]
+  },
+  "B64_official_bicubic": {
+   "n_blocks": 22,
+   "worse": 12,
+   "sign_p": 0.8318119049072266,
+   "mean": -0.02253425121307373,
+   "ci95": [
+    -0.08618251644074916,
+    0.03686760687692595
+   ]
+  },
+  "B96_theirmesh": {
+   "n_blocks": 17,
+   "worse": 6,
+   "sign_p": 0.332305908203125,
+   "mean": -0.03275530303225798,
+   "ci95": [
+    -0.11095823268680012,
+    0.052493361471330345
+   ]
+  },
+  "B96_official_bicubic": {
+   "n_blocks": 17,
+   "worse": 11,
+   "sign_p": 0.332305908203125,
+   "mean": -0.003228583756615134,
+   "ci95": [
+    -0.051990336179733275,
+    0.03635673128506716
+   ]
   }
  },
- "note": "each arm's forward prediction at [40,61) carried back to the label grid through its own registration; a block is scored only if it holds enough labelled pixels of both classes"
+ "note": "each arm's forward prediction at [40,61) carried back to the label grid through its own registration; a block is scored only if it holds enough labelled pixels of both classes; the four tests added on 20 Sep compare the same official arm against a render of the challenge's own finer mesh and against villa #1818's smooth interpolation, so a negative mean is the new arm reading better"
 }

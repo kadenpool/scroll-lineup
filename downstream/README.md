@@ -24,6 +24,48 @@ costs 0.055, about what this tool's transforms cost against the official one: 0.
 that may be home advantage: the model was trained on the challenge's own kind of input, including on
 this segment (below).
 
+## Why the same transform reads 0.055 lower through this folder's render
+
+That 0.912 against 0.857 sat unexplained until 20 Sep. Three things differ between the challenge's own
+input and this folder's render of the same surface through the same matrix, and each was tested by
+changing only that one thing.
+
+| what changed, everything else held | AUC, forward | labelled ink called ink |
+|---|---|---|
+| the challenge's own input | 0.912 | 70.8 % |
+| the same, with its 4-plane depth averaging removed | **0.916** | 69.4 % |
+| this folder's render, from the challenge's own 2.399 um mesh, 48 um grid | **0.897** | 72.2 % |
+| this folder's render, with villa #1818's smooth surface interpolation | 0.876 | 61.7 % |
+| this folder's render, from the 9.362 um mesh, 187 um grid | 0.857 | 54.4 % |
+
+**Depth averaging is worth nothing here.** The challenge's input averages four planes of the 2.399 um
+render, 2.399 um apart, into each 9.6 um layer; this folder samples one. `build_aligned_nopool.py`
+rebuilds their input taking one plane of each four instead of the mean, and it reads 0.916 rather than
+0.912, so if anything the averaging costs a little.
+
+**Interpolation is worth about 0.019, and it does not survive a block test.** Rendering the same arm
+with the smooth (Catmull-Rom) sampling from villa#1818 reads 0.876 over the region, but block by block
+it is higher in only 10 of 22 blocks of 64 px, with a 95 % interval of -0.086 to +0.037 across zero.
+It does find more of the labelled ink at the threshold, 61.7 % against 54.4 %.
+
+**How densely the surface is sampled is worth 0.040, which is 72 % of the gap.** Each segment is
+published as several meshes, one per frame, and their grid steps differ: the mesh in the 9.362 um frame
+steps 20 voxels, which is 187 um, while the mesh in the 2.399 um frame steps 20 voxels of 2.399 um,
+which is 48 um. Rendering the finer one, with no transform because it is already in that scan's frame,
+and changing nothing else, reads **0.897 against 0.857**, and finds **72.2 % of the labelled ink against
+54.4 %**. Block by block it is better in 16 of 22 blocks of 64 px, mean 0.088 with a 95 % interval of
+-0.155 to -0.025, which excludes zero; at 96 px it is 11 of 17 and the interval crosses it.
+
+The registration for that arm is also the tightest of any here: predicted scale 1.0000, found 0.999,
+shift (-192, -192), correlation 0.891, and **zero residual shift in all six sub-windows**. That is a
+second fact worth having: the challenge's published mesh of a segment, rendered at 5 px per grid step,
+lands on the label grid pixel for pixel.
+
+**So, practically:** render a segment from the finest published mesh of that segment rather than the one
+in the frame you happen to be working in. On this segment it is worth 0.04 AUC and 18 points of
+labelled ink, for no extra work and no transform at all. The remaining 0.016 between 0.897 and 0.912 is
+this folder's renderer against the challenge's own, on the same mesh, and is not explained here.
+
 ## How big the differences are, and how sure
 
 Not very sure. Scored block by block on the label grid, each arm carried back through its own
