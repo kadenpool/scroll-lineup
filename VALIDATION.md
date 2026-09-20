@@ -464,7 +464,12 @@ registration itself.
   that must fail cleanly.
 - **The landmark audit.** The flagged set, the count under 10 um, the
   range of the rest and the summary line are re-derived from
-  `audit/results.txt`, and both READMEs must carry them. Ours against
+  `audit/results.txt`, and both READMEs must carry them. The
+  best-affine column is checked the same way: every row must carry one,
+  the file's own "already are the least-squares affine" count must equal
+  what its rows give, exactly one matrix may differ from that fit, and
+  both READMEs must state the split and the differing pair's two
+  numbers. Ours against
   the official transform is counted from the `at official landmarks`
   column of all three tables, and the sentence that reports it must
   use that count and no other.
@@ -522,6 +527,15 @@ landmarks, and the count left out the five coverage pairs. The
 sentence now reads 24 of 25, counted over all 26, and the check is
 bound to it; the same corruption and four others aimed at it are now
 caught.
+
+The best-affine column was added on 20 Sep 2026, after
+[villa#1843](https://github.com/ScrollPrize/villa/issues/1843) showed that a
+large residual and a matrix that could be better are not the same thing.
+Four corruptions, one at a time, each in a fresh copy of the tree: the
+summary count changed from 24 to 23, the differing pair's best-affine
+figure changed from 2.2 to 20.2 um, the README's count changed, and the
+column removed from the table header. All four were caught, and the run
+exited 1 each time.
 
 Part I was tested the same way on 19 Sep: ten corruptions, nine caught.
 The miss changed an arm's AUC in its curve, and the check read the

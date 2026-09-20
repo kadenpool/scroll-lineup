@@ -365,6 +365,7 @@ def audit_rows():
     i_pair = next(i for h, i in idx.items() if "moving" in h)
     i_rms = next(i for h, i in idx.items() if h.startswith("rms"))
     i_worst = next(i for h, i in idx.items() if h.startswith("worst"))
+    i_best = next((i for h, i in idx.items() if h.startswith("best affine")), None)
     out = []
     for l in lines[2:]:
         c = [x.strip() for x in l.strip("|").split("|")]
@@ -372,7 +373,8 @@ def audit_rows():
             continue
         clean = lambda s: s.replace("**", "").strip()
         out.append(dict(obj=clean(c[i_obj]), pair=clean(c[i_pair]),
-                        rms=float(clean(c[i_rms])), worst=float(clean(c[i_worst]))))
+                        rms=float(clean(c[i_rms])), worst=float(clean(c[i_worst])),
+                        best=float(clean(c[i_best])) if i_best is not None and len(c) > i_best else None))
     return out
 
 
@@ -474,6 +476,30 @@ def test_audit():
         stated = sorted(set(re.findall(r"of the (\d+) pairs that publish", flat)))
         check(f"{doc}: every 'of the N pairs that publish' uses the real N ({n_lm})",
               stated == [str(n_lm)], f"found {stated}")
+    # the best-affine column: the counts in the file and in both documents must be its own rows
+    rows_b = [r for r in audit_rows() if r["best"] is not None]
+    check("every row carries a best-affine figure", len(rows_b) == len(audit_rows()),
+          f"{len(rows_b)} of {len(audit_rows())}")
+    if rows_b:
+        thr = float(re.search(r"to within (\d+) um", txt).group(1))
+        at_limit = [r for r in rows_b if r["rms"] - r["best"] <= thr]
+        fixable = [r for r in rows_b if r["rms"] - r["best"] > thr]
+        check("the file's own 'already are the least-squares affine' count is its rows",
+              f"{len(at_limit)} of {len(rows_b)} published matrices already are" in txt,
+              f"{len(at_limit)} of {len(rows_b)}")
+        check("exactly one published matrix is not that fit", len(fixable) == 1, str(len(fixable)))
+        for doc in ("README.md", os.path.join("audit", "README.md")):
+            body = " ".join(open(os.path.join(ROOT, doc)).read().split())
+            check(f"{doc} states the split", f"For {len(at_limit)} of the {len(rows_b)}" in body)
+            for r in fixable:
+                check(f"{doc} carries the fixable pair's own two numbers",
+                      f"{r['rms']:.1f} um" in body and f"{r['best']:.1f} um" in body,
+                      f"{r['rms']:.1f} / {r['best']:.1f}")
+        # a matrix that is not the best fit must be far from it, or the split means nothing
+        for r in fixable:
+            check(f"{r['obj']} {r['pair']}: the gap is large, not marginal", r["rms"] - r["best"] > 5 * thr,
+                  f"{r['rms'] - r['best']:.1f} um")
+
     flat = " ".join(open(os.path.join(ROOT, "README.md")).read().split())
     check(f"README's context paragraph counts all {n_all} pairs",
           f"the only pair of the {n_all} where our" in flat and f"On {official_better} of the others" in flat)

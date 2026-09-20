@@ -68,6 +68,19 @@ The other 21 sit between 0.0 and 25.3 um, so
 the four are separated by a gap rather than
 by where a line was drawn.
 
+**But a residual does not say the matrix
+could be better.** The audit also fits the
+best affine each landmark set allows. For
+24 of the 25 the published matrix already is
+that fit, so three of those four cannot be
+improved by any affine and the thing to look
+at is their landmarks. The exception is
+PHerc1667 1.129 to 2.399: 123.3 um where the
+best affine on the same six points is
+2.2 um. What that costs a surface carried
+through it is measured in
+[villa#1843](https://github.com/ScrollPrize/villa/issues/1843).
+
 ```
 python audit/audit_landmarks.py
 ```

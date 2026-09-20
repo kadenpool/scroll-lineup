@@ -18,15 +18,34 @@ repository, so it can be lifted out and run on its own.
 `results.txt` is the output of the run committed here. Of the 26 official transforms, **25 publish
 landmarks and 4 of those miss their own by more than 30 um**:
 
-| object | moving to fixed (um) | landmarks | RMS um | worst point um |
-|---|---|---|---|---|
-| PHerc1667 | 1.129 to 2.399 | 6 | **123.3** | 212.5 |
-| PHerc0332 | 2.399 to 7.91 | 6 | **103.1** | 133.9 |
-| PHerc1667 | 2.399 to 7.91 | 12 | **53.6** | 117.8 |
-| PHercParis4 | 45.532 to 7.91 | 8 | **35.1** | 63.4 |
+| object | moving to fixed (um) | landmarks | RMS um | worst point um | best affine um |
+|---|---|---|---|---|---|
+| PHerc1667 | 1.129 to 2.399 | 6 | **123.3** | 212.5 | **2.2** |
+| PHerc0332 | 2.399 to 7.91 | 6 | **103.1** | 133.9 | 103.1 |
+| PHerc1667 | 2.399 to 7.91 | 12 | **53.6** | 117.8 | 53.6 |
+| PHercParis4 | 45.532 to 7.91 | 8 | **35.1** | 63.4 | 35.1 |
 
 The other 21 sit between 0.0 and 25.3 um, and fourteen are under 10. So the four are separated from
 the rest by a clear gap rather than by where a threshold was drawn.
+
+## A residual on its own does not say the matrix could be better
+
+The last column is the reason the four are not one kind of problem. For each transform it fits the
+best affine those same published landmarks allow, by least squares, and reports how far that fit
+lands from them. **For 24 of the 25 the published matrix already is that fit**, to within 0.1 um. So
+for three of the four flagged, no affine can hit those landmarks: the residual is a property of the
+landmark set, not a fault in the matrix, and the thing to look at is the landmarks.
+
+One is different. `PHerc1667 1.129 to 2.399` misses its own six landmarks by 123.3 um where a
+least-squares affine on the same six points misses by 2.2 um. That is a matrix that is not the fit
+its own data gives. This tool's own answer for that pair, computed from the two volumes with no
+landmark input, lands 6.3 um from those landmarks (`../robustness/r6_1667roi/`), which is the one
+pair of the 26 where this tool beats the official matrix on landmarks.
+
+What that costs a surface carried through it is measured, with controls and a placebo, in
+[ScrollPrize/villa#1843](https://github.com/ScrollPrize/villa/issues/1843): the 19 published
+PHerc1667 meshes in the 1.129 um frame sit off the papyrus, and moving them onto that fit puts them
+back on it.
 
 ## Which copy: the challenge publishes two, and for one pair they disagree
 
