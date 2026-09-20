@@ -48,7 +48,7 @@ with the smooth (Catmull-Rom) sampling from villa#1818 reads 0.876 over the regi
 it is higher in only 10 of 22 blocks of 64 px, with a 95 % interval of -0.086 to +0.037 across zero.
 It does find more of the labelled ink at the threshold, 61.7 % against 54.4 %.
 
-**How densely the surface is sampled is worth 0.040, which is 72 % of the gap.** Each segment is
+**Which mesh you render from is worth 0.040, which is 72 % of the gap. A quarter of that is the grid step and three quarters is the transform.** Each segment is
 published as several meshes, one per frame, and their grid steps differ: the mesh in the 9.362 um frame
 steps 20 voxels, which is 187 um, while the mesh in the 2.399 um frame steps 20 voxels of 2.399 um,
 which is 48 um. Rendering the finer one, which needs no transform because it is already in that scan's frame,
@@ -56,10 +56,22 @@ reads **0.897 against 0.857**, and finds **72.2 % of the labelled ink against
 54.4 %**. Block by block it is better in 16 of 22 blocks of 64 px, mean 0.088 with a 95 % interval of
 -0.155 to -0.025, which excludes zero; at 96 px it is 11 of 17 and the interval crosses it.
 
-**The caveat, because two things change together here.** The finer mesh is finer *and* needs no
-transform, while the coarser one is carried by the catalogue's matrix. This folder has not separated
-those two effects, so **0.040 is their combined size and an upper bound on the grid step alone**.
-villa#1845 carries the same caveat; it belongs here too.
+**Two things change together here, so they were separated.** The finer mesh is finer *and* needs no
+transform, while the coarser one is carried by the catalogue's matrix. `grid_vs_transform.json` adds a
+third arm that moves one variable: the fine mesh with its own grid decimated four times, to the coarse
+one's density, with no transform.
+
+| arm | AUC | labelled ink found |
+|---|---|---|
+| coarse mesh carried by the transform | 0.8572 | 54.4 % |
+| fine mesh, grid decimated to 192 um, no transform | **0.8869** | **70.2 %** |
+| fine mesh, 48 um grid, no transform | 0.8967 | 72.2 % |
+
+**The grid step is worth 0.0098 of the 0.0395, a quarter. The transform carries 0.0298, three
+quarters.** Coarsening the grid fourfold costs two points of found ink; the transform costs sixteen
+more. So the 0.040 is still what picking the coarse mesh costs, because picking it forces the
+transform, but the density is not what was hurting the reading. The remainder is an upper bound on the
+transform's share, since the decimated mesh is not the published coarse one.
 
 The registration for that arm is also the tightest of any here: predicted scale 1.0000, found 0.999,
 shift (-192, -192), correlation 0.891, and **zero residual shift in all six sub-windows**. That is a

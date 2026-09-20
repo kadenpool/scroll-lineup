@@ -1,0 +1,28 @@
+{
+ "arms": {
+  "official": {
+   "auc": 0.857180118560791,
+   "start": 40,
+   "ink_share": 0.5437422732892153,
+   "n_val_px": 178146
+  },
+  "theirmesh": {
+   "auc": 0.8967176079750061,
+   "start": 40,
+   "ink_share": 0.7218625255573946,
+   "n_val_px": 177635
+  },
+  "decim4": {
+   "auc": 0.8869444131851196,
+   "start": 40,
+   "ink_share": 0.7017526918062865,
+   "n_val_px": 178657
+  }
+ },
+ "published_gap": 0.0395,
+ "grid_step_cost": 0.0098,
+ "remainder_mostly_transform": 0.0298,
+ "grid_share_of_gap": 0.247,
+ "what": "Separating the grid step from the transform. The published 0.040 compares the coarse mesh carried by the catalogue's matrix against the fine mesh needing none, so two things move at once. Arm decim4 is the fine mesh with its own grid decimated 4x to the coarse one's density: same surface, same scan, same frame, no transform, so only the grid step moves.",
+ "limits": "decim4 is the fine mesh decimated, not the published coarse mesh, so the remainder is the transform plus anything else that differs between the two published meshes. It is an upper bound on the transform's share as 0.040 was on the grid's."
+}

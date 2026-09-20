@@ -698,8 +698,10 @@ def test_corrections():
     # 5. the mesh comparison changed two things
     check("the two arms really do differ in transform as well as mesh",
           arms["official"].get("transform_file") != arms["theirmesh"].get("transform_file"))
-    check("downstream/README.md calls 0.040 an upper bound on the grid step",
-          "upper bound on the grid step alone" in dsr)
+    # superseded on 21 Sep: the two effects were separated by measurement, so the README no longer
+    # says "upper bound on the grid step alone" -- it gives the split. test_grid_vs_transform pins it.
+    check("downstream/README.md separates the grid step from the transform",
+          "A quarter of that is the grid step and three quarters is the transform" in dsr)
     check("and no longer says nothing else changed", "and changing nothing else" not in dsr)
 
     # 6. the sixth external number
@@ -758,6 +760,39 @@ def test_corrections():
           "not a general result" in seating and "confounded with scan identity" in seating)
     check("the second access root is no longer only a coverage-round figure",
           "eight runs name six distinct volumes on that host" in val)
+
+
+
+def test_grid_vs_transform():
+    """The split between the grid step and the transform is re-derived, not typed.
+
+    The old text credited the whole 0.040 to how densely the surface is sampled. A third arm, the
+    fine mesh decimated to the coarse one's density with no transform, showed that is a quarter of
+    it. Each figure below has to come back out of grid_vs_transform.json.
+    """
+    d = json.load(open(os.path.join(ROOT, "downstream", "grid_vs_transform.json")))
+    text = open(os.path.join(ROOT, "downstream", "README.md")).read()
+    a = d["arms"]
+
+    check("the README no longer credits the whole gap to sampling density",
+          "How densely the surface is sampled is worth 0.040" not in text)
+    for tag, want in (("official", 0.8572), ("decim4", 0.8869), ("theirmesh", 0.8967)):
+        check("%s's AUC is in the table" % tag, "%.4f" % a[tag]["auc"] in text,
+              "%.4f" % a[tag]["auc"])
+        check("%s's AUC matches the run" % tag, abs(a[tag]["auc"] - want) < 5e-5)
+    for tag in ("official", "decim4", "theirmesh"):
+        check("%s's ink share is in the table" % tag,
+              "%.1f %%" % (100 * a[tag]["ink_share"]) in text)
+
+    grid, rest, gap = d["grid_step_cost"], d["remainder_mostly_transform"], d["published_gap"]
+    check("the split adds up to the published gap", abs(grid + rest - gap) < 1e-3,
+          "%.4f + %.4f vs %.4f" % (grid, rest, gap))
+    check("the grid step's share is stated and is a quarter",
+          "worth %.4f of the %.4f, a quarter" % (grid, gap) in text
+          and 0.2 <= d["grid_share_of_gap"] <= 0.3, "%.3f" % d["grid_share_of_gap"])
+    check("the transform's share is stated and is the larger", "carries %.4f" % rest in text
+          and rest > grid)
+    check("the upper-bound caveat survives", "upper bound on the" in text)
 
 
 def test_image_quality():
@@ -976,6 +1011,7 @@ if __name__ == "__main__":
     test_downstream()
     test_image_quality()
     test_corrections()
+    test_grid_vs_transform()
     print()
     if FAILED:
         print(f"{len(FAILED)} FAILED: " + "; ".join(FAILED))
