@@ -40,6 +40,13 @@ its own data gives. This tool's own answer for that pair, computed from the two 
 landmark input, lands 6.3 um from those landmarks (`../robustness/r6_1667roi/`), which is the one
 pair of the 26 where this tool beats the official matrix on landmarks.
 
+![Published matrix against the best affine fit to its own landmarks, for the 25 transforms that publish landmarks](landmark_fit.png)
+
+*One dot per catalogue transform that publishes landmarks. Across: how close the best affine fit to
+its own landmarks gets. Up: how close the published matrix gets. On the diagonal the published matrix
+already is that fit; one transform sits far above it. Drawn by `plot_landmark_fit.py` from
+`results.txt`.*
+
 What that costs a surface carried through it is measured, with controls and a placebo, in
 [ScrollPrize/villa#1843](https://github.com/ScrollPrize/villa/issues/1843): of the 19 published PHerc1667 meshes in the 1.129 um frame, the four measured sit off the papyrus, and moving them onto that fit moves them back toward it (on the two segments named before they were run, 27 of 46 patches, p = 0.031).
 
