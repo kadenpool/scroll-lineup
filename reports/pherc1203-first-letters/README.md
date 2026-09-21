@@ -1,6 +1,6 @@
 # First Letters workflow report: PHerc. 1203
 
-Written 12 and 13 Sep 2026; its numbers re-checked by its own tracer on 21 Sep 2026. Every number names the file it came from, and those files are in `data/`, copied read-only from the two CPU boxes the work ran on: box A for renders and box B for registration. The figures and notes the text cites are under `data/evidence_0911/`, `data/evidence_0912/`, `data/evidence_0914/` and `data/scratch_canon/`. Paths under `scripts_0911/`, `scripts_0912/` and `submissions/` name our working scripts and notes, which are not published; what they produced is in `data/`.
+Written 12 and 13 Sep 2026; its numbers re-checked by its own tracer on 21 Sep 2026. Every number names the file it came from, and those files are in `data/`, copied read-only from the two CPU boxes the work ran on: box A for renders and box B for registration. The figures and notes the text cites are under `data/evidence_0911/`, `data/evidence_0912/`, `data/evidence_0914/` and `data/scratch_canon/`. The scripts it cites are in `data/scripts_0911/` and `data/scripts_0912/`. Paths under `submissions/` name our working notes, which are not published.
 
 ## 0. In one paragraph
 
@@ -114,24 +114,24 @@ as the work went, and several changed after we saw results. We say which.
   the official `optimized_inference` code that is bit-identical to it on CPU (0 of 13,440 pixels
   differ in the end-to-end test; data/scratch_canon/README.md:106-109). The readout is the official uint8
   map; "ink share" means the fraction of covered pixels with prediction above 0.5
-  (scripts_0911/make_survey_nb_1203g.py, summary line).
+  (data/scripts_0911/make_survey_nb_1203g.py, summary line).
 - **Both depth orders, reported separately.** Every window is scored twice, C = layers in the order
-  rendered and D = the same layers reversed, and both numbers are reported (scripts_0911/survey_pipeline_1203g.sh). No rule required agreement between them. Ranking uses the
-  larger of the two (scripts_0911/top_1203_survey.py:5-8).
+  rendered and D = the same layers reversed, and both numbers are reported (data/scripts_0911/survey_pipeline_1203g.sh). No rule required agreement between them. Ranking uses the
+  larger of the two (data/scripts_0911/top_1203_survey.py:5-8).
 - **Window selection.** Windows are 40 x 40 mesh cells (7.5 x 7.5 mm), chosen by papyrus texture in
   a native 9.362 um render, not by any ink result: crossed-fibre coherence, data coverage above 0.9
-  and at most 2 windows per segment for the first set of 8 (scripts_0911/sel1203.py:11-43); at
+  and at most 2 windows per segment for the first set of 8 (data/scripts_0911/sel1203.py:11-43); at
   least 75 % coverage and 3 windows per surface for the new-band survey
-  (scripts_0911/survey_sel_1203g.py:18-38).
+  (data/scripts_0911/survey_sel_1203g.py:18-38).
 - **The registration acceptance rule** for the scan-alignment tool was written before any pair was
   run: 95th-percentile error at most 30 um is PASS, at most 150 um is WEAK, worse is FAIL
   (submissions/registration_tool/PREREG_0912.md:23-25).
 - **Three smaller gates set before their runs:** the corrected-transform rerun would only proceed
   if a hand-test window showed a sheet offset within 4 layers and a match above 0.3
-  (scripts_0911/chain_1203_rr2.sh:7); a grown surface counts as off the scroll when under half its
-  points fall inside the stored volume (scripts_0911/onscroll_1203g.py:40); the 12 control windows
+  (data/scripts_0911/chain_1203_rr2.sh:7); a grown surface counts as off the scroll when under half its
+  points fall inside the stored volume (data/scripts_0911/onscroll_1203g.py:40); the 12 control windows
   on PHerc. 0139 were picked by published ink share (text 10 to 60 %, blank under 0.5 %) with a fixed
-  random seed before any of them was scored (scripts_0911/fliptest/driver.py:11, 21-27).
+  random seed before any of them was scored (data/scripts_0911/fliptest/driver.py:11, 21-27).
 - **The blind check.** The answer key was sealed in a file before Kaden answered
   (data/evidence_0911/blind_key_DO_NOT_OPEN_until_answered.json and blind_key2_...json); the crops were
   the densest fully covered 5 mm crops of our strongest windows, mixed with crops of known text at
@@ -163,8 +163,8 @@ as the work went, and several changed after we saw results. We say which.
   12 Sep after the registration tool showed it was about 29 um off, mostly in height (section 4.3).
   The final rerun of the top 8 public-segment windows and the 56 second-pass new-band windows
   (batches 5 to 11) use the corrected one; the 26-window survey, the 8 clean windows, the regions and
-  the first 36 new-band windows do not (scripts_0911/survey_pipeline_1203_rr2.sh:14;
-  scripts_0911/survey_pipeline_1203g_rest.sh).
+  the first 36 new-band windows do not (data/scripts_0911/survey_pipeline_1203_rr2.sh:14;
+  data/scripts_0911/survey_pipeline_1203g_rest.sh).
   
 - **The parse fix.** The collector that reads ink shares out of the Kaggle logs mis-read one value
   written in scientific notation (5.5). It was fixed after batch 5 had been collected; the copied
@@ -202,7 +202,7 @@ the assistant.
 
 | Item | Value | Source |
 |---|---|---|
-| Eligible scan (the only admissible evidence) | `PHerc1203/volumes/20250820131727-9.362um-1.2m-113keV-masked.zarr` on `s3://vesuvius-challenge-open-data` | scripts_0912/scanreg/README.md:13-15; scripts_0911/survey_pipeline_1203g.sh |
+| Eligible scan (the only admissible evidence) | `PHerc1203/volumes/20250820131727-9.362um-1.2m-113keV-masked.zarr` on `s3://vesuvius-challenge-open-data` | data/scripts_0912/scanreg/README.md:13-15; data/scripts_0911/survey_pipeline_1203g.sh |
 | Sharp scan (the scout) | `PHerc1203/volumes/20260319130212-2.403um-0.2m-77keV-masked.zarr` | same |
 | Scan sizes | eligible scan 18,977 slices of 6844 x 6844 at 9.362 um (177.7 mm of scroll); sharp scan 15,137 slices of 26,493 x 26,493 at 2.403 um (36.4 mm) | submissions/registration_tool/results/pherc1203/f1203/report.json:33-48 (lengths derived from slice counts) |
 | Where the sharp scan sits in the eligible scan | 74.3 to 110.7 mm of the 9.362 um scan (coarse slices 7936 to about 11830); first sharp slice at coarse voxel z 7935.3 |; submissions/registration_tool/REPORT_0912.md:80 |
@@ -210,7 +210,7 @@ the assistant.
 | New surfaces | 60 grown by `vc_grow_seg_from_seed` from 60 seeds at 95.3 to 109.1 mm on the published surface prediction of the eligible volume; all 60 were checked for sitting on the scroll; 34 gave survey windows (14 of the first 24, 20 of the remaining 36) and 26 gave none (on the sample holder, or too little on-scroll coverage) | data/p1203g/seeds.json (60 seeds, z 10184 to 11656), box A `p1203g/grown/` (60 surfaces; meshes, not copied; names in data/p1203g/grown_names.txt), data/p1203g/onscroll.json (the first 24), data/p1203g_survey/windows.json (36 picks on 14 surfaces) and windows_rest.json (60 picks on 21 surfaces, 56 scored on 20)and the 12 Sep 22:05 entry |
 | Ink model | `scrollprize/ink_canonical_2um` (ResNet3D-152 + 3D decoder, recipe `new_canon_autoresearch_recipe`), checkpoint `r152_3ddec_v2_l5_epoch13.ckpt`, tile 256, stride 128 | data/scratch_canon/README.md:3-4, 48-49 |
 | Runner | `data/scratch_canon/run_canon.py`, a Kaggle-friendly mirror of villa `ink-detection/optimized_inference` at `777cb16`; bit-identical on CPU | data/scratch_canon/README.md:1-7, 91-112 |
-| Renderer | `vc_render_tifxyz` (villa) with `--affine`, `--num-slices 109`, `--slice-step 1`, `--scale 1`, reading the sharp scan over HTTPS | scripts_0911/survey_pipeline_1203g.sh |
+| Renderer | `vc_render_tifxyz` (villa) with `--affine`, `--num-slices 109`, `--slice-step 1`, `--scale 1`, reading the sharp scan over HTTPS | data/scripts_0911/survey_pipeline_1203g.sh |
 
 The 9.362 um scan was taken at 113 keV; the 2.403 um scan at 77 keV (file names above). The model
 was trained on other scrolls' 2.4 um scans; whether it sees PHerc. 1203 ink at 77 keV is not
@@ -219,7 +219,7 @@ known from any public map, and we have no positive control on this scroll (secti
 ### 3.2 The chain, step by step
 
 1. **Place the sharp scan inside the eligible scan.** A cross-section image search
-   (scripts_0911/xsec_check.py) gives the height, rotation and mirror state. For PHerc. 1203: 74.37 mm,
+   (data/scripts_0911/xsec_check.py) gives the height, rotation and mirror state. For PHerc. 1203: 74.37 mm,
    rotation 0, not mirrored, score 0.819; the best match more than 3 mm away scores 0.062
 . This corrected an earlier one-dimensional profile estimate that was
    15.2 mm off and killed a draft finding of ours that the sharp scan misses
@@ -227,20 +227,20 @@ known from any public map, and we have no positive control on this scroll (secti
 2. **Solve the transform.** On 11 Sep: an offset-and-scale fit,
    `fine = (coarse - (7936, 20, -20)) * 3.8959634`, rotation 0, no tilt, precision about 37 um
 . On 12 Sep: replaced by the scan-alignment tool's 12-parameter fit,
-   `scripts_0911/affine_1203_v2.json` (29 landmarks, 5.8 um RMS), after the tool showed the 11 Sep
+   `data/scripts_0911/affine_1203_v2.json` (29 landmarks, 5.8 um RMS), after the tool showed the 11 Sep
    fit was about 29 um off, mostly in height (section 4.3).
 3. **Pick windows** by papyrus texture in a native 9.362 um render (section 2.1).
 4. **Render each window twice**: 109 layers at 2.403 um from the sharp scan through the transform,
    and 29 layers at 9.362 um from the eligible scan natively. Match the two renders in depth
-   (`scripts_0911/offset_generic.py`: band-pass, correlation over shifts of -8 to +8 coarse layers in
+   (`data/scripts_0911/offset_generic.py`: band-pass, correlation over shifts of -8 to +8 coarse layers in
    half-layer steps) to measure where the sheet actually sits in the sharp render.
 5. **Centre the model window** on the measured sheet: start = 24 + measured shift when the match
    correlation is above 0.15, else the default 24; 62 layers wide
-   (scripts_0911/survey_pipeline_1203g.sh:24-27). The first survey of the public segments (26 windows)
+   (data/scripts_0911/survey_pipeline_1203g.sh:24-27). The first survey of the public segments (26 windows)
    predates this step and used a fixed window of 63 rendered layers centred on the mesh
 .
 6. **Run the model on Kaggle** (free GPU, T4 x2) on each window in both depth orders
-   (scripts_0911/make_survey_nb_1203g.py); fetch the maps back (scripts_0911/kout2.py); score ink
+   (data/scripts_0911/make_survey_nb_1203g.py); fetch the maps back (data/scripts_0911/kout2.py); score ink
    share; make montages; compare with known text at the same scale.
 
 ### 3.3 What "C" and "D" mean
@@ -325,8 +325,8 @@ have to come from. We did not run it on any PHerc. 1203 window, because no windo
 
 - **Placement control.** Given a deliberately wrong height hint (90.5 mm) the placement search
   returns 74.37 mm, the same answer as the independent 3D fit.
-- **The scan-alignment tool** (`scripts_0912/scanreg/`, one command, CPU, about 5 minutes and
-  1.3 GB read per pair; scripts_0912/scanreg/README.md:10-15) was validated on the 15 scan pairs for
+- **The scan-alignment tool** (`data/scripts_0912/scanreg/`, one command, CPU, about 5 minutes and
+  1.3 GB read per pair; data/scripts_0912/scanreg/README.md:10-15) was validated on the 15 scan pairs for
   which the challenge publishes a transform: 15 of 15 in the right place; by the rule written in
   advance 8 PASS and 7 WEAK, none FAIL; the median disagreement with the official transform is
   usually 4 to 18 um (1 to 2 voxels); on held-out image blocks the images agree better with ours than
@@ -339,7 +339,7 @@ have to come from. We did not run it on any PHerc. 1203 window, because no windo
 - **PHerc. 1203 specifically.** The tool's transform agrees with 7jycwjmbfn-eng's published
   registration to 3.5 um median, 6 um max; our own 11 Sep fit and flummoxjr's published transform are
   each about 29 um off, mostly in height (submissions/registration_tool/REPORT_0912.md:13, 72-74;
-  scripts_0912/scanreg/README.md:74-75). We say this because we got it wrong first.
+  data/scripts_0912/scanreg/README.md:74-75). We say this because we got it wrong first.
 - **An independent check of the fix.** The render-to-render depth match (a different measurement
   from the tool's own fit) on 8 windows: sheet offset -5.7 to +7.6 sharp layers with the old
   transform, -1.0 to +0.7 with the new one; match correlation 0.26-0.73 before, 0.82-0.88 after
@@ -528,7 +528,7 @@ crashed at surface 35 of 36 (113227533: the coarse render wrote 8-byte TIFF stub
 reader rejected), and because it wrote its window list only at the end, the picks for the 34
 surfaces already processed were lost. It was fixed (skip unreadable renders loudly, save the list
 after every surface, reuse good cached renders) and re-run on the cached renders
-(scripts_0911/survey_sel_1203g.py, chain_1203g_rest.sh).
+(data/scripts_0911/survey_sel_1203g.py, chain_1203g_rest.sh).
 
 
 - The selector found usable windows on 21 of the 36 surfaces, 60 picks in all; the other 15
@@ -541,7 +541,7 @@ after every surface, reuse good cached renders) and re-run on the cached renders
   their results were fetched on 13 Sep (kernel vesuvius-s1203g-b12 on my Kaggle account, batch 12).
   
 - Render and model window as in 3.2: 109 sharp layers through the corrected transform
-  (scripts_0911/affine_1203_v2.json), 29 native layers, depth match, window centred per window. The
+  (data/scripts_0911/affine_1203_v2.json), 29 native layers, depth match, window centred per window. The
   per-window shifts were not copied (3.4).
 - One copied value is wrong and is corrected here: batch 5's summary records 957.9 % for window
   083702915 r60_c5 in order D. The kernel printed 9.58e-05, which the collector's regular expression
@@ -589,7 +589,7 @@ Two reruns of the 8 windows in 5.3, both at 109 layers:
   s_r2_c86 C 18.8 %, s_r140_c64 C 11.6 %, the rest within about 2 points
   (data/kag_out/s1203_rr2_0/survey_summary.json).gives 28.1, 18.9 and 11.7
   for the same three windows; that is not rounding but a second computation: the before/after
-  script (scripts_0911/compare_rerun.py, output data/kag_out/s1203_rr2_compare.json) takes the
+  script (data/scripts_0911/compare_rerun.py, output data/kag_out/s1203_rr2_compare.json) takes the
   share above 0.5 of the eroded valid area at 4x downsampling (data/textlike.py, `features`), while
   the kernel's summary takes it over all covered pixels at full resolution. Both are reported from
   their files; the tables use the kernel's summary. Figure:
@@ -706,7 +706,7 @@ What that does and does not mean:
   the 70 windows listed on 12 Sep (data/p1203_survey/windows.json, data/p1203_sel/windows.json,
   data/p1203g_survey/windows.json) plus 89,303 over the 56 second-pass windows
   (data/p1203g_survey/windows_rest.json, the scored 56 of its 60), at 0.0351 mm² per cell (one cell
-  = 20 coarse voxels = 0.187 mm, scripts_0911/sel1203.py:11), plus patch 1 (at most 0.56 cm²). The
+  = 20 coarse voxels = 0.187 mm, data/scripts_0911/sel1203.py:11), plus patch 1 (at most 0.56 cm²). The
   15 mm regions partly overlap those windows and add at most 11.2 cm² (five full regions of 6400
   cells); the two with in-band counts in the copied lists hold 3518 and 4487 cells (2.8 cm² together).
   
@@ -743,7 +743,7 @@ settings, because it fires too.
 ## 7. Time and cost
 
 The GPU work ran on Kaggle's free tier (two accounts, 30 GPU-hours a week each; two T4s per
-session, pushed with `--accelerator NvidiaTeslaT4`; scripts_0911/survey_pipeline_1203g.sh:40-42). Renders, tars and uploads ran on a CPU box with 8 cores and 94 GB RAM
+session, pushed with `--accelerator NvidiaTeslaT4`; data/scripts_0911/survey_pipeline_1203g.sh:40-42). Renders, tars and uploads ran on a CPU box with 8 cores and 94 GB RAM
 ("box A"); registration on a second CPU box with 8 cores and 23 GB RAM
 ("box B"). The notes for these days say no GPU was rented and nothing was spent.
 Each Kaggle notebook printed its own elapsed time at the end of its log; those times are collected
@@ -754,7 +754,7 @@ Kaggle charged is somewhat longer.
 | Step | What ran | Wall-clock (from logs) | GPU | Cost | Source |
 |---|---|---|---|---|---|
 | Place the sharp scan, solve the transform (box B, CPU) | xsec_check, align_generic, align_xy_generic | overnight 10 to 11 Sep; not logged per step | none | in the boxes' A$32 ||
-| Registration tool run + validation on 15 pairs (box B, CPU) | scanreg, validate, datacheck | fit 3.8 to 20.5 min per pair, 2 h 17 min summed over the 15 pairs; the current-version batches ran 16:42 to 19:24 UTC on 11 Sep in up to three lanes (2 h 42 min wall-clock, validation and data checks included), after a first-version round of 9 pairs from 15:44 to 16:34 UTC (50 min); the PHerc. 1203 pair itself 322 s | none | in the boxes' A$32 | data/boxB_scanreg_batch_times.txt (an extract of box B `scanreg/runs/batch.log`, `runs2/batch*.log` and the per-pair `log.txt`, pair names masked); scripts_0912/scanreg/README.md:10 |
+| Registration tool run + validation on 15 pairs (box B, CPU) | scanreg, validate, datacheck | fit 3.8 to 20.5 min per pair, 2 h 17 min summed over the 15 pairs; the current-version batches ran 16:42 to 19:24 UTC on 11 Sep in up to three lanes (2 h 42 min wall-clock, validation and data checks included), after a first-version round of 9 pairs from 15:44 to 16:34 UTC (50 min); the PHerc. 1203 pair itself 322 s | none | in the boxes' A$32 | data/boxB_scanreg_batch_times.txt (an extract of box B `scanreg/runs/batch.log`, `runs2/batch*.log` and the per-pair `log.txt`, pair names masked); data/scripts_0912/scanreg/README.md:10 |
 | Grow 60 surfaces (box A, CPU, 1 lane) | vc_grow_seg_from_seed, 75 generations each | lane ran 04:26 to 12:57 UTC 11 Sep by surface names, about 8.5 h; normal grids fetch 819 s | none | in the boxes' A$32 | data/p1203g/grown_names.txt (the 60 surface names carry their creation times, 04:26:38 to 12:57:37)|
 | Render, public-segment survey (26 windows, 63 layers) | vc_render_tifxyz x 26 | 93 to 295 s per window (median 184 s); batches done 02:42 to 03:43 UTC 11 Sep | none | in the boxes' A$32 | data/survey_pipeline.log |
 | Render, new band first pass (36 windows, 109 + 29 layers, depth match) | vc_render_tifxyz x 72 + offset | 226 to 515 s per window (median 378 s), each including the 29-layer native render and the depth match; batches done 09:14 to 12:24 UTC 11 Sep | none | in the boxes' A$32 | data/survey_pipeline_1203g.log |
@@ -812,18 +812,18 @@ scroll's data; #1676 I found reading villa's own test code, and #1682 followed a
 
 Tools in this repository (private until Kaden decides):
 
-- `scripts_0912/scanreg/`: the one-command scan-to-scan registration with its validation scripts and
+- `data/scripts_0912/scanreg/`: the one-command scan-to-scan registration with its validation scripts and
   the 15-pair report (submissions/registration_tool/REPORT_0912.md).
 - `data/scratch_canon/run_canon.py`: the official 2 um inference as a single Kaggle script, bit-identical
   to the official code on CPU, with two upstream problems worked around and reported (crash when two
   GPUs are visible; an OpenCV setting that makes PNG/JPG layers unreadable; data/scratch_canon/README.md,
   deviations 13 and 14).
-- `scripts_0911/xsec_check.py`, `align_generic.py`, `align_xy_generic.py`: sharp-scan placement by
+- `data/scripts_0911/xsec_check.py`, `align_generic.py`, `align_xy_generic.py`: sharp-scan placement by
   cross-section images, with a positive control.
-- `scripts_0911/offset_generic.py` and the `survey_pipeline_*.sh` family: render, measure the sheet
+- `data/scripts_0911/offset_generic.py` and the `survey_pipeline_*.sh` family: render, measure the sheet
   depth, centre the model window, upload, run, fetch.
-- `scripts_0911/onscroll_1203g.py`: does a grown surface sit inside the scroll's stored volume.
-- `scripts_0911/blind_sheet2.py`, `score_blind.py`: blind human-check sheets with a sealed key.
+- `data/scripts_0911/onscroll_1203g.py`: does a grown surface sit inside the scroll's stored volume.
+- `data/scripts_0911/blind_sheet2.py`, `score_blind.py`: blind human-check sheets with a sealed key.
 
 ---
 
@@ -833,11 +833,11 @@ Everything reads public data. Two of the boxes are ours (box A for renders, box 
 and some scripts still live only there; they are listed so they can be copied in.
 
 1. **Registration** (CPU, about 5 min):
-   `bash scripts_0912/scanreg/run_1203.sh` runs
+   `bash data/scripts_0912/scanreg/run_1203.sh` runs
    `python scanreg.py $B/20260319130212-2.403um-0.2m-77keV-masked.zarr $B/20250820131727-9.362um-1.2m-113keV-masked.zarr --out runs2/f1203 --write-inverse`
    with `B=s3://vesuvius-challenge-open-data/PHerc1203/volumes`, then `compare1203.py` against the two
-   public transforms (scripts_0912/scanreg/run_1203.sh:7-11). Output: `transform.json`,
-   `transform_inverse.json`, `report.json`, `qc.png`. Our result is `scripts_0911/affine_1203_v2.json`.
+   public transforms (data/scripts_0912/scanreg/run_1203.sh:7-11). Output: `transform.json`,
+   `transform_inverse.json`, `report.json`, `qc.png`. Our result is `data/scripts_0911/affine_1203_v2.json`.
 2. **Surfaces.** The 22 public segments are under `PHerc1203/segments/raw/` on the open-data bucket. New
    ones: `vc_grow_seg_from_seed` with `p1203g/grow_params.json` (mode seed, 75 generations, min area
    0.3 cm², voxel size 9.362, the published surface prediction's normal grids) and the 60 seeds in
@@ -846,12 +846,12 @@ and some scripts still live only there; they are listed so they can be copied in
    scripts' docstrings were left over from another scroll's version and do not describe this code;
    the code reads the PHerc. 1203 surface prediction and writes `p1203g/`. Fix the docstrings before
    any release (Appendix C).
-3. **Windows.** `scripts_0911/sel1203.py` (the 8 clean windows) and `scripts_0911/survey_sel_1203g.py`
+3. **Windows.** `data/scripts_0911/sel1203.py` (the 8 clean windows) and `data/scripts_0911/survey_sel_1203g.py`
    (the new band). The selector for the 26-window survey and its output are local copies:
    data/survey_sel.py and data/p1203_survey/windows.json; the 8-window list is
    data/p1203_sel/windows.json and the rerun list data/p1203_survey/rerun_windows.json.
 4. **Render + depth match + upload + run**, one batch of 8 windows:
-   `bash scripts_0911/survey_pipeline_1203_rr2.sh` (corrected transform) or
+   `bash data/scripts_0911/survey_pipeline_1203_rr2.sh` (corrected transform) or
    `survey_pipeline_1203g.sh` (new band). Each window: `vc_render_tifxyz --volume <sharp> --remote-url <sharp> -s <window> --affine affine_1203_v2.json --auto-crop --scale 1 -g 0 --num-slices 109 --slice-step 1 --tif-output ... --timeout 120 --cache-gb 8`,
    the same with the 9.362 um volume and `--num-slices 29`, then
    `python offset_generic.py <coarse> <sharp> 9.362 2.403 <out>`; the window start is 24 plus the
@@ -863,10 +863,10 @@ and some scripts still live only there; they are listed so they can be copied in
    s1203g_b0..b4, s1203_rr0, s1203_rr2_0, big2, big3, z1203g_b0, canon1203, canon1203sel,
    canon1203big, canoncen), each with its kernel log next to it. The original 63-layer survey
    pipeline is data/survey_pipeline.sh.
-6. **Controls.** `scripts_0911/fliptest/driver.py`, `driver_b2.py`, `driver_b3.py` run the 12
+6. **Controls.** `data/scripts_0911/fliptest/driver.py`, `driver_b2.py`, `driver_b3.py` run the 12
    PHerc. 0139 windows at [24,86), [1,63) and [23,85); `window3way.py` joins them. The single-segment
    check is `submissions/official_inference_layer_window/repro_notebook.ipynb`.
-7. **Blind sheets.** `scripts_0911/sheet2_pick.py`, `blind_sheet2.py`, `data/evidence_0911/score_blind.py`;
+7. **Blind sheets.** `data/scripts_0911/sheet2_pick.py`, `blind_sheet2.py`, `data/evidence_0911/score_blind.py`;
    sheet 1's generator is data/blind_sheet.py (it mixed in crops from other work of ours, so it is
    not publishable as is; Appendix C).
 
@@ -1089,7 +1089,7 @@ table. Nothing was changed on the boxes and no run was started for this.
 | data/p1203_sel/windows.json | p1203_sel/ | the 8 clean windows (5.2) |
 | data/p1203g_survey/windows.json, layer_windows_b0..b4.json | p1203g_survey/ | the 36 new-band windows and their depth shifts and model windows |
 | data/p1203g/seeds.json, grow_params.json, onscroll.json, grown_names.txt | p1203g/ | the 60 seeds, the grow settings, the on-scroll check of the first 24 surfaces, the 60 surface names (a directory listing) |
-| data/p1203_fine/affine_1203.json, affine_1203_v2.json, offset1203.json | p1203_fine/ | the 11 Sep and 12 Sep transforms (v2 is byte-identical to scripts_0911/affine_1203_v2.json) and the first-patch depth match |
+| data/p1203_fine/affine_1203.json, affine_1203_v2.json, offset1203.json | p1203_fine/ | the 11 Sep and 12 Sep transforms (v2 is byte-identical to data/scripts_0911/affine_1203_v2.json) and the first-patch depth match |
 | data/survey_sel.py, survey_pipeline.sh | box A root | the 26-window selector and the 63-layer survey pipeline |
 | data/seeds_1203g.py, fetch_ngrid_1203.py | box A root | seed picker and normal-grid fetch for the new band; their docstrings were left over from another scroll's version and name it, while the code reads the PHerc. 1203 prediction and writes p1203g/; fix before any release |
 | data/textlike.py | box A root | the shape-feature code (ink share, blob, stroke, elongation, row measures); one comment names another scroll |
@@ -1106,5 +1106,5 @@ Not copied: the meshes and renders (TIFF stacks, gigabytes each), `p1203g/grown/
 Files in `data/` that still carry another scroll's name and must be cleaned before anything goes
 public: the four scripts flagged above and textlike_calib.json (the section-4 leak grep, run over
 `data/` on 12 Sep, lists exactly those five). Scripts sel1203.py, offset1203.py and
-offset_generic.py were not copied because the scripts_0911/ copies are byte-identical to box A's
+offset_generic.py were not copied because the data/scripts_0911/ copies are byte-identical to box A's
 (md5 checked 12 Sep).
