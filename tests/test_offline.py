@@ -701,7 +701,7 @@ def test_corrections():
     # superseded on 21 Sep: the two effects were separated by measurement, so the README no longer
     # says "upper bound on the grid step alone" -- it gives the split. test_grid_vs_transform pins it.
     check("downstream/README.md separates the grid step from the transform",
-          "A quarter of that is the grid step and three quarters is the transform" in dsr)
+          "A quarter of that is the grid step, and three quarters is the transform plus anything else" in dsr)
     check("and no longer says nothing else changed", "and changing nothing else" not in dsr)
 
     # 6. the sixth external number

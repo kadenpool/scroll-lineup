@@ -17,7 +17,7 @@ All four are the centre 21-layer window, the model's own threshold of 0.5 for "c
 same held-out validation region, 178,146 pixels on the label grid. For comparison, the same mesh in its
 own 9.362 um scan, with no transform at all, reads 0.877 (`depth/`).
 
-Read the middle three rows together: same render path, same model, same labels, only the matrix changes.
+Read the middle three rows together: same render path, same model, same labels, and the matrix changes; v2_0139a's also carries the surface into a different 2.4 um scan of the same scroll (2.403 um, where the other two land in the 2.399 um scan).
 The official transform reads best, this tool's better transform next, its worse one last, which is the
 order of their graded error. The first two rows differ only in how the image is rendered, and that
 costs 0.055, about what this tool's transforms cost against the official one: 0.045 and 0.067. Part of
@@ -61,13 +61,12 @@ with the smooth (Catmull-Rom) sampling from villa#1818 reads 0.876 over the regi
 it is higher in only 10 of 22 blocks of 64 px, with a 95 % interval of -0.086 to +0.037 across zero.
 It does find more of the labelled ink at the threshold, 61.7 % against 54.4 %.
 
-**Which mesh you render from is worth 0.040, which is 72 % of the gap. A quarter of that is the grid step and three quarters is the transform.** Each segment is
+**Which mesh you render from is worth 0.040, which is 72 % of the gap. A quarter of that is the grid step, and three quarters is the transform plus anything else that differs between the two meshes.** Each segment is
 published as several meshes, one per frame, and their grid steps differ: the mesh in the 9.362 um frame
 steps 20 voxels, which is 187 um, while the mesh in the 2.399 um frame steps 20 voxels of 2.399 um,
 which is 48 um. Rendering the finer one, which needs no transform because it is already in that scan's frame,
 reads **0.897 against 0.857**, and finds **72.2 % of the labelled ink against
-54.4 %**. Block by block it is better in 16 of 22 blocks of 64 px, mean 0.088 with a 95 % interval of
--0.155 to -0.025, which excludes zero; at 96 px it is 11 of 17 and the interval crosses it.
+54.4 %**. Block by block it is better in 16 of 22 blocks of 64 px, and the official arm minus this one averages -0.088, with a 95 % interval of -0.155 to -0.025, which excludes zero; at 96 px it is better in 11 of 17 and the interval crosses zero.
 
 **Two things change together here, so they were separated.** The finer mesh is finer *and* needs no
 transform, while the coarser one is carried by the catalogue's matrix. `grid_vs_transform.json` adds a
@@ -80,9 +79,7 @@ one's density, with no transform.
 | fine mesh, grid decimated to 192 um, no transform | **0.8869** | **70.2 %** |
 | fine mesh, 48 um grid, no transform | 0.8967 | 72.2 % |
 
-**The grid step is worth 0.0098 of the 0.0395, a quarter. The transform carries 0.0298, three
-quarters.** Coarsening the grid fourfold costs two points of found ink; the transform costs sixteen
-more. So the 0.040 is still what picking the coarse mesh costs, because picking it forces the
+**The grid step is worth 0.0098 of the 0.0395, a quarter. The transform, with anything else that differs between the two meshes, carries 0.0298, three quarters.** Coarsening the grid fourfold costs two points of found ink; the transform and those other differences cost sixteen more. So the 0.040 is still what picking the coarse mesh costs, because picking it forces the
 transform, but the density is not what was hurting the reading. The remainder is an upper bound on the
 transform's share, since the decimated mesh is not the published coarse one.
 

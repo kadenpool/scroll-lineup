@@ -32,9 +32,7 @@ the rest by a clear gap rather than by where a threshold was drawn.
 
 The last column is the reason the four are not one kind of problem. For each transform it fits the
 best affine those same published landmarks allow, by least squares, and reports how far that fit
-lands from them. **For 24 of the 25 the published matrix already is that fit**, to within 0.1 um. So
-for three of the four flagged, no affine can hit those landmarks: the residual is a property of the
-landmark set, not a fault in the matrix, and the thing to look at is the landmarks.
+lands from them. **For 24 of the 25 the published matrix already is that fit**, to within 0.1 um. So for three of the four flagged, no affine can hit those landmarks, and no better matrix exists for them: either the landmarks are off or the two scans bend relative to each other, which one matrix cannot follow. The thing to look at is the landmarks and the scans, not the matrix.
 
 One is different. `PHerc1667 1.129 to 2.399` misses its own six landmarks by 123.3 um where a
 least-squares affine on the same six points misses by 2.2 um. That is a matrix that is not the fit
@@ -43,9 +41,7 @@ landmark input, lands 6.3 um from those landmarks (`../robustness/r6_1667roi/`),
 pair of the 26 where this tool beats the official matrix on landmarks.
 
 What that costs a surface carried through it is measured, with controls and a placebo, in
-[ScrollPrize/villa#1843](https://github.com/ScrollPrize/villa/issues/1843): the 19 published
-PHerc1667 meshes in the 1.129 um frame sit off the papyrus, and moving them onto that fit puts them
-back on it.
+[ScrollPrize/villa#1843](https://github.com/ScrollPrize/villa/issues/1843): of the 19 published PHerc1667 meshes in the 1.129 um frame, the four measured sit off the papyrus, and moving them onto that fit moves them back toward it (on the two segments named before they were run, 27 of 46 patches, p = 0.031).
 
 ## Which copy: the challenge publishes two, and for one pair they disagree
 
