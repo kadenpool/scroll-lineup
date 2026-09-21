@@ -47,6 +47,10 @@ its own landmarks gets. Up: how close the published matrix gets. On the diagonal
 already is that fit; one transform sits far above it. Drawn by `plot_landmark_fit.py` from
 `results.txt`.*
 
+`reproduce_1667.py` re-derives that transform's numbers from the public bucket in about three minutes,
+prints the least-squares matrix in the catalogue's own form, ready to replace the published one, and
+works one patch of one surface through both (`--quick` for the matrix alone).
+
 What that costs a surface carried through it is measured, with controls and a placebo, in
 [ScrollPrize/villa#1843](https://github.com/ScrollPrize/villa/issues/1843): of the 19 published PHerc1667 meshes in the 1.129 um frame, the four measured sit off the papyrus, and moving them onto that fit moves them back toward it (on the two segments named before they were run, 27 of 46 patches, p = 0.031).
 
