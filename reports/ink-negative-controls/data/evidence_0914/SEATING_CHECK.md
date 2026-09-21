@@ -28,7 +28,7 @@ therefore not the explanation for our negative, and the three scroll conclusions
 The duplicate check described one test. There are **two**, on different scales, and conflating
 them would have produced a wrong verdict.
 
-| | `seat_mesh.seating_score` | `seat_mesh.sheet_contrast` |
+| | `seat_mesh.seating_score()` | `seat_mesh.sheet_contrast()` |
 |---|---|---|
 | input | a tifxyz mesh **+ a volume** | an **already-rendered** layer stack |
 | what it does | samples 500 surface points, takes the grid normal at each, reads the volume at 0 and at ±`gap` along that normal | takes the mean intensity profile across layers over pixels valid in every layer |
@@ -308,7 +308,7 @@ The author has 100 public repos; every other one is crypto / AI-agent listware. 
 
 ## 8. Files, and what was run
 
-On box A underseatcheck/`: their unmodified `ink/` tree plus the drivers written
+On box A under `<run-dir>/seatcheck/`: their unmodified `ink/` tree plus the drivers written
 here — `handtest_seat.py` (the L44 hand-test), `calibrate.py` (bands A and B), `score_ours.py`
 (79 meshes), `contrast.py` (`sheet_contrast` on matched renders), `depthprofile.py` and
 `depthprofile_best.py` (the 161-layer offset curves), `diag.py` (probe resolution and the in-plane

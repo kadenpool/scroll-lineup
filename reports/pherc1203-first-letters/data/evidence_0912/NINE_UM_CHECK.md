@@ -255,7 +255,7 @@ Offsets in voxels (9.362 um) from the mesh; ink share, and in brackets AUC (know
 - box B `<work-dir>/n9/`: `preds/` (every probability map, uint8 TIFF), `results/` (JSON, figure, surface slices),
   `ctl/` (control render, pooled crops, labels), the 101-slice renders of r105_c25 and r75_c45 (`data/`; the other four were
   deleted to free box B disk and can be re-rendered in ~2 min each with `render_one.sh` on box A), villa source copy `src/`,
-  extra Python packages `pydeps/` (kept out of the shared venv), checkpoints `ckpts/`, logs. levern9/`:
+  extra Python packages `pydeps/` (kept out of the shared venv), checkpoints `ckpts/`, logs. box A `<run-dir>/n9/`:
   scripts, logs and small copies of the maps only (all renders deleted after copying; footprint about 0.1 GB).
 
 ## 9. Running log (appended as results landed; AEST)
@@ -348,7 +348,8 @@ more overlap numbers cannot.
 
 ### 10.2 What was done
 
-1. **Windows.** All 42 PHerc0846A 7.5 mm survey windows that have 2 um maps. The 17 windows ever named as a pick in (zoom regions, one-sided list, two-sided strongest, top-8 re-run, "new strong") were kept out of the
+1. **Windows.** All 42 PHerc0846A 7.5 mm survey windows that have 2 um maps. The 17 windows ever named as a pick in
+   our working log (zoom regions, one-sided list, two-sided strongest, top-8 re-run, "new strong") were kept out of the
    null before any result. That leaves 25 ordinary windows: 15 from survey pass 2 (2 um maps with the corrected depth
    window) and 10 from pass 1 (2 um maps at the default depth window 24-86). Their 2 um ink share runs from 0% to 37%:
    20 of them are 0-10%; 5 are 22-37%, as high as the candidates. The 11 picked-but-not-zoomed windows were not run
@@ -601,7 +602,7 @@ matched r 0.27-0.48 (s43) / 0.14-0.48 (s42), opposite order -0.14 to 0.08 (`null
   as printed; `results/null.json`, `null_ctx.json`, `null_summary.json`, `blank_null.json`, `orient.json`,
   `direct_vs_15mm.json`, `known_text_windows.json`, `counts.txt`).
 - box B `<work-dir>/n9null/` (515 MB): every 9 um map (`preds/` direct, `preds_ctx/` context), 2 um map copies
-  (`maps2um/`), surface slices, results. levern9null/` (9 MB): scripts, logs, context meshes. All renders
+  (`maps2um/`), surface slices, results. box A `<run-dir>/n9null/` (9 MB): scripts, logs, context meshes. All renders
   deleted after use.
 - Not run: the 11 windows picked earlier but not zoomed (lists in `null/lists/`; they can be run with `worker_lever.sh`).
 

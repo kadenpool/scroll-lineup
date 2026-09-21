@@ -7,9 +7,8 @@ from PIL import Image, ImageDraw
 from scipy import ndimage as ndi
 from numpy.fft import rfft2, irfft2
 Image.MAX_IMAGE_PIXELS = None
-import sys
-CD, FD, UC, UF, D = sys.argv[1], sys.argv[2], float(sys.argv[3]), float(sys.argv[4]), sys.argv[5]; S = UC / UF
-cf = sorted(glob.glob(f"{CD}/*.tif")); ff = sorted(glob.glob(f"{FD}/*.tif"))
+D = "<run-dir>/p1203_fine"; S = 9.362 / 2.403
+cf = sorted(glob.glob(f"{D}/patch_coarse_29/*.tif")); ff = sorted(glob.glob(f"{D}/patch_L0_109/*.tif"))
 Cst = np.stack([np.asarray(Image.open(f)).astype(np.float32) for f in cf]); nC = len(cf); cc0 = (nC - 1) / 2
 h, w = Cst.shape[1:]
 F2 = np.stack([ndi.zoom(np.asarray(Image.open(f)).astype(np.float32), 1 / S, order=1) for f in ff]); nF = len(ff); fc0 = (nF - 1) / 2
@@ -46,7 +45,7 @@ out = {"best_ncc": best[0], "dw_coarse_layers": dw_ref, "dw_fine_layers": dw_ref
        "curve": [{"dw": r[1], "ncc": r[0], "dy": r[2], "dx": r[3]} for r in res],
        "meaning": "fine layer (54 + dw_fine_layers) sits where the coarse render has the mesh surface (layer 14); "
                   "positive = the sheet sits deeper in the fine stack than the mesh says"}
-json.dump(out, open(f"{D}/offset.json", "w"), indent=1)
+json.dump(out, open(f"{D}/offset1203.json", "w"), indent=1)
 print(json.dumps({k: v for k, v in out.items() if k != "curve"}), flush=True)
 def g(x):
     m = x > 0; lo, hi = np.percentile(x[m], [1, 99]) if m.any() else (0, 1); return (np.clip((x - lo) / max(hi - lo, 1e-6), 0, 1) * 255).astype(np.uint8)
@@ -57,4 +56,4 @@ ims = []
 for t, l in zip(tiles, labs):
     im = Image.fromarray(t).resize((700, 700)).convert("RGB"); d = ImageDraw.Draw(im); d.rectangle([0, 0, 700, 20], fill=(0, 0, 0)); d.text((5, 4), l, fill=(255, 80, 80))
     ims.append(np.pad(np.asarray(im), ((4, 4), (4, 4), (0, 0)), constant_values=255))
-Image.fromarray(np.hstack(ims)).save(f"{D}/offset.png"); print("OFFSET_DONE", flush=True)
+Image.fromarray(np.hstack(ims)).save(f"{D}/offset1203.png"); print("OFFSET_DONE", flush=True)

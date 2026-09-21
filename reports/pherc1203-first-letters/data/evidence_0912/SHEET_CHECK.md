@@ -64,7 +64,7 @@ sheets, would show texture that looks like ink everywhere. This check measures w
 6. **Coverage.** The six 15 mm zoom regions (also scored on their central 7.5 mm quarter, column "band (centre 7.5 mm)"), the
    ten survey windows with the highest 2 um-model ink share and the eleven lowest (papyrus share >= 0.5), plus 7 control
    windows: 34 renders, 18-35 s each for 7.5 mm, 60-130 s for 15 mm. Renders were deleted right after measuring; box A
-   never went below 11.1 GB free; 11 MB of results/logs/scripts remain in box A:sc/ (mine).
+   never went below 11.1 GB free; 11 MB of results/logs/scripts remain in box A:<run-dir>/sc/ (mine).
    The two 101-layer zoom renders and the 101-layer 0139 render left on box B from the 9 um check were re-scored with the
    same code and agree with the fresh renders (band 0.08 vs 0.08 for r105_c25, 0.07 vs 0.09 for r75_c45).
 
@@ -197,4 +197,4 @@ model liking other sheets of this scroll, not the mesh being off its sheet.
   band / jump metrics from the saved profiles; `metrics_41.json`), `sheet_report.py` (verdicts, `tables.md`, both
   PNGs), `confound.py` (correlations), `period.py` (sheet spacing from the 101-layer stacks), `run_fork101.sh`.
 - Data kept: `results/*.npz` (per-tile profiles, centre layer 2x down) and `results_fork101/`; render logs in
-  `logs_boxA/`. Nothing was left on box A exceptsc/` (11 MB) and on box B `<work-dir>/sc/` (small).
+  `logs_boxA/`. Nothing was left on box A except `<run-dir>/sc/` (11 MB) and on box B `<work-dir>/sc/` (small).

@@ -4,13 +4,14 @@ catalogue); writes landmark_fit.png next to it.
 
   python3 plot_landmark_fit.py [results.txt] [out.png]
 """
-import re, sys
+import os, re, sys
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-src = sys.argv[1] if len(sys.argv) > 1 else "results.txt"
-out = sys.argv[2] if len(sys.argv) > 2 else "landmark_fit.png"
+HERE = os.path.dirname(os.path.abspath(__file__))
+src = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "results.txt")
+out = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, "landmark_fit.png")
 rows = []
 for line in open(src):
     c = [x.strip() for x in line.strip().strip("|").split("|")]

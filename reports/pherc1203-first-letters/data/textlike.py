@@ -13,16 +13,16 @@ def features(P, um_per_px, down=4):
     h, w = P.shape[0] // down * down, P.shape[1] // down * down
     Pd = P[:h, :w].reshape(h // down, down, w // down, down).mean((1, 3)); px = um_per_px * down / 1000.0
     valid = ndi.binary_erosion(Pd > 0.02, iterations=3)
-    if valid.sum < 1000: return None
+    if valid.sum() < 1000: return None
     B = (Pd > 0.5) & valid
-    out = {"ink_frac": float(B.sum / valid.sum)}
+    out = {"ink_frac": float(B.sum() / valid.sum())}
     lab, n = ndi.label(B)
     if n == 0:
         out.update(huge_frac=0.0, median_blob_mm2=0.0, stroke_mm=0.0, n_blobs=0)
     else:
         idx = np.arange(1, n + 1); areas = ndi.sum(B, lab, idx) * px * px
         dt = ndi.distance_transform_edt(B) * px; thick = 2 * ndi.maximum(dt, lab, idx)
-        o = np.argsort(thick); cw = np.cumsum(areas[o]) / areas.sum
+        o = np.argsort(thick); cw = np.cumsum(areas[o]) / areas.sum()
         # elongation: major/minor axis ratio of each blob > 0.05 mm2 (second moments); area-weighted median.
         # Letter strokes are long; spots are round (the visual difference seen on 1203 vs 343P, 11 Sep).
         el, wts = [], []
@@ -35,17 +35,17 @@ def features(P, um_per_px, down=4):
         if el:
             o2 = np.argsort(el); cw2 = np.cumsum(np.array(wts)[o2]) / np.sum(wts); out['elongation'] = float(np.array(el)[o2][np.searchsorted(cw2, 0.5)])
         else: out['elongation'] = 0.0
-        out.update(huge_frac=float(areas[areas > 4.0].sum / areas.sum), median_blob_mm2=float(np.median(areas)),
+        out.update(huge_frac=float(areas[areas > 4.0].sum() / areas.sum()), median_blob_mm2=float(np.median(areas)),
                    stroke_mm=float(thick[o][np.searchsorted(cw, 0.5)]), n_blobs=int(n))
-    X = np.where(valid, Pd - Pd[valid].mean, 0.0).astype(np.float32); best = 0.0
+    X = np.where(valid, Pd - Pd[valid].mean(), 0.0).astype(np.float32); best = 0.0
     lo, hi = int(round(2.5 / px)), int(round(8.0 / px))
     for ang in range(0, 180, 5):
         R = ndi.rotate(X, ang, reshape=False, order=1); M = ndi.rotate(valid.astype(np.float32), ang, reshape=False, order=0)
         prof = R.sum(1) / np.maximum(M.sum(1), 1); prof = prof[M.sum(1) > 0.5 * M.shape[1]]
         if len(prof) < hi + 5: continue
-        prof = prof - prof.mean; den = (prof * prof).sum
+        prof = prof - prof.mean(); den = (prof * prof).sum()
         if den <= 0: continue
-        ac = np.array([(prof[:-L] * prof[L:]).sum / den for L in range(lo, min(hi, len(prof) - 5))])
-        if len(ac): best = max(best, float(ac.max))
+        ac = np.array([(prof[:-L] * prof[L:]).sum() / den for L in range(lo, min(hi, len(prof) - 5))])
+        if len(ac): best = max(best, float(ac.max()))
     out["row_score"] = best
     return out

@@ -7,7 +7,7 @@ from scipy import ndimage as ndi
 R = "<run-dir>"; OUT = f"{R}/p1203g_survey"; os.makedirs(OUT, exist_ok=True)
 H = "https://vesuvius-challenge-open-data.s3.amazonaws.com/"; C = "PHerc1203/volumes/20250820131727-9.362um-1.2m-113keV-masked.zarr/"
 ZLO, ZHI = 7936 + 40, 11829 - 40; K = 40; P = 20
-done = {w["name"] for w in json.load(open(f"{OUT}/windows.json"))} if os.path.exists(f"{OUT}/windows.json") else set
+done = {w["name"] for w in json.load(open(f"{OUT}/windows.json"))} if os.path.exists(f"{OUT}/windows.json") else set()
 wins = json.load(open(f"{OUT}/windows.json")) if done else []
 for d in sorted(glob.glob(f"{R}/p1203g/grown/*/")):
     sid = d.rstrip("/").split("/")[-1]
@@ -15,7 +15,7 @@ for d in sorted(glob.glob(f"{R}/p1203g/grown/*/")):
     try: X, Y, Z = (np.asarray(Image.open(f"{d}{c}.tif")).astype(np.float32) for c in "xyz")
     except Exception as e: print("!!! SKIP (unreadable, maybe still being written):", sid, e, flush=True); continue
     band = (X != -1) & (Z > ZLO) & (Z < ZHI)
-    if band.sum < 1200: continue
+    if band.sum() < 1200: continue
     rd = f"{OUT}/_coarse_{sid}"
     fl = sorted(glob.glob(f"{rd}/*.tif"))
     if not (len(fl) == 3 and all(os.path.getsize(f) > 1024 for f in fl)):        # reuse a good earlier render, else render
@@ -44,10 +44,10 @@ for d in sorted(glob.glob(f"{R}/p1203g/grown/*/")):
         keep = np.zeros_like(band); keep[r0:r0 + K, c0:c0 + K] = True; keep &= band
         name = f"{sid}_r{r0}_c{c0}"; wd = f"{OUT}/{name}"; os.makedirs(wd, exist_ok=True)
         for arr, cn in ((X, "x"), (Y, "y"), (Z, "z")):
-            v = arr.copy; v[~keep] = -1; Image.fromarray(v).save(f"{wd}/{cn}.tif")
+            v = arr.copy(); v[~keep] = -1; Image.fromarray(v).save(f"{wd}/{cn}.tif")
         meta = json.load(open(f"{d}meta.json")); meta.pop("bbox", None); json.dump(meta, open(f"{wd}/meta.json", "w"), indent=1)
-        wins.append({"name": name, "segment": sid, "rows": [r0, r0 + K], "cols": [c0, c0 + K], "cells": int(keep.sum), "papyrus_share": s,
+        wins.append({"name": name, "segment": sid, "rows": [r0, r0 + K], "cols": [c0, c0 + K], "cells": int(keep.sum()), "papyrus_share": s,
                      "median_coarse_z": float(np.median(Z[keep])), "batch": len(wins) // 8})
-    print(sid, "band cells", int(band.sum), "picked", [(round(s, 2), r, c) for s, r, c in picked], flush=True)
+    print(sid, "band cells", int(band.sum()), "picked", [(round(s, 2), r, c) for s, r, c in picked], flush=True)
     json.dump(wins, open(f"{OUT}/windows.json", "w"), indent=1)                    # save after every surface (a crash loses one, not all)
 json.dump(wins, open(f"{OUT}/windows.json", "w"), indent=1); print("WINDOWS", len(wins))

@@ -10,17 +10,17 @@ wins = []
 for t in sorted(glob.glob(f"{R}/p1203/tif/*")):
     sid = os.path.basename(t); X, Y, Z = (np.asarray(Image.open(f"{t}/{c}.tif")).astype(np.float32) for c in "xyz")
     band = (X != -1) & (Y != -1) & (Z != -1) & (Z > ZLO) & (Z < ZHI)
-    if band.sum < 800: continue
-    rr, cc = np.nonzero(band); r_lo, c_lo = rr.min, cc.min
-    for r0 in range(r_lo, rr.max + 1, K):
-        for c0 in range(c_lo, cc.max + 1, K):
+    if band.sum() < 800: continue
+    rr, cc = np.nonzero(band); r_lo, c_lo = rr.min(), cc.min()
+    for r0 in range(r_lo, rr.max() + 1, K):
+        for c0 in range(c_lo, cc.max() + 1, K):
             keep = np.zeros_like(band); keep[r0:r0 + K, c0:c0 + K] = True; keep &= band
-            n = int(keep.sum)
+            n = int(keep.sum())
             if n < 800: continue
             if any(s == sid and abs(r - r0) < K // 2 and abs(c - c0) < K // 2 for s, r, c in done): continue
             name = f"{sid}_s_r{r0}_c{c0}"; d = f"{OUT}/{name}"; os.makedirs(d, exist_ok=True)
             for arr, cn in ((X, "x"), (Y, "y"), (Z, "z")):
-                v = arr.copy; v[~keep] = -1; Image.fromarray(v).save(f"{d}/{cn}.tif")
+                v = arr.copy(); v[~keep] = -1; Image.fromarray(v).save(f"{d}/{cn}.tif")
             meta = json.load(open(f"{t}/meta.json")); meta.pop("bbox", None); json.dump(meta, open(f"{d}/meta.json", "w"), indent=1)
             wins.append({"name": name, "segment": sid, "rows": [int(r0), int(r0 + K)], "cols": [int(c0), int(c0 + K)], "cells": n,
                          "median_coarse_z": float(np.median(Z[keep])), "batch": len(wins) // 8})

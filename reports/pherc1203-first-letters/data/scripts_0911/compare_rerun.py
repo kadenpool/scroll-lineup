@@ -18,7 +18,7 @@ for n in names:
             p = src.get(f"{n}/{s}") if src is not None else f"{rr}/{n}/{s}/canon_pred_asinput.png"
             if not p or not os.path.exists(p): tiles.append(np.full((T, T), 40, np.uint8)); line[f"{tag}_{s}"] = None; continue
             A = np.asarray(Image.open(p)); f = features(A.astype(np.float32) / 255, 2.403)
-            line[f"{tag}_{s}"] = {k: round(v, 3) for k, v in (f or {}).items if isinstance(v, float)}
+            line[f"{tag}_{s}"] = {k: round(v, 3) for k, v in (f or {}).items() if isinstance(v, float)}
             tiles.append(np.asarray(Image.fromarray(A).resize((T, T), Image.BILINEAR)))
     res.append(line); rows.append(np.hstack([np.pad(t, 3, constant_values=255) for t in tiles]))
     b = [line[k]["ink_frac"] * 100 if line[k] else float("nan") for k in ("before_C", "before_D", "after_C", "after_D")]

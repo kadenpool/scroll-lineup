@@ -3,7 +3,7 @@
 Private preparation only (Kaden, 22:55 AEST: "if A doesn't work then go to B"). Nothing public: no GitHub, no Discord,
 the Kaggle dataset is private, the kernel folder is written but NOT pushed. Times below are AEST from `date`
 (box A's clock is UTC, +10 h). Started 22:57, renders done 23:34, dry run 23:11–23:17, upload started 23:34. Work lives
-on box A inp0813/` (17 GB while the tars and their uncut copies both existed; 8.6 GB at the end after
+on box A in `<run-dir>/p0813/` (17 GB while the tars and their uncut copies both existed; 8.6 GB at the end after
 the uncut copies were deleted once the upload was verified; box A has 130 GB free) and the
 scripts, selection, manifest, pictures and dry-run summary are copied to `evidence_0912/plan_b_0813_files/`.
 
@@ -30,7 +30,7 @@ scripts, selection, manifest, pictures and dry-run summary are copied to `eviden
    (`check_ds.sh`, 171 pages of 200): **34,073 files, 8,224,512,130 bytes, every name and byte size equal to the local
    copy, 0 missing / 0 mismatched / 0 extra**; 36 top-level entries = 32 meshes + `ctl_w016` + `villa_vesuvius_src` +
    the two JSONs.
-6. **Kernel folder leverkag/n9_0813/`** (`nb.ipynb` + `kernel-metadata.json`, private, id
+6. **Kernel folder box A `<run-dir>/kag/n9_0813/`** (`nb.ipynb` + `kernel-metadata.json`, private, id
    `<kaggle-user>/vesuvius-n9-0813`, GPU, internet): runs ink_9um seed43 step-060000 and seed42 step-010000, both depth
    orders, on every mesh's on-sheet window, both off-sheet windows and the control; writes `results.json` +
    `summary.md` (ink share > 0.5 per window/checkpoint/direction, on/off ratio, control AUC). **Not pushed.** Its
@@ -39,7 +39,7 @@ scripts, selection, manifest, pictures and dry-run summary are copied to `eviden
    called ink — the 9 µm check's numbers to the digit (0.877 / 0.53 / 18.9% / 57% / 7.4%)**, 0 missing / 0 unexpected
    checkpoint keys, layer indices 2..18 and 18..2. First 0813 mesh (z7104_w020): 8.9% forward / 13.6% reverse on the
    sheet, blotchy blobs, no rows (one mesh, one checkpoint, no off-sheet windows yet: a smoke test, not a verdict).
-7. **Push (one command, from box A, only after Plan A's verdict):** `ssh box A 'p0813/push_kernel.sh'`
+7. **Push (one command, from box A, only after Plan A's verdict):** `ssh box A '<run-dir>/p0813/push_kernel.sh'`
    (refuses unless the metadata says private and the id is right; then `kaggle kernels status <kaggle-user>/vesuvius-n9-0813`
    and `kaggle kernels output <kaggle-user>/vesuvius-n9-0813 -p kag_out/n9_0813`). Expected GPU time on 2×T4: roughly
    2–5 h (267 Mpx of canvas per window, 55% of it on-mesh so villa's occupancy scan skips the rest; 3 windows × 2
@@ -212,7 +212,7 @@ spread on both checkpoints and both directions gets the by-eye side-by-side.
 ## 6. Dry run of the kernel code on box A CPU (23:11–23:17 AEST)
 
 The unchanged `n9_0813.py` run on box A with `N9_INPUT=p0813/dry_in` (the real tars `ctl_w016.tar`, `z7104_w020.tar`,
-`villa_vesuvius_src.tar` + `manifest.json`), `N9_DEVICE=cpu`, `N9_CKPT_DIR=ckpts` (the checkpoints the
+`villa_vesuvius_src.tar` + `manifest.json`), `N9_DEVICE=cpu`, `N9_CKPT_DIR=<run-dir>/ckpts` (the checkpoints the
 9 µm check used; byte sizes verified), `N9_WINDOWS=on`, `N9_CKPTS=seed43_step060000`, `N9_PIP=0`, 4 threads, nice 10.
 Log: `p0813/logs/dry_run.log`; outputs `p0813/dry_work/out/` (summary copied to `plan_b_0813_files/dry_run_summary.md`).
 
@@ -269,12 +269,12 @@ Log: `p0813/logs/dry_run.log`; outputs `p0813/dry_work/out/` (summary copied to 
 
 ## 8. Files
 
-- leverp0813/` (8.6 GB): `selection.json`, `manifest.json`, `select_and_check.py`, `render_one.sh`,
+- box A `<run-dir>/p0813/` (8.6 GB): `selection.json`, `manifest.json`, `select_and_check.py`, `render_one.sh`,
   `render_all.sh`, `cut3.py`, `inspect_render.py`, `manifest.py`, `n9_0813.py`, `make_nb.py`, `upload_ds.sh`,
   `push_kernel.sh`, `check_ds.sh`, `kds/` (the dataset exactly as uploaded, 7.7 GiB), `logs/` (every render and cut
   log, `dry_run.log`, `upload_ds.log`, `dataset_files_all.txt`, `check_ds.json`), `meshes-repo/` (the clone),
   `ctl/` (control render + labels), `villa_vesuvius_src/`, `dry_in/`, `dry_work/` (dry-run outputs and maps).
-- leverkag/n9_0813/`: `nb.ipynb`, `kernel-metadata.json` (not pushed).
+- box A `<run-dir>/kag/n9_0813/`: `nb.ipynb`, `kernel-metadata.json` (not pushed).
 - `evidence_0912/plan_b_0813_files/`: every script above, `selection.json`, `manifest.json`, `check_ds.json`,
   `dry_run.log`, `dry_run_summary.md`, the hand-test pictures (`hand_z7104_w020_s50_crop800.png`, `..._ds4.png`) and
   the first two 0813 maps (`dry_z7104_w020_seed43_{forward,reverse}_ds4.png`).

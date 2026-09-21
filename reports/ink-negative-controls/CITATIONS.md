@@ -94,7 +94,7 @@ HEAD `c836a52`, 14 Sep 2026, the newest item cited here.
 
 The seating test, from one README passage:
 
-> "`seat_mesh.sheet_contrast` measures how much brighter the middle of a rendered stack is than
+> "`seat_mesh.sheet_contrast()` measures how much brighter the middle of a rendered stack is than
 > plus or minus 25 layers out; correctly seated surfaces give +30.0 (PHerc0139) and +38.7
 > (PHercMANBp), a surface known to cut across the windings gives -0.1, and this registration gives
 > -0.2."

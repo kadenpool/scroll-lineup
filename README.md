@@ -710,12 +710,14 @@ was trained on that pipeline's output,
 including on this segment. **Most of that
 0.055 is now accounted for**: each segment is
 published as several meshes, one per frame,
-and rendering the 48 um-grid mesh instead of
-the 187 um-grid one, with nothing else
-changed, reads 0.897 and finds 72 % of the
-labelled ink against 54 %. Depth averaging
-and surface interpolation were tested the
-same way and are worth nothing and 0.019.
+and rendering the 48 um-grid mesh, which
+needs no transform, instead of the 187 um-grid
+one carried by the official transform, reads
+0.897 and finds 72 % of the labelled ink
+against 54 %; a quarter of that gain is the
+grid step. Depth averaging and surface
+interpolation were tested the same way and
+are worth nothing and 0.018.
 `downstream/` has all eight arms.
 
 - **One affine matrix. No bending, no

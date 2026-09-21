@@ -10,7 +10,7 @@ python audit/audit_landmarks.py            # about 4 s, reads only the public me
 python audit/audit_landmarks.py local.json # or point it at a local copy
 ```
 
-It needs numpy and fsspec, both of which the tool already requires. It uses nothing else from this
+It needs numpy, fsspec and s3fs, all of which the tool already requires. It uses nothing else from this
 repository, so it can be lifted out and run on its own.
 
 ## What it reports today
@@ -52,7 +52,7 @@ prints the least-squares matrix in the catalogue's own form, ready to replace th
 works one patch of one surface through both (`--quick` for the matrix alone).
 
 What that costs a surface carried through it is measured, with controls and a placebo, in
-[ScrollPrize/villa#1843](https://github.com/ScrollPrize/villa/issues/1843): of the 19 published PHerc1667 meshes in the 1.129 um frame, moving the four measured onto that fit puts them on denser papyrus (on the two segments named before they were run, 27 of 46 patches, p = 0.031).
+[ScrollPrize/villa#1843](https://github.com/ScrollPrize/villa/issues/1843): of the 19 published PHerc1667 meshes in the 1.129 um frame, four were measured, and moving them onto that fit puts the surface on denser papyrus on 35 of 57 patches where it moves at least 100 um (on the two segments named before they were run, 27 of 46, p = 0.031; w028, with 2 such patches, goes the other way).
 
 ## Which copy: the challenge publishes two, and for one pair they disagree
 

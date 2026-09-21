@@ -9,7 +9,7 @@ of that volume. A point outside is a published coordinate that addresses no publ
 
 ## The result, 8 Sep 2026
 
-838 surface/volume pairs; 833 measured, 5 not (fetch errors). **243 of the 833 have more than 0.1 % of their
+838 surface/volume pairs; 833 measured, 5 not (each has fewer than 50 valid points at this sampling, too few to measure). **243 of the 833 have more than 0.1 % of their
 points outside the volume they name (29 %).** The run's output is in `results_2026-09-08/`, three shards
 (`--shard 0/1/2 --nshards 3`), and this re-counts the figure from it:
 

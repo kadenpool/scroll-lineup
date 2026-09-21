@@ -15,7 +15,7 @@ real-ink detection, and does any candidate region then stand out from its own of
 
 ## 2. Base model and code (fixed)
 
-- Checkpoint: `scrollprize/ink_9um` `hybrid_3d2d-seed42/step-010000.pth` (leverckpts/seed42_step010000.pth`,
+- Checkpoint: `scrollprize/ink_9um` `hybrid_3d2d-seed42/step-010000.pth` (box A `<run-dir>/ckpts/seed42_step010000.pth`,
   138,360,039 bytes). Chosen in the brief; it was the better transfer checkpoint in the August benchmark and our own ranking.
   Its baseline on known text in the 9 um check: pixel AUC 0.849 (forward) on the pherc0139-w016 validation region.
 - Training and inference code: villa `vesuvius.ink_detection` at commit `777cb16cf9208b35897b231843174f2440d9f1f1`
@@ -151,7 +151,7 @@ Same datasets, same seed (42), same evaluation code for both.
 - `evidence_0912/PLAN_A_RESULT.md`: recipe, baselines, before/after table per test, gate verdict, caveats.
 - Pictures `evidence_0912/plan_a_*.png`: before/after maps on candidates r105_c25 and r30_c105 (the two that stood out
   most in the 9 um check) and on the w016 validation crop.
-- Checkpoints: Kaggle output `a0846_head_final.pth` / `a0846_full_final.pth`, copied to leverckpts/`
+- Checkpoints: Kaggle output `a0846_head_final.pth` / `a0846_full_final.pth`, copied to box A `<run-dir>/ckpts/`
   under the same names. Datasets `squiffymccat/a0846-text9um` and `squiffymccat/a0846-neg9um` (private).
 - Everything in this file is fixed; anything changed after data was seen is listed in PLAN_A_RESULT.md under
   "deviations from the pre-registration" with the reason.

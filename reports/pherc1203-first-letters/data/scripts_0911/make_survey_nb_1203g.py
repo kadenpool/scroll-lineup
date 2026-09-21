@@ -2,9 +2,9 @@
 (109-layer renders), each window with its own centred 62-layer window from layer_windows.json (default 24-85), C as rendered and D reversed, 2 GPUs."""
 import json, sys, os
 k = int(sys.argv[1]); R = "<run-dir>"; D = f"{R}/kag/s1203g_b{k}"; os.makedirs(D, exist_ok=True)
-src = open(f"{R}/run_canon_cal.py").read
+src = open(f"{R}/run_canon_cal.py").read()
 cell1 = r'''import os, glob, tarfile, subprocess, time, json, re
-t0 = time.time
+t0 = time.time()
 for t in sorted(glob.glob("/kaggle/input/**/*.tar", recursive=True)):
     tarfile.open(t).extractall("/tmp/x"); print("extracted", t, flush=True)
 def nlayers(d): return sum(1 for f in os.listdir(d) if re.fullmatch(r"\d+\.tif", f))
@@ -25,10 +25,10 @@ def launch(n, s, gpu, extra):
     env = dict(os.environ, CANON_LAYERS_DIR=wins[n], CANON_OUT_DIR=out, CUDA_VISIBLE_DEVICES=str(gpu), **senses(n)[s], **extra)
     return subprocess.Popen(["python", "-u", "/kaggle/working/run_canon.py"], env=env, stdout=open(f"{out}/run.log", "w"), stderr=subprocess.STDOUT), out
 def collect(n, s, out, rc):
-    txt = open(f"{out}/run.log").read; m = re.search(r"mean on covered pixels ([0-9.eE+-]+), >0.5 on ([0-9.eE+-]+)", txt)
+    txt = open(f"{out}/run.log").read(); m = re.search(r"mean on covered pixels ([0-9.eE+-]+), >0.5 on ([0-9.eE+-]+)", txt)
     summary[f"{n}/{s}"] = {"exit": rc, "mean": float(m.group(1)) if m else None, "frac_gt_0.5": float(m.group(2)) if m else None}
-    print(n, s, summary[f"{n}/{s}"], f"[{time.time-t0:.0f}s]", flush=True); json.dump(summary, open("/kaggle/working/survey_summary.json", "w"), indent=1)
-n, s = jobs[0]; p, out = launch(n, s, 0, {}); collect(n, s, out, p.wait)
+    print(n, s, summary[f"{n}/{s}"], f"[{time.time()-t0:.0f}s]", flush=True); json.dump(summary, open("/kaggle/working/survey_summary.json", "w"), indent=1)
+n, s = jobs[0]; p, out = launch(n, s, 0, {}); collect(n, s, out, p.wait())
 ck = sorted(glob.glob("/tmp/canon_models/**/*.ckpt", recursive=True)); extra = {"CANON_CKPT_PATH": ck[0]} if ck else {}
 pending = jobs[1:]; running = {}
 while pending or running:
@@ -36,9 +36,9 @@ while pending or running:
         if g not in running and pending:
             n, s = pending.pop(0); p, out = launch(n, s, g, extra); running[g] = (p, n, s, out)
     time.sleep(5)
-    for g, (p, n, s, out) in list(running.items):
-        if p.poll is not None: collect(n, s, out, p.returncode); del running[g]
-print("ALL_DONE", f"[{time.time-t0:.0f}s]", flush=True)
+    for g, (p, n, s, out) in list(running.items()):
+        if p.poll() is not None: collect(n, s, out, p.returncode); del running[g]
+print("ALL_DONE", f"[{time.time()-t0:.0f}s]", flush=True)
 '''
 nb = {"cells": [{"cell_type": "code", "execution_count": None, "metadata": {}, "outputs": [], "source": ["%%writefile /kaggle/working/run_canon.py\n" + src]},
                 {"cell_type": "code", "execution_count": None, "metadata": {}, "outputs": [], "source": [cell1]}],

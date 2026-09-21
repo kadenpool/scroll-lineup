@@ -1,8 +1,8 @@
 #!/bin/bash
 # 1203 new-surface survey, per batch of 8 windows: sharp render (109 layers, affine_1203.json) + coarse render (29 layers,
 # eligible scan) -> offset_generic.py measures where the sheet really sits -> per-window centred layer window saved in
-# layer_windows.json -> tar -> dataset <kaggle-user>/p1203g-survey-bK -> READY -> local copies removed -> Kaggle job.
-cd; H=https://vesuvius-challenge-open-data.s3.amazonaws.com/
+# layer_windows.json -> tar -> dataset ${KAGGLE_USER}/p1203g-survey-bK -> READY -> local copies removed -> Kaggle job.
+cd "<run-dir>"; H=https://vesuvius-challenge-open-data.s3.amazonaws.com/
 C=PHerc1203/volumes/20250820131727-9.362um-1.2m-113keV-masked.zarr/; F=PHerc1203/volumes/20260319130212-2.403um-0.2m-77keV-masked.zarr/
 set -a; source ~/.kaggle/token.env; set +a
 NB=$(./venv/bin/python -c "import json; print(max(w['batch'] for w in json.load(open('p1203g_survey/windows.json'))) + 1)")
@@ -31,11 +31,11 @@ PY
     if [ $n -eq 109 ]; then tar -cf $B/$d.tar -C p1203g_survey --transform "s,^${d}_S109,$d," ${d}_S109 && rm -rf $S $Q; fi
     echo "b$k $d slices=$n $(( $(date +%s) - t0 ))s"
   done
-  echo "{\"title\": \"p1203g survey b$k\", \"id\": \"<kaggle-user>/p1203g-survey-b$k\", \"licenses\": [{\"name\": \"other\"}]}" > $B/dataset-metadata.json
+  echo "{\"title\": \"p1203g survey b$k\", \"id\": \"${KAGGLE_USER}/p1203g-survey-b$k\", \"licenses\": [{\"name\": \"other\"}]}" > $B/dataset-metadata.json
   cp $B/layer_windows.json p1203g_survey/layer_windows_b$k.json
-  ./venv/bin/python -c "import json; w = json.load(open('$B/layer_windows.json')); f = [n for n, v in w.items if not (v['ncc'] or 0) > 0.15]; print('b$k depth-corrected', len(w) - len(f), 'of', len(w), '| FALLBACKS:', len(f), f)"
+  ./venv/bin/python -c "import json; w = json.load(open('$B/layer_windows.json')); f = [n for n, v in w.items() if not (v['ncc'] or 0) > 0.15]; print('b$k depth-corrected', len(w) - len(f), 'of', len(w), '| FALLBACKS:', len(f), f)"
   timeout 1800 ./kagenv/bin/kaggle datasets create -p $B 2>&1 | tail -1
-  s=""; for i in $(seq 1 60); do s=$(./kagenv/bin/kaggle datasets status <kaggle-user>/p1203g-survey-b$k 2>&1 | tail -1); [ "$s" = "ready" ] && break; sleep 20; done
+  s=""; for i in $(seq 1 60); do s=$(./kagenv/bin/kaggle datasets status ${KAGGLE_USER}/p1203g-survey-b$k 2>&1 | tail -1); [ "$s" = "ready" ] && break; sleep 20; done
   echo "b$k dataset status: $s"
   if [ "$s" = "ready" ]; then rm -f $B/*.tar; ./venv/bin/python make_survey_nb_1203g.py $k && for try in $(seq 1 12); do   # retry: 2 GPU sessions per account
     r=$(timeout 300 ./kagenv/bin/kaggle kernels push -p kag/s1203g_b$k --accelerator NvidiaTeslaT4 2>&1 | tail -1); echo "push try $try: $r"

@@ -11,7 +11,7 @@ z0, z1 = (10040 + 150) // s, (11829 - 150) // s
 pts = []
 rng = np.random.default_rng(0)
 for zc in range(z0, z1, max(1, (z1 - z0) // 40)):
-    sl = np.asarray(Z[zc]); yy, xx = np.nonzero(sl > (sl.max / 2 if sl.max > 1 else 0))
+    sl = np.asarray(Z[zc]); yy, xx = np.nonzero(sl > (sl.max() / 2 if sl.max() > 1 else 0))
     if len(yy) == 0: continue
     for i in rng.choice(len(yy), size=min(30, len(yy)), replace=False): pts.append((int(xx[i]) * s, int(yy[i]) * s, zc * s))
 rng.shuffle(pts); seeds = []

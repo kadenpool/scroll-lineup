@@ -26,8 +26,7 @@ this segment (below).
 
 ## What this folder needs, beyond the tool's own five packages
 
-The scripts here are not on the install path in the top-level README and they need more than it does.
-Stated plainly rather than discovered by traceback:
+The scripts here are not on the install path in the top-level README and they need more than it does:
 
 - `tifffile`, `zarr` and `numcodecs`, on top of numpy and scipy. `pip install tifffile zarr numcodecs`.
 - villa's `vc_render_tifxyz`, built separately. Nothing here builds it for you.
@@ -48,7 +47,7 @@ changing that one thing, with one caveat on the mesh, stated where it arises bel
 | the challenge's own input | 0.912 | 70.8 % |
 | the same, with its 4-plane depth averaging removed | **0.916** | 69.4 % |
 | this folder's render, from the challenge's own 2.399 um mesh, 48 um grid | **0.897** | 72.2 % |
-| this folder's render, with villa #1818's smooth surface interpolation | 0.876 | 61.7 % |
+| this folder's render, from the 9.362 um mesh, 187 um grid, with villa #1818's smooth surface interpolation | 0.876 | 61.7 % |
 | this folder's render, from the 9.362 um mesh, 187 um grid | 0.857 | 54.4 % |
 
 **Depth averaging is worth nothing here.** The challenge's input averages four planes of the 2.399 um
@@ -56,7 +55,7 @@ render, 2.399 um apart, into each 9.6 um layer; this folder samples one. `build_
 rebuilds their input taking one plane of each four instead of the mean, and it reads 0.916 rather than
 0.912, so if anything the averaging costs a little.
 
-**Interpolation is worth about 0.019, and it does not survive a block test.** Rendering the same arm
+**Interpolation is worth about 0.018, and it does not survive a block test.** Rendering the 187 um arm
 with the smooth (Catmull-Rom) sampling from villa#1818 reads 0.876 over the region, but block by block
 it is higher in only 10 of 22 blocks of 64 px, with a 95 % interval of -0.086 to +0.037 across zero.
 It does find more of the labelled ink at the threshold, 61.7 % against 54.4 %.
@@ -66,7 +65,7 @@ published as several meshes, one per frame, and their grid steps differ: the mes
 steps 20 voxels, which is 187 um, while the mesh in the 2.399 um frame steps 20 voxels of 2.399 um,
 which is 48 um. Rendering the finer one, which needs no transform because it is already in that scan's frame,
 reads **0.897 against 0.857**, and finds **72.2 % of the labelled ink against
-54.4 %**. Block by block it is better in 16 of 22 blocks of 64 px, and the official arm minus this one averages -0.088, with a 95 % interval of -0.155 to -0.025, which excludes zero; at 96 px it is better in 11 of 17 and the interval crosses zero.
+54.4 %**. Block by block it is better in 16 of 22 blocks of 64 px, and the coarse arm minus this one averages -0.088, with a 95 % interval of -0.155 to -0.025, which excludes zero; at 96 px it is better in 11 of 17 and the interval crosses zero.
 
 ![Where each mesh finds the labelled ink: coarse mesh above, fine mesh below](mesh_choice/mesh_choice.png)
 

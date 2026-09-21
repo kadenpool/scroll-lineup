@@ -20,8 +20,8 @@ for d in sorted(glob.glob("p1203g/grown/*/")):
         for k, v in zip(todo, ex.map(exists, todo)): cache[k] = v
     pk = [f"{int(z)//128}/{int(y)//128}/{int(x)//128}" for z, y, x in zip(Z[m][::7], Y[m][::7], X[m][::7])]
     share = float(np.mean([cache[k] for k in pk]))
-    res[sid] = {"points": int(m.sum), "share_on_stored_chunks": share, "z": [float(Z[m].min), float(Z[m].max)],
-                "y": [float(Y[m].min), float(Y[m].max)], "x": [float(X[m].min), float(X[m].max)]}
+    res[sid] = {"points": int(m.sum()), "share_on_stored_chunks": share, "z": [float(Z[m].min()), float(Z[m].max())],
+                "y": [float(Y[m].min()), float(Y[m].max())], "x": [float(X[m].min()), float(X[m].max())]}
     print(sid, res[sid], flush=True)
 json.dump(res, open("p1203g/onscroll.json", "w"), indent=1)
 # level-3 slice at z 11000 (raw uncompressed 128^3 chunks)
@@ -29,7 +29,7 @@ L = 3; zs = 11000 // 8; zc, zo = zs // 128, zs % 128; n = (6844 // 8 + 127) // 1
 img = np.zeros((n * 128, n * 128), np.uint8)
 def get(yx):
     y, x = yx
-    try: return yx, np.frombuffer(urllib.request.urlopen(f"{H}{L}/{zc}/{y}/{x}", timeout=60).read, np.uint8).reshape(128, 128, 128)[zo]
+    try: return yx, np.frombuffer(urllib.request.urlopen(f"{H}{L}/{zc}/{y}/{x}", timeout=60).read(), np.uint8).reshape(128, 128, 128)[zo]
     except urllib.error.HTTPError: return yx, None
 with ThreadPoolExecutor(16) as ex:
     for (y, x), a in ex.map(get, [(y, x) for y in range(n) for x in range(n)]):

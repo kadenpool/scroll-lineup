@@ -14,7 +14,7 @@ import sys, re, json, time, numpy as np, zarr, fsspec
 from scipy import ndimage as ndi
 from scipy.fft import rfft2, irfft2, next_fast_len
 from PIL import Image, ImageDraw
-t0 = time.time; B = "vesuvius-challenge-open-data"; WK = 4
+t0 = time.time(); B = "vesuvius-challenge-open-data"; WK = 4
 scroll, CVOL, FVOL, mm_hint = sys.argv[1], sys.argv[2], sys.argv[3], float(sys.argv[4])
 TAG = sys.argv[5] if len(sys.argv) > 5 else scroll
 um = lambda v: float(re.search(r"-(\d+\.\d+)um-", v).group(1))
@@ -30,18 +30,18 @@ C, LC = open_level(CVOL, min(5, max(0, int(round(np.log2(75.0 / um(CVOL)))))))
 vc = um(CVOL) * 2**LC
 F, LF = open_level(FVOL, max(0, int(round(np.log2(vc / um(FVOL))))))
 vf = um(FVOL) * 2**LF; r = vf / vc; NC = C.shape[0]
-log = lambda s: print(f"{s} ({time.time-t0:.0f}s)", flush=True)
+log = lambda s: print(f"{s} ({time.time()-t0:.0f}s)", flush=True)
 log(f"{scroll}: coarse L{LC} {C.shape} {vc:.1f}um | fine L{LF} {F.shape} {vf:.1f}um | ratio {r:.4f}")
 H = next_fast_len(int(max(C.shape[1], F.shape[1] * r) * 1.5) + 8); W = next_fast_len(int(max(C.shape[2], F.shape[2] * r) * 1.5) + 8)
 def pad(a):
     o = np.zeros((H, W), np.float32); h, w = min(a.shape[0], H), min(a.shape[1], W); o[:h, :w] = a[:h, :w]; return o
 def band(a):      # internal detail: cracks, wraps
     a = a.astype(np.float32); m = a > 0; b = ndi.gaussian_filter(a, 1.0) - ndi.gaussian_filter(a, 6.0); b[~m] = 0
-    s = b[m].std if m.sum > 100 else 1.0; return b / max(s, 1e-6)
+    s = b[m].std() if m.sum() > 100 else 1.0; return b / max(s, 1e-6)
 def outline(a):   # material mask, smoothed, zero-mean: the scroll's outline
-    m = ndi.gaussian_filter((a > 0).astype(np.float32), 2.0); return m - m.mean
+    m = ndi.gaussian_filter((a > 0).astype(np.float32), 2.0); return m - m.mean()
 def spec(img): return rfft2(pad(img), workers=WK), float(np.linalg.norm(img))
-def ncc(A, Bs):   # A, Bs from spec; returns (ncc, dy, dx): image B shifted by (dy, dx) best matches image A
+def ncc(A, Bs):   # A, Bs from spec(); returns (ncc, dy, dx): image B shifted by (dy, dx) best matches image A
     cc = irfft2(A[0] * np.conj(Bs[0]), s=(H, W), workers=WK); k = int(np.argmax(cc)); dy, dx = np.unravel_index(k, cc.shape)
     return float(cc.flat[k] / (A[1] * Bs[1] + 1e-9)), int(dy if dy <= H // 2 else dy - H), int(dx if dx <= W // 2 else dx - W)
 def orient(a, ang, flip):
@@ -84,7 +84,7 @@ M = np.full((NC, len(VARS), len(z3)), np.nan, np.float32); step = C.chunks[0] if
 for z0 in range(0, NC, step):
     slab = np.asarray(C[z0:z0 + step])
     for k in range(slab.shape[0]):
-        if (slab[k] > 0).sum < 1000: continue
+        if (slab[k] > 0).sum() < 1000: continue
         Cs = spec(band(slab[k]))
         for v, (fl, an) in enumerate(VARS):
             for j, zf in enumerate(z3): M[z0 + k, v, j] = ncc(Cs, fband(zf, an, fl))[0]
@@ -106,8 +106,8 @@ def score5(start, fl, an):   # heights outside the coarse scan are skipped (need
 ref = [(score5(i, fl_b, a)[0], i, float(a)) for a in np.arange(an_b - 1, an_b + 1.001, 0.25) for i in range(ib - 3, ib + 4)]
 sF, iF, aF = max(x for x in ref if np.isfinite(x[0])); sF, perF = score5(iF, fl_b, aF)
 far = np.abs(starts - iF) * vc > 3000
-rn = int(np.where(far)[0][np.nanargmax(np.where(far, Sb, np.nan)[far])]) if far.any else None
-hn = int(np.where(starts == i_hint)[0][0]) if (starts == i_hint).any else None
+rn = int(np.where(far)[0][np.nanargmax(np.where(far, Sb, np.nan)[far])]) if far.any() else None
+hn = int(np.where(starts == i_hint)[0][0]) if (starts == i_hint).any() else None
 out = dict(scroll=scroll, coarse=CVOL, fine=FVOL, level_pair=f"coarse L{LC} / fine L{LF}", ratio=r, orientation_candidates=cand,
            mirrored=bool(fl_b), rotation_deg=aF, best_start_slice=iF, best_mm_start=iF * vc / 1000,
            best_mm_end=(iF + (F.shape[0] - 1) * r) * vc / 1000, score5=sF, per_height5=perF,
@@ -115,12 +115,12 @@ out = dict(scroll=scroll, coarse=CVOL, fine=FVOL, level_pair=f"coarse L{LC} / fi
            runner_up_score3=None if rn is None else float(Sb[rn]),
            other_mirror_best_score3=float(np.nanmax(S[:, other_flip])) if other_flip else None,
            hint_mm=mm_hint, hint_score3=None if hn is None else float(Sb[hn]), scan_median3=float(np.nanmedian(Sb)),
-           seconds=time.time - t0)
+           seconds=time.time() - t0)
 json.dump(out, open(f"<work-dir>/xsec_{TAG}.json", "w"), indent=1)
 print(json.dumps(out, indent=1), flush=True)
 # --- picture: rows = 10/50/90% heights; columns = sharp | coarse at best (aligned) | coarse at hint (aligned) ---
 def g(x):
-    lo, hi = np.percentile(x[x > 0], [1, 99]) if (x > 0).sum > 100 else (0, 1); return np.clip((x - lo) / max(hi - lo, 1), 0, 1)
+    lo, hi = np.percentile(x[x > 0], [1, 99]) if (x > 0).sum() > 100 else (0, 1); return np.clip((x - lo) / max(hi - lo, 1), 0, 1)
 rows = []
 for zf, fr in zip((z5[0], z5[2], z5[4]), (0.1, 0.5, 0.9)):
     f = orient(fraw(zf), aF, fl_b); tiles, labels = [g(f)], [f"sharp {fr:.0%} height ({'mirrored, ' if fl_b else ''}{aF:+.1f} deg)"]

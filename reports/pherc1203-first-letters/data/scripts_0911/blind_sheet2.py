@@ -12,8 +12,8 @@ def densest(a, W):
     for y in range(0, a.shape[0] - W + 1, 64):
         for x in range(0, a.shape[1] - W + 1, 64):
             w = a[y:y + W, x:x + W]
-            if (w > 5).mean < 0.9995: continue
-            f = (w > 127).mean
+            if (w > 5).mean() < 0.9995: continue
+            f = (w > 127).mean()
             if best is None or f > best[0]: best = (f, w)
     return None if best is None else best[1]
 fs = fsspec.filesystem("s3", anon=True); B = "vesuvius-challenge-open-data"; text = []
@@ -22,7 +22,7 @@ for seg in ("PHerc0139/segments/20250108000001-w026_2025010854", "PHerc0139/segm
     P = tifffile.imread(io.BytesIO(fs.cat(pn))); W = crop_px(2.399); cands = []
     for _ in range(4000):
         y, x = rng.integers(0, P.shape[0] - W), rng.integers(0, P.shape[1] - W); w = P[y:y + W, x:x + W]
-        if (w > 5).mean > 0.97 and 0.12 <= (w > 127).mean <= 0.30: cands.append(w)
+        if (w > 5).mean() > 0.97 and 0.12 <= (w > 127).mean() <= 0.30: cands.append(w)
         if len(cands) >= 12: break
     text += [(c, f"real text {seg.split('/')[0]} {seg.split('/')[2][15:19]}") for c in cands[:4]]
     del P
@@ -33,7 +33,7 @@ for d, tag in json.load(open(sys.argv[1])):
     if not fl: print("missing", d); continue
     c = densest(np.asarray(Image.open(fl[0])), crop_px(2.403))
     if c is None: print("no fully covered crop in", d); continue
-    ours.append((c, f"ours {tag} {d.split('/')[-2][-26:]}/{d.split('/')[-1]} ink {100 * (c > 127).mean:.0f}%"))
+    ours.append((c, f"ours {tag} {d.split('/')[-2][-26:]}/{d.split('/')[-1]} ink {100 * (c > 127).mean():.0f}%"))
 train, blind_text = text[:3], text[3:11]
 items = blind_text + ours[:8]; order = rng.permutation(len(items)); key = {}
 def tile(a, lab, n=380):

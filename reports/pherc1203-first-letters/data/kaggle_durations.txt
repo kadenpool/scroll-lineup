@@ -1,5 +1,5 @@
 # Kaggle kernel run times for the PHerc. 1203 work and its PHerc. 0139 controls, read 12 Sep 2026 from each kernel's
-# kernel.log under data/kag_out/<kernel>/ (copied from leverkag_out/). The number is the notebook's own
+# kernel.log under data/kag_out/<kernel>/ (copied from box A <run-dir>/kag_out/). The number is the notebook's own
 # timer: seconds from the notebook's first cell to its ALL_DONE line (or, where a notebook printed no ALL_DONE timer, its
 # last timed line). It excludes Kaggle's session start-up, the dataset mount and the final notebook export, so the
 # GPU-quota time Kaggle charges is somewhat longer. All ran on the free tier, T4 x2, <kaggle-user> account.

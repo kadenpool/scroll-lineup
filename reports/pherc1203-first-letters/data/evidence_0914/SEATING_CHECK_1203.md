@@ -48,7 +48,8 @@ BLOCKER identified is real.
 Re-used the sibling agent's working setup rather than rebuilding it: their
 `evidence_0914/seating_files/depthprofile.py` (axiosdevs' `seat_mesh.sheet_contrast` formula
 evaluated at every candidate centre of a thick stack instead of only the middle), their 9.362 um
-band, and their "provably on a sheet" convention. Their calibration and code are on box A underseatcheck/`, intact; nothing of theirs was missing and nothing was rebuilt.
+band, and their "provably on a sheet" convention. Their calibration and code are on box A under
+`<run-dir>/seatcheck/`, intact; nothing of theirs was missing and nothing was rebuilt.
 
 The formula is unchanged:
 
@@ -303,13 +304,13 @@ report's headline finding survives.
 
 ## 7. Files, and what was run
 
-On box A underseat1203/`: `seatprof.py` (render + profile + contrast, one row per
+On box A under `<run-dir>/seat1203/`: `seatprof.py` (render + profile + contrast, one row per
 window and arm), `mkctl.py` and `mkctl2.py` (the control mesh crop and the two inverted PHerc0139
 transforms), the six case lists, `seatprof2_[a-f].json`, `batch_[a-f].log`, `handtest.log`,
 `affine_0139_9to2.json`, `affine_0139c_9to2.json`, `ctl_w016_win/`. Local copies of every script,
 result and log are in `evidence_0914/seat1203_files/`, plus `summarise1203.py` and
 `summary_1203.json`, which regenerate every table above from the raw rows. axiosdevs' code is not
-vendored into this repo; their tree stays on box A underseatcheck/`.
+vendored into this repo; their tree stays on box A under `<run-dir>/seatcheck/`.
 
 The production transform files used are box A's own `p1203_fine/affine_1203_v2.json` and
 `affine_1203.json` - the same files the render pipelines cite - not copies.

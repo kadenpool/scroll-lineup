@@ -13,8 +13,8 @@ def densest(a, W):
     for y in range(0, a.shape[0] - W + 1, 64):
         for x in range(0, a.shape[1] - W + 1, 64):
             w = a[y:y + W, x:x + W]
-            if (w > 5).mean < 0.9995: continue
-            f = (w > 127).mean
+            if (w > 5).mean() < 0.9995: continue
+            f = (w > 127).mean()
             if best is None or f > best[0]: best = (f, w)
     return None if best is None else best[1]
 fs = fsspec.filesystem("s3", anon=True); B = "vesuvius-challenge-open-data"; text = []
@@ -23,7 +23,7 @@ for seg, um in (("PHerc0139/segments/20250108000000-w025_2025010863", 2.399), ("
     P = tifffile.imread(io.BytesIO(fs.cat(pn))); W = crop_px(um); cands = []
     for _ in range(3000):
         y, x = rng.integers(0, P.shape[0] - W), rng.integers(0, P.shape[1] - W); w = P[y:y + W, x:x + W]
-        if (w > 5).mean > 0.97 and 0.12 <= (w > 127).mean <= 0.30: cands.append(w)
+        if (w > 5).mean() > 0.97 and 0.12 <= (w > 127).mean() <= 0.30: cands.append(w)
         if len(cands) >= 12: break
     text += [(c, f"real text {seg.split('/')[0]}") for c in cands[:4]]
 rng.shuffle(text)
@@ -39,13 +39,13 @@ for p, tag in ours_paths:
     if not fl: print("missing", p); continue
     c = densest(np.asarray(Image.open(fl[0])), crop_px(2.403))
     if c is None: print('no fully covered crop in', p); continue
-    ours.append((c, f"ours {tag} {p.split('/')[-2][-26:]}/{p.split('/')[-1]} ink {100 * (c > 127).mean:.0f}%"))
+    ours.append((c, f"ours {tag} {p.split('/')[-2][-26:]}/{p.split('/')[-1]} ink {100 * (c > 127).mean():.0f}%"))
 train, blind_text = text[:3], text[3:11]
 items = blind_text + ours[:8]; order = rng.permutation(len(items)); key = {}
 def tile(a, lab, n=380):
     im = Image.fromarray(a).convert("L").resize((n, n), Image.LANCZOS).convert("RGB"); d = ImageDraw.Draw(im)
     d.rectangle([0, 0, n, 24], fill=(0, 0, 0)); d.text((6, 6), lab, fill=(255, 220, 0)); return np.pad(np.asarray(im), ((4, 4), (4, 4), (0, 0)), constant_values=255)
-rows = [np.hstack([tile(a, f"EXAMPLE: real writing ({l.split[-1]})") for a, l in train] + [np.full((388, 388 * 1, 3), 255, np.uint8)])]
+rows = [np.hstack([tile(a, f"EXAMPLE: real writing ({l.split()[-1]})") for a, l in train] + [np.full((388, 388 * 1, 3), 255, np.uint8)])]
 grid = []
 for k, i in enumerate(order):
     a, l = items[i]; key[str(k + 1)] = l; grid.append(tile(a, f"#{k + 1}"))

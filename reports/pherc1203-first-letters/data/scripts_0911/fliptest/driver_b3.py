@@ -1,4 +1,5 @@
-# FLIP-TEST CALIBRATION (job B, 11 Sep): does real ink disappear when the layer order is reversed, and does the model's
+# JOB B3 (12 Sep): window [23,85) (flummoxjr's exact reproduction) on the same 12 windows as jobs B and B2. Selection code and seed unchanged.
+# (Original job B header follows.) FLIP-TEST CALIBRATION (job B, 11 Sep): does real ink disappear when the layer order is reversed, and does the model's
 # false ink not? On the PUBLISHED 109-layer surface volumes of PHerc0139 (known text), 2048 px windows: 8 text windows
 # (published ink 10-60%) and 4 blank ones (published ink < 0.5%) over 3 segments. Each window: centred 24-85 as stored
 # and the same window reversed. Prints ink share both ways, their ratio, and the match with the published prediction.
@@ -32,7 +33,7 @@ for si, s in enumerate(SEGS):
             for i in range(vol.shape[0]): tifffile.imwrite(f"{d}/{i:03d}.tif", vol[i])
             wins[name] = {"y": y, "x": x, "pub": P[y:y + W, x:x + W].copy(), "layers": vol.shape[0]}
             print("fetched", name, "published ink %.1f%%" % (100 * fr), f"[{time.time() - t0:.0f}s]", flush=True)
-VARS = {"fwd": {"CANON_START_LAYER": "24", "CANON_END_LAYER": "86"}, "rev": {"CANON_START_LAYER": "24", "CANON_END_LAYER": "86", "CANON_REVERSE": "1"}}
+VARS = {"w2385": {"CANON_START_LAYER": "23", "CANON_END_LAYER": "85"}}   # job B3: flummoxjr's exact window [23,85) on the SAME 12 windows   # job B2: the README window on the SAME 12 windows (same seed, same selection code)
 jobs = [(n, v) for n in wins for v in VARS]; res = {}
 from PIL import Image
 def launch(n, v, gpu, extra):
@@ -45,7 +46,7 @@ def collect(n, v, out, rc):
         o = np.asarray(Image.open(f"{out}/canon_pred_asinput.png")).astype(np.float32) / 255; h, w = min(o.shape[0], W), min(o.shape[1], W)
         res.setdefault(n, {})[v] = {"exit": rc, "r": float(np.corrcoef(o[:h, :w].ravel(), pw[:h, :w].ravel())[0, 1]), "ink": float((o > 0.5).mean()), "pub": float((pw > 0.5).mean())}
     except Exception as e: res.setdefault(n, {})[v] = {"exit": rc, "error": repr(e)}
-    print(n, v, res[n][v], f"[{time.time() - t0:.0f}s]", flush=True); json.dump(res, open("/kaggle/working/fliptest_summary.json", "w"), indent=1)
+    print(n, v, res[n][v], f"[{time.time() - t0:.0f}s]", flush=True); json.dump(res, open("/kaggle/working/w2385_summary.json", "w"), indent=1)
 n, v = jobs[0]; p, out = launch(n, v, 0, {}); collect(n, v, out, p.wait())
 ck = sorted(glob.glob("/tmp/canon_models/**/*.ckpt", recursive=True)); extra = {"CANON_CKPT_PATH": ck[0]} if ck else {}
 pending = jobs[1:]; running = {}
@@ -57,8 +58,6 @@ while pending or running:
     for g, (p, n, v, out) in list(running.items()):
         if p.poll() is not None: collect(n, v, out, p.returncode); del running[g]
 print("ALL_DONE", flush=True)
-print("known text should keep little ink when reversed; false/blank should not change")
 for n in sorted(res):
-    f, r = res[n].get("fwd", {}), res[n].get("rev", {})
-    if "ink" in f and "ink" in r:
-        print(f"{n:34s} published {100 * f['pub']:5.1f}% | fwd {100 * f['ink']:5.1f}% (match {f['r']:.2f}) | rev {100 * r['ink']:5.1f}% (match {r['r']:.2f}) | ratio {r['ink'] / max(f['ink'], 1e-6):.2f}")
+    f = res[n].get("w2385", {})
+    if "ink" in f: print(f"{n:34s} published {100 * f['pub']:5.1f}% | window [23,85): {100 * f['ink']:5.1f}% (match {f['r']:.2f})")

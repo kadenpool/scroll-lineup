@@ -6,13 +6,13 @@ import json, re, sys, os, time, urllib.request, urllib.parse
 user, slug, envf, dl = sys.argv[1:5]
 max_mb = float(sys.argv[5]) if len(sys.argv) > 5 else 200.0
 only = tuple(s for s in (sys.argv[6] if len(sys.argv) > 6 else "").split(",") if s)
-tok = re.search(r"KAGGLE_API_TOKEN\s*=\s*['\"]?([^\s'\"]+)", open(envf).read).group(1)
+tok = re.search(r"KAGGLE_API_TOKEN\s*=\s*['\"]?([^\s'\"]+)", open(envf).read()).group(1)
 Hd = {"Authorization": "Bearer " + tok}
 base = f"https://www.kaggle.com/api/v1/kernels/output?userName={user}&kernelSlug={slug}"
-r = json.loads(urllib.request.urlopen(urllib.request.Request(base, headers=Hd), timeout=120).read); pages = 1
+r = json.loads(urllib.request.urlopen(urllib.request.Request(base, headers=Hd), timeout=120).read()); pages = 1
 while r.get("nextPageToken") and pages < 100:   # the listing comes 500 files per page
     nxt = json.loads(urllib.request.urlopen(urllib.request.Request(
-        base + "&pageToken=" + urllib.parse.quote(r["nextPageToken"]), headers=Hd), timeout=120).read)
+        base + "&pageToken=" + urllib.parse.quote(r["nextPageToken"]), headers=Hd), timeout=120).read())
     r["files"] = r.get("files", []) + nxt.get("files", []); r["nextPageToken"] = nxt.get("nextPageToken"); pages += 1
 os.makedirs(dl, exist_ok=True)
 log = r.get("log") or ""
@@ -20,8 +20,8 @@ try: text = "".join(e.get("data", "") for e in json.loads(log))
 except Exception: text = log
 open(os.path.join(dl, "kernel.log"), "w").write(text)
 files = r.get("files", [])
-json.dump([{k: v for k, v in f.items if k != "url"} for f in files], open(os.path.join(dl, "_files.json"), "w"), indent=0)
-print(f"{slug}: {len(files)} output files in {pages} page(s); log {len(text.splitlines)} lines -> {dl}/kernel.log; list -> {dl}/_files.json")
+json.dump([{k: v for k, v in f.items() if k != "url"} for f in files], open(os.path.join(dl, "_files.json"), "w"), indent=0)
+print(f"{slug}: {len(files)} output files in {pages} page(s); log {len(text.splitlines())} lines -> {dl}/kernel.log; list -> {dl}/_files.json")
 ok = have = 0; skipped = []; failed = []
 for f in files:
     n = f.get("fileName", ""); u = f.get("url"); sz = int(f.get("size") or f.get("totalBytes") or 0)

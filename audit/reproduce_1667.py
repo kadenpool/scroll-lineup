@@ -1,11 +1,11 @@
 """One published transform is not the fit its own landmarks give. This script re-derives that from scratch
 (ScrollPrize/villa#1843), with the fitted matrix and its effect on one patch of one surface.
 
-It downloads nothing but the challenge's own metadata.json, one published mesh and a small block of
-one scan. About 3 minutes, no credentials, no GPU.
+It downloads nothing but the challenge's own metadata.json, two published meshes of one segment and a
+small block of one scan. About 3 minutes, no credentials, no GPU.
 
-  python exp_1667/reproduce.py          # the whole check
-  python exp_1667/reproduce.py --quick  # the matrix part only, no scan read
+  python audit/reproduce_1667.py          # the whole check
+  python audit/reproduce_1667.py --quick  # the matrix part only, no scan read
 
 Steps
   1. Read the catalogue's PHerc1667 transforms.
@@ -79,7 +79,7 @@ def main():
     if "--quick" in sys.argv:
         return
 
-    # 4. the published 1.129 um mesh is that matrix applied to the 7.91 um one
+    # 4. the published 1.129 um mesh is consistent with that matrix applied to the 7.91 um one
     import tifffile
     def mesh(url):
         return np.stack([tifffile.imread(io.BytesIO(get(f"{url}/{c}.tif"))).astype(np.float64) for c in "xyz"], -1)

@@ -141,7 +141,7 @@ anything on 0846A deserves eyes next, it is the three windows where two independ
   assembled by `assemble.py` from Plan A's `a0846.py` + `c0846_new.py`), `dry_run.sh` (box A CPU hand test of the harness),
   `make_nb_c.py` / `push_kernel_c.sh` / `upload_ds_c.sh` / `poll_c.sh` / `kstat_c.py` (Kaggle plumbing, squiffymccat only),
   `plan_a_ref.json` (Plan A's per-window T2/T3 numbers), `plan_c_report.py` (tables from results.json).
-- box A:c0846/` (plan_windows.json, kds/ tars, seg/ cut slabs, logs/).
+- box A: `<run-dir>/c0846/` (plan_windows.json, kds/ tars, seg/ cut slabs, logs/).
 - Kaggle (private): dataset `squiffymccat/c0846-9um`, kernel `squiffymccat/vesuvius-c0846-9um`.
 
 ## 8. Running log (AEST, from `date`)
@@ -150,7 +150,7 @@ anything on 0846A deserves eyes next, it is the three windows where two independ
 - 01:04 hand-test render of 072318733_r95_c10: identical to Plan A's cut_info (see section 2); full render of 115 windows
   launched on box A, 2 nice'd workers, 15 GB disk guard.
 - 01:20 harness c0846.py assembled and compiled; box A CPU dry run of the harness (1 window, both checkpoints) launched.
-  Trap found on the way:coverage.py` shadows the `coverage` module when python runs with that cwd on
+  Trap found on the way: `<run-dir>/coverage.py` shadows the `coverage` module when python runs with that cwd on
   sys.path and executes a registration job at import time (lesson L70).
 - 02:11 dataset ready (16:10Z) and kernel squiffymccat/vesuvius-c0846-9um v1 pushed (16:11Z); poller running on box A.
 - 02:00 renders complete: 115/115, 0 failures, valid fraction 0.80-0.95, 4.1 GB of tars.
