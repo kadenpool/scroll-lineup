@@ -1,0 +1,24 @@
+auto_grown_20250930104534929_s_r42_c126 {'start': 24, 'end': 86, 'dw_fine_layers': -0.06443741336533142, 'ncc': 0.8712369799613953}
+b0 auto_grown_20250930104534929_s_r42_c126 slices=109 235s
+auto_grown_20250930104534929_s_r2_c86 {'start': 23, 'end': 85, 'dw_fine_layers': -1.0027524685852625, 'ncc': 0.8841511607170105}
+b0 auto_grown_20250930104534929_s_r2_c86 slices=109 199s
+auto_grown_20251005221856743_s_r140_c64 {'start': 24, 'end': 86, 'dw_fine_layers': -0.148436099041681, 'ncc': 0.8622535467147827}
+b0 auto_grown_20251005221856743_s_r140_c64 slices=109 202s
+auto_grown_20251005221856743_s_r140_c144 {'start': 25, 'end': 87, 'dw_fine_layers': 0.5066562973787819, 'ncc': 0.8792702555656433}
+b0 auto_grown_20251005221856743_s_r140_c144 slices=109 246s
+auto_grown_20251005221856743_s_r180_c64 {'start': 24, 'end': 86, 'dw_fine_layers': 0.19309886535169263, 'ncc': 0.8765289783477783}
+b0 auto_grown_20251005221856743_s_r180_c64 slices=109 257s
+auto_grown_20250925223153537_s_r42_c2 {'start': 24, 'end': 86, 'dw_fine_layers': 0.010364075683338992, 'ncc': 0.8721988797187805}
+b0 auto_grown_20250925223153537_s_r42_c2 slices=109 254s
+auto_grown_20250925223153537_s_r2_c42 {'start': 25, 'end': 87, 'dw_fine_layers': 0.7487424475060196, 'ncc': 0.8832830786705017}
+b0 auto_grown_20250925223153537_s_r2_c42 slices=109 178s
+auto_grown_20251005230830031_s_r122_c42 {'start': 24, 'end': 86, 'dw_fine_layers': 0.07700194453705934, 'ncc': 0.8189141750335693}
+b0 auto_grown_20251005230830031_s_r122_c42 slices=109 285s
+b0 depth-corrected 8 of 8 | FALLBACKS: 0 []
+Your private Dataset is being created. Please check progress at https://www.kaggle.com/datasets/kadenbrodie/p1203-rerun2-b0
+b0 dataset status: ready
+notebook <run-dir>/kag/s1203_rr2_0
+push try 1: Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/kadenbrodie/vesuvius-s1203-rr2-0
+BATCH_DONE b0 00:23:41
+/dev/sda1       242G  228G   14G  95% /
+RERUN1203V2_DONE 00:23:41

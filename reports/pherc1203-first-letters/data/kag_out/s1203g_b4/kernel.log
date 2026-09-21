@@ -1,0 +1,28 @@
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+Writing /kaggle/working/run_canon.py
+4 windows
+layer windows: {'auto_grown_20260911062625215_r75_c65': {'start': 27, 'end': 89, 'dw_fine_layers': 2.593229764037361, 'ncc': 0.6097215414047241}, 'auto_grown_20260911062625215_r15_c55': {'start': 31, 'end': 93, 'dw_fine_layers': 6.500338981340276, 'ncc': 0.7577923536300659}, 'auto_grown_20260911062625215_r90_c5': {'start': 22, 'end': 84, 'dw_fine_layers': -2.295230030834926, 'ncc': 0.6752282381057739}, 'auto_grown_20260911070617066_r95_c45': {'start': 24, 'end': 86, 'dw_fine_layers': 0.16619589698526963, 'ncc': 0.6135187745094299}}
+auto_grown_20260911062625215_r15_c55 C {'exit': 0, 'mean': 0.172332763671875, 'frac_gt_0.5': 0.03270742094601199} [176s]
+auto_grown_20260911062625215_r75_c65 C {'exit': 0, 'mean': 0.16964508593082428, 'frac_gt_0.5': 0.026539428876189746} [326s]
+auto_grown_20260911062625215_r15_c55 D {'exit': 0, 'mean': 0.16773435473442078, 'frac_gt_0.5': 0.03178891730056877} [346s]
+auto_grown_20260911062625215_r75_c65 D {'exit': 0, 'mean': 0.201250359416008, 'frac_gt_0.5': 0.06446200699148597} [481s]
+auto_grown_20260911062625215_r90_c5 C {'exit': 0, 'mean': 0.16145122051239014, 'frac_gt_0.5': 0.02227961586861326} [516s]
+auto_grown_20260911062625215_r90_c5 D {'exit': 0, 'mean': 0.16083981096744537, 'frac_gt_0.5': 0.018607654318706507} [641s]
+auto_grown_20260911070617066_r95_c45 C {'exit': 0, 'mean': 0.1385042369365692, 'frac_gt_0.5': 0.0} [642s]
+auto_grown_20260911070617066_r95_c45 D {'exit': 0, 'mean': 0.18606461584568024, 'frac_gt_0.5': 0.04825883325771369} [767s]
+ALL_DONE [767s]
+/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+  cells[i][c] = re.sub('\\\\\|', '|', cell)
+/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+  text = re.sub(r'_', '\_', text) # Escape underscores in display text
+[NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+[NbConvertApp] Writing 69762 bytes to __notebook__.ipynb
+[NbConvertApp] Converting notebook __notebook__.ipynb to html
+[NbConvertApp] Writing 558317 bytes to __results__.html

@@ -1,0 +1,392 @@
+[
+ {
+  "name": "auto_grown_20250925223153537_s_r2_c42",
+  "segment": "auto_grown_20250925223153537",
+  "rows": [
+   2,
+   42
+  ],
+  "cols": [
+   42,
+   82
+  ],
+  "cells": 1204,
+  "median_coarse_z": 9116.478515625,
+  "batch": 0
+ },
+ {
+  "name": "auto_grown_20250925223153537_s_r42_c2",
+  "segment": "auto_grown_20250925223153537",
+  "rows": [
+   42,
+   82
+  ],
+  "cols": [
+   2,
+   42
+  ],
+  "cells": 1204,
+  "median_coarse_z": 8817.67578125,
+  "batch": 0
+ },
+ {
+  "name": "auto_grown_20250925223153537_s_r42_c82",
+  "segment": "auto_grown_20250925223153537",
+  "rows": [
+   42,
+   82
+  ],
+  "cols": [
+   82,
+   122
+  ],
+  "cells": 1177,
+  "median_coarse_z": 8234.671875,
+  "batch": 0
+ },
+ {
+  "name": "auto_grown_20250930104534929_s_r2_c86",
+  "segment": "auto_grown_20250930104534929",
+  "rows": [
+   2,
+   42
+  ],
+  "cols": [
+   86,
+   126
+  ],
+  "cells": 1058,
+  "median_coarse_z": 8379.48828125,
+  "batch": 0
+ },
+ {
+  "name": "auto_grown_20250930104534929_s_r42_c126",
+  "segment": "auto_grown_20250930104534929",
+  "rows": [
+   42,
+   82
+  ],
+  "cols": [
+   126,
+   166
+  ],
+  "cells": 1404,
+  "median_coarse_z": 8333.6181640625,
+  "batch": 0
+ },
+ {
+  "name": "auto_grown_20250930104534929_s_r82_c166",
+  "segment": "auto_grown_20250930104534929",
+  "rows": [
+   82,
+   122
+  ],
+  "cols": [
+   166,
+   206
+  ],
+  "cells": 1277,
+  "median_coarse_z": 8273.634765625,
+  "batch": 0
+ },
+ {
+  "name": "auto_grown_20251005221856743_s_r140_c64",
+  "segment": "auto_grown_20251005221856743",
+  "rows": [
+   140,
+   180
+  ],
+  "cols": [
+   64,
+   104
+  ],
+  "cells": 1087,
+  "median_coarse_z": 8231.3662109375,
+  "batch": 0
+ },
+ {
+  "name": "auto_grown_20251005221856743_s_r140_c144",
+  "segment": "auto_grown_20251005221856743",
+  "rows": [
+   140,
+   180
+  ],
+  "cols": [
+   144,
+   184
+  ],
+  "cells": 1435,
+  "median_coarse_z": 8305.0322265625,
+  "batch": 0
+ },
+ {
+  "name": "auto_grown_20251005221856743_s_r180_c64",
+  "segment": "auto_grown_20251005221856743",
+  "rows": [
+   180,
+   220
+  ],
+  "cols": [
+   64,
+   104
+  ],
+  "cells": 1447,
+  "median_coarse_z": 8586.2314453125,
+  "batch": 1
+ },
+ {
+  "name": "auto_grown_20251005221856743_s_r180_c144",
+  "segment": "auto_grown_20251005221856743",
+  "rows": [
+   180,
+   220
+  ],
+  "cols": [
+   144,
+   184
+  ],
+  "cells": 820,
+  "median_coarse_z": 8827.056640625,
+  "batch": 1
+ },
+ {
+  "name": "auto_grown_20251005230118636_s_r89_c138",
+  "segment": "auto_grown_20251005230118636",
+  "rows": [
+   89,
+   129
+  ],
+  "cols": [
+   138,
+   178
+  ],
+  "cells": 1044,
+  "median_coarse_z": 8180.7509765625,
+  "batch": 1
+ },
+ {
+  "name": "auto_grown_20251005230830031_s_r2_c122",
+  "segment": "auto_grown_20251005230830031",
+  "rows": [
+   2,
+   42
+  ],
+  "cols": [
+   122,
+   162
+  ],
+  "cells": 1226,
+  "median_coarse_z": 8132.9267578125,
+  "batch": 1
+ },
+ {
+  "name": "auto_grown_20251005230830031_s_r42_c42",
+  "segment": "auto_grown_20251005230830031",
+  "rows": [
+   42,
+   82
+  ],
+  "cols": [
+   42,
+   82
+  ],
+  "cells": 991,
+  "median_coarse_z": 8688.3115234375,
+  "batch": 1
+ },
+ {
+  "name": "auto_grown_20251005230830031_s_r42_c82",
+  "segment": "auto_grown_20251005230830031",
+  "rows": [
+   42,
+   82
+  ],
+  "cols": [
+   82,
+   122
+  ],
+  "cells": 820,
+  "median_coarse_z": 8220.3154296875,
+  "batch": 1
+ },
+ {
+  "name": "auto_grown_20251005230830031_s_r82_c2",
+  "segment": "auto_grown_20251005230830031",
+  "rows": [
+   82,
+   122
+  ],
+  "cols": [
+   2,
+   42
+  ],
+  "cells": 1024,
+  "median_coarse_z": 9714.119140625,
+  "batch": 1
+ },
+ {
+  "name": "auto_grown_20251005230830031_s_r82_c82",
+  "segment": "auto_grown_20251005230830031",
+  "rows": [
+   82,
+   122
+  ],
+  "cols": [
+   82,
+   122
+  ],
+  "cells": 1600,
+  "median_coarse_z": 8504.4140625,
+  "batch": 1
+ },
+ {
+  "name": "auto_grown_20251005230830031_s_r122_c42",
+  "segment": "auto_grown_20251005230830031",
+  "rows": [
+   122,
+   162
+  ],
+  "cols": [
+   42,
+   82
+  ],
+  "cells": 1585,
+  "median_coarse_z": 9379.212890625,
+  "batch": 2
+ },
+ {
+  "name": "auto_grown_20251005230830031_s_r162_c82",
+  "segment": "auto_grown_20251005230830031",
+  "rows": [
+   162,
+   202
+  ],
+  "cols": [
+   82,
+   122
+  ],
+  "cells": 1585,
+  "median_coarse_z": 8902.8076171875,
+  "batch": 2
+ },
+ {
+  "name": "auto_grown_20251005230830031_s_r162_c122",
+  "segment": "auto_grown_20251005230830031",
+  "rows": [
+   162,
+   202
+  ],
+  "cols": [
+   122,
+   162
+  ],
+  "cells": 1081,
+  "median_coarse_z": 8245.9423828125,
+  "batch": 2
+ },
+ {
+  "name": "auto_grown_20251005230830031_s_r202_c122",
+  "segment": "auto_grown_20251005230830031",
+  "rows": [
+   202,
+   242
+  ],
+  "cols": [
+   122,
+   162
+  ],
+  "cells": 983,
+  "median_coarse_z": 8325.259765625,
+  "batch": 2
+ },
+ {
+  "name": "auto_grown_20251005231446963_s_r83_c83",
+  "segment": "auto_grown_20251005231446963",
+  "rows": [
+   83,
+   123
+  ],
+  "cols": [
+   83,
+   123
+  ],
+  "cells": 917,
+  "median_coarse_z": 8177.99951171875,
+  "batch": 2
+ },
+ {
+  "name": "auto_grown_20251005231446965_s_r146_c181",
+  "segment": "auto_grown_20251005231446965",
+  "rows": [
+   146,
+   186
+  ],
+  "cols": [
+   181,
+   221
+  ],
+  "cells": 1334,
+  "median_coarse_z": 8275.103515625,
+  "batch": 2
+ },
+ {
+  "name": "auto_grown_20251005231446965_s_r186_c61",
+  "segment": "auto_grown_20251005231446965",
+  "rows": [
+   186,
+   226
+  ],
+  "cols": [
+   61,
+   101
+  ],
+  "cells": 931,
+  "median_coarse_z": 8397.921875,
+  "batch": 2
+ },
+ {
+  "name": "auto_grown_20251005231446965_s_r186_c101",
+  "segment": "auto_grown_20251005231446965",
+  "rows": [
+   186,
+   226
+  ],
+  "cols": [
+   101,
+   141
+  ],
+  "cells": 1600,
+  "median_coarse_z": 8674.853515625,
+  "batch": 2
+ },
+ {
+  "name": "auto_grown_20251005231446965_s_r186_c141",
+  "segment": "auto_grown_20251005231446965",
+  "rows": [
+   186,
+   226
+  ],
+  "cols": [
+   141,
+   181
+  ],
+  "cells": 1429,
+  "median_coarse_z": 8916.0615234375,
+  "batch": 3
+ },
+ {
+  "name": "auto_grown_20251005231446965_s_r226_c101",
+  "segment": "auto_grown_20251005231446965",
+  "rows": [
+   226,
+   266
+  ],
+  "cols": [
+   101,
+   141
+  ],
+  "cells": 819,
+  "median_coarse_z": 9128.7314453125,
+  "batch": 3
+ }
+]

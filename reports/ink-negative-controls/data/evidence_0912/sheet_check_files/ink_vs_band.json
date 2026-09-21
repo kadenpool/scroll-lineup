@@ -1,0 +1,168 @@
+{
+ "n": 27,
+ "spearman": 0.5714285714285714,
+ "rows": [
+  {
+   "tag": "zoom_20260911040822053_Z_r50_c70",
+   "band_ratio": 0.2070566313234783,
+   "ink_mean_CD": 0.18687549758357738,
+   "verdict": "on one sheet"
+  },
+  {
+   "tag": "zoom_20260911025619069_Z_r105_c25",
+   "band_ratio": 0.0818304135435574,
+   "ink_mean_CD": 0.18119320757416374,
+   "verdict": "weak band"
+  },
+  {
+   "tag": "zoom_20260911063530412_Z_r30_c105",
+   "band_ratio": 0.10023603783196534,
+   "ink_mean_CD": 0.15348895806944032,
+   "verdict": "on one sheet"
+  },
+  {
+   "tag": "zoom_20260911063746464_Z_r75_c45",
+   "band_ratio": 0.08552226828505889,
+   "ink_mean_CD": 0.12344447853945009,
+   "verdict": "weak band"
+  },
+  {
+   "tag": "zoom_20260911030142380_Z_r35_c65",
+   "band_ratio": 0.02618247769043382,
+   "ink_mean_CD": 0.08370673357801972,
+   "verdict": "wandering"
+  },
+  {
+   "tag": "zoom_20260911024106908_Z_r50_c40",
+   "band_ratio": 0.06038646551376446,
+   "ink_mean_CD": 0.039745864231134215,
+   "verdict": "weak band"
+  },
+  {
+   "tag": "high_20260911061936267_r20_c55",
+   "band_ratio": 0.1518722049587929,
+   "ink_mean_CD": 0.43526984423533177,
+   "verdict": "on one sheet"
+  },
+  {
+   "tag": "high_20260911061936267_r40_c15",
+   "band_ratio": 0.1020034322085328,
+   "ink_mean_CD": 0.3405103905653605,
+   "verdict": "on one sheet"
+  },
+  {
+   "tag": "high_20260911040822053_r65_c25",
+   "band_ratio": 0.07332810227212469,
+   "ink_mean_CD": 0.2893399970185415,
+   "verdict": "weak band"
+  },
+  {
+   "tag": "high_20260911034621782_r40_c85",
+   "band_ratio": 0.29449442117448393,
+   "ink_mean_CD": 0.2868274281863711,
+   "verdict": "on one sheet"
+  },
+  {
+   "tag": "high_20260911061936267_r80_c95",
+   "band_ratio": 0.09805135301780207,
+   "ink_mean_CD": 0.27444211425327636,
+   "verdict": "weak band"
+  },
+  {
+   "tag": "high_20260911032347463_r110_c105",
+   "band_ratio": 0.06674355410668112,
+   "ink_mean_CD": 0.2438235962023929,
+   "verdict": "weak band"
+  },
+  {
+   "tag": "high_20260911040822053_r105_c105",
+   "band_ratio": 0.06861565209298522,
+   "ink_mean_CD": 0.22801890066758893,
+   "verdict": "weak band"
+  },
+  {
+   "tag": "high_20260911034621782_r50_c45",
+   "band_ratio": 0.14604880007574003,
+   "ink_mean_CD": 0.21973970749542546,
+   "verdict": "on one sheet"
+  },
+  {
+   "tag": "high_20260911063530412_r30_c105",
+   "band_ratio": 0.1850796955135477,
+   "ink_mean_CD": 0.19806585008464767,
+   "verdict": "on one sheet"
+  },
+  {
+   "tag": "high_20260911030142380_r35_c65",
+   "band_ratio": 0.05699983933517753,
+   "ink_mean_CD": 0.19742878289085364,
+   "verdict": "weak band"
+  },
+  {
+   "tag": "low_20260911071903158_r105_c10",
+   "band_ratio": 0.012252371267202517,
+   "ink_mean_CD": 0.017960093379375798,
+   "verdict": "wandering"
+  },
+  {
+   "tag": "low_20260911024106966_r75_c35",
+   "band_ratio": 0.002318182013631615,
+   "ink_mean_CD": 0.0205258133969682,
+   "verdict": "wandering"
+  },
+  {
+   "tag": "low_20260911065428392_r10_c60",
+   "band_ratio": 0.18428985598111106,
+   "ink_mean_CD": 0.02083264887063655,
+   "verdict": "on one sheet"
+  },
+  {
+   "tag": "low_20260911025522741_r75_c35",
+   "band_ratio": 0.05256396896516445,
+   "ink_mean_CD": 0.022914555798817658,
+   "verdict": "weak band"
+  },
+  {
+   "tag": "low_20260911024106966_r35_c10",
+   "band_ratio": 0.05116987144161472,
+   "ink_mean_CD": 0.023358997372233268,
+   "verdict": "weak band"
+  },
+  {
+   "tag": "low_20260911071903158_r95_c105",
+   "band_ratio": 0.057541853944919924,
+   "ink_mean_CD": 0.025468137222863202,
+   "verdict": "weak band"
+  },
+  {
+   "tag": "low_20260911065120760_r65_c65",
+   "band_ratio": 0.04346997672330712,
+   "ink_mean_CD": 0.02904425580926509,
+   "verdict": "wandering"
+  },
+  {
+   "tag": "low_20260911065120760_r110_c65",
+   "band_ratio": 0.03821340892128441,
+   "ink_mean_CD": 0.0313781398413531,
+   "verdict": "wandering"
+  },
+  {
+   "tag": "low_20260911024106908_r70_c80",
+   "band_ratio": 0.042475156131568076,
+   "ink_mean_CD": 0.035090498149999816,
+   "verdict": "wandering"
+  },
+  {
+   "tag": "low_20260911065428392_r55_c20",
+   "band_ratio": 0.20007246995207628,
+   "ink_mean_CD": 0.043278139852758836,
+   "verdict": "on one sheet"
+  },
+  {
+   "tag": "low_20260911065428392_r95_c5",
+   "band_ratio": 0.09906843733189018,
+   "ink_mean_CD": 0.044833183952458285,
+   "verdict": "weak band"
+  }
+ ]
+}

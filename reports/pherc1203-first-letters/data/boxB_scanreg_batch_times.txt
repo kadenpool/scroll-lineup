@@ -1,0 +1,88 @@
+# Scan-alignment tool validation batches on box B, <work-dir>/scanreg/ (read 12 Sep 2026).
+# Lines are the batch markers from runs/batch.log (round 1, first tool version, 9 pairs) and runs2/batch.log, batch3.log, batch4.log, batch5.log
+# (current version, up to 3 lanes). Pair tags are masked as PAIR because some name scrolls not discussed in the report.
+# Times are UTC on 11 Sep 2026. 'scanreg exit' = the fit finished; 'validate exit' = the landmark check finished.
+== runs/batch.log (round 1)
+=== PAIR 2026-09-11 15:44:32 UTC
+scanreg exit 0 15:46:53
+validate exit 0
+=== PAIR 2026-09-11 15:47:06 UTC
+scanreg exit 0 15:54:54
+validate exit 0
+=== PAIR 2026-09-11 15:55:10 UTC
+scanreg exit 0 16:01:19
+validate exit 0
+=== PAIR 2026-09-11 16:01:31 UTC
+scanreg exit 0 16:06:47
+validate exit 0
+=== PAIR 2026-09-11 16:07:01 UTC
+scanreg exit 0 16:13:40
+validate exit 0
+=== PAIR 2026-09-11 16:13:55 UTC
+scanreg exit 0 16:21:51
+validate exit 0
+=== PAIR 2026-09-11 16:22:05 UTC
+scanreg exit 0 16:27:12
+validate exit 0
+=== PAIR 2026-09-11 16:27:26 UTC
+scanreg exit 0 16:31:21
+validate exit 0
+=== PAIR 2026-09-11 16:31:33 UTC
+scanreg exit 0 16:34:22
+validate exit 0
+=== PAIR DONE 2026-09-11 16:34:38 UTC
+== runs2/batch.log + batch3.log (current version, lanes 1-2)
+=== PAIR 2026-09-11 16:47:07 UTC
+scanreg exit 0 16:55:25
+validate exit 0
+=== PAIR 2026-09-11 16:58:56 UTC
+scanreg exit 0 17:08:03
+validate exit 0
+=== PAIR 2026-09-11 17:11:38 UTC
+scanreg exit 0 17:27:22
+validate exit 137
+=== PAIR 2026-09-11 17:35:01 UTC
+scanreg exit 0 17:42:49
+validate exit 0
+=== PAIR 2026-09-11 17:48:02 UTC
+scanreg exit 0 17:58:22
+validate exit 0
+=== PAIR 2026-09-11 18:06:35 UTC
+scanreg exit 0 18:27:08
+validate exit 0
+=== PAIR 2026-09-11 18:30:43 UTC
+scanreg exit 0 18:37:41
+validate exit 0
+=== PAIR 2026-09-11 18:41:23 UTC
+scanreg exit 0 18:48:34
+validate exit 0
+=== PAIR 2026-09-11 18:51:50 UTC
+=== PAIR 2026-09-11 18:31:32 UTC
+scanreg exit 0 18:48:35
+validate exit 0
+=== PAIR DONE 2026-09-11 18:53:29 UTC
+== runs2/batch4.log (lane 2)
+=== PAIR 2026-09-11 18:54:12 UTC
+scanreg exit 0 19:00:27
+validate exit 0
+=== PAIR 2026-09-11 19:03:42 UTC
+scanreg exit 0 19:08:00
+validate exit 0
+=== PAIR 2026-09-11 19:11:00 UTC
+scanreg exit 0 19:14:50
+validate exit 0
+=== PAIR DONE 2026-09-11 19:17:33 UTC
+== runs2/batch5.log (lane 3)
+=== PAIR (finished by lane 3) 19:03:19
+=== PAIR 2026-09-11 19:05:50 UTC
+scanreg exit 0 19:12:43
+validate exit 0
+=== PAIR 2026-09-11 19:16:03 UTC
+scanreg exit 0 19:21:24
+validate exit 0
+=== PAIR DONE 2026-09-11 19:24:23 UTC
+== fit time per pair for the 15 pairs in the current-version table (last timestamp in runs2/<pair>/log.txt), pair order masked
+  228.8s   250.3s   257.7s   320.1s   373.4s   412.3s   417.1s   429.3s   497.1s   546.5s   618.2s   685.5s   943.1s  1021.2s  1231.7s 
+== PHerc. 1203 pair (runs2/f1203/log.txt, 11 Sep)
+[  321.3s] CONFIDENCE: HIGH
+[  321.9s] wrote runs2/f1203/transform.json (1260 MB downloaded)

@@ -1,0 +1,46 @@
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+Writing /kaggle/working/run_canon.py
+layer folders: ['/kaggle/input/datasets/kadenbrodie/p1203-sharp-patch/patch_L0_109/']
+using /kaggle/input/datasets/kadenbrodie/p1203-sharp-patch/patch_L0_109/ 109 tifs
+== A_layers1-62: exit 0 in 169s
+[canon    80.9s]   tiles 168/576  batch=8  3.63 tiles/s  ETA 1.9 min  peak GPU mem 11.8 GB
+[canon   111.9s]   tiles 320/576  batch=8  4.14 tiles/s  ETA 1.0 min  peak GPU mem 11.8 GB
+[canon   142.5s]   tiles 464/576  batch=8  4.30 tiles/s  ETA 0.4 min  peak GPU mem 11.8 GB
+[canon   165.1s]   tiles 576/576  batch=8  4.41 tiles/s  ETA 0.0 min  peak GPU mem 11.8 GB
+[canon   165.4s] prediction (3118, 3118): mean on covered pixels 0.14556168019771576, >0.5 on 0.008809217565603778
+[canon   166.5s] wrote /kaggle/working/A_layers1-62/canon_pred_asinput.png
+[canon   166.5s] wrote /kaggle/working/A_layers1-62/canon_pred_asinput_16bit.tif
+[canon   166.5s] wrote /kaggle/working/A_layers1-62/canon_pred_readable.png
+[canon   166.5s] wrote /kaggle/working/A_layers1-62/canon_pred_readable_16bit.tif
+[canon   166.5s] ORIENTATION: canon_pred_asinput.* = same grid as your TIFs (mirrored vs the challenge); canon_pred_readable.* = flipped back [:, ::-1] (challenge orientation, text reads correctly)
+CANON_DONE status=ok total=166.5s out=/kaggle/working/A_layers1-62
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+== B_depthflip_layers107-46: exit 0 in 155s
+[canon    33.3s]   tiles 8/576  batch=8  0.48 tiles/s  ETA 19.9 min  peak GPU mem 11.8 GB
+[canon    64.8s]   tiles 152/576  batch=8  3.15 tiles/s  ETA 2.2 min  peak GPU mem 11.8 GB
+[canon    94.8s]   tiles 296/576  batch=8  3.78 tiles/s  ETA 1.2 min  peak GPU mem 11.8 GB
+[canon   124.9s]   tiles 440/576  batch=8  4.06 tiles/s  ETA 0.6 min  peak GPU mem 11.8 GB
+[canon   153.8s]   tiles 576/576  batch=8  4.20 tiles/s  ETA 0.0 min  peak GPU mem 11.8 GB
+[canon   154.0s] prediction (3118, 3118): mean on covered pixels 0.1397486925125122, >0.5 on 0.004451771487060025
+[canon   154.6s] wrote /kaggle/working/B_depthflip_layers107-46/canon_pred_asinput.png
+[canon   154.6s] wrote /kaggle/working/B_depthflip_layers107-46/canon_pred_asinput_16bit.tif
+[canon   154.6s] wrote /kaggle/working/B_depthflip_layers107-46/canon_pred_readable.png
+[canon   154.6s] wrote /kaggle/working/B_depthflip_layers107-46/canon_pred_readable_16bit.tif
+[canon   154.6s] ORIENTATION: canon_pred_asinput.* = same grid as your TIFs (mirrored vs the challenge); canon_pred_readable.* = flipped back [:, ::-1] (challenge orientation, text reads correctly)
+CANON_DONE status=ok total=154.6s out=/kaggle/working/B_depthflip_layers107-46
+ALL_DONE {"A_layers1-62": {"exit": 0, "seconds": 169, "last": "Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads."}, "B_depthflip_layers107-46": {"exit": 0, "seconds": 155, "last": "CANON_DONE status=ok total=154.6s out=/kaggle/working/B_depthflip_layers107-46"}} [324s]
+/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+  cells[i][c] = re.sub('\\\\\|', '|', cell)
+/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+  text = re.sub(r'_', '\_', text) # Escape underscores in display text
+[NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+[NbConvertApp] Writing 70413 bytes to __notebook__.ipynb
+[NbConvertApp] Converting notebook __notebook__.ipynb to html
+[NbConvertApp] Writing 550940 bytes to __results__.html

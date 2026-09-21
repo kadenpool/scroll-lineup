@@ -1,0 +1,50 @@
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+Writing /kaggle/working/run_canon.py
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 211.3/211.3 kB 2.0 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 211.3/211.3 kB 2.0 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 26.5/26.5 MB 50.2 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.9/8.9 MB 64.4 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 26.5/26.5 MB 50.2 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.9/8.9 MB 64.4 MB/s eta 0:00:00
+/usr/local/lib/python3.12/dist-packages/fsspec/registry.py:286: UserWarning: Your installed version of s3fs is very old and known to cause
+severe performance issues, see also https://github.com/dask/dask/issues/10276
+
+To fix, you should specify a lower version bound on s3fs, or
+update the current installation.
+
+  warnings.warn(s3_msg)
+
+/usr/local/lib/python3.12/dist-packages/fsspec/registry.py:286: UserWarning: Your installed version of s3fs is very old and known to cause
+severe performance issues, see also https://github.com/dask/dask/issues/10276
+
+To fix, you should specify a lower version bound on s3fs, or
+update the current installation.
+
+  warnings.warn(s3_msg)
+fetched blank [379s]
+fetched inked [754s]
+documented_1-62 blank {'exit': 0, 'r': 0.13804806273646472, 'ours_gt05': 0.03622287968441815, 'pub_gt05': 0.0017683678500986194} [907s]
+centred_24-85 blank {'exit': 0, 'r': 0.6280226578230298, 'ours_gt05': 0.0014263847797501643, 'pub_gt05': 0.0017683678500986194} [1047s]
+documented_1-62 inked {'exit': 0, 'r': 0.3798553618254728, 'ours_gt05': 0.40628338675213677, 'pub_gt05': 0.8480057322485207} [1057s]
+centred_24-85 inked {'exit': 0, 'r': 0.8751201166705128, 'ours_gt05': 0.849637471236029, 'pub_gt05': 0.8480057322485207} [1192s]
+ALL_DONE {"documented_1-62/blank": {"exit": 0, "r": 0.13804806273646472, "ours_gt05": 0.03622287968441815, "pub_gt05": 0.0017683678500986194}, "centred_24-85/blank": {"exit": 0, "r": 0.6280226578230298, "ours_gt05": 0.0014263847797501643, "pub_gt05": 0.0017683678500986194}, "documented_1-62/inked": {"exit": 0, "r": 0.3798553618254728, "ours_gt05": 0.40628338675213677, "pub_gt05": 0.8480057322485207}, "centred_24-85/inked": {"exit": 0, "r": 0.8751201166705128, "ours_gt05": 0.849637471236029, "pub_gt05": 0.8480057322485207}}
+rows: blank, inked | columns: published, documented 1-62, centred 24-85
+centred_24-85/blank              match 0.628   ink share ours 0.1%   published 0.2%
+centred_24-85/inked              match 0.875   ink share ours 85.0%   published 84.8%
+documented_1-62/blank            match 0.138   ink share ours 3.6%   published 0.2%
+documented_1-62/inked            match 0.380   ink share ours 40.6%   published 84.8%
+/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+  cells[i][c] = re.sub('\\\\\|', '|', cell)
+/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+  text = re.sub(r'_', '\_', text) # Escape underscores in display text
+[NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+[NbConvertApp] Writing 73081 bytes to __notebook__.ipynb
+[NbConvertApp] Converting notebook __notebook__.ipynb to html
+[NbConvertApp] Writing 573285 bytes to __results__.html

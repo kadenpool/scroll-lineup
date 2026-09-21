@@ -1,0 +1,89 @@
+[
+ {
+  "tag": "A|PHerc0139|on-20260102150214",
+  "score": 19.21,
+  "scale": 1.0,
+  "coverage": 0.804,
+  "surface_mean": 92.9,
+  "band": "A",
+  "scroll": "PHerc0139",
+  "mesh": "20250108000000-on-20260102150214-2.399um.tifxyz",
+  "volume": "20260102150214-2.399um-0.2m-78keV-masked.zarr",
+  "published": 21.33,
+  "delta": -2.12
+ },
+ {
+  "tag": "A|PHerc1667|on-20251217075048",
+  "score": 25.83,
+  "scale": 1.0,
+  "coverage": 0.764,
+  "surface_mean": 98.2,
+  "band": "A",
+  "scroll": "PHerc1667",
+  "mesh": "20240304141531-on-20251217075048-2.399um.tifxyz",
+  "volume": "20251217075048-2.399um-0.2m-78keV-masked.zarr",
+  "published": 24.21,
+  "delta": 1.62
+ },
+ {
+  "tag": "A|PHercMANBp|tifxyz_original",
+  "score": 29.7,
+  "scale": 1.0,
+  "coverage": 0.912,
+  "surface_mean": 105.7,
+  "band": "A",
+  "scroll": "PHercMANBp",
+  "mesh": "tifxyz_original",
+  "volume": "20251216152116-2.399um-0.2m-78keV-masked.zarr",
+  "published": 23.96,
+  "delta": 5.74
+ },
+ {
+  "tag": "B|PHerc0139|20250108000000-w025_2025010863|20250108000000-on-20250728140407-9.362um.tifxyz",
+  "score": 13.98,
+  "scale": 1.0,
+  "coverage": 0.966,
+  "surface_mean": 92.0,
+  "band": "B",
+  "scroll": "PHerc0139",
+  "segment": "20250108000000-w025_2025010863",
+  "mesh": "20250108000000-on-20250728140407-9.362um.tifxyz",
+  "volume": "20250728140407-9.362um-1.2m-113keV-masked.zarr"
+ },
+ {
+  "tag": "B|PHerc0139|20250108000001-w026_2025010854|20250108000001-on-20250728140407-9.362um.tifxyz",
+  "score": 11.19,
+  "scale": 1.0,
+  "coverage": 0.94,
+  "surface_mean": 91.0,
+  "band": "B",
+  "scroll": "PHerc0139",
+  "segment": "20250108000001-w026_2025010854",
+  "mesh": "20250108000001-on-20250728140407-9.362um.tifxyz",
+  "volume": "20250728140407-9.362um-1.2m-113keV-masked.zarr"
+ },
+ {
+  "tag": "B|PHerc0139|20250108000002-w027_2025010845|20250108000002-on-20250728140407-9.362um.tifxyz",
+  "score": 12.18,
+  "scale": 1.0,
+  "coverage": 0.942,
+  "surface_mean": 93.2,
+  "band": "B",
+  "scroll": "PHerc0139",
+  "segment": "20250108000002-w027_2025010845",
+  "mesh": "20250108000002-on-20250728140407-9.362um.tifxyz",
+  "volume": "20250728140407-9.362um-1.2m-113keV-masked.zarr"
+ },
+ {
+  "tag": "B|PHerc0139|20250108000003-w028_2025010836|20250108000003-on-20250728140407-9.362um.tifxyz",
+  "score": 12.73,
+  "scale": 1.0,
+  "coverage": 0.952,
+  "surface_mean": 93.8,
+  "band": "B",
+  "scroll": "PHerc0139",
+  "segment": "20250108000003-w028_2025010836",
+  "mesh": "20250108000003-on-20250728140407-9.362um.tifxyz",
+  "volume": "20250728140407-9.362um-1.2m-113keV-masked.zarr"
+ }
+]

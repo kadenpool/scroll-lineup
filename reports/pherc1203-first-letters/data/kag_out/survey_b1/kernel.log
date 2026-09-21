@@ -1,0 +1,35 @@
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+Writing /kaggle/working/run_canon.py
+8 windows
+auto_grown_20251005221856743_s_r180_c144 C {'exit': 0, 'mean': 0.14661292731761932, 'frac_gt_0.5': 0.010047206820952375} [117s]
+auto_grown_20251005221856743_s_r180_c144 D {'exit': 0, 'mean': 0.16417159140110016, 'frac_gt_0.5': 0.021627774750938616} [222s]
+auto_grown_20251005221856743_s_r180_c64 C {'exit': 0, 'mean': 0.19847290217876434, 'frac_gt_0.5': 0.07219961475717283} [267s]
+auto_grown_20251005221856743_s_r180_c64 D {'exit': 0, 'mean': 0.17924809455871582, 'frac_gt_0.5': 0.04591267264959111} [382s]
+auto_grown_20251005230118636_s_r89_c138 C {'exit': 0, 'mean': 0.15185405313968658, 'frac_gt_0.5': 0.01141484633881363} [382s]
+auto_grown_20251005230118636_s_r89_c138 D {'exit': 0, 'mean': 0.17083479464054108, 'frac_gt_0.5': 0.029746837029987188} [507s]
+auto_grown_20251005230830031_s_r2_c122 C {'exit': 0, 'mean': 0.16146333515644073, 'frac_gt_0.5': 0.019371591074331576} [517s]
+auto_grown_20251005230830031_s_r2_c122 D {'exit': 0, 'mean': 0.16000761091709137, 'frac_gt_0.5': 0.018529210990610306} [642s]
+auto_grown_20251005230830031_s_r42_c42 C {'exit': 0, 'mean': 0.13442997634410858, 'frac_gt_0.5': 0.000670979445770598} [647s]
+auto_grown_20251005230830031_s_r42_c82 C {'exit': 0, 'mean': 0.14175528287887573, 'frac_gt_0.5': 0.0084380040106214} [757s]
+auto_grown_20251005230830031_s_r42_c42 D {'exit': 0, 'mean': 0.14549078047275543, 'frac_gt_0.5': 0.014185147405618945} [767s]
+auto_grown_20251005230830031_s_r42_c82 D {'exit': 0, 'mean': 0.1388648897409439, 'frac_gt_0.5': 0.0036299189903536582} [872s]
+auto_grown_20251005230830031_s_r82_c2 C {'exit': 0, 'mean': 0.15070100128650665, 'frac_gt_0.5': 0.012958906550356307} [902s]
+auto_grown_20251005230830031_s_r82_c2 D {'exit': 0, 'mean': 0.14243759214878082, 'frac_gt_0.5': 0.003227557399769106} [1012s]
+auto_grown_20251005230830031_s_r82_c82 C {'exit': 0, 'mean': 0.16539087891578674, 'frac_gt_0.5': 0.017617864844578075} [1057s]
+auto_grown_20251005230830031_s_r82_c82 D {'exit': 0, 'mean': 0.16145773231983185, 'frac_gt_0.5': 0.01725630312148668} [1172s]
+ALL_DONE [1172s]
+/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+  cells[i][c] = re.sub('\\\\\|', '|', cell)
+/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+  text = re.sub(r'_', '\_', text) # Escape underscores in display text
+[NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+[NbConvertApp] Writing 70017 bytes to __notebook__.ipynb
+[NbConvertApp] Converting notebook __notebook__.ipynb to html
+[NbConvertApp] Writing 556434 bytes to __results__.html

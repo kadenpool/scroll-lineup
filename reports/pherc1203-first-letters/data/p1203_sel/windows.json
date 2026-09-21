@@ -1,0 +1,130 @@
+[
+ {
+  "name": "auto_grown_20251005230830031_r100_c50",
+  "segment": "auto_grown_20251005230830031",
+  "rows": [
+   100,
+   140
+  ],
+  "cols": [
+   50,
+   90
+  ],
+  "papyrus_share": 0.971875011920929,
+  "cells": 1600,
+  "median_coarse_z": 9103.9267578125,
+  "mm": 85.2
+ },
+ {
+  "name": "auto_grown_20250925223153537_r35_c35",
+  "segment": "auto_grown_20250925223153537",
+  "rows": [
+   35,
+   75
+  ],
+  "cols": [
+   35,
+   75
+  ],
+  "papyrus_share": 0.9368749856948853,
+  "cells": 1600,
+  "median_coarse_z": 8717.40234375,
+  "mm": 81.6
+ },
+ {
+  "name": "auto_grown_20251005230830031_r140_c75",
+  "segment": "auto_grown_20251005230830031",
+  "rows": [
+   140,
+   180
+  ],
+  "cols": [
+   75,
+   115
+  ],
+  "papyrus_share": 0.9012500047683716,
+  "cells": 1600,
+  "median_coarse_z": 8907.02734375,
+  "mm": 83.4
+ },
+ {
+  "name": "auto_grown_20251005230830030_r115_c10",
+  "segment": "auto_grown_20251005230830030",
+  "rows": [
+   115,
+   155
+  ],
+  "cols": [
+   10,
+   50
+  ],
+  "papyrus_share": 0.8787500262260437,
+  "cells": 1543,
+  "median_coarse_z": 8351.12109375,
+  "mm": 78.2
+ },
+ {
+  "name": "auto_grown_20251005231446965_r150_c160",
+  "segment": "auto_grown_20251005231446965",
+  "rows": [
+   150,
+   190
+  ],
+  "cols": [
+   160,
+   200
+  ],
+  "papyrus_share": 0.7975000143051147,
+  "cells": 1570,
+  "median_coarse_z": 8350.03125,
+  "mm": 78.2
+ },
+ {
+  "name": "auto_grown_20251005221856743_r145_c105",
+  "segment": "auto_grown_20251005221856743",
+  "rows": [
+   145,
+   185
+  ],
+  "cols": [
+   105,
+   145
+  ],
+  "papyrus_share": 0.731249988079071,
+  "cells": 1591,
+  "median_coarse_z": 8370.7294921875,
+  "mm": 78.4
+ },
+ {
+  "name": "auto_grown_20251005231446965_r155_c120",
+  "segment": "auto_grown_20251005231446965",
+  "rows": [
+   155,
+   195
+  ],
+  "cols": [
+   120,
+   160
+  ],
+  "papyrus_share": 0.7131249904632568,
+  "cells": 1570,
+  "median_coarse_z": 8345.974609375,
+  "mm": 78.1
+ },
+ {
+  "name": "auto_grown_20251005221856743_r190_c90",
+  "segment": "auto_grown_20251005221856743",
+  "rows": [
+   190,
+   230
+  ],
+  "cols": [
+   90,
+   130
+  ],
+  "papyrus_share": 0.5181249976158142,
+  "cells": 1553,
+  "median_coarse_z": 8379.73046875,
+  "mm": 78.5
+ }
+]

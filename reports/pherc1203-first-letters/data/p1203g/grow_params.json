@@ -1,0 +1,10 @@
+{
+ "mode": "seed",
+ "generations": 75,
+ "min_area_cm": 0.3,
+ "thread_limit": 4,
+ "use_cuda": false,
+ "voxelsize": 9.362,
+ "normal_grid_path": "<run-dir>/p1203g/n_grid",
+ "cache_root": "<run-dir>/p1203g/cache"
+}

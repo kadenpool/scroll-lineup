@@ -1,0 +1,92 @@
+{
+ "auto_grown_20260911075433088_r10_c85/C": {
+  "exit": 0,
+  "mean": 0.1838359236717224,
+  "frac_gt_0.5": 0.04067969203427981
+ },
+ "auto_grown_20260911075433088_r5_c45/C": {
+  "exit": 0,
+  "mean": 0.19969283044338226,
+  "frac_gt_0.5": 0.05034546561979148
+ },
+ "auto_grown_20260911075433088_r10_c85/D": {
+  "exit": 0,
+  "mean": 0.17192496359348297,
+  "frac_gt_0.5": 0.03330140364490843
+ },
+ "auto_grown_20260911075433088_r5_c45/D": {
+  "exit": 0,
+  "mean": 0.20375418663024902,
+  "frac_gt_0.5": 0.0735244653600566
+ },
+ "auto_grown_20260911080156934_r40_c80/C": {
+  "exit": 0,
+  "mean": 0.19751590490341187,
+  "frac_gt_0.5": 0.05973742378126995
+ },
+ "auto_grown_20260911080156934_r40_c80/D": {
+  "exit": 0,
+  "mean": 0.16314274072647095,
+  "frac_gt_0.5": 0.01692757593026244
+ },
+ "auto_grown_20260911080156934_r65_c30/C": {
+  "exit": 0,
+  "mean": 0.13316193222999573,
+  "frac_gt_0.5": 0.0
+ },
+ "auto_grown_20260911080156934_r65_c30/D": {
+  "exit": 0,
+  "mean": 0.1367742270231247,
+  "frac_gt_0.5": 0.0013531299404300795
+ },
+ "auto_grown_20260911080156934_r80_c80/C": {
+  "exit": 0,
+  "mean": 0.24139083921909332,
+  "frac_gt_0.5": 0.11299998039538407
+ },
+ "auto_grown_20260911080156934_r80_c80/D": {
+  "exit": 0,
+  "mean": 0.21337154507637024,
+  "frac_gt_0.5": 0.0882011670673455
+ },
+ "auto_grown_20260911083702915_r35_c55/C": {
+  "exit": 0,
+  "mean": 0.3041549623012543,
+  "frac_gt_0.5": 0.18932414432866973
+ },
+ "auto_grown_20260911083702915_r35_c55/D": {
+  "exit": 0,
+  "mean": 0.2984858751296997,
+  "frac_gt_0.5": 0.17465174662008315
+ },
+ "auto_grown_20260911083702915_r60_c5/C": {
+  "exit": 0,
+  "mean": 0.1357768326997757,
+  "frac_gt_0.5": 0.0011025128001158862
+ },
+ "auto_grown_20260911083702915_r60_c5/D": {
+  "exit": 0,
+  "mean": 0.14299678802490234,
+  "frac_gt_0.5": 9.57929969684334e-05,
+  "frac_gt_0.5_as_read": 9.57929969684334
+ },
+ "auto_grown_20260911083702915_r75_c85/C": {
+  "exit": 0,
+  "mean": 0.16049279272556305,
+  "frac_gt_0.5": 0.03063942507974781
+ },
+ "auto_grown_20260911083702915_r75_c85/D": {
+  "exit": 0,
+  "mean": 0.1525394320487976,
+  "frac_gt_0.5": 0.01587093048189218
+ },
+ "_correction_note": "A share is a fraction and cannot exceed 1. The values listed in _misread_values came from a parser that read the kernel's e-notation output ('>0.5 on 9.58e-05') and dropped the exponent, so 9.58e-05 was stored as 9.579 (which reads as 957.9 percent). The true share is 9.58e-05, under 0.01 percent. The parser was fixed on 12 Sep 2026 so the regex accepts e-notation. The file is kept as produced, with this note and a corrected field.",
+ "_misread_values": [
+  {
+   "path": "/auto_grown_20260911083702915_r60_c5/D/frac_gt_0.5",
+   "as_read": 9.57929969684334,
+   "true_value": 9.57929969684334e-05,
+   "window": "083702915_r60_c5"
+  }
+ ]
+}

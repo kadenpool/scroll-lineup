@@ -1,0 +1,23 @@
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+Writing /kaggle/working/run_canon.py
+2 windows
+auto_grown_20251005231446965_s_r186_c141 C {'exit': 0, 'mean': 0.14264898002147675, 'frac_gt_0.5': 0.0089515395941361} [151s]
+auto_grown_20251005231446965_s_r226_c101 C {'exit': 0, 'mean': 0.1557362675666809, 'frac_gt_0.5': 0.016047767499463888} [251s]
+auto_grown_20251005231446965_s_r186_c141 D {'exit': 0, 'mean': 0.1433912068605423, 'frac_gt_0.5': 0.012831700915434351} [296s]
+auto_grown_20251005231446965_s_r226_c101 D {'exit': 0, 'mean': 0.1456889510154724, 'frac_gt_0.5': 0.008659302883042598} [356s]
+ALL_DONE [356s]
+/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+  cells[i][c] = re.sub('\\\\\|', '|', cell)
+/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+  text = re.sub(r'_', '\_', text) # Escape underscores in display text
+[NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+[NbConvertApp] Writing 68372 bytes to __notebook__.ipynb
+[NbConvertApp] Converting notebook __notebook__.ipynb to html
+[NbConvertApp] Writing 554633 bytes to __results__.html

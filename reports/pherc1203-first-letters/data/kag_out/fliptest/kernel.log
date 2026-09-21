@@ -1,0 +1,91 @@
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+Writing /kaggle/working/run_canon.py
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 211.3/211.3 kB 7.0 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 211.3/211.3 kB 7.0 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 26.5/26.5 MB 74.8 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.9/8.9 MB 113.6 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 26.5/26.5 MB 74.8 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.9/8.9 MB 113.6 MB/s eta 0:00:00
+/usr/local/lib/python3.12/dist-packages/fsspec/registry.py:286: UserWarning: Your installed version of s3fs is very old and known to cause
+severe performance issues, see also https://github.com/dask/dask/issues/10276
+
+To fix, you should specify a lower version bound on s3fs, or
+update the current installation.
+
+  warnings.warn(s3_msg)
+
+/usr/local/lib/python3.12/dist-packages/fsspec/registry.py:286: UserWarning: Your installed version of s3fs is very old and known to cause
+severe performance issues, see also https://github.com/dask/dask/issues/10276
+
+To fix, you should specify a lower version bound on s3fs, or
+update the current installation.
+
+  warnings.warn(s3_msg)
+20250108000000-w025_2025 prediction (28320, 26480) volume (109, 28320, 26480)
+fetched text_w025_y20940_x12198 published ink 17.6% [100s]
+fetched text_w025_y15501_x14695 published ink 16.4% [198s]
+fetched text_w025_y19820_x23169 published ink 48.9% [281s]
+fetched blank_w025_y11612_x8447 published ink 0.4% [363s]
+fetched blank_w025_y19596_x8290 published ink 0.0% [445s]
+20250108000001-w026_2025 prediction (28960, 28480) volume (109, 28960, 28480)
+fetched text_w026_y1969_x15538 published ink 13.0% [531s]
+fetched text_w026_y9696_x7743 published ink 15.9% [616s]
+fetched text_w026_y25467_x5741 published ink 22.4% [697s]
+fetched blank_w026_y8317_x2358 published ink 0.4% [780s]
+fetched blank_w026_y23340_x23676 published ink 0.3% [862s]
+20250108000002-w027_2025 prediction (28480, 28400) volume (109, 28480, 28400)
+fetched text_w027_y2838_x1777 published ink 47.6% [947s]
+fetched text_w027_y4466_x22273 published ink 13.5% [1027s]
+text_w025_y20940_x12198 fwd {'exit': 0, 'r': 0.8841978172295459, 'ink': 0.17109441757202148, 'pub': 0.17609810829162598} [1111s]
+text_w025_y15501_x14695 fwd {'exit': 0, 'r': 0.844410770808513, 'ink': 0.1670377254486084, 'pub': 0.16427111625671387} [1181s]
+text_w025_y20940_x12198 rev {'exit': 0, 'r': -0.018284663949691263, 'ink': 0.010647058486938477, 'pub': 0.17609810829162598} [1191s]
+text_w025_y15501_x14695 rev {'exit': 0, 'r': -0.08284533269944319, 'ink': 0.0216825008392334, 'pub': 0.16427111625671387} [1256s]
+text_w025_y19820_x23169 fwd {'exit': 0, 'r': 0.8933262604845081, 'ink': 0.5025465488433838, 'pub': 0.48940038681030273} [1271s]
+text_w025_y19820_x23169 rev {'exit': 0, 'r': -0.15679668712960787, 'ink': 0.0721120834350586, 'pub': 0.48940038681030273} [1331s]
+blank_w025_y11612_x8447 fwd {'exit': 0, 'r': 0.5947719155830361, 'ink': 0.005498647689819336, 'pub': 0.004206657409667969} [1352s]
+blank_w025_y11612_x8447 rev {'exit': 0, 'r': -0.03940678490352235, 'ink': 0.021986961364746094, 'pub': 0.004206657409667969} [1407s]
+blank_w025_y19596_x8290 fwd {'exit': 0, 'r': 0.3731998269187734, 'ink': 0.0020470619201660156, 'pub': 0.0003132820129394531} [1432s]
+blank_w025_y19596_x8290 rev {'exit': 0, 'r': 0.07692153715526284, 'ink': 0.002202272415161133, 'pub': 0.0003132820129394531} [1482s]
+text_w026_y1969_x15538 fwd {'exit': 0, 'r': 0.8520668626165009, 'ink': 0.10825896263122559, 'pub': 0.12982630729675293} [1512s]
+text_w026_y1969_x15538 rev {'exit': 0, 'r': -0.10915074812627024, 'ink': 0.1380319595336914, 'pub': 0.12982630729675293} [1557s]
+text_w026_y9696_x7743 fwd {'exit': 0, 'r': 0.8193277309733311, 'ink': 0.16411805152893066, 'pub': 0.1592705249786377} [1592s]
+text_w026_y9696_x7743 rev {'exit': 0, 'r': 0.08682138916629163, 'ink': 0.037637948989868164, 'pub': 0.1592705249786377} [1632s]
+text_w026_y25467_x5741 fwd {'exit': 0, 'r': 0.9150115203558852, 'ink': 0.22001981735229492, 'pub': 0.22336602210998535} [1672s]
+text_w026_y25467_x5741 rev {'exit': 0, 'r': -0.1365204896700402, 'ink': 0.08465456962585449, 'pub': 0.22336602210998535} [1708s]
+blank_w026_y8317_x2358 fwd {'exit': 0, 'r': 0.4549284545958529, 'ink': 0.004759073257446289, 'pub': 0.004097938537597656} [1748s]
+blank_w026_y8317_x2358 rev {'exit': 0, 'r': -0.09467518070200634, 'ink': 0.09696745872497559, 'pub': 0.004097938537597656} [1783s]
+blank_w026_y23340_x23676 fwd {'exit': 0, 'r': 0.37354016253280037, 'ink': 0.012318849563598633, 'pub': 0.003114938735961914} [1823s]
+blank_w026_y23340_x23676 rev {'exit': 0, 'r': -0.027720039113568642, 'ink': 0.02942490577697754, 'pub': 0.003114938735961914} [1858s]
+text_w027_y2838_x1777 fwd {'exit': 0, 'r': 0.8935039969031171, 'ink': 0.4442288875579834, 'pub': 0.477527379989624} [1898s]
+text_w027_y2838_x1777 rev {'exit': 0, 'r': 0.19888753310951146, 'ink': 0.40721654891967773, 'pub': 0.477527379989624} [1933s]
+text_w027_y4466_x22273 fwd {'exit': 0, 'r': 0.8630017678278432, 'ink': 0.13971757888793945, 'pub': 0.1345221996307373} [1978s]
+text_w027_y4466_x22273 rev {'exit': 0, 'r': -0.15654799135972408, 'ink': 0.29639434814453125, 'pub': 0.1345221996307373} [2009s]
+ALL_DONE
+known text should keep little ink when reversed; false/blank should not change
+blank_w025_y11612_x8447            published   0.4% | fwd   0.5% (match 0.59) | rev   2.2% (match -0.04) | ratio 4.00
+blank_w025_y19596_x8290            published   0.0% | fwd   0.2% (match 0.37) | rev   0.2% (match 0.08) | ratio 1.08
+blank_w026_y23340_x23676           published   0.3% | fwd   1.2% (match 0.37) | rev   2.9% (match -0.03) | ratio 2.39
+blank_w026_y8317_x2358             published   0.4% | fwd   0.5% (match 0.45) | rev   9.7% (match -0.09) | ratio 20.38
+text_w025_y15501_x14695            published  16.4% | fwd  16.7% (match 0.84) | rev   2.2% (match -0.08) | ratio 0.13
+text_w025_y19820_x23169            published  48.9% | fwd  50.3% (match 0.89) | rev   7.2% (match -0.16) | ratio 0.14
+text_w025_y20940_x12198            published  17.6% | fwd  17.1% (match 0.88) | rev   1.1% (match -0.02) | ratio 0.06
+text_w026_y1969_x15538             published  13.0% | fwd  10.8% (match 0.85) | rev  13.8% (match -0.11) | ratio 1.28
+text_w026_y25467_x5741             published  22.3% | fwd  22.0% (match 0.92) | rev   8.5% (match -0.14) | ratio 0.38
+text_w026_y9696_x7743              published  15.9% | fwd  16.4% (match 0.82) | rev   3.8% (match 0.09) | ratio 0.23
+text_w027_y2838_x1777              published  47.8% | fwd  44.4% (match 0.89) | rev  40.7% (match 0.20) | ratio 0.92
+text_w027_y4466_x22273             published  13.5% | fwd  14.0% (match 0.86) | rev  29.6% (match -0.16) | ratio 2.12
+/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+  cells[i][c] = re.sub('\\\\\|', '|', cell)
+/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+  text = re.sub(r'_', '\_', text) # Escape underscores in display text
+[NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+[NbConvertApp] Writing 77720 bytes to __notebook__.ipynb
+[NbConvertApp] Converting notebook __notebook__.ipynb to html
+[NbConvertApp] Writing 580254 bytes to __results__.html

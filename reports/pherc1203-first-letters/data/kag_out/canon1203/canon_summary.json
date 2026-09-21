@@ -1,0 +1,12 @@
+{
+ "A_layers1-62": {
+  "exit": 0,
+  "seconds": 169,
+  "last": "Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads."
+ },
+ "B_depthflip_layers107-46": {
+  "exit": 0,
+  "seconds": 155,
+  "last": "CANON_DONE status=ok total=154.6s out=/kaggle/working/B_depthflip_layers107-46"
+ }
+}

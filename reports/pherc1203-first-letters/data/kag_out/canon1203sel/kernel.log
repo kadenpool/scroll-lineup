@@ -1,0 +1,36 @@
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+Writing /kaggle/working/run_canon.py
+8 windows: ['auto_grown_20250925223153537_r35_c35', 'auto_grown_20251005221856743_r145_c105', 'auto_grown_20251005221856743_r190_c90', 'auto_grown_20251005230830030_r115_c10', 'auto_grown_20251005230830031_r100_c50', 'auto_grown_20251005230830031_r140_c75', 'auto_grown_20251005231446965_r150_c160', 'auto_grown_20251005231446965_r155_c120']
+auto_grown_20250925223153537_r35_c35 A {'exit': 0, 'mean': 0.2611760199069977, 'frac_gt_0.5': 0.159201899830066} [162s]
+checkpoint for the rest: ['/tmp/canon_models/scrollprize__ink_canonical_2um/r152_3ddec_v2_l5_epoch13.ckpt']
+auto_grown_20251005221856743_r145_c105 A {'exit': 0, 'mean': 0.2288534939289093, 'frac_gt_0.5': 0.09558323355655128} [307s]
+auto_grown_20250925223153537_r35_c35 B {'exit': 0, 'mean': 0.16466066241264343, 'frac_gt_0.5': 0.02968752512825461} [317s]
+auto_grown_20251005221856743_r145_c105 B {'exit': 0, 'mean': 0.1862344592809677, 'frac_gt_0.5': 0.052535958336930574} [462s]
+auto_grown_20251005221856743_r190_c90 A {'exit': 0, 'mean': 0.1702895164489746, 'frac_gt_0.5': 0.025739290391066417} [467s]
+auto_grown_20251005230830030_r115_c10 A {'exit': 0, 'mean': 0.18085084855556488, 'frac_gt_0.5': 0.038063074972640984} [617s]
+auto_grown_20251005221856743_r190_c90 B {'exit': 0, 'mean': 0.19173124432563782, 'frac_gt_0.5': 0.057777633207686994} [622s]
+auto_grown_20251005230830030_r115_c10 B {'exit': 0, 'mean': 0.16439762711524963, 'frac_gt_0.5': 0.02766008263955406} [772s]
+auto_grown_20251005230830031_r100_c50 A {'exit': 0, 'mean': 0.18676602840423584, 'frac_gt_0.5': 0.0432387900753246} [777s]
+auto_grown_20251005230830031_r100_c50 B {'exit': 0, 'mean': 0.15714584290981293, 'frac_gt_0.5': 0.0109833783118398} [927s]
+auto_grown_20251005230830031_r140_c75 A {'exit': 0, 'mean': 0.1640406996011734, 'frac_gt_0.5': 0.01945014923738328} [932s]
+auto_grown_20251005230830031_r140_c75 B {'exit': 0, 'mean': 0.14701500535011292, 'frac_gt_0.5': 0.012527497101965187} [1082s]
+auto_grown_20251005231446965_r150_c160 A {'exit': 0, 'mean': 0.1546441614627838, 'frac_gt_0.5': 0.013549743935526336} [1087s]
+auto_grown_20251005231446965_r150_c160 B {'exit': 0, 'mean': 0.13817521929740906, 'frac_gt_0.5': 0.002196051551196259} [1237s]
+auto_grown_20251005231446965_r155_c120 A {'exit': 0, 'mean': 0.13959267735481262, 'frac_gt_0.5': 0.007449440222630049} [1252s]
+auto_grown_20251005231446965_r155_c120 B {'exit': 0, 'mean': 0.14527910947799683, 'frac_gt_0.5': 0.006283031537435907} [1397s]
+ALL_DONE {"auto_grown_20250925223153537_r35_c35/A": {"exit": 0, "mean": 0.2611760199069977, "frac_gt_0.5": 0.159201899830066}, "auto_grown_20251005221856743_r145_c105/A": {"exit": 0, "mean": 0.2288534939289093, "frac_gt_0.5": 0.09558323355655128}, "auto_grown_20250925223153537_r35_c35/B": {"exit": 0, "mean": 0.16466066241264343, "frac_gt_0.5": 0.02968752512825461}, "auto_grown_20251005221856743_r145_c105/B": {"exit": 0, "mean": 0.1862344592809677, "frac_gt_0.5": 0.052535958336930574}, "auto_grown_20251005221856743_r190_c90/A": {"exit": 0, "mean": 0.1702895164489746, "frac_gt_0.5": 0.025739290391066417}, "auto_grown_20251005230830030_r115_c10/A": {"exit": 0, "mean": 0.18085084855556488, "frac_gt_0.5": 0.038063074972640984}, "auto_grown_20251005221856743_r190_c90/B": {"exit": 0, "mean": 0.19173124432563782, "frac_gt_0.5": 0.057777633207686994}, "auto_grown_20251005230830030_r115_c10/B": {"exit": 0, "mean": 0.16439762711524963, "frac_gt_0.5": 0.02766008263955406}, "auto_grown_20251005230830031_r100_c50/A": {"exit": 0, "mean": 0.18676602840423584, "frac_gt_0.5": 0.0432387900753246}, "auto_grown_20251005230830031_r100_c50/B": {"exit": 0, "mean": 0.15714584290981293, "frac_gt_0.5": 0.0109833783118398}, "auto_grown_20251005230830031_r140_c75/A": {"exit": 0, "mean": 0.1640406996011734, "frac_gt_0.5": 0.01945014923738328}, "auto_grown_20251005230830031_r140_c75/B": {"exit": 0, "mean": 0.14701500535011292, "frac_gt_0.5": 0.012527497101965187}, "auto_grown_20251005231446965_r150_c160/A": {"exit": 0, "mean": 0.1546441614627838, "frac_gt_0.5": 0.013549743935526336}, "auto_grown_20251005231446965_r150_c160/B": {"exit": 0, "mean": 0.13817521929740906, "frac_gt_0.5": 0.002196051551196259}, "auto_grown_20251005231446965_r155_c120/A": {"exit": 0, "mean": 0.13959267735481262, "frac_gt_0.5": 0.007449440222630049}, "auto_grown_20251005231446965_r155_c120/B": {"exit": 0, "mean": 0.14527910947799683, "frac_gt_0.5": 0.006283031537435907}} [1397s]
+/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+  cells[i][c] = re.sub('\\\\\|', '|', cell)
+/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+  text = re.sub(r'_', '\_', text) # Escape underscores in display text
+[NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+[NbConvertApp] Writing 72915 bytes to __notebook__.ipynb
+[NbConvertApp] Converting notebook __notebook__.ipynb to html
+[NbConvertApp] Writing 560420 bytes to __results__.html

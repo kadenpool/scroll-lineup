@@ -1,0 +1,45 @@
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+Writing /kaggle/working/run_canon.py
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 211.3/211.3 kB 4.7 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 211.3/211.3 kB 4.7 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 26.5/26.5 MB 60.0 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.9/8.9 MB 81.5 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 26.5/26.5 MB 60.0 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.9/8.9 MB 81.5 MB/s eta 0:00:00
+/usr/local/lib/python3.12/dist-packages/fsspec/registry.py:286: UserWarning: Your installed version of s3fs is very old and known to cause
+severe performance issues, see also https://github.com/dask/dask/issues/10276
+
+To fix, you should specify a lower version bound on s3fs, or
+update the current installation.
+
+  warnings.warn(s3_msg)
+
+/usr/local/lib/python3.12/dist-packages/fsspec/registry.py:286: UserWarning: Your installed version of s3fs is very old and known to cause
+severe performance issues, see also https://github.com/dask/dask/issues/10276
+
+To fix, you should specify a lower version bound on s3fs, or
+update the current installation.
+
+  warnings.warn(s3_msg)
+published prediction (28320, 26480) uint8 [16s]
+surface volume (109, 28320, 26480)
+blank window 3312 264 published >0.5 0.18 % [170s]
+blank {"y0": 3312, "x0": 264, "published_frac_gt_0.5": 0.0017683678500986194, "published_mean": 0.12715698778629303, "exit": 0, "ours_frac_gt_0.5": 0.03620870315581854, "ours_mean": 0.16494332253932953, "corr_with_published": 0.1380604133784747} [329s]
+inked window 23704 13056 published >0.5 84.8 % [471s]
+inked {"y0": 23704, "x0": 13056, "published_frac_gt_0.5": 0.8480057322485207, "published_mean": 0.7859452366828918, "exit": 0, "ours_frac_gt_0.5": 0.40626931295200525, "ours_mean": 0.45139551162719727, "corr_with_published": 0.3798592166661134} [610s]
+ALL_DONE {"blank": {"y0": 3312, "x0": 264, "published_frac_gt_0.5": 0.0017683678500986194, "published_mean": 0.12715698778629303, "exit": 0, "ours_frac_gt_0.5": 0.03620870315581854, "ours_mean": 0.16494332253932953, "corr_with_published": 0.1380604133784747}, "inked": {"y0": 23704, "x0": 13056, "published_frac_gt_0.5": 0.8480057322485207, "published_mean": 0.7859452366828918, "exit": 0, "ours_frac_gt_0.5": 0.40626931295200525, "ours_mean": 0.45139551162719727, "corr_with_published": 0.3798592166661134}}
+/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+  cells[i][c] = re.sub('\\\\\|', '|', cell)
+/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+  text = re.sub(r'_', '\_', text) # Escape underscores in display text
+[NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+[NbConvertApp] Writing 71453 bytes to __notebook__.ipynb
+[NbConvertApp] Converting notebook __notebook__.ipynb to html
+[NbConvertApp] Writing 564781 bytes to __results__.html

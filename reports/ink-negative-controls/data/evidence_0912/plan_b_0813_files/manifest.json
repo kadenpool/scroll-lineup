@@ -1,0 +1,1387 @@
+{
+ "volume": "https://vesuvius-challenge-open-data.s3.amazonaws.com/PHerc0813/volumes/20250821151723-9.362um-1.2m-113keV-masked.zarr/",
+ "volume_shape_zyx": [
+  16993,
+  7947,
+  7947
+ ],
+ "voxel_um": 9.362,
+ "render_recipe": "vc_render_tifxyz --auto-crop --scale 1 -g 0 --num-slices 101 --slice-step 1 --flip-normals --pyramid 0 --timeout 120 --cache-gb 4 (render_one.sh)",
+ "windows": {
+  "on": [
+   40,
+   61
+  ],
+  "offA": [
+   0,
+   21
+  ],
+  "offB": [
+   80,
+   101
+  ]
+ },
+ "meshes": [
+  {
+   "mesh": "z6496_w020",
+   "verdict": "aprova",
+   "area_cm2": 2.21,
+   "z_range": [
+    6500,
+    7294
+   ],
+   "x_range": [
+    3978,
+    5660
+   ],
+   "y_range": [
+    4974,
+    5962
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    2981,
+    1561
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    2981,
+    1561
+   ],
+   "render_exit": 0,
+   "render_seconds": 92,
+   "render_shape": [
+    101,
+    1561,
+    2981
+   ],
+   "rendered_fraction": 0.5296,
+   "rendered_px": 2464300,
+   "rendered_area_cm2": 2.16,
+   "on_mean_grey": 106.1,
+   "offA_mean_grey": 103.1,
+   "offB_mean_grey": 98.1,
+   "tar_bytes": 137390080
+  },
+  {
+   "mesh": "z7104_w020",
+   "verdict": "aprova",
+   "area_cm2": 2.27,
+   "z_range": [
+    7107,
+    7900
+   ],
+   "x_range": [
+    4436,
+    5849
+   ],
+   "y_range": [
+    4352,
+    5788
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    2781,
+    1621
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    2781,
+    1621
+   ],
+   "render_exit": 0,
+   "render_seconds": 118,
+   "render_shape": [
+    101,
+    1621,
+    2781
+   ],
+   "rendered_fraction": 0.5627,
+   "rendered_px": 2536500,
+   "rendered_area_cm2": 2.223,
+   "on_mean_grey": 99.8,
+   "offA_mean_grey": 110.0,
+   "offB_mean_grey": 100.1,
+   "tar_bytes": 141844480
+  },
+  {
+   "mesh": "z7696_w020",
+   "verdict": "aprova",
+   "area_cm2": 1.81,
+   "z_range": [
+    7699,
+    8491
+   ],
+   "x_range": [
+    4902,
+    5835
+   ],
+   "y_range": [
+    3724,
+    5298
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    1941,
+    1761
+   ],
+   "crop_xywh": [
+    39,
+    19,
+    1941,
+    1761
+   ],
+   "render_exit": 0,
+   "render_seconds": 111,
+   "render_shape": [
+    101,
+    1761,
+    1941
+   ],
+   "rendered_fraction": 0.59,
+   "rendered_px": 2016700,
+   "rendered_area_cm2": 1.768,
+   "on_mean_grey": 95.0,
+   "offA_mean_grey": 85.7,
+   "offB_mean_grey": 73.2,
+   "tar_bytes": 104591360
+  },
+  {
+   "mesh": "z8288_w020",
+   "verdict": "aprova",
+   "area_cm2": 1.78,
+   "z_range": [
+    8291,
+    9083
+   ],
+   "x_range": [
+    5205,
+    5881
+   ],
+   "y_range": [
+    3269,
+    4814
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    2381,
+    1601
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    2381,
+    1601
+   ],
+   "render_exit": 0,
+   "render_seconds": 108,
+   "render_shape": [
+    101,
+    1601,
+    2381
+   ],
+   "rendered_fraction": 0.5222,
+   "rendered_px": 1990600,
+   "rendered_area_cm2": 1.745,
+   "on_mean_grey": 90.1,
+   "offA_mean_grey": 96.3,
+   "offB_mean_grey": 90.6,
+   "tar_bytes": 107857920
+  },
+  {
+   "mesh": "z11296_w020",
+   "verdict": "aprova",
+   "area_cm2": 1.72,
+   "z_range": [
+    11301,
+    12093
+   ],
+   "x_range": [
+    3085,
+    3820
+   ],
+   "y_range": [
+    3042,
+    4050
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    2281,
+    1101
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    2281,
+    1101
+   ],
+   "render_exit": 0,
+   "render_seconds": 61,
+   "render_shape": [
+    101,
+    1101,
+    2281
+   ],
+   "rendered_fraction": 0.761,
+   "rendered_px": 1911100,
+   "rendered_area_cm2": 1.675,
+   "on_mean_grey": 79.1,
+   "offA_mean_grey": 83.7,
+   "offB_mean_grey": 70.9,
+   "tar_bytes": 96757760
+  },
+  {
+   "mesh": "z11904_w020",
+   "verdict": "aprova",
+   "area_cm2": 1.75,
+   "z_range": [
+    11908,
+    12702
+   ],
+   "x_range": [
+    3017,
+    3745
+   ],
+   "y_range": [
+    3083,
+    4166
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    2461,
+    1081
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    2461,
+    1081
+   ],
+   "render_exit": 0,
+   "render_seconds": 57,
+   "render_shape": [
+    101,
+    1081,
+    2461
+   ],
+   "rendered_fraction": 0.7306,
+   "rendered_px": 1943600,
+   "rendered_area_cm2": 1.704,
+   "on_mean_grey": 83.1,
+   "offA_mean_grey": 80.0,
+   "offB_mean_grey": 67.1,
+   "tar_bytes": 95447040
+  },
+  {
+   "mesh": "z12496_w020",
+   "verdict": "aprova",
+   "area_cm2": 1.73,
+   "z_range": [
+    12499,
+    13293
+   ],
+   "x_range": [
+    2955,
+    3697
+   ],
+   "y_range": [
+    3241,
+    4206
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    2521,
+    1001
+   ],
+   "crop_xywh": [
+    19,
+    59,
+    2521,
+    1001
+   ],
+   "render_exit": 0,
+   "render_seconds": 60,
+   "render_shape": [
+    101,
+    1001,
+    2521
+   ],
+   "rendered_fraction": 0.7606,
+   "rendered_px": 1919300,
+   "rendered_area_cm2": 1.682,
+   "on_mean_grey": 74.2,
+   "offA_mean_grey": 80.7,
+   "offB_mean_grey": 68.6,
+   "tar_bytes": 95088640
+  },
+  {
+   "mesh": "z13088_w020",
+   "verdict": "aprova",
+   "area_cm2": 1.73,
+   "z_range": [
+    13091,
+    13881
+   ],
+   "x_range": [
+    2893,
+    3648
+   ],
+   "y_range": [
+    3297,
+    4314
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    2381,
+    1021
+   ],
+   "crop_xywh": [
+    19,
+    39,
+    2381,
+    1021
+   ],
+   "render_exit": 0,
+   "render_seconds": 65,
+   "render_shape": [
+    101,
+    1021,
+    2381
+   ],
+   "rendered_fraction": 0.7884,
+   "rendered_px": 1916600,
+   "rendered_area_cm2": 1.68,
+   "on_mean_grey": 73.9,
+   "offA_mean_grey": 74.6,
+   "offB_mean_grey": 67.8,
+   "tar_bytes": 93788160
+  },
+  {
+   "mesh": "z13696_w020",
+   "verdict": "aprova",
+   "area_cm2": 1.78,
+   "z_range": [
+    13698,
+    14494
+   ],
+   "x_range": [
+    2721,
+    3512
+   ],
+   "y_range": [
+    3257,
+    4329
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    2461,
+    1041
+   ],
+   "crop_xywh": [
+    19,
+    39,
+    2461,
+    1041
+   ],
+   "render_exit": 0,
+   "render_seconds": 66,
+   "render_shape": [
+    101,
+    1041,
+    2461
+   ],
+   "rendered_fraction": 0.7701,
+   "rendered_px": 1972900,
+   "rendered_area_cm2": 1.729,
+   "on_mean_grey": 85.7,
+   "offA_mean_grey": 85.6,
+   "offB_mean_grey": 81.9,
+   "tar_bytes": 102522880
+  },
+  {
+   "mesh": "z14304_w020",
+   "verdict": "parcial",
+   "area_cm2": 2.02,
+   "z_range": [
+    14307,
+    15103
+   ],
+   "x_range": [
+    2217,
+    3328
+   ],
+   "y_range": [
+    3070,
+    4222
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    2321,
+    1361
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    2321,
+    1361
+   ],
+   "render_exit": 0,
+   "render_seconds": 98,
+   "render_shape": [
+    101,
+    1361,
+    2321
+   ],
+   "rendered_fraction": 0.7123,
+   "rendered_px": 2250100,
+   "rendered_area_cm2": 1.972,
+   "on_mean_grey": 100.7,
+   "offA_mean_grey": 93.8,
+   "offB_mean_grey": 103.1,
+   "tar_bytes": 125655040
+  },
+  {
+   "mesh": "z14304_w100",
+   "verdict": "aprova",
+   "area_cm2": 9.58,
+   "z_range": [
+    14305,
+    15103
+   ],
+   "x_range": [
+    924,
+    4891
+   ],
+   "y_range": [
+    1592,
+    5509
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    12301,
+    1821
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    12301,
+    1821
+   ],
+   "render_exit": 0,
+   "render_seconds": 196,
+   "render_shape": [
+    101,
+    1821,
+    12301
+   ],
+   "rendered_fraction": 0.4774,
+   "rendered_px": 10694500,
+   "rendered_area_cm2": 9.373,
+   "on_mean_grey": 106.9,
+   "offA_mean_grey": 104.4,
+   "offB_mean_grey": 104.9,
+   "tar_bytes": 603709440
+  },
+  {
+   "mesh": "z14896_w080",
+   "verdict": "aprova",
+   "area_cm2": 7.49,
+   "z_range": [
+    14897,
+    15695
+   ],
+   "x_range": [
+    935,
+    4444
+   ],
+   "y_range": [
+    1958,
+    4795
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    9481,
+    1621
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    9481,
+    1621
+   ],
+   "render_exit": 0,
+   "render_seconds": 164,
+   "render_shape": [
+    101,
+    1621,
+    9481
+   ],
+   "rendered_fraction": 0.5441,
+   "rendered_px": 8362300,
+   "rendered_area_cm2": 7.329,
+   "on_mean_grey": 105.9,
+   "offA_mean_grey": 104.9,
+   "offB_mean_grey": 104.2,
+   "tar_bytes": 470292480
+  },
+  {
+   "mesh": "z6496_w040",
+   "verdict": "unjudged",
+   "area_cm2": 4.27,
+   "z_range": [
+    6499,
+    7293
+   ],
+   "x_range": [
+    3148,
+    6051
+   ],
+   "y_range": [
+    4533,
+    6165
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    6021,
+    1981
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    6021,
+    1981
+   ],
+   "render_exit": 0,
+   "render_seconds": 176,
+   "render_shape": [
+    101,
+    1981,
+    6021
+   ],
+   "rendered_fraction": 0.3985,
+   "rendered_px": 4753500,
+   "rendered_area_cm2": 4.166,
+   "on_mean_grey": 113.1,
+   "offA_mean_grey": 113.9,
+   "offB_mean_grey": 111.0,
+   "tar_bytes": 269762560
+  },
+  {
+   "mesh": "z7104_w040",
+   "verdict": "unjudged",
+   "area_cm2": 4.17,
+   "z_range": [
+    7105,
+    7901
+   ],
+   "x_range": [
+    3853,
+    6094
+   ],
+   "y_range": [
+    3976,
+    5949
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    5341,
+    1821
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    5341,
+    1821
+   ],
+   "render_exit": 0,
+   "render_seconds": 158,
+   "render_shape": [
+    101,
+    1821,
+    5341
+   ],
+   "rendered_fraction": 0.4787,
+   "rendered_px": 4656000,
+   "rendered_area_cm2": 4.081,
+   "on_mean_grey": 108.6,
+   "offA_mean_grey": 110.7,
+   "offB_mean_grey": 108.7,
+   "tar_bytes": 263618560
+  },
+  {
+   "mesh": "z7104_w060",
+   "verdict": "unjudged",
+   "area_cm2": 5.99,
+   "z_range": [
+    7105,
+    7903
+   ],
+   "x_range": [
+    3310,
+    6432
+   ],
+   "y_range": [
+    3606,
+    6259
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    7861,
+    2041
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    7861,
+    2041
+   ],
+   "render_exit": 0,
+   "render_seconds": 123,
+   "render_shape": [
+    101,
+    2041,
+    7861
+   ],
+   "rendered_fraction": 0.4171,
+   "rendered_px": 6692600,
+   "rendered_area_cm2": 5.866,
+   "on_mean_grey": 113.9,
+   "offA_mean_grey": 109.5,
+   "offB_mean_grey": 113.0,
+   "tar_bytes": 381224960
+  },
+  {
+   "mesh": "z7696_w040",
+   "verdict": "unjudged",
+   "area_cm2": 3.69,
+   "z_range": [
+    7698,
+    8494
+   ],
+   "x_range": [
+    4502,
+    6073
+   ],
+   "y_range": [
+    3237,
+    5577
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    4581,
+    1861
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    4581,
+    1861
+   ],
+   "render_exit": 0,
+   "render_seconds": 126,
+   "render_shape": [
+    101,
+    1861,
+    4581
+   ],
+   "rendered_fraction": 0.4839,
+   "rendered_px": 4125500,
+   "rendered_area_cm2": 3.616,
+   "on_mean_grey": 107.8,
+   "offA_mean_grey": 113.1,
+   "offB_mean_grey": 105.0,
+   "tar_bytes": 233256960
+  },
+  {
+   "mesh": "z7696_w060",
+   "verdict": "unjudged",
+   "area_cm2": 5.56,
+   "z_range": [
+    7697,
+    8494
+   ],
+   "x_range": [
+    4075,
+    6389
+   ],
+   "y_range": [
+    2956,
+    5912
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    7021,
+    1961
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    7021,
+    1961
+   ],
+   "render_exit": 0,
+   "render_seconds": 142,
+   "render_shape": [
+    101,
+    1961,
+    7021
+   ],
+   "rendered_fraction": 0.4512,
+   "rendered_px": 6212400,
+   "rendered_area_cm2": 5.445,
+   "on_mean_grey": 115.8,
+   "offA_mean_grey": 115.0,
+   "offB_mean_grey": 113.6,
+   "tar_bytes": 354723840
+  },
+  {
+   "mesh": "z8288_w060",
+   "verdict": "unjudged",
+   "area_cm2": 5.57,
+   "z_range": [
+    8289,
+    9087
+   ],
+   "x_range": [
+    4395,
+    6467
+   ],
+   "y_range": [
+    2406,
+    5519
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    7361,
+    1621
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    7361,
+    1621
+   ],
+   "render_exit": 0,
+   "render_seconds": 140,
+   "render_shape": [
+    101,
+    1621,
+    7361
+   ],
+   "rendered_fraction": 0.5211,
+   "rendered_px": 6218200,
+   "rendered_area_cm2": 5.45,
+   "on_mean_grey": 111.8,
+   "offA_mean_grey": 111.4,
+   "offB_mean_grey": 108.4,
+   "tar_bytes": 351539200
+  },
+  {
+   "mesh": "z11296_w040",
+   "verdict": "unjudged",
+   "area_cm2": 3.71,
+   "z_range": [
+    11298,
+    12093
+   ],
+   "x_range": [
+    2821,
+    4446
+   ],
+   "y_range": [
+    2576,
+    4588
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    4741,
+    1481
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    4741,
+    1481
+   ],
+   "render_exit": 0,
+   "render_seconds": 94,
+   "render_shape": [
+    101,
+    1481,
+    4741
+   ],
+   "rendered_fraction": 0.5896,
+   "rendered_px": 4139700,
+   "rendered_area_cm2": 3.628,
+   "on_mean_grey": 97.7,
+   "offA_mean_grey": 97.2,
+   "offB_mean_grey": 89.3,
+   "tar_bytes": 225546240
+  },
+  {
+   "mesh": "z11296_w060",
+   "verdict": "unjudged",
+   "area_cm2": 5.67,
+   "z_range": [
+    11297,
+    12094
+   ],
+   "x_range": [
+    2405,
+    4826
+   ],
+   "y_range": [
+    2265,
+    5032
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    7461,
+    1481
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    7461,
+    1481
+   ],
+   "render_exit": 0,
+   "render_seconds": 145,
+   "render_shape": [
+    101,
+    1481,
+    7461
+   ],
+   "rendered_fraction": 0.5717,
+   "rendered_px": 6317500,
+   "rendered_area_cm2": 5.537,
+   "on_mean_grey": 105.5,
+   "offA_mean_grey": 105.6,
+   "offB_mean_grey": 100.2,
+   "tar_bytes": 353136640
+  },
+  {
+   "mesh": "z11904_w040",
+   "verdict": "unjudged",
+   "area_cm2": 3.69,
+   "z_range": [
+    11905,
+    12700
+   ],
+   "x_range": [
+    2612,
+    4120
+   ],
+   "y_range": [
+    2699,
+    4629
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    5061,
+    1240
+   ],
+   "crop_xywh": [
+    19,
+    0,
+    5061,
+    1240
+   ],
+   "render_exit": 0,
+   "render_seconds": 113,
+   "render_shape": [
+    101,
+    1240,
+    5061
+   ],
+   "rendered_fraction": 0.6533,
+   "rendered_px": 4099700,
+   "rendered_area_cm2": 3.593,
+   "on_mean_grey": 100.1,
+   "offA_mean_grey": 99.4,
+   "offB_mean_grey": 90.9,
+   "tar_bytes": 219473920
+  },
+  {
+   "mesh": "z11904_w060",
+   "verdict": "unjudged",
+   "area_cm2": 5.92,
+   "z_range": [
+    11906,
+    12702
+   ],
+   "x_range": [
+    2313,
+    4497
+   ],
+   "y_range": [
+    2163,
+    5180
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    7781,
+    1501
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    7781,
+    1501
+   ],
+   "render_exit": 0,
+   "render_seconds": 113,
+   "render_shape": [
+    101,
+    1501,
+    7781
+   ],
+   "rendered_fraction": 0.5646,
+   "rendered_px": 6594600,
+   "rendered_area_cm2": 5.78,
+   "on_mean_grey": 106.0,
+   "offA_mean_grey": 107.2,
+   "offB_mean_grey": 103.3,
+   "tar_bytes": 364943360
+  },
+  {
+   "mesh": "z12496_w040",
+   "verdict": "unjudged",
+   "area_cm2": 3.66,
+   "z_range": [
+    12499,
+    13295
+   ],
+   "x_range": [
+    2583,
+    4116
+   ],
+   "y_range": [
+    2626,
+    4624
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    5101,
+    1221
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    5101,
+    1221
+   ],
+   "render_exit": 0,
+   "render_seconds": 83,
+   "render_shape": [
+    101,
+    1221,
+    5101
+   ],
+   "rendered_fraction": 0.6538,
+   "rendered_px": 4071900,
+   "rendered_area_cm2": 3.569,
+   "on_mean_grey": 98.7,
+   "offA_mean_grey": 95.5,
+   "offB_mean_grey": 86.7,
+   "tar_bytes": 212142080
+  },
+  {
+   "mesh": "z12496_w060",
+   "verdict": "unjudged",
+   "area_cm2": 5.9,
+   "z_range": [
+    12498,
+    13296
+   ],
+   "x_range": [
+    2250,
+    4463
+   ],
+   "y_range": [
+    2119,
+    5172
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    7861,
+    1601
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    7861,
+    1601
+   ],
+   "render_exit": 0,
+   "render_seconds": 92,
+   "render_shape": [
+    101,
+    1601,
+    7861
+   ],
+   "rendered_fraction": 0.5229,
+   "rendered_px": 6581500,
+   "rendered_area_cm2": 5.768,
+   "on_mean_grey": 103.9,
+   "offA_mean_grey": 103.0,
+   "offB_mean_grey": 102.2,
+   "tar_bytes": 360407040
+  },
+  {
+   "mesh": "z13088_w040",
+   "verdict": "unjudged",
+   "area_cm2": 3.45,
+   "z_range": [
+    13095,
+    13885
+   ],
+   "x_range": [
+    2567,
+    3862
+   ],
+   "y_range": [
+    2696,
+    4594
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    4721,
+    1141
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    4721,
+    1141
+   ],
+   "render_exit": 0,
+   "render_seconds": 98,
+   "render_shape": [
+    101,
+    1141,
+    4721
+   ],
+   "rendered_fraction": 0.7114,
+   "rendered_px": 3832000,
+   "rendered_area_cm2": 3.359,
+   "on_mean_grey": 93.3,
+   "offA_mean_grey": 93.5,
+   "offB_mean_grey": 87.5,
+   "tar_bytes": 197120000
+  },
+  {
+   "mesh": "z13088_w060",
+   "verdict": "unjudged",
+   "area_cm2": 5.68,
+   "z_range": [
+    13091,
+    13886
+   ],
+   "x_range": [
+    2068,
+    4336
+   ],
+   "y_range": [
+    2200,
+    4984
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    7461,
+    1461
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    7461,
+    1461
+   ],
+   "render_exit": 0,
+   "render_seconds": 80,
+   "render_shape": [
+    101,
+    1461,
+    7461
+   ],
+   "rendered_fraction": 0.5807,
+   "rendered_px": 6330000,
+   "rendered_area_cm2": 5.548,
+   "on_mean_grey": 105.5,
+   "offA_mean_grey": 96.6,
+   "offB_mean_grey": 96.5,
+   "tar_bytes": 338728960
+  },
+  {
+   "mesh": "z13696_w040",
+   "verdict": "unjudged",
+   "area_cm2": 3.69,
+   "z_range": [
+    13698,
+    14493
+   ],
+   "x_range": [
+    2272,
+    3707
+   ],
+   "y_range": [
+    2716,
+    4596
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    4721,
+    1240
+   ],
+   "crop_xywh": [
+    19,
+    0,
+    4721,
+    1240
+   ],
+   "render_exit": 0,
+   "render_seconds": 74,
+   "render_shape": [
+    101,
+    1240,
+    4721
+   ],
+   "rendered_fraction": 0.7019,
+   "rendered_px": 4108700,
+   "rendered_area_cm2": 3.601,
+   "on_mean_grey": 95.5,
+   "offA_mean_grey": 92.8,
+   "offB_mean_grey": 87.8,
+   "tar_bytes": 216924160
+  },
+  {
+   "mesh": "z13696_w060",
+   "verdict": "unjudged",
+   "area_cm2": 5.78,
+   "z_range": [
+    13696,
+    14494
+   ],
+   "x_range": [
+    1794,
+    4085
+   ],
+   "y_range": [
+    2237,
+    4968
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    7221,
+    1560
+   ],
+   "crop_xywh": [
+    19,
+    0,
+    7221,
+    1560
+   ],
+   "render_exit": 0,
+   "render_seconds": 91,
+   "render_shape": [
+    101,
+    1560,
+    7221
+   ],
+   "rendered_fraction": 0.5728,
+   "rendered_px": 6452700,
+   "rendered_area_cm2": 5.656,
+   "on_mean_grey": 105.9,
+   "offA_mean_grey": 97.9,
+   "offB_mean_grey": 98.1,
+   "tar_bytes": 349870080
+  },
+  {
+   "mesh": "z14304_w040",
+   "verdict": "unjudged",
+   "area_cm2": 4.1,
+   "z_range": [
+    14307,
+    15101
+   ],
+   "x_range": [
+    1741,
+    3657
+   ],
+   "y_range": [
+    2597,
+    4516
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    5201,
+    1421
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    5201,
+    1421
+   ],
+   "render_exit": 0,
+   "render_seconds": 112,
+   "render_shape": [
+    101,
+    1421,
+    5201
+   ],
+   "rendered_fraction": 0.6199,
+   "rendered_px": 4581100,
+   "rendered_area_cm2": 4.015,
+   "on_mean_grey": 99.6,
+   "offA_mean_grey": 98.2,
+   "offB_mean_grey": 92.6,
+   "tar_bytes": 245872640
+  },
+  {
+   "mesh": "z14304_w060",
+   "verdict": "unjudged",
+   "area_cm2": 5.98,
+   "z_range": [
+    14306,
+    15101
+   ],
+   "x_range": [
+    1419,
+    4142
+   ],
+   "y_range": [
+    2210,
+    4729
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    7601,
+    1561
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    7601,
+    1561
+   ],
+   "render_exit": 0,
+   "render_seconds": 97,
+   "render_shape": [
+    101,
+    1561,
+    7601
+   ],
+   "rendered_fraction": 0.5627,
+   "rendered_px": 6676500,
+   "rendered_area_cm2": 5.852,
+   "on_mean_grey": 104.8,
+   "offA_mean_grey": 102.1,
+   "offB_mean_grey": 100.9,
+   "tar_bytes": 365475840
+  },
+  {
+   "mesh": "z14896_w040",
+   "verdict": "unjudged",
+   "area_cm2": 3.83,
+   "z_range": [
+    14900,
+    15695
+   ],
+   "x_range": [
+    1601,
+    3585
+   ],
+   "y_range": [
+    2594,
+    4119
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    4961,
+    1281
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    4961,
+    1281
+   ],
+   "render_exit": 0,
+   "render_seconds": 101,
+   "render_shape": [
+    101,
+    1281,
+    4961
+   ],
+   "rendered_fraction": 0.6712,
+   "rendered_px": 4265400,
+   "rendered_area_cm2": 3.738,
+   "on_mean_grey": 96.8,
+   "offA_mean_grey": 95.9,
+   "offB_mean_grey": 93.2,
+   "tar_bytes": 228229120
+  },
+  {
+   "mesh": "z14896_w060",
+   "verdict": "unjudged",
+   "area_cm2": 5.65,
+   "z_range": [
+    14898,
+    15695
+   ],
+   "x_range": [
+    1294,
+    3968
+   ],
+   "y_range": [
+    2258,
+    4490
+   ],
+   "status": "packed",
+   "render_size_wh": [
+    7121,
+    1541
+   ],
+   "crop_xywh": [
+    19,
+    19,
+    7121,
+    1541
+   ],
+   "render_exit": 0,
+   "render_seconds": 116,
+   "render_shape": [
+    101,
+    1541,
+    7121
+   ],
+   "rendered_fraction": 0.5741,
+   "rendered_px": 6300400,
+   "rendered_area_cm2": 5.522,
+   "on_mean_grey": 100.8,
+   "offA_mean_grey": 97.2,
+   "offB_mean_grey": 94.4,
+   "tar_bytes": 341739520
+  }
+ ],
+ "control": {
+  "name": "ctl_w016",
+  "what": "PHerc0139 pherc0139-w016 (= public 20250108000004-w029) official 9.362um mesh rendered from PHerc0139 volume 20250728140407 with the same recipe (n9 ctl_w016.zarr, crop 2884x1309 from (1510,4659)); labels on the render grid from n9 results/ctl_labels_on_render.npz",
+  "render_shape": [
+   101,
+   1309,
+   2884
+  ],
+  "rendered_fraction": 1.0,
+  "on_mean_grey": 86.2,
+  "tar_bytes": 188272640
+ },
+ "n_meshes": 32,
+ "n_packed": 32,
+ "total_area_cm2": 131.83,
+ "total_rendered_area_cm2": 128.83,
+ "total_tar_gb": 8.24
+}

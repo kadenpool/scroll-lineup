@@ -1,0 +1,35 @@
+# Kaggle kernel run times for the PHerc. 1203 work and its PHerc. 0139 controls, read 12 Sep 2026 from each kernel's
+# kernel.log under data/kag_out/<kernel>/ (copied from leverkag_out/). The number is the notebook's own
+# timer: seconds from the notebook's first cell to its ALL_DONE line (or, where a notebook printed no ALL_DONE timer, its
+# last timed line). It excludes Kaggle's session start-up, the dataset mount and the final notebook export, so the
+# GPU-quota time Kaggle charges is somewhat longer. All ran on the free tier, T4 x2, kadenbrodie account.
+#
+# kernel                   seconds   how the number was read
+== PHerc. 1203 kernels (18)
+canon1203                     324   ALL_DONE timer
+canon1203sel                 1397   ALL_DONE timer
+canon1203big                 1347   ALL_DONE timer
+canoncen                     2760   ALL_DONE timer, read on box A (log not copied: that kernel also carried patches from other work)
+survey_b0                    1320   ALL_DONE timer
+survey_b1                    1172   ALL_DONE timer
+survey_b2                    1285   ALL_DONE timer
+survey_b3                     356   ALL_DONE timer
+big2                          681   ALL_DONE timer
+big3                          816   ALL_DONE timer
+s1203_rr0                    1302   ALL_DONE timer
+s1203g_b0                    1398   ALL_DONE timer
+s1203g_b1                    1355   ALL_DONE timer
+s1203g_b2                    1394   ALL_DONE timer
+s1203g_b3                    1384   ALL_DONE timer
+s1203g_b4                     767   ALL_DONE timer
+z1203g_b0                    1012   ALL_DONE timer
+s1203_rr2_0                  1302   ALL_DONE timer
+sum                         21372   = 5.94 h
+== PHerc. 0139 control kernels (6)
+canon139                      610   last timed line (no ALL_DONE timer)
+canon139cal                  1672   last timed line (no ALL_DONE timer)
+fliptest                     2009   last timed line (no ALL_DONE timer)
+readmetest                   1173   last timed line (no ALL_DONE timer)
+w2385test                    1256   last timed line (no ALL_DONE timer)
+layer_window_repro_kb        1192   last timed line (no ALL_DONE timer)
+sum                          7912   = 2.20 h

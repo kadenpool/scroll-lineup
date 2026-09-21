@@ -1,0 +1,36 @@
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+0.00s - Debugger warning: It seems that frozen modules are being used, which may
+0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off
+0.00s - to python to disable frozen modules.
+0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
+Writing /kaggle/working/run_canon.py
+8 windows
+layer windows: {'auto_grown_20260911094532440_r30_c65': {'start': 24, 'end': 86, 'dw_fine_layers': 0.1467145884243022, 'ncc': 0.8338013291358948}, 'auto_grown_20260911100432945_r55_c60': {'start': 24, 'end': 86, 'dw_fine_layers': -0.330664009750701, 'ncc': 0.8484097719192505}, 'auto_grown_20260911100432945_r55_c5': {'start': 23, 'end': 85, 'dw_fine_layers': -0.8866888369259786, 'ncc': 0.87279212474823}, 'auto_grown_20260911100432945_r95_c30': {'start': 23, 'end': 85, 'dw_fine_layers': -1.0363081269516616, 'ncc': 0.8475064039230347}, 'auto_grown_20260911102250569_r105_c80': {'start': 24, 'end': 86, 'dw_fine_layers': 0.0726072800570083, 'ncc': 0.06133224815130234}, 'auto_grown_20260911103218223_r60_c105': {'start': 26, 'end': 88, 'dw_fine_layers': 1.8961225536296524, 'ncc': 0.7968330383300781}, 'auto_grown_20260911103218223_r5_c105': {'start': 24, 'end': 86, 'dw_fine_layers': 0.15456317091458846, 'ncc': 0.794875979423523}, 'auto_grown_20260911103218223_r40_c60': {'start': 25, 'end': 87, 'dw_fine_layers': 0.9132658714229281, 'ncc': 0.749803364276886}}
+auto_grown_20260911094532440_r30_c65 C {'exit': 0, 'mean': 0.15713810920715332, 'frac_gt_0.5': 0.014387736446485553} [177s]
+auto_grown_20260911100432945_r55_c5 C {'exit': 0, 'mean': 0.1850353479385376, 'frac_gt_0.5': 0.04614325987927488} [332s]
+auto_grown_20260911094532440_r30_c65 D {'exit': 0, 'mean': 0.15951640903949738, 'frac_gt_0.5': 0.016020390624252003} [352s]
+auto_grown_20260911100432945_r55_c5 D {'exit': 0, 'mean': 0.24809139966964722, 'frac_gt_0.5': 0.11701460424217974} [497s]
+auto_grown_20260911100432945_r55_c60 C {'exit': 0, 'mean': 0.165371373295784, 'frac_gt_0.5': 0.021175689089835657} [522s]
+auto_grown_20260911100432945_r55_c60 D {'exit': 0, 'mean': 0.23019884526729584, 'frac_gt_0.5': 0.10854352132528178} [662s]
+auto_grown_20260911100432945_r95_c30 C {'exit': 0, 'mean': 0.15652592480182648, 'frac_gt_0.5': 0.013689606954805889} [687s]
+auto_grown_20260911102250569_r105_c80 C {'exit': 0, 'mean': 0.1320897936820984, 'frac_gt_0.5': 0.0} [787s]
+auto_grown_20260911100432945_r95_c30 D {'exit': 0, 'mean': 0.21364547312259674, 'frac_gt_0.5': 0.07677840081956414} [827s]
+auto_grown_20260911102250569_r105_c80 D {'exit': 0, 'mean': 0.13542531430721283, 'frac_gt_0.5': 0.0} [892s]
+auto_grown_20260911103218223_r40_c60 C {'exit': 0, 'mean': 0.21905387938022614, 'frac_gt_0.5': 0.0909493843589142} [1007s]
+auto_grown_20260911103218223_r40_c60 D {'exit': 0, 'mean': 0.14340999722480774, 'frac_gt_0.5': 0.004185440215311107} [1067s]
+auto_grown_20260911103218223_r5_c105 C {'exit': 0, 'mean': 0.1759680062532425, 'frac_gt_0.5': 0.030384989103221464} [1172s]
+auto_grown_20260911103218223_r5_c105 D {'exit': 0, 'mean': 0.15784995257854462, 'frac_gt_0.5': 0.018535583335100626} [1232s]
+auto_grown_20260911103218223_r60_c105 C {'exit': 0, 'mean': 0.19535985589027405, 'frac_gt_0.5': 0.047525122403471204} [1337s]
+auto_grown_20260911103218223_r60_c105 D {'exit': 0, 'mean': 0.18826793134212494, 'frac_gt_0.5': 0.045859299951079645} [1397s]
+ALL_DONE [1397s]
+/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\|'
+  cells[i][c] = re.sub('\\\\\|', '|', cell)
+/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\_'
+  text = re.sub(r'_', '\_', text) # Escape underscores in display text
+[NbConvertApp] Converting notebook __notebook__.ipynb to notebook
+[NbConvertApp] Writing 71365 bytes to __notebook__.ipynb
+[NbConvertApp] Converting notebook __notebook__.ipynb to html
+[NbConvertApp] Writing 560181 bytes to __results__.html
