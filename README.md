@@ -900,7 +900,7 @@ machine, not a tidied-up one.
 Every number in this file traces to a
 committed file, with six named exceptions
 listed in section 8 of `VALIDATION.md`. If you
-find a sixth, that is a bug and I would like
+find a seventh, that is a bug and I would like
 to know.
 
 **Getting hold of me.** Open an issue here,

@@ -4,7 +4,7 @@ Each arm's forward prediction at the centre window [40,61) is carried back onto 
 arm's own registration (render_px = s * label_px + t), so every arm is scored on the same label pixels,
 block by block. Blocks with too few labelled pixels of either class are left out.
 
-    python per_block_auc.py            # official, ours, ours_v2 -> per_block_auc.json
+    python per_block.py            # official, ours, ours_v2 -> per_block.json
 """
 import glob, json, os
 import numpy as np, tifffile
@@ -52,7 +52,7 @@ def main():
                 row[t] = auc(preds[t][0][m], I[m])
             if all(row[t] is not None for t in arms):
                 out["blocks"].append(row)
-    json.dump(out, open(os.path.join(HERE, "per_block_auc.json"), "w"), indent=1)
+    json.dump(out, open(os.path.join(HERE, "per_block.json"), "w"), indent=1)
     print("whole region, common pixels:", {t: round(v, 4) for t, v in out["whole"].items()})
     print(f"{len(out['blocks'])} blocks scored")
     if "official" in arms:

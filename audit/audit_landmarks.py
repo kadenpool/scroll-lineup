@@ -8,7 +8,7 @@ catalogue that publishes landmarks.
 Nothing here depends on any third-party tool. It reads the challenge's own metadata.json and does
 one matrix multiply per landmark.
 
-    python audit_landmarks.py
+    python audit/audit_landmarks.py
 
 Units: landmark coordinates are voxel indices of their own volume. Residuals are converted to
 microns using the TARGET volume's voxel size, taken from its `long_id`.

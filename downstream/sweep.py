@@ -5,7 +5,7 @@ so all nine are measured on the same pixels. This is the script that produced de
 one change: SWEEP_BATCH and SWEEP_WORKERS may lower the batch size and worker count (defaults 8 and 2,
 about 5 GB). At batch 2 the challenge's aligned input re-scored at 0.9123 against 0.912 at batch 8.
 
-usage: sweep_depth.py <render.zarr> <labels.npz> <work_dir> <ckpt.pth> <villa_src_dir> [starts=0,10,20,30,40,50,60,70,80]
+usage: sweep.py <render.zarr> <labels.npz> <work_dir> <ckpt.pth> <villa_src_dir> [starts=0,10,20,30,40,50,60,70,80]
 Writes <work_dir>/cuts/<name>/surface-volume.zarr, <work_dir>/preds/, <work_dir>/sweep_results.json and prints a table.
 """
 import glob, json, os, shutil, subprocess, sys, time

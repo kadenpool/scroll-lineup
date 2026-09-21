@@ -24,6 +24,19 @@ costs 0.055, about what this tool's transforms cost against the official one: 0.
 that may be home advantage: the model was trained on the challenge's own kind of input, including on
 this segment (below).
 
+## What this folder needs, beyond the tool's own five packages
+
+The scripts here are not on the install path in the top-level README and they need more than it does.
+Stated plainly rather than discovered by traceback:
+
+- `tifffile`, `zarr` and `numcodecs`, on top of numpy and scipy. `pip install tifffile zarr numcodecs`.
+- villa's `vc_render_tifxyz`, built separately. Nothing here builds it for you.
+- the challenge's `ink_9um` checkpoint, `hybrid_3d2d-seed43/step-060000`, which is not in this
+  repository and is not ours to redistribute.
+
+Everything in the tables below is committed as data, so the numbers can be checked without any of
+the above. The scripts are here so the method can be read and rerun by someone who has them.
+
 ## Why the same transform reads 0.055 lower through this folder's render
 
 That 0.912 against 0.857 sat unexplained until 20 Sep. Three things differ between the challenge's own
