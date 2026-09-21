@@ -32,14 +32,14 @@ selection, manifest, pictures and dry-run summary are in `evidence_0912/plan_b_0
 4. **The PHerc0139 w016 control is the same tar as in the 0813 dataset** (`ctl_w016.tar`, md5 87aed0c6…: the 9 µm
    check's validated render cut into the same three windows, with its held-out labels on the render grid), and the villa
    inference source is the same tar (`villa_vesuvius_src.tar`, md5 e72f5d37…).
-5. **Private Kaggle dataset `kadenbrodie/p0211-nineum-b0`** (7.9 GiB, 35 files: one tar per mesh, the control tar, the villa inference source, manifest + selection). Uploaded
+5. **Private Kaggle dataset `<kaggle-user>/p0211-nineum-b0`** (7.9 GiB, 35 files: one tar per mesh, the control tar, the villa inference source, manifest + selection). Uploaded
    03:07–03:14, status `ready` at 03:15:42 AEST, dataset id 11997755, `isPrivate: true` (metadata API). Kaggle extracted every
    tar on ingest, so the mount holds `<name>/<name>/on|offA|offB/surface-volume.zarr/...` — the layout the kernel globs for.
    Verified file by file (`check_ds.sh`, 169 pages of 200): **33,620 files, 8,442,241,349 bytes, every name and byte size
    equal to the local copy, 0 missing / 0 mismatched / 0 extra**; 34 top-level entries = 30 meshes + `ctl_w016` +
    `villa_vesuvius_src` + the two JSONs. Only then were the 8 GB of uncut copies deleted from box A.
 6. **Kernel folder leverkag/n9_0211/`** (`nb.ipynb` + `kernel-metadata.json`, private, id
-   `kadenbrodie/vesuvius-n9-0211`, GPU, internet, dataset source `kadenbrodie/p0211-nineum-b0`): `n9_0211.py` = the 0813
+   `<kaggle-user>/vesuvius-n9-0211`, GPU, internet, dataset source `<kaggle-user>/p0211-nineum-b0`): `n9_0211.py` = the 0813
    kernel's v3 (`--no-deps` imagecodecs) with only paths/ids/names changed plus the L72 check (below). Its exact code was
    dry-run on box A CPU (seed43, on-sheet window) on the control + one 0211 mesh: **control AUC 0.877 forward / 0.525
    reverse, 18.9 % ink share in the validation region, 57.2 % of labelled-ink px vs 7.4 % of background px called ink,
@@ -48,9 +48,9 @@ selection, manifest, pictures and dry-run summary are in `evidence_0912/plan_b_0
    13.2 % reverse on the sheet, scattered blobs, no rows (one mesh, one checkpoint, no off-sheet windows yet: a smoke
    test, not a verdict; 0813's first mesh was 8.9 / 13.6).
 7. **Push** (one command, from box A): `ssh box A 'p0211/push_kernel.sh'` (refuses unless the metadata says
-   private and the id is right; then `kaggle kernels status kadenbrodie/vesuvius-n9-0211` and `kaggle kernels output
-   kadenbrodie/vesuvius-n9-0211 -p kag_out/n9_0211`). Rule: only after `chain_0846a2_rest.log` shows CHAIN_DONE/CHAIN_ABORT
-   and no s0846a2 kernel is running on kadenbrodie (one status check, no poll loop). CHAIN_DONE appeared at 17:13Z (03:13 AEST)
+   private and the id is right; then `kaggle kernels status <kaggle-user>/vesuvius-n9-0211` and `kaggle kernels output
+   <kaggle-user>/vesuvius-n9-0211 -p kag_out/n9_0211`). Rule: only after `chain_0846a2_rest.log` shows CHAIN_DONE/CHAIN_ABORT
+   and no s0846a2 kernel is running on <kaggle-user> (one status check, no poll loop). CHAIN_DONE appeared at 17:13Z (03:13 AEST)
    with b10 pushed that same minute; both survey kernels completed by 03:36 (outputs fetched by the main session), the one
    status check at 03:37 said COMPLETE for both, and **the kernel was pushed at 03:37 AEST (v1, RUNNING)** — section 7. Expected GPU time on 2×T4 ~1.5–2 h
    (0813 v2: 1 h 51 min for 32 meshes; 0211 has 30 meshes and 18 % less canvas).
@@ -176,10 +176,10 @@ cut into the same three windows (on-mesh fraction 1.0, mean grey 86 on), with it
 
 ## 5. Dataset and kernel (task 3)
 
-**Dataset** `kadenbrodie/p0211-nineum-b0` (private; `p0211/upload_ds.sh`, token `~/.kaggle/token.env` = kadenbrodie, the
+**Dataset** `<kaggle-user>/p0211-nineum-b0` (private; `p0211/upload_ds.sh`, token `~/.kaggle/token.env` = <kaggle-user>, the
 way 0813's upload ran): 35 files — 30 mesh tars (101–563 MB each), `ctl_w016.tar` (188 MB), `villa_vesuvius_src.tar`
 (15 MB), `manifest.json`, `selection.json`, `dataset-metadata.json`
-(`{"title": "p0211 nineum b0", "id": "kadenbrodie/p0211-nineum-b0", "licenses": [{"name": "other"}]}`).
+(`{"title": "p0211 nineum b0", "id": "<kaggle-user>/p0211-nineum-b0", "licenses": [{"name": "other"}]}`).
 Created with `kaggle datasets create -p p0211/kds --dir-mode skip` (private by default). Uploaded 03:07–03:14 AEST (`logs/upload_ds.log`; the status API answered 403 three times
 during ingest, as with 0813, then `ready` at 03:15:42), id 11997755, `isPrivate: true`. Kaggle auto-extracts the tars,
 so the mount holds `<name>/<name>/on/...`; the kernel finds windows by globbing `**/on/surface-volume.zarr` and still handles
@@ -188,7 +188,7 @@ un-extracted tars. Verified by listing every file (`check_ds.sh` → `logs/check
 
 **Kernel** `kag/n9_0211/` — `make_nb.py` writes `nb.ipynb` (cell 1 `%%writefile /kaggle/working/n9_0211.py`, verified
 byte-identical to `p0211/n9_0211.py`; cell 2 `!python -u /kaggle/working/n9_0211.py`; cell 3 prints the summary) and
-`kernel-metadata.json` (private, GPU, internet, dataset source `kadenbrodie/p0211-nineum-b0`). `n9_0211.py` is
+`kernel-metadata.json` (private, GPU, internet, dataset source `<kaggle-user>/p0211-nineum-b0`). `n9_0211.py` is
 `n9_0813.py` v3 (the `--no-deps` imagecodecs version that the 0813 v2 failure led to) with exactly these edits
 (`make_0211_files.py`, diff-checked): the docstring/`SCRIPT_VERSION`/summary headings say 0211, and
 **`check_report_imports(tag)` — one subprocess line that imports `numpy, scipy.ndimage, scipy.stats, tifffile,
@@ -236,19 +236,19 @@ copied to `plan_b_0211_files/dry_run_summary.md`).
 
 ## 7. Push (task 4)
 
-Rule (task 4): the kadenbrodie account's two GPU sessions run the 0846A survey kernels untilchain_0846a2_rest.log` shows `CHAIN_DONE` or `CHAIN_ABORT`; push only after that line exists AND one
+Rule (task 4): the <kaggle-user> account's two GPU sessions run the 0846A survey kernels untilchain_0846a2_rest.log` shows `CHAIN_DONE` or `CHAIN_ABORT`; push only after that line exists AND one
 status check shows no `vesuvius-s0846a2-b*` kernel running. State at 03:20 AEST: `CHAIN_DONE 17:13 | SURVEY0846A2_REST_DONE
 17:13:52` is in the log (b9 pushed 16:46:03Z, b10 pushed 17:13:52Z; batches b7→b8→b9→b10 took 31, 34, 28 min each), so b10
 is expected to finish ~17:45Z (03:45 AEST). Push command, kept ready:
 
     ssh box A 'p0211/push_kernel.sh'
-    ssh box A 'cd && ./kagenv/bin/kaggle kernels status kadenbrodie/vesuvius-n9-0211'
-    ssh box A 'cd && ./venv/bin/python kout2.py kadenbrodie vesuvius-n9-0211 ~/.kaggle/token.env kag_out/n9_0211 200 .log,.json,.png'
+    ssh box A 'cd && ./kagenv/bin/kaggle kernels status <kaggle-user>/vesuvius-n9-0211'
+    ssh box A 'cd && ./venv/bin/python kout2.py <kaggle-user> vesuvius-n9-0211 ~/.kaggle/token.env kag_out/n9_0211 200 .log,.json,.png'
 
 Outcome: b9's and b10's outputs were fetched by the main session at 17:31Z and 17:36Z (so both had completed); the single
 status check at 17:37:13Z answered `KernelWorkerStatus.COMPLETE` for both, and `push_kernel.sh` ran in the same call:
-**`kadenbrodie/vesuvius-n9-0211` version 1 pushed at 03:37 AEST, private, 2×T4, status `RUNNING` 20 s later**
-(`p0211/logs/push.log`). No new poller was started (the kadenbrodie account already has the main session's watcher, L49);
+**`<kaggle-user>/vesuvius-n9-0211` version 1 pushed at 03:37 AEST, private, 2×T4, status `RUNNING` 20 s later**
+(`p0211/logs/push.log`). No new poller was started (the <kaggle-user> account already has the main session's watcher, L49);
 fetch when complete with the `kout2.py` line above, then read `summary.md` (both "report-stage imports OK" lines, control
 AUC, then the 0211 tables per section 5's pass/fail).
 

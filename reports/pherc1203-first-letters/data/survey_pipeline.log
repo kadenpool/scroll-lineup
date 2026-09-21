@@ -6,10 +6,10 @@ b0 auto_grown_20250930104534929_s_r42_c126 rc=0 slices=63 191s
 b0 auto_grown_20250930104534929_s_r82_c166 rc=0 slices=63 176s
 b0 auto_grown_20251005221856743_s_r140_c64 rc=0 slices=63 175s
 b0 auto_grown_20251005221856743_s_r140_c144 rc=0 slices=63 196s
-Your private Dataset is being created. Please check progress at https://www.kaggle.com/datasets/kadenbrodie/p1203-survey-b0
+Your private Dataset is being created. Please check progress at https://www.kaggle.com/datasets/<kaggle-user>/p1203-survey-b0
 b0 dataset status: ready
 notebook <run-dir>/kag/survey_b0
-Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/kadenbrodie/vesuvius-survey-b0
+Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/<kaggle-user>/vesuvius-survey-b0
 BATCH_DONE b0 02:42:26
 /dev/sda1       242G  229G   13G  95% /
 b1 auto_grown_20251005221856743_s_r180_c64 rc=0 slices=63 175s
@@ -20,10 +20,10 @@ b1 auto_grown_20251005230830031_s_r42_c42 rc=0 slices=63 97s
 b1 auto_grown_20251005230830031_s_r42_c82 rc=0 slices=63 93s
 b1 auto_grown_20251005230830031_s_r82_c2 rc=0 slices=63 121s
 b1 auto_grown_20251005230830031_s_r82_c82 rc=0 slices=63 209s
-Your private Dataset is being created. Please check progress at https://www.kaggle.com/datasets/kadenbrodie/p1203-survey-b1
+Your private Dataset is being created. Please check progress at https://www.kaggle.com/datasets/<kaggle-user>/p1203-survey-b1
 b1 dataset status: ready
 notebook <run-dir>/kag/survey_b1
-Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/kadenbrodie/vesuvius-survey-b1
+Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/<kaggle-user>/vesuvius-survey-b1
 BATCH_DONE b1 03:06:11
 /dev/sda1       242G  229G   13G  95% /
 b2 auto_grown_20251005230830031_s_r122_c42 rc=0 slices=63 261s
@@ -34,18 +34,18 @@ b2 auto_grown_20251005231446963_s_r83_c83 rc=0 slices=63 101s
 b2 auto_grown_20251005231446965_s_r146_c181 rc=0 slices=63 217s
 b2 auto_grown_20251005231446965_s_r186_c61 rc=0 slices=63 198s
 b2 auto_grown_20251005231446965_s_r186_c101 rc=0 slices=63 241s
-Your private Dataset is being created. Please check progress at https://www.kaggle.com/datasets/kadenbrodie/p1203-survey-b2
+Your private Dataset is being created. Please check progress at https://www.kaggle.com/datasets/<kaggle-user>/p1203-survey-b2
 b2 dataset status: ready
 notebook <run-dir>/kag/survey_b2
-Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/kadenbrodie/vesuvius-survey-b2
+Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/<kaggle-user>/vesuvius-survey-b2
 BATCH_DONE b2 03:33:23
 /dev/sda1       242G  229G   13G  95% /
 b3 auto_grown_20251005231446965_s_r186_c141 rc=0 slices=63 295s
 b3 auto_grown_20251005231446965_s_r226_c101 rc=0 slices=63 223s
-Your private Dataset is being created. Please check progress at https://www.kaggle.com/datasets/kadenbrodie/p1203-survey-b3
+Your private Dataset is being created. Please check progress at https://www.kaggle.com/datasets/<kaggle-user>/p1203-survey-b3
 b3 dataset status: ready
 notebook <run-dir>/kag/survey_b3
-Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/kadenbrodie/vesuvius-survey-b3
+Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/<kaggle-user>/vesuvius-survey-b3
 BATCH_DONE b3 03:43:00
 /dev/sda1       242G  229G   13G  95% /
 SURVEY_PIPELINE_DONE 03:43:00

@@ -70,7 +70,7 @@
  ],
  "n_windows": 99,
  "score_only": {
-  "maps_from": "kadenbrodie/vesuvius-n9-0813 version 2 output (tmp/jobs)",
+  "maps_from": "<kaggle-user>/vesuvius-n9-0813 version 2 output (tmp/jobs)",
   "host": "box A"
  },
  "elapsed_hours": 0.015,

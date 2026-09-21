@@ -15,10 +15,10 @@ b0 auto_grown_20260911050732783_r105_c105 slices=109 395s
 auto_grown_20260911051244524_r60_c50 {'start': 32, 'end': 94, 'dw_fine_layers': 7.859967154061192, 'ncc': 0.3973667323589325}
 b0 auto_grown_20260911051244524_r60_c50 slices=109 441s
 b0 depth-corrected 8 of 8 | FALLBACKS: 0 []
-Your private Dataset is being created. Please check progress at https://www.kaggle.com/datasets/kadenbrodie/p1203g-survey-b0
+Your private Dataset is being created. Please check progress at https://www.kaggle.com/datasets/<kaggle-user>/p1203g-survey-b0
 b0 dataset status: ready
 notebook <run-dir>/kag/s1203g_b0
-push try 1: Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/kadenbrodie/vesuvius-s1203g-b0
+push try 1: Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/<kaggle-user>/vesuvius-s1203g-b0
 BATCH_DONE b0 09:14:35
 /dev/sda1       242G  230G   12G  96% /
 auto_grown_20260911051244524_r70_c5 {'start': 26, 'end': 88, 'dw_fine_layers': 1.5601317827114989, 'ncc': 0.6001280546188354}
@@ -38,10 +38,10 @@ b1 auto_grown_20260911053225919_r70_c10 slices=109 316s
 auto_grown_20260911053225919_r90_c70 {'start': 14, 'end': 76, 'dw_fine_layers': -9.767689851206633, 'ncc': 0.461909681558609}
 b1 auto_grown_20260911053225919_r90_c70 slices=109 402s
 b1 depth-corrected 8 of 8 | FALLBACKS: 0 []
-Your private Dataset is being created. Please check progress at https://www.kaggle.com/datasets/kadenbrodie/p1203g-survey-b1
+Your private Dataset is being created. Please check progress at https://www.kaggle.com/datasets/<kaggle-user>/p1203g-survey-b1
 b1 dataset status: ready
 notebook <run-dir>/kag/s1203g_b1
-push try 1: Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/kadenbrodie/vesuvius-s1203g-b1
+push try 1: Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/<kaggle-user>/vesuvius-s1203g-b1
 BATCH_DONE b1 10:02:28
 /dev/sda1       242G  230G   12G  96% /
 auto_grown_20260911053225919_r5_c70 {'start': 18, 'end': 80, 'dw_fine_layers': -6.187714110148016, 'ncc': 0.7014804482460022}
@@ -61,10 +61,10 @@ b2 auto_grown_20260911054619589_r50_c90 slices=109 297s
 auto_grown_20260911055855150_r10_c80 {'start': 19, 'end': 81, 'dw_fine_layers': -5.221268858583158, 'ncc': 0.6327365040779114}
 b2 auto_grown_20260911055855150_r10_c80 slices=109 356s
 b2 depth-corrected 8 of 8 | FALLBACKS: 0 []
-Your private Dataset is being created. Please check progress at https://www.kaggle.com/datasets/kadenbrodie/p1203g-survey-b2
+Your private Dataset is being created. Please check progress at https://www.kaggle.com/datasets/<kaggle-user>/p1203g-survey-b2
 b2 dataset status: ready
 notebook <run-dir>/kag/s1203g_b2
-push try 1: Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/kadenbrodie/vesuvius-s1203g-b2
+push try 1: Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/<kaggle-user>/vesuvius-s1203g-b2
 BATCH_DONE b2 10:56:13
 /dev/sda1       242G  229G   13G  95% /
 auto_grown_20260911055855150_r50_c65 {'start': 14, 'end': 76, 'dw_fine_layers': -9.517666122251454, 'ncc': 0.6411065459251404}
@@ -84,10 +84,10 @@ b3 auto_grown_20260911060936172_r70_c65 slices=109 428s
 auto_grown_20260911060936172_r5_c15 {'start': 22, 'end': 84, 'dw_fine_layers': -1.9437330739092655, 'ncc': 0.7477051019668579}
 b3 auto_grown_20260911060936172_r5_c15 slices=109 478s
 b3 depth-corrected 8 of 8 | FALLBACKS: 0 []
-Your private Dataset is being created. Please check progress at https://www.kaggle.com/datasets/kadenbrodie/p1203g-survey-b3
+Your private Dataset is being created. Please check progress at https://www.kaggle.com/datasets/<kaggle-user>/p1203g-survey-b3
 b3 dataset status: ready
 notebook <run-dir>/kag/s1203g_b3
-push try 1: Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/kadenbrodie/vesuvius-s1203g-b3
+push try 1: Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/<kaggle-user>/vesuvius-s1203g-b3
 BATCH_DONE b3 11:54:41
 /dev/sda1       242G  229G   13G  95% /
 auto_grown_20260911062625215_r75_c65 {'start': 27, 'end': 89, 'dw_fine_layers': 2.593229764037361, 'ncc': 0.6097215414047241}
@@ -99,10 +99,10 @@ b4 auto_grown_20260911062625215_r90_c5 slices=109 412s
 auto_grown_20260911070617066_r95_c45 {'start': 24, 'end': 86, 'dw_fine_layers': 0.16619589698526963, 'ncc': 0.6135187745094299}
 b4 auto_grown_20260911070617066_r95_c45 slices=109 231s
 b4 depth-corrected 4 of 4 | FALLBACKS: 0 []
-Your private Dataset is being created. Please check progress at https://www.kaggle.com/datasets/kadenbrodie/p1203g-survey-b4
+Your private Dataset is being created. Please check progress at https://www.kaggle.com/datasets/<kaggle-user>/p1203g-survey-b4
 b4 dataset status: ready
 notebook <run-dir>/kag/s1203g_b4
-push try 1: Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/kadenbrodie/vesuvius-s1203g-b4
+push try 1: Kernel version 1 successfully pushed.  Please check progress at https://www.kaggle.com/code/<kaggle-user>/vesuvius-s1203g-b4
 BATCH_DONE b4 12:24:02
 /dev/sda1       242G  232G  9.7G  96% /
 SURVEY1203G_DONE 12:24:02

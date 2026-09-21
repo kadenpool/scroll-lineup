@@ -87,7 +87,7 @@
   "tmp": "/kaggle/working/tmp",
   "out": "/kaggle/working/out"
  },
- "dataset_root": "/kaggle/input/datasets/kadenbrodie/p0211-nineum-b0",
+ "dataset_root": "/kaggle/input/datasets/<kaggle-user>/p0211-nineum-b0",
  "torch": "2.10.0+cu128",
  "cuda_devices": 2,
  "segments": [

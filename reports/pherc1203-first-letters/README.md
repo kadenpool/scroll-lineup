@@ -1,6 +1,6 @@
 # First Letters workflow report: PHerc. 1203
 
-Written 12 and 13 Sep 2026; its numbers re-checked by its own tracer on 21 Sep 2026. Every number names the file it came from, and those files are in `data/`, copied read-only from the two CPU boxes the work ran on: box A for renders and box B for registration. The figures and notes the text cites are under `data/evidence_0911/`, `data/evidence_0912/`, `data/evidence_0914/` and `data/scratch_canon/`.
+Written 12 and 13 Sep 2026; its numbers re-checked by its own tracer on 21 Sep 2026. Every number names the file it came from, and those files are in `data/`, copied read-only from the two CPU boxes the work ran on: box A for renders and box B for registration. The figures and notes the text cites are under `data/evidence_0911/`, `data/evidence_0912/`, `data/evidence_0914/` and `data/scratch_canon/`. Paths under `scripts_0911/`, `scripts_0912/` and `submissions/` name our working scripts and notes, which are not published; what they produced is in `data/`.
 
 ## 0. In one paragraph
 
@@ -61,15 +61,15 @@ attempts, all negative, and its two scans had been registered twice before us
 - FrankTheRope, ScrollScout (https://github.com/FrankTheRope/scrollscout): a CPU ranking of 4 cm²
   windows of ink predictions by text-like structure; ran the 9 um model on the public PHerc. 1203
   segments and found forward and reverse predictions indistinguishable, with fibre false positives
-  .
+.
 - flummoxjr, Measure Before You Hunt (https://github.com/flummoxjr/measure-before-you-hunt): a
   scan-quality index and a sheet-separability measure over the eligible scrolls; a corpus screen
   that found no text; for PHerc. 1203 only 1.36 cm² of in-band surface with enough contrast
-  . Two things in that repo matter directly here: it pre-registered, on
+. Two things in that repo matter directly here: it pre-registered, on
   8 Sep, the same idea as our route (the 2 um model on 2.4 um renders of PHerc. 1203), with no
-  result yet at the time we checked ; and its `bench/w059_c0/RESULTS.md`
+  result yet at the time we checked; and its `bench/w059_c0/RESULTS.md`
   (3 Sep) reproduced a published 2 um map exactly with layers [23,85), the setting our issue #1765
-  now credits .
+  now credits.
 - robertlangdonn, PHerc1203 Readability Atlas
   (https://github.com/robertlangdonn/pherc1203-readability-atlas): a CPU geometry diagnostic that
   found the scroll mostly packed too tight to read, with rare readable pockets, and that all 22 public
@@ -82,8 +82,8 @@ attempts, all negative, and its two scans had been registered twice before us
   PHerc. 1203 segments (they exist under `segments/raw/` on S3) was already in flummoxjr's
   `runpod/segment_catalog.json` (19 Aug) before we found it (submissions/DUPLICATE_CHECK_0912.md:19).
   Surfaces growing outside the scroll on the published surface prediction, which bit us in
-  section 5.5, was already filed as villa issue #1254 ; meshes that cut across
-  sheets on this scroll's 2.4 um prediction is villa issue #1675 .
+  section 5.5, was already filed as villa issue #1254; meshes that cut across
+  sheets on this scroll's 2.4 um prediction is villa issue #1675.
 
 **What is new in ours** (stated so the overlap is clear, not to inflate it):
 
@@ -135,29 +135,29 @@ as the work went, and several changed after we saw results. We say which.
 - **The blind check.** The answer key was sealed in a file before Kaden answered
   (data/evidence_0911/blind_key_DO_NOT_OPEN_until_answered.json and blind_key2_...json); the crops were
   the densest fully covered 5 mm crops of our strongest windows, mixed with crops of known text at
-  the same scale .
+  the same scale.
 
 ### 2.2 What was set or changed after seeing results (the honest list)
 
 - **The layer window.** The first 1203 runs used the README's documented window (layers 1-62) and a
-  depth-flipped variant . A control on PHerc. 0139 then showed the documented
+  depth-flipped variant. A control on PHerc. 0139 then showed the documented
   window does not reproduce the published maps and a window centred on the sheet does
   (section 4). Every earlier 1203 number was declared uninformative and everything was re-run
-  . Later still, the window was re-centred per window on the measured sheet
+. Later still, the window was re-centred per window on the measured sheet
   depth (section 3.4). We now also know the exact centred window for an unshifted 109-layer volume
   is [23,85), not the [24,86) our pipelines use; on 8 known-text windows [23,85) matches the
   published maps slightly better (median r 0.905 vs 0.874). The 1203 runs
   were not repeated with that one-layer change.
 - **What counts as "ink-level".** We had no threshold on ink share in advance. The yardsticks came
   from the PHerc. 0139 control after the fact: blank papyrus 0.1 %, dense text 85 % under the
-  centred window , and the range of published text windows, 9.4 to 30.4 %
-  with median 15.4 % at 7.5 mm .
+  centred window, and the range of published text windows, 9.4 to 30.4 %
+  with median 15.4 % at 7.5 mm.
 - **Six shape measures** (blob size, stroke thickness, share of ink in big blobs, elongation,
   straightness, line pitch, and a small learned classifier) were each built after the first strong
   windows appeared, and each was dropped when it failed to separate known text from its own control
   (section 5.7). None was pre-registered.
 - **Which windows got a second look.** The 15 mm regions and the reruns were chosen around the
-  strongest windows . That is a reasonable search rule but
+  strongest windows. That is a reasonable search rule but
   it was not written down first.
 - **The transform.** The transform used for the first two thirds of the renders was replaced on
   12 Sep after the registration tool showed it was about 29 um off, mostly in height (section 4.3).
@@ -206,7 +206,7 @@ the assistant.
 | Sharp scan (the scout) | `PHerc1203/volumes/20260319130212-2.403um-0.2m-77keV-masked.zarr` | same |
 | Scan sizes | eligible scan 18,977 slices of 6844 x 6844 at 9.362 um (177.7 mm of scroll); sharp scan 15,137 slices of 26,493 x 26,493 at 2.403 um (36.4 mm) | submissions/registration_tool/results/pherc1203/f1203/report.json:33-48 (lengths derived from slice counts) |
 | Where the sharp scan sits in the eligible scan | 74.3 to 110.7 mm of the 9.362 um scan (coarse slices 7936 to about 11830); first sharp slice at coarse voxel z 7935.3 |; submissions/registration_tool/REPORT_0912.md:80 |
-| Public segments | 22 `auto_grown` surfaces on the 9.362 um volume (S3 `segments/raw/`; the catalogue `metadata.json` lists none of them); they span 51.0 to 94.0 mm along the scroll, so 74.3 to 94.0 mm is the part both scans and segments cover; 8 of the 22 are over 4 cm², the largest 16.1 cm²; 8 segments are named in our window lists | submissions/catalogue_undercounts/WRITEUP_DRAFT_with1203_PRIVATE.md:14-22; submissions/pherc1203_sharp_scan_misses_segments/WRITEUP_DRAFT.md:8, 32-36 (a withdrawn draft; its segment table is still valid); data/p1203_survey/windows.json (7 segments) and data/p1203_sel/windows.json (5 segments; 8 distinct across both) |
+| Public segments | 22 `auto_grown` surfaces on the 9.362 um volume (S3 `segments/raw/`; the catalogue `metadata.json` lists none of them); they span 51.0 to 94.0 mm along the scroll, so 74.3 to 94.0 mm is the part both scans and segments cover; 8 of the 22 are over 4 cm², the largest 16.1 cm²; 8 segments are named in our window lists | our working notes (not public); data/p1203_survey/windows.json (7 segments) and data/p1203_sel/windows.json (5 segments; 8 distinct across both) |
 | New surfaces | 60 grown by `vc_grow_seg_from_seed` from 60 seeds at 95.3 to 109.1 mm on the published surface prediction of the eligible volume; all 60 were checked for sitting on the scroll; 34 gave survey windows (14 of the first 24, 20 of the remaining 36) and 26 gave none (on the sample holder, or too little on-scroll coverage) | data/p1203g/seeds.json (60 seeds, z 10184 to 11656), box A `p1203g/grown/` (60 surfaces; meshes, not copied; names in data/p1203g/grown_names.txt), data/p1203g/onscroll.json (the first 24), data/p1203g_survey/windows.json (36 picks on 14 surfaces) and windows_rest.json (60 picks on 21 surfaces, 56 scored on 20)and the 12 Sep 22:05 entry |
 | Ink model | `scrollprize/ink_canonical_2um` (ResNet3D-152 + 3D decoder, recipe `new_canon_autoresearch_recipe`), checkpoint `r152_3ddec_v2_l5_epoch13.ckpt`, tile 256, stride 128 | data/scratch_canon/README.md:3-4, 48-49 |
 | Runner | `data/scratch_canon/run_canon.py`, a Kaggle-friendly mirror of villa `ink-detection/optimized_inference` at `777cb16`; bit-identical on CPU | data/scratch_canon/README.md:1-7, 91-112 |
@@ -221,12 +221,12 @@ known from any public map, and we have no positive control on this scroll (secti
 1. **Place the sharp scan inside the eligible scan.** A cross-section image search
    (scripts_0911/xsec_check.py) gives the height, rotation and mirror state. For PHerc. 1203: 74.37 mm,
    rotation 0, not mirrored, score 0.819; the best match more than 3 mm away scores 0.062
-   . This corrected an earlier one-dimensional profile estimate that was
-   15.2 mm off  and killed a draft finding of ours that the sharp scan misses
+. This corrected an earlier one-dimensional profile estimate that was
+   15.2 mm off and killed a draft finding of ours that the sharp scan misses
    every segment (withdrawn 11 Sep).
 2. **Solve the transform.** On 11 Sep: an offset-and-scale fit,
    `fine = (coarse - (7936, 20, -20)) * 3.8959634`, rotation 0, no tilt, precision about 37 um
-   . On 12 Sep: replaced by the scan-alignment tool's 12-parameter fit,
+. On 12 Sep: replaced by the scan-alignment tool's 12-parameter fit,
    `scripts_0911/affine_1203_v2.json` (29 landmarks, 5.8 um RMS), after the tool showed the 11 Sep
    fit was about 29 um off, mostly in height (section 4.3).
 3. **Pick windows** by papyrus texture in a native 9.362 um render (section 2.1).
@@ -238,7 +238,7 @@ known from any public map, and we have no positive control on this scroll (secti
    correlation is above 0.15, else the default 24; 62 layers wide
    (scripts_0911/survey_pipeline_1203g.sh:24-27). The first survey of the public segments (26 windows)
    predates this step and used a fixed window of 63 rendered layers centred on the mesh
-   .
+.
 6. **Run the model on Kaggle** (free GPU, T4 x2) on each window in both depth orders
    (scripts_0911/make_survey_nb_1203g.py); fetch the maps back (scripts_0911/kout2.py); score ink
    share; make montages; compare with known text at the same scale.
@@ -247,11 +247,11 @@ known from any public map, and we have no positive control on this scroll (secti
 
 C is the render's own layer order; D is the same 62 layers reversed. The challenge's published maps
 correspond to one specific order, which for our renders was the reversed one on the calibration
-segment . For auto-grown surfaces the face the mesh normal points at is not
+segment. For auto-grown surfaces the face the mesh normal points at is not
 known in advance, so both orders are run and both are reported. We found on 12 known-text windows
 that the reversed order keeps anywhere from 0.06 to 2.12 of the ink share of the right order, so
-the ratio between orders cannot be used to tell ink from not-ink . We had
-briefly used it that way and withdrew it .
+the ratio between orders cannot be used to tell ink from not-ink. We had
+briefly used it that way and withdrew it.
 
 ### 3.4 Where the mesh sat in the sharp renders (a registration measurement, not a seating one)
 
@@ -287,6 +287,10 @@ and the top two rows of data/evidence_0911/00_KEY_FINDING_layer_setting.png):
 |---|---|---|
 | README's documented layers 1-62 | 0.380, 40.6 % | 0.138, 3.6 % |
 | Centred 24-85 | 0.875, 85.0 % | 0.628, 0.1 % |
+![PHerc. 0139 w025: the published ink map and ours](data/evidence_0911/10_matched_control_0139_78keV.png)
+
+*PHerc. 0139, segment w025, with the README's documented window: the published ink map (left) and ours (right), on a text window (top) and a blank one (bottom). Ours finds less of the writing and marks more of the blank papyrus.*
+
 
 Kaden reproduced these four numbers himself in a private Kaggle notebook on 11 Sep
 (submissions/official_inference_layer_window/kaden_run_*).
@@ -294,7 +298,7 @@ Kaden reproduced these four numbers himself in a private Kaggle notebook on 11 S
 On 12 windows of w025, w026 and w027 (8 text, 4 blank) the centred window matches the published
 maps at r 0.82 to 0.92, with ink shares within a few points of the published ones (16.7 vs 16.4,
 50.3 vs 48.9, 17.1 vs 17.6, 10.8 vs 13.0, 22.0 vs 22.3, 16.4 vs 15.9, 44.4 vs 47.8, 14.0 vs 13.5 %);
-blanks 0.2 to 1.2 % against 0.0 to 0.4 % published . The documented window
+blanks 0.2 to 1.2 % against 0.0 to 0.4 % published. The documented window
 matches at 0.23 to 0.62 (median 0.51) and is 13 to 62 % low on 7 of the 8 text windows
 . This is the content of villa issue #1765; flummoxjr had reproduced a
 published map exactly with [23,85) on 3 Sep, which the issue now credits (930-931). On our 12 windows [23,85) beats [24,86) on all 8 text windows, median r 0.905 vs 0.874
@@ -320,7 +324,7 @@ have to come from. We did not run it on any PHerc. 1203 window, because no windo
 ### 4.3 The registration
 
 - **Placement control.** Given a deliberately wrong height hint (90.5 mm) the placement search
-  returns 74.37 mm, the same answer as the independent 3D fit .
+  returns 74.37 mm, the same answer as the independent 3D fit.
 - **The scan-alignment tool** (`scripts_0912/scanreg/`, one command, CPU, about 5 minutes and
   1.3 GB read per pair; scripts_0912/scanreg/README.md:10-15) was validated on the 15 scan pairs for
   which the challenge publishes a transform: 15 of 15 in the right place; by the rule written in
@@ -340,7 +344,7 @@ have to come from. We did not run it on any PHerc. 1203 window, because no windo
   from the tool's own fit) on 8 windows: sheet offset -5.7 to +7.6 sharp layers with the old
   transform, -1.0 to +0.7 with the new one; match correlation 0.26-0.73 before, 0.82-0.88 after
   (data/p1203_survey/layer_windows_rr_b0.json and layer_windows_rr2_b0.json). Hand test on one window before the rerun: offset -0.1 layers,
-  correlation 0.87 .
+  correlation 0.87.
 - **Kaden ran the tool himself** on the PHerc. 1203 pair on 12 Sep (from his Mac, on box B):
   confidence HIGH, 198 s, 1.26 GB read, sharp-scan first slice at coarse z 7935.2 against the
   agent run's 7935.3 (submissions/registration_tool/kaden_run/report.json and log.txt).
@@ -375,13 +379,17 @@ section 4.1: blank 0.1 %, dense text 85 %, typical text windows 9.4 to 30.4 % (m
 One 7.5 mm patch of a public segment, chosen for coverage not texture: 0.79 % (documented window)
 and 0.40 % (flipped variant), no stroke structure; the CT layers show fibre texture and the mesh is
 piecewise at 2.4 um, with seams one mesh cell (78 sharp pixels) wide (figure data/evidence_0911/03_1203_patch1_scan_and_predictions.png). Re-run with the centred window:
-0.5 % (D) / 1.5 % (C) . Blank level.
+0.5 % (D) / 1.5 % (C). Blank level.
+
+![The first PHerc. 1203 patch: scan and predictions](data/evidence_0911/03_1203_patch1_scan_and_predictions.png)
+
+*The first PHerc. 1203 patch: the scan and its predictions, made with the documented window, before calibration.*
 
 ### 5.2 Eight clean windows on five segments (78 to 85 mm)
 
 Eight windows with crossed-fibre papyrus texture, papyrus share 0.52 to 0.97
 (data/p1203_sel/windows.json; figure
-data/evidence_0911/05_1203_eight_clean_windows.png). With the centred window :
+data/evidence_0911/05_1203_eight_clean_windows.png). With the centred window:
 
 | Window | D | C |
 |---|---|---|
@@ -393,16 +401,24 @@ data/evidence_0911/05_1203_eight_clean_windows.png). With the centred window :
 | 20251005230830031 r140_c75 | 0.5 % | 2.4 % |
 | 20251005231446965 r150_c160 | 1.5 % | 1.8 % |
 | 20251005231446965 r155_c120 | 1.1 % | 1.7 % |
+![The eight clean windows on PHerc. 1203](data/evidence_0911/05_1203_eight_clean_windows.png)
+
+*The eight clean windows on PHerc. 1203, native texture at 2.4 um: each shows the crossed fibres of papyrus. The red labels give the segment, the window and its papyrus share.*
+
 
 What the strong ones look like: r35_c35 (D) is one large shapeless region plus a chain of blobs;
-r190_c90 (D) a connected net-like cluster; the rest scattered blobs, no rows .
+r190_c90 (D) a connected net-like cluster; the rest scattered blobs, no rows.
 Overlays on the scan layer showed r35_c35's response covering a bright dense patch and following its
 outline, and r145_c105's row of blobs running along the edge of a long void (figure data/evidence_0911/08_1203_two_strongest_windows_overlay.png, made with the earlier window
 setting). A measured test for "fires at void edges" found no such preference in any window
 , so that reading was withdrawn. Note also that windows of the same segment
 prefer different depth orders (r145_c105 vs r190_c90), which ink on one face of one sheet should not
-do , though 3.3 shows the two orders are not cleanly separated on known
+do, though 3.3 shows the two orders are not cleanly separated on known
 text either, so this is an observation, not a test.
+
+![The two strongest windows over the scan layer](data/evidence_0911/08_1203_two_strongest_windows_overlay.png)
+
+*The two strongest windows, the prediction laid over the scan layer, made with the documented window, before calibration.*
 
 ### 5.3 Survey of the public segments: 26 windows on 7 segments, 76 to 91 mm
 
@@ -427,10 +443,10 @@ Over all 26 windows (best of the two orders): 2 at or above 10 %, 5 at 5 to 10 %
 median 2.5 % (recomputed 12 Sep from the copied summaries: 2.52 %). Over all 52 window-order pairs
 the median is 1.8 % (1.81 %). Over the 37 patches scored by
 that point (26 survey + 8 clean + 2 regions + patch 1): 5 at or above 10 %, 7 at 5 to 10 %, 25 below
-5 % .
+5 %.
 
 By eye: s_r42_c126 (D) is one large connected cloud-like network; the others are isolated spots
-scattered evenly .
+scattered evenly.
 
 ### 5.4 The 15 mm regions
 
@@ -455,8 +471,11 @@ which only 51 % is covered by the mesh: the figure script (box A `look_big2.py`)
 pixels (data/kag_out/big2/survey_summary.json). Recomputed from the maps on 12 Sep: 5.75 % and
 7.14 % over the rectangle, 11.2 % and 13.9 % over the non-zero pixels, 51.25 % of pixels covered.
 The known-text panel's 7.3 % is over a rectangle at least 95 % covered, so it compares with 5.7 and
-7.1, not with 11.3 and 14.0. The caption must say which denominator each label uses, or the labels
-must be redone over covered area.
+7.1, not with 11.3 and 14.0. The caption under the figure says which denominator its labels use.
+
+![A 15 mm region of PHerc. 1203 beside known text](data/evidence_0911/13_1203_15mm_vs_known_text.png)
+
+*A 15 mm region of PHerc. 1203 beside known text from a PHerc. 0139 map at the same scale. The labels on the figure are shares of the whole rectangle, only part of which the mesh covers; the table gives shares of the covered area.*
 
 ### 5.5 The new band: 60 surfaces grown at 95 to 109 mm, 92 windows scored on 34 of them
 
@@ -467,12 +486,16 @@ data/p1203g/grow_params.json). Two things went wrong and are part of the
 result:
 
 - A test window rendered all zeros because that surface lay where the masked eligible volume stores
-  no chunks: outside the scroll .
+  no chunks: outside the scroll.
 - Of the first 24 surfaces, 8 had grown on the sample holder outside the scroll and 5 partly; 11 were
   fully on papyrus (figure data/evidence_0911/15_1203_new_surfaces_on_scroll.png;
   data/p1203g/onscroll.json: 11 of 24 with at least 75 % of points inside the stored volume, 3
   between 25 and 75 %, 10 below 25 %). The surface prediction fires on the holder and our seed picker
   took any positive voxel. The window selector's 75 % coverage rule skipped holder areas.
+
+![New surfaces on and off the scroll](data/evidence_0911/15_1203_new_surfaces_on_scroll.png)
+
+*The first surfaces grown in the new band, on and off the scroll: some grew on the sample holder outside it.*
 
 The band was surveyed in two passes. The first pass took the 24 surfaces that had finished growing
 by the morning of 11 Sep; the second took the other 36 on 12 Sep, after the transform had been
@@ -497,7 +520,7 @@ Results of the first pass (data/kag_out/s1203g_b0..b4/survey_summary.json):
 Over the 36 windows (best of two orders): 4 at or above 10 %, 13 at 5 to 10 %, 19 below 5 %; median
 4.8 % (recomputed 12 Sep from the copied summaries: 4.81 %). Over all 72 window-order pairs the
 median is 3.2 % (3.21 %). A 15 mm region around r15_c40 (Kaden's blind-check pick, section 5.8) gave
-C 6.8 % / D 5.4 %: weak .
+C 6.8 % / D 5.4 %: weak.
 
 **Second pass: the remaining 36 surfaces (batches 5 to 11; corrected transform with per-window
 depth centring).** A third thing went wrong here and is part of the record: the window selector
@@ -515,7 +538,7 @@ after every surface, reuse good cached renders) and re-run on the cached renders
   (3 on surface 074436164 at 103 to 107 mm, 1 on 075433088 at 99 mm) were queued as a second
   version of batch 4 under the first pass's dataset and kernel name; the copied batch 4 summary
   holds only the first pass's 4 windows, so this report counts those 4 picks as unscored until
-  their results were fetched on 13 Sep (kernel kadenbrodie/vesuvius-s1203g-b12, batch 12).
+  their results were fetched on 13 Sep (kernel vesuvius-s1203g-b12 on my Kaggle account, batch 12).
   
 - Render and model window as in 3.2: 109 sharp layers through the corrected transform
   (scripts_0911/affine_1203_v2.json), 29 native layers, depth match, window centred per window. The
@@ -582,6 +605,10 @@ Two reruns of the 8 windows in 5.3, both at 109 layers:
 | 20250925223153537 s_r42_c2 (C) | 6.4 % | 7.1 % | 7.6 % |
 | 20250925223153537 s_r2_c42 (best order) | 6.0 % (D) | 6.1 % (C) | 6.5 % (C) |
 | 20251005230830031 s_r122_c42 (D) | 4.1 % | 4.1 % | 5.9 % |
+![Rerun 2, before and after the corrected transform](data/evidence_0912/18_1203_corrected_transform_before_after.png)
+
+*Rerun 2, before and after the corrected transform.*
+
 
 So the picture is stable under both corrections: two windows on segment 20250930104534929 at 19 to
 28 %, the rest under 9 %. (The 11.6 % window s_r140_c64 was dropped from this sentence on 14 Sep: it is not on a sheet, seating percentile 0.38, see `data/evidence_0914/SEATING_CHECK_1203.md`.) Both of the 19 to 28 % windows ARE measured on a sheet, at percentiles 0.99 and 0.87 against a random-placement null of 0.50 and displaced nulls of 0.38 and 0.27, so they are unexplained rather than explained away.
@@ -597,7 +624,7 @@ So the strongest window is not a mesh that wanders between sheets.
 
 Every objective measure we built to separate "text-like" from "blob-like" was calibrated on
 published maps of read scrolls, and every one failed to separate, so none is used as evidence
-either way :
+either way:
 
 | Measure | Known text | Our strongest PHerc. 1203 windows | Verdict |
 |---|---|---|---|
@@ -615,7 +642,7 @@ exactly 0, so we do not use its numbers as evidence. For the record: 8 of 152 PH
 maps scored above 0, the highest 0.10 (data/evidence_0912/scorer_calibration.md:19-22, 39-47, 73-76, 95-96).
 
 The lesson we took: at 7.5 and 15 mm the published maps of real text are themselves blobby, so
-"blobs, not strokes" is not a valid objection at that scale . The
+"blobs, not strokes" is not a valid objection at that scale. The
 information is in letter shapes at 5 mm, which only a human check reads.
 
 ### 5.8 Blind eye checks (Kaden)
@@ -623,12 +650,11 @@ information is in letter shapes at 5 mm, which only a human check reads.
 Two sheets of numbered 5 mm crops, each mixing crops of our strongest windows with crops of known
 text from published maps at the same scale, answered as W (writing), N or ? before the key was
 opened (data/evidence_0911/14_BLIND_CHECK_sheet.png and
-17_BLIND_CHECK_sheet2.png; keys in data/evidence_0911/blind_key*.json; scoring data/evidence_0911/score_blind.py).
+data/evidence_0911/17_BLIND_CHECK_sheet2.png; keys in data/evidence_0911/blind_key*.json; scoring data/evidence_0911/score_blind.py).
 Sheet 1 (11 Sep 17:30, 15 crops) used PHerc. 1203 maps from before the depth centring, with the
 11 Sep transform; sheet 2 (11 Sep 21:52, 14 crops) used depth-centred maps, still with the 11 Sep
 transform. Neither used the corrected transform, which came later. Only the PHerc. 1203 crops are
-reported here; the sheets also carried crops from other work of ours, so the sheets would need
-re-cutting before publication. Real-text crops came from published maps of PHerc. 0139 (w026, w029,
+reported here; the sheets also carried crops from other work of ours, so the sheets themselves are not shown here. Real-text crops came from published maps of PHerc. 0139 (w026, w029,
 w040 on sheet 2) and, on sheet 1, one crop from another published map.
 
 The PHerc. 1203 crops (ink share of the 5 mm crop in brackets; keys data/evidence_0911/blind_key*.json):
@@ -636,14 +662,14 @@ sheet 1, crops 1 (20250925223153537 r35_c35, D, 24 %), 5 (20251005221856743 r145
 11 (20251005221856743 r190_c90, D, 24 %) and 12 (20251005221856743 big_r170_c70, C, 13 %); sheet 2,
 crops 9 (20260911051725841 r10_c80, C, 22 %) and 14 (20260911054619589 r15_c40, D, 16 %).
 
-Results :
+Results:
 
 - Real text: 3 of 8 called W on sheet 1, 6 of 8 on sheet 2; 9 of 16 overall (56 %).
 - PHerc. 1203: 1 of 4 on sheet 1 (crop 11, r190_c90 D) and 1 of 2 on sheet 2 (crop 14, r15_c40 D);
   2 of 6 overall.
 - Caveats we owe: small numbers; no known-non-text crops on either sheet, so the check shows "below
   real text", not "at blob level"; the two strongest public-segment windows (s_r42_c126, s_r2_c86)
-  had no fully covered 5 mm crop and were not on sheet 2 ; Kaden's crop by
+  had no fully covered 5 mm crop and were not on sheet 2; Kaden's crop by
   crop answers were not saved, only the totals; no window from the new band's second pass (5.5) was
   on either sheet, because both sheets predate it.
 
@@ -653,7 +679,7 @@ In the blind check I marked "writing" on 2 of 6 PHerc1203 crops, against 9 of 16
 
 - **15 mm.** Known text through this model at 15 mm is clusters of blobs with no visible rows; so are
   our regions (5.4). The 15 mm view neither confirms nor rules out writing
-  .
+.
 - **5 mm.** Known-text crops show straight bars of even thickness, horizontal tops, vertical stems
   and bowls, that is, letter parts. The densest 5 mm crops of our strongest regions show irregular
   blotchy clumps and no straight bars (picture data/kag_out/zoom5mm.png,
@@ -661,6 +687,10 @@ In the blind check I marked "writing" on 2 of 6 PHerc1203 crops, against 9 of 16
   17 and 29 % ink; bottom row, the densest 5 mm crops of the 15 mm regions big_r22_c106 C (17 %),
   big_r22_c106 D (29 %) and big_r170_c70 C (12 %); the picture holds PHerc. 1203 and PHerc. 0139
   crops only). The blind check (5.8) was the test of that impression.
+
+![5 mm crops: known text above, the densest PHerc. 1203 crops below](data/kag_out/zoom5mm.png)
+
+*Top row: 5 mm crops of known text from the published PHerc. 0139 map, with the straight bars of letter parts. Bottom row: the densest 5 mm crops of our strongest PHerc. 1203 regions, irregular clumps and no bars.*
 
 ---
 
@@ -715,7 +745,7 @@ settings, because it fires too.
 The GPU work ran on Kaggle's free tier (two accounts, 30 GPU-hours a week each; two T4s per
 session, pushed with `--accelerator NvidiaTeslaT4`; scripts_0911/survey_pipeline_1203g.sh:40-42). Renders, tars and uploads ran on a CPU box with 8 cores and 94 GB RAM
 ("box A"); registration on a second CPU box with 8 cores and 23 GB RAM
-("box B"). The notes for these days say no GPU was rented and nothing was spent .
+("box B"). The notes for these days say no GPU was rented and nothing was spent.
 Each Kaggle notebook printed its own elapsed time at the end of its log; those times are collected
 in data/kaggle_durations.txt. They run from the notebook's first cell to its last result line, so
 they exclude Kaggle's session start-up, the dataset mount and the final export, and the quota time
@@ -730,7 +760,7 @@ Kaggle charged is somewhat longer.
 | Render, new band first pass (36 windows, 109 + 29 layers, depth match) | vc_render_tifxyz x 72 + offset | 226 to 515 s per window (median 378 s), each including the 29-layer native render and the depth match; batches done 09:14 to 12:24 UTC 11 Sep | none | in the boxes' A$32 | data/survey_pipeline_1203g.log |
 | Grow check + select + render, new band second pass (36 surfaces; 56 windows rendered, 109 + 29 layers, depth match, corrected transform) | survey_sel_1203g.py, vc_render_tifxyz x 112 + offset | selector started 06:40 UTC 12 Sep, crashed at surface 35 of 36 and was re-run from cached renders (5.5); batches 5 to 11 rendered and scored between about 07:30 and 12:05 UTC 12 Sep; per-window render times are in box A's survey_pipeline_1203g_rest.log, not copied second-pass renders 130 to 307 s per window (median 202 s) over the 60 logged renders of batches 5 to 11, each including the 29-layer native render and the depth match | none | in the boxes' A$32 | 12 Sep 16:41, 17:29, 21:23, 21:29 and 22:05 entries  |
 | Render, reruns (8 + 8 windows) and zoom | same | 178 to 285 s per window (rerun 2, sharp and native renders plus the depth match); batch done 00:23 UTC 12 Sep | none | in the boxes' A$32 | data/survey_pipeline_1203_rr2.log |
-| Model inference (Kaggle) | 18 kernel runs for PHerc. 1203: canon1203, canon1203sel, canon1203big, canoncen, survey-b0..b3, big2, big3, s1203-rr0, s1203g-b0..b4, z1203g-b0, s1203-rr2-0 (all under the kadenbrodie account) | a 7.5 mm patch takes about 155 to 169 s of inference per depth order on one T4 (data/kag_out/canon1203/canon_summary.json: 169 s and 155 s); per-kernel notebook times: canon1203 324 s, canon1203sel 1397, canon1203big 1347, canoncen 2760 (that kernel also carried patches from other work of ours), survey-b0..b3 1320 / 1172 / 1285 / 356, big2 681, big3 816, s1203-rr0 1302, s1203g-b0..b4 1398 / 1355 / 1394 / 1384 / 767, z1203g-b0 1012, s1203-rr2-0 1302; 21,372 s = 5.9 h in all. Not in that total: the 8 later runs of 12 Sep (s1203g-b4 second version, s1203g-b5 to b11), whose kernel logs were not copied; at the first pass's rate (about 1,390 s per 8-window batch) they add roughly 3 h b5 1,389 s, b6 1,403, b7 1,397, b8 1,316, b9 1,376, b10 1,419, b11 1,381 (data/logs/s1203g_b*_kernel.log), and the four-window rescue batch b12 on 13 Sep | T4 x2, free | $0 | data/kaggle_durations.txt (from data/kag_out/*/kernel.log); second-pass batches: 12 Sep 21:23 to 22:05 entries |
+| Model inference (Kaggle) | 18 kernel runs for PHerc. 1203: canon1203, canon1203sel, canon1203big, canoncen, survey-b0..b3, big2, big3, s1203-rr0, s1203g-b0..b4, z1203g-b0, s1203-rr2-0 (all under my Kaggle account) | a 7.5 mm patch takes about 155 to 169 s of inference per depth order on one T4 (data/kag_out/canon1203/canon_summary.json: 169 s and 155 s); per-kernel notebook times: canon1203 324 s, canon1203sel 1397, canon1203big 1347, canoncen 2760 (that kernel also carried patches from other work of ours), survey-b0..b3 1320 / 1172 / 1285 / 356, big2 681, big3 816, s1203-rr0 1302, s1203g-b0..b4 1398 / 1355 / 1394 / 1384 / 767, z1203g-b0 1012, s1203-rr2-0 1302; 21,372 s = 5.9 h in all. Not in that total: the 8 later runs of 12 Sep (s1203g-b4 second version, s1203g-b5 to b11), whose kernel logs were not copied; at the first pass's rate (about 1,390 s per 8-window batch) they add roughly 3 h b5 1,389 s, b6 1,403, b7 1,397, b8 1,316, b9 1,376, b10 1,419, b11 1,381 (data/logs/s1203g_b*_kernel.log), and the four-window rescue batch b12 on 13 Sep | T4 x2, free | $0 | data/kaggle_durations.txt (from data/kag_out/*/kernel.log); second-pass batches: 12 Sep 21:23 to 22:05 entries |
 | Controls on PHerc. 0139 (Kaggle) | canon139, canon139cal, fliptest, readmetest, w2385test, layer-window-repro | canon139 610 s (to its last result line), canon139cal 1672, fliptest 2009, readmetest 1173, w2385test 1256, layer-window-repro 1192; 7,912 s = 2.2 h (data/kaggle_durations.txt) | T4 x2, free | $0 ||
 | Data moved | 109-layer render of one window = 584 MB; 8 windows = 4.7 GB per upload | | | ||
 | **Total** | | 10 Sep evening to 12 Sep midday | | about A$32, the two CPU boxes' share of their rent for these days; Kaggle $0 | |
@@ -741,11 +771,11 @@ days, since they were already running; Kaggle GPU time was free. My own time on 
 
 
 Wasted along the way, which belongs in a cost table: every 2 um result before 06:45 on 11 Sep was
-run at the wrong layer window and had to be redone ; all new-band renders
+run at the wrong layer window and had to be redone; all new-band renders
 used the 11 Sep transform (about 29 um off), rescued by per-window centring rather than re-rendered
 (section 5.6); 8 of the first 24 grown surfaces were on the sample holder (5.5); one Kaggle upload
-printed an error although it worked and the retry pushed a duplicate run ; a disk
-guard deadlocked the zoom batch once ; the second-pass selector lost 34
+printed an error although it worked and the retry pushed a duplicate run; a disk
+guard deadlocked the zoom batch once; the second-pass selector lost 34
 surfaces' picks to a crash on the 35th and was re-run (5.5); and one ink share was mis-read by the
 log collector and had to be corrected by hand (5.5).
 
@@ -1014,25 +1044,26 @@ data/kag_out/s1203_rr2_0/survey_summary.json):
 | 20250925223153537 s_r2_c42 | 6.1 | 4.4 | 6.5 | 5.9 |
 | 20251005230830031 s_r122_c42 | 2.8 | 4.1 | 3.5 | 5.9 |
 
-## Appendix B. Figures and their status
+## Appendix B. Figures
 
-| File | Shows | Publishable as is? |
-|---|---|---|
-| data/evidence_0911/05_1203_eight_clean_windows.png | the 8 clean windows, native texture at 2.4 um | yes (PHerc. 1203 only) |
-| data/evidence_0911/03_1203_patch1_scan_and_predictions.png | first patch, earlier window setting | yes, caption must say "documented window, before calibration" |
-| data/evidence_0911/04_1203_transform_check_coarse_vs_sharp.png | native 9.362 um render vs sharp render, same window | yes |
-| data/evidence_0911/08_1203_two_strongest_windows_overlay.png | prediction over scan layer, earlier window setting | yes, same caption caveat |
-| data/evidence_0911/10_matched_control_0139_78keV.png | PHerc. 0139 published vs ours, documented window | yes |
-| data/evidence_0911/00_KEY_FINDING_layer_setting.png | layer-window control | top two rows only; the lower rows show another scan and must be cut |
-| data/evidence_0911/07_1203_eight_windows_results_top.png | 8-window results, earlier setting | no: the top row is a control from another scan; re-cut without it |
-| data/evidence_0911/13_1203_15mm_vs_known_text.png (same as data/kag_out/big2/look_big2.png) | 15 mm region vs known text | yes, once the caption says its labels are shares of the whole rectangle, not of the covered area (5.4) |
-| data/evidence_0911/15_1203_new_surfaces_on_scroll.png | new surfaces on and off the scroll | yes |
-| data/evidence_0912/18_1203_corrected_transform_before_after.png | rerun 2 before/after | yes |
-| data/evidence_0911/11, 12 (calibrated rerun parts) | 1203 next to controls | no: controls from another scan; re-cut |
-| data/evidence_0911/14, 17 (blind sheets) | blind crops | no: carry crops from other work; re-cut for PHerc. 1203 and known text only |
-| data/evidence_0912/zoom_sheet.png | 15 mm zooms vs known text | no: only one of seven regions is PHerc. 1203; crop that one |
-| data/kag_out/zoom5mm.png | 5 mm crops vs known text (5.9) | yes: copied and checked 12 Sep, PHerc. 1203 and PHerc. 0139 crops only |
-| data/evidence_0912/sheet_check.png and SHEET_CHECK.md | the sheet-following check | no: the document is about other work; only its four PHerc. 1203 control rows are cited here |
+Shown in the text: the matched PHerc. 0139 control (4.1), the first patch and the eight clean windows
+(5.1, 5.2), the two strongest windows (5.2), a 15 mm region beside known text (5.4), the new band's
+surfaces (5.5), rerun 2 before and after (5.6) and the 5 mm crops (5.9). One more, the check of the
+transform on this scroll, is shown here:
+
+![The transform check: native 9.362 um render beside the sharp render](data/evidence_0911/04_1203_transform_check_coarse_vs_sharp.png)
+
+*The transform check: the native 9.362 um render beside the sharp render, same window.*
+
+Not shown, because each mixes in panels from another scan or from other work; the files are in
+`data/` with the rest:
+
+- data/evidence_0911/00_KEY_FINDING_layer_setting.png: the full layer-window control; only its PHerc. 0139 rows apply here
+- data/evidence_0911/07_1203_eight_windows_results_top.png: the first eight-window results sheet
+- data/evidence_0911/11_calibrated_rerun_part1.png and data/evidence_0911/12_calibrated_rerun_part2.png: the calibrated rerun sheets
+- data/evidence_0911/14_BLIND_CHECK_sheet.png and data/evidence_0911/17_BLIND_CHECK_sheet2.png: the two blind-check sheets
+- data/evidence_0912/zoom_sheet.png: the 15 mm zoom sheet
+- data/evidence_0912/sheet_check.png: the sheet-following check
 
 ## Appendix C. Local copies of the remote result files (`data/`)
 

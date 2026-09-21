@@ -23,7 +23,7 @@ scripts, selection, manifest, pictures and dry-run summary are copied to `eviden
    12301×1821 px, on-mesh fraction 0.40–0.79 of each canvas; 32 tars, 8.24 GB.
 4. **The PHerc0139 w016 control is the same render the 9 µm check validated** (AUC 0.88 / 0.85), copied from box B and
    cut into the same three windows, with its held-out labels on the render grid packed alongside.
-5. **Private Kaggle dataset `kadenbrodie/p0813-nineum-b0`** (7.7 GiB, 37 files: one tar per mesh, the control tar,
+5. **Private Kaggle dataset `<kaggle-user>/p0813-nineum-b0`** (7.7 GiB, 37 files: one tar per mesh, the control tar,
    the villa inference source, manifest + selection). Uploaded 23:34–23:41, status `ready` at 23:43 AEST, dataset id
    11995562, `isPrivate: true` (metadata API). Kaggle extracted every tar on ingest, so the mount holds
    `<name>/<name>/on|offA|offB/surface-volume.zarr/...` — the layout the kernel globs for. Verified file by file
@@ -31,7 +31,7 @@ scripts, selection, manifest, pictures and dry-run summary are copied to `eviden
    copy, 0 missing / 0 mismatched / 0 extra**; 36 top-level entries = 32 meshes + `ctl_w016` + `villa_vesuvius_src` +
    the two JSONs.
 6. **Kernel folder leverkag/n9_0813/`** (`nb.ipynb` + `kernel-metadata.json`, private, id
-   `kadenbrodie/vesuvius-n9-0813`, GPU, internet): runs ink_9um seed43 step-060000 and seed42 step-010000, both depth
+   `<kaggle-user>/vesuvius-n9-0813`, GPU, internet): runs ink_9um seed43 step-060000 and seed42 step-010000, both depth
    orders, on every mesh's on-sheet window, both off-sheet windows and the control; writes `results.json` +
    `summary.md` (ink share > 0.5 per window/checkpoint/direction, on/off ratio, control AUC). **Not pushed.** Its
    exact code was dry-run on box A CPU (seed43, on-sheet window) on the control + one 0813 mesh: **control AUC 0.877
@@ -40,8 +40,8 @@ scripts, selection, manifest, pictures and dry-run summary are copied to `eviden
    checkpoint keys, layer indices 2..18 and 18..2. First 0813 mesh (z7104_w020): 8.9% forward / 13.6% reverse on the
    sheet, blotchy blobs, no rows (one mesh, one checkpoint, no off-sheet windows yet: a smoke test, not a verdict).
 7. **Push (one command, from box A, only after Plan A's verdict):** `ssh box A 'p0813/push_kernel.sh'`
-   (refuses unless the metadata says private and the id is right; then `kaggle kernels status kadenbrodie/vesuvius-n9-0813`
-   and `kaggle kernels output kadenbrodie/vesuvius-n9-0813 -p kag_out/n9_0813`). Expected GPU time on 2×T4: roughly
+   (refuses unless the metadata says private and the id is right; then `kaggle kernels status <kaggle-user>/vesuvius-n9-0813`
+   and `kaggle kernels output <kaggle-user>/vesuvius-n9-0813 -p kag_out/n9_0813`). Expected GPU time on 2×T4: roughly
    2–5 h (267 Mpx of canvas per window, 55% of it on-mesh so villa's occupancy scan skips the rest; 3 windows × 2
    checkpoints × 2 directions; the CPU dry run did 16.6 Mpx of map in 380 s on 4 threads and a T4 in fp16 should be
    20–50× that). One session (12 h cap) and one week's 30 GPU-h quota cover it either way; to shorten, run with
@@ -167,17 +167,17 @@ supervision 528,791 px, valid eroded 4 px) travel in the tar as `labels_on_rende
 
 ## 5. Dataset and kernel (task 4)
 
-**Dataset** `kadenbrodie/p0813-nineum-b0` (private; `p0813/upload_ds.sh`, token `~/.kaggle/token.env` =
-kadenbrodie, checked with `kaggle datasets list --mine`): 37 files, 7.7 GiB — 32 mesh tars (94–604 MB each),
+**Dataset** `<kaggle-user>/p0813-nineum-b0` (private; `p0813/upload_ds.sh`, token `~/.kaggle/token.env` =
+<kaggle-user>, checked with `kaggle datasets list --mine`): 37 files, 7.7 GiB — 32 mesh tars (94–604 MB each),
 `ctl_w016.tar` (188 MB), `villa_vesuvius_src.tar` (15 MB), `manifest.json`, `selection.json`,
-`dataset-metadata.json` (`{"title": "p0813 nineum b0", "id": "kadenbrodie/p0813-nineum-b0", "licenses": [{"name": "other"}]}`).
+`dataset-metadata.json` (`{"title": "p0813 nineum b0", "id": "<kaggle-user>/p0813-nineum-b0", "licenses": [{"name": "other"}]}`).
 Created with `kaggle datasets create -p p0813/kds --dir-mode skip` (private by default). Kaggle auto-extracts the tars, so
 the mount holds `<name>/<name>/on/...`; the kernel finds windows by globbing `**/on/surface-volume.zarr` and still
 handles un-extracted tars.
 
 **Kernel** `kag/n9_0813/` — `make_nb.py` writes `nb.ipynb` (cell 1 `%%writefile /kaggle/working/n9_0813.py`, verified
 byte-identical to `p0813/n9_0813.py`; cell 2 `!python -u /kaggle/working/n9_0813.py`; cell 3 prints the summary) and
-`kernel-metadata.json` (private, GPU, internet, dataset source `kadenbrodie/p0813-nineum-b0`). What the script does:
+`kernel-metadata.json` (private, GPU, internet, dataset source `<kaggle-user>/p0813-nineum-b0`). What the script does:
 
 1. Finds the dataset by its `manifest.json`, the villa `vesuvius` package shipped in the dataset
    (`villa_vesuvius_src.tar` = the 9 µm check's own source copy, box A `n9/src`, 453 files, md5

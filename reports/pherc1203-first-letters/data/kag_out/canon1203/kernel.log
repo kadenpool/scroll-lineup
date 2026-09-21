@@ -7,8 +7,8 @@
 0.00s - to python to disable frozen modules.
 0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.
 Writing /kaggle/working/run_canon.py
-layer folders: ['/kaggle/input/datasets/kadenbrodie/p1203-sharp-patch/patch_L0_109/']
-using /kaggle/input/datasets/kadenbrodie/p1203-sharp-patch/patch_L0_109/ 109 tifs
+layer folders: ['/kaggle/input/datasets/<kaggle-user>/p1203-sharp-patch/patch_L0_109/']
+using /kaggle/input/datasets/<kaggle-user>/p1203-sharp-patch/patch_L0_109/ 109 tifs
 == A_layers1-62: exit 0 in 169s
 [canon    80.9s]   tiles 168/576  batch=8  3.63 tiles/s  ETA 1.9 min  peak GPU mem 11.8 GB
 [canon   111.9s]   tiles 320/576  batch=8  4.14 tiles/s  ETA 1.0 min  peak GPU mem 11.8 GB
