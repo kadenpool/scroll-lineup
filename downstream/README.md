@@ -68,6 +68,12 @@ which is 48 um. Rendering the finer one, which needs no transform because it is 
 reads **0.897 against 0.857**, and finds **72.2 % of the labelled ink against
 54.4 %**. Block by block it is better in 16 of 22 blocks of 64 px, and the official arm minus this one averages -0.088, with a 95 % interval of -0.155 to -0.025, which excludes zero; at 96 px it is better in 11 of 17 and the interval crosses zero.
 
+![Where each mesh finds the labelled ink: coarse mesh above, fine mesh below](mesh_choice/mesh_choice.png)
+
+*The segment's two labelled regions, scored as above. Green is labelled ink the model finds, red is
+labelled ink it misses. Same scan, model and depth window; only the mesh differs. Redrawn from its
+inputs by `mesh_choice/plot_mesh_choice.py`.*
+
 **Two things change together here, so they were separated.** The finer mesh is finer *and* needs no
 transform, while the coarser one is carried by the catalogue's matrix. `grid_vs_transform.json` adds a
 third arm that moves one variable: the fine mesh with its own grid decimated four times, to the coarse
