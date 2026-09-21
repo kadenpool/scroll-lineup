@@ -13,6 +13,23 @@ GPU, no hand-placed landmarks.
 python scroll_lineup.py MOVING_URL FIXED_URL --out DIR [--write-inverse]
 ```
 
+**Graded against every transform the
+challenge publishes:** 13 PASS, 9 WEAK and 4
+FAIL over all 26 official pairs, nothing
+excluded ([how](#how-good-is-it-graded-against-the-challenges-own-transforms)).
+Grading it that way turned up four published
+transforms that do not fit their own
+published landmarks
+([villa#1835](https://github.com/ScrollPrize/villa/issues/1835)).
+
+![Checkerboard check on the PHerc1203 example](docs/checker_zoom.png)
+
+*Alternate squares come from the two
+different scans. The fibre lines carry on
+across the seams, which is what a correct
+alignment looks like. This is a zoom of the
+qc image the tool writes on every run.*
+
 I was doing ink detection and kept hitting the same wall. The fine scan is where you can actually see something,
 but the First Letters rules only accept evidence from the 9.362 um scan, and I had no way to ask where a spot in one sits
 in the other. So I lined them up by hand, trusted it, and found out later it was 29 um off. I wanted something that would
@@ -37,14 +54,6 @@ against the published ones, and says when it
 has not found one: 13 PASS, 9 WEAK and 4
 FAIL over all 26 official pairs, nothing
 excluded.
-
-![Checkerboard check on the PHerc1203 example](docs/checker_zoom.png)
-
-*Alternate squares come from the two
-different scans. The fibre lines carry on
-across the seams, which is what a correct
-alignment looks like. This is a zoom of the
-qc image the tool writes on every run.*
 
 ## The most useful thing in here, if you only read one part
 
