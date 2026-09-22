@@ -410,7 +410,7 @@ and boxes already to hand.
 
 ## 8. Fixes that came out of the work
 
-As of 21 Sep 2026:
+As of 22 Sep 2026:
 
 **Merged.**
 - #1731: published surfaces were being returned for
@@ -421,19 +421,18 @@ As of 21 Sep 2026:
   a public bucket, then reported the failure as "the
   array does not exist". Bullo27 reproduced it with no
   credentials on his own machine.
+- #1676: a dataset read past the end of its own data.
+  Caught by a sanitizer, not by published scroll data.
+- #1682: creating a pyramid level failed under zarr 3.
 
 **Open.**
 - #1847: a failed chunk download killed a tool with a
   crash dump instead of an error. Bullo27 confirmed the
   fix on Linux with GCC before I opened it.
-- #1676: a dataset read past the end of its own data.
-  Caught by a sanitizer, not by published scroll data.
-- #1682: creating a pyramid level failed under zarr 3.
 
 **Open, and waiting on me rather than on anyone else.**
 - #1717: a render that falls outside its volume now says
-  so. Its survey figure is dated again (21 Sep); it stays
-  in draft while all three ready slots are in use.
+  so. Its survey figure is dated again (21 Sep); it is still a draft.
 - #1766: the layer window. flummoxjr published the same
   window first, on 3 Sep, and is credited.
 - #1769: VC3D trusting a bad stored bounding box. In

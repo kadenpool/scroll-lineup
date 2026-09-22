@@ -776,17 +776,17 @@ log collector and had to be corrected by hand (5.5).
 
 ## 8. Fixes and tools that came out of it
 
-Public, in ScrollPrize/villa (states as on GitHub on 21 Sep 2026):
+Public, in ScrollPrize/villa (states as on GitHub on 22 Sep 2026):
 
-| Item | Title (as on GitHub) | What it fixes or reports | State (21 Sep 2026) |
+| Item | Title (as on GitHub) | What it fixes or reports | State (22 Sep 2026) |
 |---|---|---|---|
 | Issue #1765, https://github.com/ScrollPrize/villa/issues/1765 | optimized_inference README: the recommended 62-layer window for resnet3d-152-3d-decoder is off-centre on the published 2 um volumes | Section 4.1; correction comment of 12 Sep gives [23,85) and credits flummoxjr | Open |
 | PR #1766, https://github.com/ScrollPrize/villa/pull/1766 | optimized_inference README: centre the 62-layer window for the 2 um 3D-decoder model | README fix for #1765, two lines | Draft |
 | PR #1731, https://github.com/ScrollPrize/villa/pull/1731 | tifxyz: recompute the bbox from valid points when the stored one carries the -1 marker (refs #1618) | 28 published segments carried a bogus bounding box | Merged 10 Sep |
 | PR #1665, https://github.com/ScrollPrize/villa/pull/1665 | zarr_utils: fix public S3 access with no AWS credentials | Public data failed without credentials | Merged 11 Sep |
-| PR #1717, https://github.com/ScrollPrize/villa/pull/1717 | vc_render_tifxyz: report surface points that fall outside the volume | The renderer wrote a partly blank image and exit 0 (the failure mode of our holder surfaces, 5.5) | Open, draft while the three ready slots are in use |
-| PR #1682, https://github.com/ScrollPrize/villa/pull/1682 | zarr_tasks: create_level_dataset works under zarr 3 (refs #1670) | Crash under zarr 3 | Open, ready for review |
-| PR #1676, https://github.com/ScrollPrize/villa/pull/1676 | VcDataset: refuse a region that extends past the dataset | Out-of-bounds write on a region past the dataset | Open, ready for review |
+| PR #1717, https://github.com/ScrollPrize/villa/pull/1717 | vc_render_tifxyz: report surface points that fall outside the volume | The renderer wrote a partly blank image and exit 0 (the failure mode of our holder surfaces, 5.5) | Open, draft |
+| PR #1682, https://github.com/ScrollPrize/villa/pull/1682 | zarr_tasks: create_level_dataset works under zarr 3 (refs #1670) | Crash under zarr 3 | Merged 22 Sep |
+| PR #1676, https://github.com/ScrollPrize/villa/pull/1676 | VcDataset: refuse a region that extends past the dataset | Out-of-bounds write on a region past the dataset | Merged 22 Sep |
 | Issue #1730, https://github.com/ScrollPrize/villa/issues/1730 | metadata.json: 20 segments declare an original volume whose scan was taken after the segment was created | Catalogue integrity | Open |
 | Issue #1734, https://github.com/ScrollPrize/villa/issues/1734 | metadata.json: volume_coverage.bbox_transformed is the stored bbox pushed through the downscale, -1 marker included, for the 28 segments in #1618 | Catalogue integrity | Open |
 
