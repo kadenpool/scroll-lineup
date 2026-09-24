@@ -1,0 +1,135 @@
+[
+ {
+  "surface": "s01",
+  "segment_id": "PHerc0846B_s01",
+  "seed_xyz": [
+   3240,
+   3763,
+   7407
+  ],
+  "area_cm2": 7.6212343075787405,
+  "area_vx2": 8695368.608053206,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 2006.225653067,
+  "surface_prediction": "20250804142305-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-d285029-2026-09-22-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "e52b1062f4e37a2711654f8e541bc7a17c8f51940d063dd070900fe96ee9bbcd",
+  "pinned_build_used": true,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals"
+ },
+ {
+  "surface": "s02",
+  "segment_id": "PHerc0846B_s02",
+  "seed_xyz": [
+   4231,
+   4731,
+   7422
+  ],
+  "area_cm2": 7.873937431309372,
+  "area_vx2": 8983687.628380299,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 1564.79471639,
+  "surface_prediction": "20250804142305-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-78877ea-2026-09-23-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "800d98c60f655ed8239556f490b7b9e1ad8c2d81b9fd9f0931b37a79a79adf88",
+  "pinned_build_used": false,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals"
+ },
+ {
+  "surface": "s03",
+  "segment_id": "PHerc0846B_s03",
+  "seed_xyz": [
+   2647,
+   4752,
+   6832
+  ],
+  "area_cm2": 8.041698776046928,
+  "area_vx2": 9175093.202832343,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 1634.533000283,
+  "surface_prediction": "20250804142305-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-78877ea-2026-09-23-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "800d98c60f655ed8239556f490b7b9e1ad8c2d81b9fd9f0931b37a79a79adf88",
+  "pinned_build_used": false,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals"
+ },
+ {
+  "surface": "s04",
+  "segment_id": "PHerc0846B_s04",
+  "seed_xyz": [
+   4207,
+   3214,
+   8143
+  ],
+  "area_cm2": 8.601049988034134,
+  "area_vx2": 9813279.193880199,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 2158.648427709,
+  "surface_prediction": "20250804142305-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-78877ea-2026-09-23-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "800d98c60f655ed8239556f490b7b9e1ad8c2d81b9fd9f0931b37a79a79adf88",
+  "pinned_build_used": false,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals"
+ },
+ {
+  "surface": "s05",
+  "segment_id": "PHerc0846B_s05",
+  "seed_xyz": [
+   4336,
+   3439,
+   6640
+  ],
+  "area_cm2": 7.650760534564526,
+  "area_vx2": 8729056.251928838,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 1694.88630415,
+  "surface_prediction": "20250804142305-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-78877ea-2026-09-23-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "800d98c60f655ed8239556f490b7b9e1ad8c2d81b9fd9f0931b37a79a79adf88",
+  "pinned_build_used": false,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals"
+ },
+ {
+  "surface": "s06",
+  "segment_id": "PHerc0846B_s06",
+  "seed_xyz": [
+   3719,
+   4324,
+   8504
+  ],
+  "area_cm2": 8.380260774519455,
+  "area_vx2": 9561372.019961776,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 1878.459652726,
+  "surface_prediction": "20250804142305-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-78877ea-2026-09-23-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "800d98c60f655ed8239556f490b7b9e1ad8c2d81b9fd9f0931b37a79a79adf88",
+  "pinned_build_used": false,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals"
+ },
+ {
+  "surface": "s07",
+  "segment_id": "PHerc0846B_s07",
+  "seed_xyz": [
+   2998,
+   3154,
+   8630
+  ],
+  "area_cm2": 8.887303633137963,
+  "area_vx2": 10139877.335220825,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 1939.483605129,
+  "surface_prediction": "20250804142305-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-78877ea-2026-09-23-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "800d98c60f655ed8239556f490b7b9e1ad8c2d81b9fd9f0931b37a79a79adf88",
+  "pinned_build_used": false,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals"
+ }
+]

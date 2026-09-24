@@ -1,4 +1,4 @@
-# An ink detection floor for the public 9 um ink models (pre-registered; day 1 done)
+# An ink detection floor for the public 9 um ink models (pre-registered; days 1 and 3 done)
 
 When the public 9 um ink models find nothing on an unread scroll, is that "no ink", or "no ink recovered yet"? The
 challenge's 2026 Open Problems page asks exactly this for June 2027. This folder measures it directly: real ink from
@@ -13,17 +13,46 @@ below the transplant), so the swap is carried forward. Every number is in `RESUL
 own output (`day1/run/`), and `read_day1.py` recomputes every gate from it apart from the Kaggle job's own code.
 Before it, a smoke run on one target checked the pipeline end to end on the published code; its numbers are not used.
 
-**Day 3 (pre-registered 24 Sep, amendment 1 in `PREREG.md`; run pending): the floor on PHerc0846B**, an unread First
-Letters scroll scanned at the same voxel size and energy as PHerc0139, on seven surfaces we grew on it. The same donor
-letters are swapped into its papyrus at three strengths, with two kinds of sham (its own papyrus, and PHerc0139's),
-and the models also read each whole surface. The windows were chosen before any model ran on this scroll
-(`prep_day3.py`, `day3/windows_day3.json`), and the job (`floor_day3.py`) is the day-1 job with only the day-3 parts
-replaced. Two more independent reviews found problems, which were fixed before publication (`REVIEW4.md`,
-`REVIEW5.md`).
+**Day 3 result (24 Sep, run after publication): on PHerc0846B, one checkpoint gives a floor and the other fails
+its checks.** PHerc0846B is an unread First Letters scroll scanned at the same voxel size and energy as PHerc0139.
+The same donor letters were swapped into its papyrus at three strengths, in windows on the seven surfaces we grew on
+it (`../pherc0846b-surfaces/`; the targets fall on six of them), with two kinds of sham (its own papyrus, and
+PHerc0139's).
 
-**Status: pre-registered; day 1 done.** The rules, the windows and the code below were published before any result
-was seen. Results will be added beside them, with any change to the rules as a dated amendment in
-`PREREG.md`. The rules were revised before publication, after three independent reviews and a dry run; `PREREG.md`
+- `seed42_step010000`: every check passed. The planted letters read at median AUC 0.506, 0.559 and 0.750 at
+  strengths 0.25, 0.5 and 1, so the **detection floor (median 0.70) is 0.87** of the full strength of PHerc0139's
+  ink, and the clear floor (0.80) is above 1: not reached even at full strength. Window by window the spread is wide:
+  at full strength 0.50 to 0.89, and 4 of the 12 stay below 0.70.
+- `seed43_step060000`: **no floor**, as the rules say. Its sham of PHerc0139 papyrus read 0.332 at full strength,
+  below the 0.40 to 0.60 the rules allow: it reads plain PHerc0139 papyrus, swapped into this scroll, as less
+  ink-like than its surroundings, so it responds to the foreign texture itself. The check is two-sided; review 4
+  added this sham for the opposite case, foreign texture that reads as ink (`REVIEW4.md`).
+- On both checkpoints the six reference windows reproduced day 1 exactly, and the job's readout is recomputed apart
+  from its own code by `read_day3.py` (AGREE). Every number, target by target and in both directions, with each
+  target's texture scale and clipping, is in `RESULTS_DAY3.md`, generated from the run's own output (`day3/run/`).
+- Not pre-registered comparisons, for context only. On PHerc0139 (day 1) the same checkpoint read the same letters
+  at 0.814 at full strength, against 0.750 here; but day 3 also places the letters differently (on the surface
+  layer, with no depth matching) and scales them to a quieter papyrus (median texture scale 0.88, against 1.21 on
+  day 1). The four lowest windows at full strength are those on s05, s06 and s07; the s05 and s06 windows are also
+  the only two with donor 1.
+- The models' own output on the seven whole surfaces is in `day3/whole_surfaces.png`, beside each surface's CT and
+  labelled with each checkpoint's floor, and the raw maps are published as a data release,
+  [ink-floor-day3-maps](https://github.com/kadenpool/scroll-lineup/releases/tag/ink-floor-day3-maps). We claim no
+  letters from them; read them with the floor above in mind. The bright frame near the edge of every map follows the
+  edge of the rendered surface (on it for `seed42_step010000`, up to 0.4 mm inside it for `seed43_step060000`): an
+  edge effect, not ink.
+- Before the run, a smoke run on one target checked the pipeline on the published code; its numbers are not used.
+  Its whole-surface maps are byte-identical to the full run's.
+
+The windows were chosen before any model ran on this scroll (`prep_day3.py`, `day3/windows_day3.json`), and the job
+(`floor_day3.py`) is the day-1 job with only the day-3 parts replaced. Two more independent reviews found problems,
+which were fixed before publication (`REVIEW4.md`, `REVIEW5.md`), and a sixth checked these results before they were
+published (`REVIEW6.md`). `PREREG.md` now also carries an erratum to
+amendment 1: two figures about the surfaces, found by the surfaces' own review; no rule changes.
+
+**Status: days 1 and 3 done.** Day 2, the same test with a third model (`hecate` 9.6 um, `PREREG.md` section 3),
+has not been run. The rules, the windows and the code below were published before any result was seen, and each
+result sits beside them, with any change to the rules as a dated amendment in `PREREG.md`. The rules were revised before publication, after three independent reviews and a dry run; `PREREG.md`
 says what changed and why, and the second and third reviews are here as returned (`REVIEW2.md`, `REVIEW3.md`).
 `PREREG.md` also states one mistake: a smoke run of an earlier version of the code was started by accident before
 publication; its output has not been opened and is not used.
@@ -42,6 +71,11 @@ publication; its output has not been opened and is not used.
 | `floor_day3.py`, `read_day3.py` | the day-3 Kaggle job, and a reader that recomputes its readout apart from it |
 | `REVIEW4.md`, `REVIEW5.md` | the fourth and fifth independent reviews, of day 3 before publication, as returned |
 | `day1/plant_check.png` | one dry-run target: the letters in place, the clean target, both plants, the transplant and both shams at s = 1 |
+| `RESULTS_DAY3.md` | day 3's results, generated from the run's own output |
+| `day3/run/results.json`, `day3/run/summary.md` | the day-3 run's own output (every job's AUC in both directions; the readout) |
+| `day3/whole_surfaces.png` | the models' own output on the seven whole surfaces, beside each surface's CT |
+| `REVIEW6.md` | the sixth independent review, of the day-3 results before their publication, as returned, with what was done |
+| `results_md.py`, `results_day3_md.py`, `whole_figure_day3.py` | write the two results pages and the figure from the runs' own output: `python3 results_day3_md.py day3/run day1/run/results.json <out>` rebuilds `RESULTS_DAY3.md` byte for byte; the day-1 page's letters-only lines also need that run's kept maps (not published); `python3 whole_figure_day3.py <folder with the data release's maps> ../pherc0846b-surfaces day3/run/results.json <out>` rebuilds the figure |
 
 Day 1 asks only whether the method works: do planted letters read at full strength, and read like the same letters
 moved whole into the same papyrus, through the same model, while shams of the same shape read like nothing? Nothing is claimed about any other scroll unless the

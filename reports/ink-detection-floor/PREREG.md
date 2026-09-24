@@ -303,3 +303,14 @@ as they are. We claim no letters from them. Any region they mark is shown with t
 letters is left to people who read Greek papyri. As on day 1, one smoke run on one target checks the pipeline first;
 it also runs the whole surfaces, so it is the first model output on this scroll. Its numbers are not used; the readout
 and the published maps come from the full run.
+
+#### Erratum to amendment 1 (24 Sep 2026, published with the day-3 results; no rule changes)
+
+Two figures under "Data" were wrong or coarse. An independent review of the surfaces' own release found them before
+that release was published (`reports/pherc0846b-surfaces/REVIEW.md` in this repository). No rule uses either.
+
+- "57.05 cm2 in all" should read 57.06 cm2: 57.05 is the sum of the rounded figures.
+- The touch figures count grid points 20 voxels apart, so the counts are floors and the nearest distances ceilings.
+  Sampled 6 by 6 in each cell (the release's `trace_numbers.py`), s04 and s07 meet within 0.16 voxels and share about
+  11 to 13 mm2 within 4 voxels of each other; s01 and s05 meet within 0.12 voxels over about 3.5 mm2; s01 and s04
+  within 0.34 voxels over less than 1 mm2; the closest other pair stays 38 voxels apart.
