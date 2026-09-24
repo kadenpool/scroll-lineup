@@ -13,6 +13,14 @@ below the transplant), so the swap is carried forward. Every number is in `RESUL
 own output (`day1/run/`), and `read_day1.py` recomputes every gate from it apart from the Kaggle job's own code.
 Before it, a smoke run on one target checked the pipeline end to end on the published code; its numbers are not used.
 
+**Day 3 (pre-registered 24 Sep, amendment 1 in `PREREG.md`; run pending): the floor on PHerc0846B**, an unread First
+Letters scroll scanned at the same voxel size and energy as PHerc0139, on seven surfaces we grew on it. The same donor
+letters are swapped into its papyrus at three strengths, with two kinds of sham (its own papyrus, and PHerc0139's),
+and the models also read each whole surface. The windows were chosen before any model ran on this scroll
+(`prep_day3.py`, `day3/windows_day3.json`), and the job (`floor_day3.py`) is the day-1 job with only the day-3 parts
+replaced. Two more independent reviews found problems, which were fixed before publication (`REVIEW4.md`,
+`REVIEW5.md`).
+
 **Status: pre-registered; day 1 done.** The rules, the windows and the code below were published before any result
 was seen. Results will be added beside them, with any change to the rules as a dated amendment in
 `PREREG.md`. The rules were revised before publication, after three independent reviews and a dry run; `PREREG.md`
@@ -30,6 +38,9 @@ publication; its output has not been opened and is not used.
 | `REVIEW2.md`, `REVIEW3.md` | the second and third independent reviews, before publication, as returned |
 | `RESULTS_DAY1.md` | day 1's results, generated from the run's own output |
 | `day1/run/results.json`, `day1/run/summary.md` | the run's own output (every job's AUC in both directions; the gates) |
+| `prep_day3.py`, `day3/windows_day3.json`, `day3/prep_day3.log` | day 3's window choice on PHerc0846B, and its log |
+| `floor_day3.py`, `read_day3.py` | the day-3 Kaggle job, and a reader that recomputes its readout apart from it |
+| `REVIEW4.md`, `REVIEW5.md` | the fourth and fifth independent reviews, of day 3 before publication, as returned |
 | `day1/plant_check.png` | one dry-run target: the letters in place, the clean target, both plants, the transplant and both shams at s = 1 |
 
 Day 1 asks only whether the method works: do planted letters read at full strength, and read like the same letters

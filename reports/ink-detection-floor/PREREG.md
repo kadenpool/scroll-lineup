@@ -208,4 +208,98 @@ publication.
 
 ## Amendments
 
-(none)
+### Amendment 1 (24 Sep 2026): day 3, the floor on PHerc0846B
+
+Written after day 1 passed (its results are in `RESULTS_DAY1.md`) and before any ink model had run on PHerc0846B. A
+first draft was committed before the day-1 run. Since then, and before any model output on this scroll was seen, these
+rules changed: the day-1 sheet rule was dropped, plants go surface to surface with no depth shift, and the
+intact-papyrus rule is measured on the surface layer rather than a sheet layer (all three because of PHerc0846B's
+depth profiles, below); targets and shams come from one pooled order over all seven surfaces, with an even split if
+fewer than 24 pass; the draft's rule for surfaces covering the same papyrus was replaced by the measured touches,
+below; the six day-1 references are run again as a control; and, after two more independent reviews (`REVIEW4.md`,
+`REVIEW5.md`), a second sham arm of PHerc0139 papyrus was added and the inputs were pinned. The windows
+(`day3/windows_day3.json`) were chosen by `prep_day3.py` before this was published; the job is `floor_day3.py`, built
+from the day-1 job by replacing only the day-3 parts.
+
+#### Why this scroll
+
+PHerc0846B is a First Letters-eligible scroll with no public surfaces. Its eligible volume `20250804142305` was
+scanned at 9.362 um and 113 keV, the voxel size and energy of PHerc0139's native scan, where the `ink_9um` models and
+the day-1 donors come from. So a floor measured here needs no resampling and no change of energy.
+
+#### Data
+
+- Surfaces: our seven PHerc0846B surfaces (s01 to s07), each grown with villa's `vc_grow_seg_from_seed` on the team's
+  published m7 surface prediction and its normal grids, step 20, 75 generations, from seeds (x, y, z) 3240, 3763, 7407
+  (s01); 4231, 4731, 7422; 2647, 4752, 6832; 4207, 3214, 8143; 4336, 3439, 6640; 3719, 4324, 8504; 2998, 3154, 8630
+  (s02 to s07); 7.62 to 8.89 cm2 each, 57.05 cm2 in all. They barely touch: of about 21,900 grid points each (one per
+  20 voxels), 17 points of s04 lie within 4 voxels of s07 (nearest 0.8), 5 of s01 within 4 of s05 and 2 of s01 within
+  4 of s04. The surfaces' files are published with the day-3 results.
+- Renders: villa's `vc_render_tifxyz`, 31 planes, `--flip-normals`, `slice_step` 1.0 on the level-0 scan; we keep
+  planes [1, 29), 28 layers, like the team's PHerc0139 volumes. villa's renderer centres its stack at (n - 1)/2, so
+  our surface lies on layer 14, while in a 28-plane render it lies between layers 13 and 14: the two layouts may
+  differ by half a voxel (4.7 um). We do not correct for it.
+- The seeds came from a picker that looks for a thin sheet on the prediction inside the scroll, away from its edge;
+  s01 was grown first, and s02 to s07 after the first draft of these rules, with seeds from the same picker at least
+  12 mm apart. Nothing about them was chosen by looking at ink.
+- Nothing else about the scroll is used: no ink map exists for it.
+
+#### Windows (fixed rules; numpy seed 20260924)
+
+- Cores 512 x 512 px inside 1024 x 1024 px windows, as on day 1, on a 64 px grid where the surface layer (layer 14) is
+  non-zero on at least 99 % of the core; whole windows on the same surface do not overlap.
+- Intact papyrus, as on day 1 but measured on the surface layer (layer 14) rather than a sheet layer: at most 3 % of
+  it textureless. The day-1 sheet rule does not apply here (see below).
+- All candidate cores of all seven surfaces are pooled and put in one order by the seed; a candidate whose window
+  overlaps one already taken is passed over, a core that fails is skipped, and the first 24 that pass are taken. The
+  first n are the targets and the next n the shams, n = 12, or half of those taken if fewer than 24 pass; target i has
+  sham i and uses day-1 donor i mod 6. If n is under 6, day 3 is not run, and that is reported. (A 3040 px canvas
+  holds at most 4 whole 1024 px windows that do not overlap, so 7 surfaces hold at most 28.)
+- With no ink map, "blank" cannot be checked: a target may hold real ink. The clean readout measures that, target by
+  target.
+- The pick (`day3/prep_day3.log`): 25 cores measured, 24 taken, one failing the intact rule (s06, 7.8 % textureless).
+  Two shams on different surfaces come close: sham 5 (s07) and sham 6 (s04) lie within 10 voxels of each other at
+  their cores and within 2 at their windows (measured between grid points 20 voxels apart, so these are upper bounds);
+  they are kept, as the rules say, and this is stated here.
+
+#### Why the day-1 sheet rule is dropped here
+
+On PHerc0139 the team's surface volumes show a papyrus sheet with air on both sides: day-1 target00's recorded profile
+(`day1/windows.json`) runs from 65.4 up to 108.6 at layer 12 and back to 73.4, and every day-1 core peaked at layer 10
+to 17 by at least 7 grey levels. On PHerc0846B none of the 25 day-3 cores measured would pass that rule: their
+recorded profiles (`day3/windows_day3.json`) are nearly flat, between 100.0 and 134.4, standing 0.5 to 5.7 levels
+above their own median, with peaks anywhere from layer 0 to 27. Densely packed papyrus would give flat profiles; so
+could a surface that crosses from one sheet to another, which parts of these surfaces do (their previews show swirls
+there); we do not claim which. Kept as it was, the rule would stop day 3 on this scroll.
+
+#### Plants, strengths, checks, readout
+
+- The six day-1 donors (PHerc0139), unchanged, and the swap plant, carried forward from day 1, with the day-1 rules
+  for background, residual, texture scale and edges.
+- Depth: surface to surface. No depth shift for the donor or for either sham: each residual goes in at the same
+  layers, since both layouts put the surface at layer 14 of 28 (to within the half voxel above). Day 3 runs no
+  transplant.
+- Strengths 0.25, 0.5, 1 as on day 1; s = 0 is the untouched target.
+- Two shams per strength, both through the same swap and mask: one of PHerc0846B papyrus (sham i, with its own k), and
+  one of PHerc0139 papyrus (day-1 sham i, blank and on a held-out segment, with its own k), because the planted
+  letters bring PHerc0139 texture into this scroll and a model that reacts to foreign texture would otherwise lower
+  the floor unseen.
+- Direction: each checkpoint's primary direction from day 1 (forward for both). Both directions are kept.
+- Control: the six day-1 references are run again; if any of a checkpoint's reference AUCs, in its primary direction,
+  differs from day 1's by more than 0.01 (section 9), that checkpoint's day-3 run is not read.
+- Checks before any floor is read, per checkpoint: the median clean AUC, the median PHerc0846B sham AUC at every
+  strength and the median PHerc0139 sham AUC at every strength all lie in [0.40, 0.60]. If any fails, no floor is
+  reported for that checkpoint, and the reason is.
+- The floor, as section 8: the detection floor is the smallest s whose median planted AUC reaches 0.70, the clear
+  floor 0.80 (linear between grid points; "above 1" if never), always reported with the curve.
+- Inputs pinned: the job stops unless `windows.json`, `masks.npz`, `day3/windows_day3.json` and day 1's `results.json`
+  have the sha256 values written into it (c3e90e83..., f87c5cf9..., 278eae90..., 61f6af77...), and unless every
+  target's and sham's 28-layer profile in the render matches the one the pick recorded.
+
+#### The models' own output on the whole surfaces
+
+Both checkpoints are also run over the seven whole rendered surfaces, both directions, and the raw maps are published
+as they are. We claim no letters from them. Any region they mark is shown with the floor beside it; a reading of
+letters is left to people who read Greek papyri. As on day 1, one smoke run on one target checks the pipeline first;
+it also runs the whole surfaces, so it is the first model output on this scroll. Its numbers are not used; the readout
+and the published maps come from the full run.
