@@ -1,4 +1,4 @@
-# An ink detection floor for the public 9 um ink models (pre-registered; days 1 and 3 done, day 2 pending)
+# An ink detection floor for the public 9 um ink models (pre-registered; days 1 to 3 done)
 
 When the public 9 um ink models find nothing on an unread scroll, is that "no ink", or "no ink recovered yet"? The
 challenge's 2026 Open Problems page asks exactly this for June 2027. This folder measures it directly: real ink from
@@ -65,15 +65,30 @@ before day 3's full run was fetched (`BLIND1_DESIGN.md`; a one-window smoke run,
 pictures, had been read, and was not shown to Kaden); the pictures, the key, the answers and a guide to taking the test yourself are
 in `blind1/`.
 
-**Day 2 (pre-registered 25 Sep, amendment 2 in `PREREG.md`; run pending): the day-1 test with a third model,**
-`hecate` 9.6 um, released by the team on 15 Sep. Every day-1 job is resampled to 9.6 um and read by the model card's
-own code, pinned by revision and sha256 (`floor_day2.py`, generated from the day-1 job by `make_day2.py`, only the
-model changed). How far these segments are held out from hecate's training is stated as far as it can be known,
-with the dataset listings behind it (`day2/`). Two more independent reviews found problems, fixed or stated before
-publication (`REVIEW7.md`, `REVIEW8.md`), and a ninth checked the files staged for this publication (`REVIEW9.md`). Two smoke runs checked and timed the job before publication; their scores were not
-opened.
+**Day 2 result (25 Sep, run after publication): a narrow GO for the swap plant with a third model, `hecate` 9.6 um,**
+released by the team on 15 Sep. Every day-1 job was resampled to 9.6 um and read by the model card's own code, pinned
+by revision and sha256 (`floor_day2.py`, generated from the day-1 job by `make_day2.py`, only the model changed).
+hecate reads the donor letters in place at AUC 0.862 in its primary direction, forward (0.536 in reverse); the two 9
+um checkpoints read them at 0.754 and 0.782 on day 1. The swapped letters read like the same letters moved whole, but
+only just: planted minus transplant is -0.048 against a limit of +/-0.05, where day 1 gave +0.033 and +0.024. The GO
+is fragile: leaving out any one of 6 of the 12 target windows makes planted minus transplant -0.053 and the gate
+fail, and so does leaving out w042's two windows (-0.056), which matters because w042 lies between two of the 11
+PHerc0139 segments in the main folder of the ink dataset hecate's card names (w041 and w043); these checks were made
+after the result, with the same reader. Shams of the same shape read like nothing, though near the lower limit (0.41
+to 0.46, against 0.40 to 0.60), the planted letters read at 0.77 at full strength (0.81 and 0.79 on day 1), and the
+additive plant fails again (-0.247). Every number from the run is in `RESULTS_DAY2.md` (primary direction; both
+directions in `day2/run/results.json`), and `read_day1.py` recomputes every gate from `day2/run/`. Beside the result,
+as amendment 2 requires: none of our seven segments is among the 11 PHerc0139 segments in the main folder of the ink
+dataset hecate's card names (all seven are in its `unused` folder, without ink labels), but its 9.6 um model learned
+from its 2.4 um sibling's outputs on renders where both scans exist, which PHerc0139 has, and the card does not list
+which segments were used; and our letter masks come from that same family of models. Either could raise its scores on
+the references and the transplants, so its higher reference AUC need not mean it sees ink better. How far these
+segments are held out is stated with the dataset listings behind it (`day2/`). Before the run, two independent
+reviews of the job found problems, fixed or stated (`REVIEW7.md`, `REVIEW8.md`), a ninth checked the files staged for
+its publication (`REVIEW9.md`), and two smoke runs checked and timed it, their scores unopened; a tenth review
+checked these results before publication (`REVIEW10.md`).
 
-**Status: days 1 and 3 done; day 2 pre-registered, its run pending.** The rules, the windows and the code below were published before any result was seen, and each
+**Status: days 1, 2 and 3 done.** The rules, the windows and the code below were published before any result was seen, and each
 result sits beside them, with any change to the rules as a dated amendment in `PREREG.md`. The rules were revised before publication, after three independent reviews and a dry run; `PREREG.md`
 says what changed and why, and the second and third reviews are here as returned (`REVIEW2.md`, `REVIEW3.md`).
 `PREREG.md` also states one mistake: a smoke run of an earlier version of the code was started by accident before
@@ -97,13 +112,16 @@ publication; its output has not been opened and is not used.
 | `day3/run/results.json`, `day3/run/summary.md` | the day-3 run's own output (every job's AUC in both directions; the readout) |
 | `day3/whole_surfaces.png` | the models' own output on the seven whole surfaces, beside each surface's CT |
 | `REVIEW6.md` | the sixth independent review, of the day-3 results before their publication, as returned, with what was done |
+| `RESULTS_DAY2.md` | day 2's results, generated from the run's own output, with the held-out caveats beside them |
+| `day2/run/results.json`, `day2/run/summary.md` | the day-2 run's own output (every job's AUC in both directions; the gates) |
 | `floor_day2.py`, `make_day2.py` | the day-2 Kaggle job (hecate), and the script that generates it from the day-1 job |
 | `REVIEW7.md`, `REVIEW8.md` | the seventh and eighth independent reviews, of day 2 before publication, as returned, with what was done |
 | `REVIEW9.md` | the ninth independent review, of the files staged for this publication before they went out (day 2's rules, the w042 caveat, and surface releases that follow separately), as returned, with a re-check and what was done |
+| `REVIEW10.md` | the tenth independent review, of the day-2 results before their publication, as returned, with what was done |
 | `BLIND1_DESIGN.md`, `BLIND1_RESULT.md`, `blind1/` | a blind check by eye of 36 day-3 maps: the design (fixed before day 3's full run was fetched), the result, the pictures, the key and the answers |
 | `blind1_build.py`, `blind1_score.py`, `blind1_page.html` | build the pictures and the key from the day-3 run's window maps, score answers against the key, and the page template the pictures were shown on (in the claude.ai app, which saved each answer) |
 | `day2/ink_bucket_*.json` | the ink dataset's PHerc0139 folder listings (25 Sep), and our seven segments' own folders, behind day 2's held-out statement |
-| `results_md.py`, `results_day3_md.py`, `whole_figure_day3.py` | write the two results pages and the figure from the runs' own output: `python3 results_day3_md.py day3/run day1/run/results.json <out>` rebuilds `RESULTS_DAY3.md` byte for byte; the day-1 page's letters-only lines also need that run's kept maps (not published); `python3 whole_figure_day3.py <folder with the data release's maps> ../pherc0846b-surfaces day3/run/results.json <out>` rebuilds the figure |
+| `results_md.py`, `results_day3_md.py`, `whole_figure_day3.py` | write the three results pages and the figure from the runs' own output: `python3 results_md.py day2/run <out> "Day 2 results (hecate 9.6 um)" day2/held_out_note.md` rebuilds `RESULTS_DAY2.md` apart from its letters-only lines, which need that run's kept maps (not published); `python3 results_day3_md.py day3/run day1/run/results.json <out>` rebuilds `RESULTS_DAY3.md` byte for byte; the day-1 page's letters-only lines also need that run's kept maps (not published); `python3 whole_figure_day3.py <folder with the data release's maps> ../pherc0846b-surfaces day3/run/results.json <out>` rebuilds the figure |
 
 Day 1 asks only whether the method works: do planted letters read at full strength, and read like the same letters
 moved whole into the same papyrus, through the same model, while shams of the same shape read like nothing? Nothing is claimed about any other scroll unless the
