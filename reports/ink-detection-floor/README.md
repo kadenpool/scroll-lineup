@@ -1,4 +1,4 @@
-# An ink detection floor for the public 9 um ink models (pre-registered; days 1 to 3 done)
+# An ink detection floor for the public 9 um ink models (pre-registered; days 1 to 3 done, day 4 pending)
 
 When the public 9 um ink models find nothing on an unread scroll, is that "no ink", or "no ink recovered yet"? The
 challenge's 2026 Open Problems page asks exactly this for June 2027. This folder measures it directly: real ink from
@@ -88,7 +88,18 @@ reviews of the job found problems, fixed or stated (`REVIEW7.md`, `REVIEW8.md`),
 its publication (`REVIEW9.md`), and two smoke runs checked and timed it, their scores unopened; a tenth review
 checked these results before publication (`REVIEW10.md`).
 
-**Status: days 1, 2 and 3 done.** The rules, the windows and the code below were published before any result was seen, and each
+**Day 4 (pre-registered 26 Sep, amendment 3 in `PREREG.md`; run pending): the floor on PHerc0483B, an 8.64 um scan,
+at two scales.** The same test on a second unread First Letters scroll, one step away in voxel size: on the five
+PHerc0483B surfaces (`../pherc0483b-surfaces/`), 8 target windows and 8 shams, picked before any model ran
+(`prep_day4.py`, `day4/windows_day4.json`), each read at 9.362 um, the voxel size of the models' native training
+scans (most of their training data was pooled to about 9.6 um; arm A, primary), and at the scan's own 8.64 um, as the
+team's code would read it (arm B); the difference between the arms is the effect of the step in scale, measured with
+resampled stand-ins (see amendment 3's limits). The job (`floor_day4.py`) is generated from the day-3 job by
+`make_day4.py`; `read_day4.py` recomputes its readout apart from it, with its margins and whether leaving out one
+target changes a result, and `fake_day4.py` tests both on made-up scores. Two independent reviews found problems,
+each fixed or stated before publication (`REVIEW11.md`).
+
+**Status: days 1, 2 and 3 done; day 4 pre-registered, its run pending.** The rules, the windows and the code below were published before any result was seen, and each
 result sits beside them, with any change to the rules as a dated amendment in `PREREG.md`. The rules were revised before publication, after three independent reviews and a dry run; `PREREG.md`
 says what changed and why, and the second and third reviews are here as returned (`REVIEW2.md`, `REVIEW3.md`).
 `PREREG.md` also states one mistake: a smoke run of an earlier version of the code was started by accident before
@@ -121,6 +132,11 @@ publication; its output has not been opened and is not used.
 | `BLIND1_DESIGN.md`, `BLIND1_RESULT.md`, `blind1/` | a blind check by eye of 36 day-3 maps: the design (fixed before day 3's full run was fetched), the result, the pictures, the key and the answers |
 | `blind1_build.py`, `blind1_score.py`, `blind1_page.html` | build the pictures and the key from the day-3 run's window maps, score answers against the key, and the page template the pictures were shown on (in the claude.ai app, which saved each answer) |
 | `day2/ink_bucket_*.json` | the ink dataset's PHerc0139 folder listings (25 Sep), and our seven segments' own folders, behind day 2's held-out statement |
+| `prep_day4.py`, `day4/windows_day4.json`, `day4/prep_day4.log` | day 4's window choice on PHerc0483B, in both arms, and its log |
+| `floor_day4.py`, `make_day4.py` | the day-4 Kaggle job, and the script that generates it from the day-3 job |
+| `read_day4.py`, `fake_day4.py` | a reader that recomputes day 4's readout apart from the job (with margins and leave-one-target-out), and made-up runs that test both |
+| `day4/dry_run_results.json` | the day-4 job's dry run on Kaggle's CPUs, with no model: every job built, k, clipping |
+| `REVIEW11.md` | the eleventh independent review, of day 4's rules, windows and job before publication, with its staging and final checks, as returned, with what was done |
 | `results_md.py`, `results_day3_md.py`, `whole_figure_day3.py` | write the three results pages and the figure from the runs' own output: `python3 results_md.py day2/run <out> "Day 2 results (hecate 9.6 um)" day2/held_out_note.md` rebuilds `RESULTS_DAY2.md` apart from its letters-only lines, which need that run's kept maps (not published); `python3 results_day3_md.py day3/run day1/run/results.json <out>` rebuilds `RESULTS_DAY3.md` byte for byte; the day-1 page's letters-only lines also need that run's kept maps (not published); `python3 whole_figure_day3.py <folder with the data release's maps> ../pherc0846b-surfaces day3/run/results.json <out>` rebuilds the figure |
 
 Day 1 asks only whether the method works: do planted letters read at full strength, and read like the same letters

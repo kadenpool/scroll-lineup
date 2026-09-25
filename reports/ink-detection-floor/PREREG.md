@@ -405,3 +405,120 @@ them.
   are upper bounds and still hold; measured exactly, s04 and s07, s01 and s05, and s01 and s04 cross each other. Its
   areas came from samples too, which read them low: on the triangles, s04 and s07 share 12 to 15 mm2 within 4 voxels
   of each other (not 11 to 13), s01 and s05 3.7 to 3.8 mm2 (not about 3.5), and s01 and s04 under 1 mm2, as it says.
+
+### Amendment 3 (26 Sep 2026, before any model has run on PHerc0483B): day 4, the floor on PHerc0483B
+
+Written after day 3's results were published (`RESULTS_DAY3.md`) and before any ink model had run on PHerc0483B. The
+renders and the windows below were made before this was published, by private CPU jobs that run no model; the job is
+`floor_day4.py`, generated from the day-3 job by `make_day4.py` through exact-match replacements, so everything not
+named below is day 3's. Two independent reviews of this amendment, the windows and the job found problems, each fixed
+or stated here (`REVIEW11.md`).
+
+**What had been run before this was published.** The ten render jobs and the window pick described below, and one dry
+run of the day-4 job on Kaggle's CPUs with no model: it built all 182 jobs (80 in each arm, the six references, the
+six scale references and the ten whole surfaces) without an error, its self-tests passed (the resampler's among
+them), k came to 0.83 to 0.96 in arm A and 0.86 to 0.99 in arm B, and at most 0.23 % of the changed voxels were
+clipped. No model has run on PHerc0483B.
+
+#### Why this scroll
+
+PHerc0483B is a First Letters-eligible scroll whose only surfaces are our five, published on 25 Sep. Its one volume,
+`20251124083638`, was scanned at 8.64 um and 116 keV: a voxel about 8 % smaller than PHerc0139's 9.362 um, where the
+donors and the models' native training data come from. It has no finer scan, so models made for ~9 um scans are the
+ones that can read it, and villa's code would read it at 8.64 um: it never rescales by voxel size. Day 4 measures the
+floor one step away in voxel size, with and without resampling.
+
+#### Data
+
+- Surfaces s01 to s05 as published: villa's `vc_grow_seg_from_seed` on the team's m7 prediction (model 20260413222639,
+  level 0, threshold 0.2) and its normal grids, step 20, 75 generations, from seeds (x, y, z) 4881, 3280, 6384 (s01);
+  1975, 3900, 6392; 6424, 3971, 7042; 3664, 5875, 4624; 5808, 3247, 8208 (s02 to s05); 6.84 to 7.33 cm2 each, 35.42
+  in all. No two come within 4 voxels (the closest, s03 and s05, 58.2 voxels apart, measured on the triangles).
+- Renders: villa's `vc_render_tifxyz` on level 0, 31 planes, `--flip-normals`, planes [1, 29) kept as 28 layers with the
+  surface on layer 14 (amendment 1's half-voxel note applies), two per surface: arm A with `--scale 0.92288
+  --slice-step 1.0835648`, 9.362 um per pixel and per plane (2806 px canvas); arm B with `--scale 1 --slice-step 1`,
+  8.64 um (3040 px), the settings the surfaces were first rendered with. All ten were made on 25 Sep with one VC3D
+  build, 75c79ac (AppImage sha256 `19bc7e18df269bc68b19b8c637aa9124d87ff30c3f1997bd50295489f03bf805`); each render's
+  own metadata gives its pixel size (9.362 or 8.64 on every axis), and each arm-B render repeats the 31 plane means its
+  grow run recorded (the same to the two decimals both records keep; the limit is 0.01).
+- Nothing else about the scroll is used: no ink map exists for it.
+
+#### Two arms, one set of windows
+
+- Arm A (primary): day 3's jobs on the arm-A renders, with the donors, masks and PHerc0139 shams as they are: the floor
+  at 9.362 um, the voxel size of the models' native training scans (most of their training data was pooled to about
+  9.6 um).
+- Arm B (secondary): the scan at its own 8.64 um, with every length the rules give in pixels kept at its physical size.
+  The donor-frame arrays are resampled to 8.64 um in all three directions (the donor residual, the PHerc0139 sham
+  residual and M_soft linearly; M and N by nearest neighbour): voxel (z, y, x) of a 28 x 554 x 554 arm-B core takes the
+  value at (14 + (z - 14) r, 255.5 + (y - 276.5) r, 255.5 + (x - 276.5) r) of the donor's 28 x 512 x 512 core,
+  r = 8.64 / 9.362, always inside it. The PHerc0139 sham is resampled like the letters, so it controls for the
+  resampling too. Target and sham backgrounds use sigma 52 px (section 5's 0.45 mm). k is day 3's formula, computed on
+  the resampled residual.
+- Scale references (arm B): the six day-1 donor windows resampled whole the same way (1109 px), masks carried, read in
+  place. Reported beside arm B; not a gate.
+- The difference: for each checkpoint whose control holds and whose checks pass in both arms, the median over targets
+  of (arm A minus arm B) AUC at s = 0, 0.25, 0.5 and 1, with every target's value. Descriptive; no threshold.
+- The kept core maps are 512 x 512 in arm A and 554 x 554 in arm B and for the scale references; arm B's masks are not
+  kept, and are rebuilt from `masks.npz` by the job's own resampler (`to_b`). For the scale references the kept 554 px
+  crop leaves out one row and one column of the carried mask, so scores recomputed from their kept maps can differ
+  slightly from the job's.
+
+#### Windows (fixed rules; numpy seed 20260926)
+
+- One pick, on the arm-A renders, by day 3's rules unchanged: 512 px cores in 1024 px windows on a 64 px grid; layer 14
+  non-zero on at least 99 % of the core; whole windows on one surface do not overlap; at most 3 % of layer 14
+  textureless. All candidates of the five surfaces are pooled in one seeded order; one overlapping a taken window is
+  passed over, one that fails is skipped, and at most 24 that pass are taken; n is 12, or half of those taken if fewer
+  pass; target i has sham i and donor i mod 6. Under 6 targets, day 4 is not run, and that is reported.
+- Each window is carried to arm B about its core's centre, times 9.362 / 8.64: a 554 px core in a 1109 px window,
+  clamped to the canvas, again at least 99 % covered. The pick records each core's 28-layer profile in both arms, and
+  the correlation of layer 14 between them (arm B resampled onto arm A's grid); it stops if any is under 0.5.
+- The pick (`prep_day4.py`, run on 25 Sep, and again on 26 Sep after a comment in it was changed, with a
+  byte-identical result; `day4/windows_day4.json`, sha256
+  `6d19cf5b871b3ed455f396d8d7ea9facdc71a60eeaf91c394b81d93818e9ac5e`, and its log): 5,780 candidate cores, 81 examined in
+  the seeded order, 17 passed (64 failed the textureless rule), so n = 8 targets and 8 shams, on all five surfaces. The
+  layer-14 correlation between arms is 0.986 to 0.996 on all 16. The seed is a date, as on days 1 and 3.
+
+#### Plants, shams, checks, readout
+
+- As day 3 in both arms: the six day-1 donors and the swap plant, surface to surface with no depth shift; s = 0.25, 0.5
+  and 1, s = 0 untouched; two shams per strength (PHerc0483B sham i and day-1 PHerc0139 sham i, each with its own k);
+  both directions kept, each checkpoint's primary direction from day 1 (forward). No transplant.
+- Control: the six day-1 references run once, for both arms; if any of a checkpoint's reference AUCs, in its primary
+  direction, moves more than 0.01 from day 1's (section 9), that checkpoint's day-4 run is not read, in either arm.
+- Each arm is read for a checkpoint only when every one of its jobs, and the control, is scored in both directions; a
+  missing score in one arm does not stop the other. The scale references are read when all of theirs are.
+- Checks, per checkpoint and arm: the median clean AUC, the median PHerc0483B sham AUC at every strength and the median
+  PHerc0139 sham AUC at every strength lie in [0.40, 0.60]. If any fails, that arm gives no floor for that checkpoint,
+  and the reason is reported.
+- Floors, per checkpoint and arm, as section 8. Arm A's are day 4's floors for PHerc0483B; arm B's are reported as the
+  floors at the scan's own voxel size.
+- Reported beside them: every target's AUCs, k and clipped share; each donor's ink contrast after resampling (arm B);
+  the scale references; the difference between arms; and, for every check, floor and difference, its margin against
+  its limit and whether leaving out any one target (its clean, planted and sham jobs) changes whether a check passes,
+  whether a floor is found, or the sign of the difference (the run's `results.json` holds every figure these come from; `read_day4.py`
+  prints the nearest check's margin and the leave-one-target-out results, the difference's at s = 1).
+- Inputs pinned: windows.json, masks.npz and day 1's results.json as on day 3, and `day4/windows_day4.json`; every
+  target's and sham's profile in both arms is checked against the pick's record.
+
+#### The models' own output on the whole surfaces
+
+Both checkpoints run over the five whole renders of each arm, both directions; the raw maps are published as they are,
+with the floor beside any region they mark, and no letters are claimed. One smoke run (one target per arm, one whole
+surface per arm) checks the pipeline first; it is the first model output on this scroll, and its numbers are not used.
+
+#### Limits, stated now
+
+- Pixel sizes are nominal: a pixel is a grid unit, and these grids' points lie on average 3.0 to 6.6 % farther apart
+  than the 20-voxel step.
+- Neither arm is a native scan at the other size: arm A's papyrus and arm B's letters are resampled, so the difference
+  between arms is the effect of reading at 9.362 or at 8.64 um with these stand-ins.
+- In arm B the model's 21 layers span 173 um instead of 187 um; n is 8, so medians are noisier than day 3's (n = 12).
+- With n = 8, donors 0 and 1 are used twice and donors 2 to 5 once (day 3 used each twice), and the PHerc0139 shams
+  come from w025 and w026 only. Day 3's AUCs at full strength varied largely by donor, so a difference from day 3's
+  floor may partly reflect this mix.
+- 64 of the 81 cores examined failed the textureless rule (1 of 25 on day 3), so the floor describes the most intact
+  fifth of the papyrus examined, not the scroll's surfaces as a whole.
+- k matches the donor to the target's texture level, not its character; the scan's 116 keV differs from PHerc0139's 113.
+- PHerc0483B is in no `ink_9um` training set (the card lists PHerc0139, Scroll 1667, PHerc. Paris 4 and PHerc0814).
