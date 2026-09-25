@@ -391,3 +391,17 @@ limit; it is not split.
 
 Day 1's gates, unchanged, for `hecate_9.6um` as the one checkpoint: G0 to G3 per plant, the primary direction the
 one with the higher median reference AUC. The smoke runs' numbers are not used.
+
+### Second erratum to amendment 1 (25 Sep 2026, published with the surfaces' update; no rule changes)
+
+More figures about the surfaces were wrong, in amendment 1's "Data" and in the first erratum. No rule uses any of
+them.
+
+- The seeds of s01 to s07 are not all at least 12 mm apart: s02 and s06, and s04 and s06, are 11.84 mm apart. The
+  surfaces' own release says so (at least 11.8 mm).
+- In the first erratum, the closest other pair among s01 to s07, s01 and s07, is 36.3 voxels apart at its nearest,
+  not 38. That figure came from samples, which can only overstate a least distance; the surfaces' `trace_numbers.py`
+  now measures it exactly, on the grower's triangles. The first erratum's nearest distances for the pairs that meet
+  are upper bounds and still hold; measured exactly, s04 and s07, s01 and s05, and s01 and s04 cross each other. Its
+  areas came from samples too, which read them low: on the triangles, s04 and s07 share 12 to 15 mm2 within 4 voxels
+  of each other (not 11 to 13), s01 and s05 3.7 to 3.8 mm2 (not about 3.5), and s01 and s04 under 1 mm2, as it says.

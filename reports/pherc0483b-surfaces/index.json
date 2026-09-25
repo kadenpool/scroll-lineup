@@ -1,0 +1,107 @@
+[
+ {
+  "surface": "s01",
+  "segment_id": "PHerc0483B_s01",
+  "seed_xyz": [
+   4881,
+   3280,
+   6384
+  ],
+  "area_cm2": 7.332630530199838,
+  "area_vx2": 9822731.732594354,
+  "voxel_um": 8.64,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 2004.167601124,
+  "surface_prediction": "20251124083638-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-24ca51b-2026-09-24-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "d2e075fc91903629e1dc5c37ea85772cf2b5d7d3e0c31cc676429eb02aecc372",
+  "pinned_build_used": false,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.923
+ },
+ {
+  "surface": "s02",
+  "segment_id": "PHerc0483B_s02",
+  "seed_xyz": [
+   1975,
+   3900,
+   6392
+  ],
+  "area_cm2": 6.992873905179882,
+  "area_vx2": 9367596.543633495,
+  "voxel_um": 8.64,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 1611.096375787,
+  "surface_prediction": "20251124083638-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-6bbe6e2-2026-09-24-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "9100dfe0e55504c63395d9972ab5ba047a7a15f6e6593d044a3649d69fe6cdd7",
+  "pinned_build_used": false,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.923
+ },
+ {
+  "surface": "s03",
+  "segment_id": "PHerc0483B_s03",
+  "seed_xyz": [
+   6424,
+   3971,
+   7042
+  ],
+  "area_cm2": 7.2432203236078525,
+  "area_vx2": 9702958.552984148,
+  "voxel_um": 8.64,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 2533.288478613,
+  "surface_prediction": "20251124083638-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-6bbe6e2-2026-09-24-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "9100dfe0e55504c63395d9972ab5ba047a7a15f6e6593d044a3649d69fe6cdd7",
+  "pinned_build_used": false,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.923
+ },
+ {
+  "surface": "s04",
+  "segment_id": "PHerc0483B_s04",
+  "seed_xyz": [
+   3664,
+   5875,
+   4624
+  ],
+  "area_cm2": 6.840790199521918,
+  "area_vx2": 9163866.458580878,
+  "voxel_um": 8.64,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 2044.942565131,
+  "surface_prediction": "20251124083638-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-6bbe6e2-2026-09-24-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "9100dfe0e55504c63395d9972ab5ba047a7a15f6e6593d044a3649d69fe6cdd7",
+  "pinned_build_used": false,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.923
+ },
+ {
+  "surface": "s05",
+  "segment_id": "PHerc0483B_s05",
+  "seed_xyz": [
+   5808,
+   3247,
+   8208
+  ],
+  "area_cm2": 7.014697716156391,
+  "area_vx2": 9396831.541868057,
+  "voxel_um": 8.64,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 1843.266479856,
+  "surface_prediction": "20251124083638-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-6bbe6e2-2026-09-24-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "9100dfe0e55504c63395d9972ab5ba047a7a15f6e6593d044a3649d69fe6cdd7",
+  "pinned_build_used": false,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.923
+ }
+]

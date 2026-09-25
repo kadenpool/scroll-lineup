@@ -1,0 +1,65 @@
+[
+ {
+  "surface": "s01",
+  "segment_id": "PHerc0490B_s01",
+  "seed_xyz": [
+   2981,
+   5226,
+   5330
+  ],
+  "area_cm2": 7.684814311875805,
+  "area_vx2": 10294514.23871216,
+  "voxel_um": 8.64,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 1924.839907268,
+  "surface_prediction": "20250521151215-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-24ca51b-2026-09-24-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "d2e075fc91903629e1dc5c37ea85772cf2b5d7d3e0c31cc676429eb02aecc372",
+  "pinned_build_used": false,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.923
+ },
+ {
+  "surface": "s02",
+  "segment_id": "PHerc0490B_s02",
+  "seed_xyz": [
+   4716,
+   5233,
+   7342
+  ],
+  "area_cm2": 7.70863021177942,
+  "area_vx2": 10326417.822938863,
+  "voxel_um": 8.64,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 2315.658811061,
+  "surface_prediction": "20250521151215-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-24ca51b-2026-09-24-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "d2e075fc91903629e1dc5c37ea85772cf2b5d7d3e0c31cc676429eb02aecc372",
+  "pinned_build_used": false,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.923
+ },
+ {
+  "surface": "s03",
+  "segment_id": "PHerc0490B_s03",
+  "seed_xyz": [
+   2096,
+   3256,
+   6672
+  ],
+  "area_cm2": 8.03142547744042,
+  "area_vx2": 10758831.713981198,
+  "voxel_um": 8.64,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 2273.076296664,
+  "surface_prediction": "20250521151215-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-24ca51b-2026-09-24-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "d2e075fc91903629e1dc5c37ea85772cf2b5d7d3e0c31cc676429eb02aecc372",
+  "pinned_build_used": false,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.92
+ }
+]

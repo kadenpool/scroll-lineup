@@ -54,8 +54,8 @@ PHerc0139's).
 The windows were chosen before any model ran on this scroll (`prep_day3.py`, `day3/windows_day3.json`), and the job
 (`floor_day3.py`) is the day-1 job with only the day-3 parts replaced. Two more independent reviews found problems,
 which were fixed before publication (`REVIEW4.md`, `REVIEW5.md`), and a sixth checked these results before they were
-published (`REVIEW6.md`). `PREREG.md` now also carries an erratum to
-amendment 1: two figures about the surfaces, found by the surfaces' own review; no rule changes.
+published (`REVIEW6.md`). `PREREG.md` now also carries two errata to
+amendment 1, both about figures for the surfaces; no rule changes.
 
 **Day 2 (pre-registered 25 Sep, amendment 2 in `PREREG.md`; run pending): the day-1 test with a third model,**
 `hecate` 9.6 um, released by the team on 15 Sep. Every day-1 job is resampled to 9.6 um and read by the model card's

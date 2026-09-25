@@ -9,6 +9,7 @@
   ],
   "area_cm2": 7.6212343075787405,
   "area_vx2": 8695368.608053206,
+  "voxel_um": 9.362,
   "generation_limit": 75,
   "step_size": 20,
   "grow_seconds": 2006.225653067,
@@ -16,7 +17,8 @@
   "vc3d_appimage": "VC3D-d285029-2026-09-22-linux-x86_64.AppImage",
   "vc3d_appimage_sha256": "e52b1062f4e37a2711654f8e541bc7a17c8f51940d063dd070900fe96ee9bbcd",
   "pinned_build_used": true,
-  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals"
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.923
  },
  {
   "surface": "s02",
@@ -28,6 +30,7 @@
   ],
   "area_cm2": 7.873937431309372,
   "area_vx2": 8983687.628380299,
+  "voxel_um": 9.362,
   "generation_limit": 75,
   "step_size": 20,
   "grow_seconds": 1564.79471639,
@@ -35,7 +38,8 @@
   "vc3d_appimage": "VC3D-78877ea-2026-09-23-linux-x86_64.AppImage",
   "vc3d_appimage_sha256": "800d98c60f655ed8239556f490b7b9e1ad8c2d81b9fd9f0931b37a79a79adf88",
   "pinned_build_used": false,
-  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals"
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.923
  },
  {
   "surface": "s03",
@@ -47,6 +51,7 @@
   ],
   "area_cm2": 8.041698776046928,
   "area_vx2": 9175093.202832343,
+  "voxel_um": 9.362,
   "generation_limit": 75,
   "step_size": 20,
   "grow_seconds": 1634.533000283,
@@ -54,7 +59,8 @@
   "vc3d_appimage": "VC3D-78877ea-2026-09-23-linux-x86_64.AppImage",
   "vc3d_appimage_sha256": "800d98c60f655ed8239556f490b7b9e1ad8c2d81b9fd9f0931b37a79a79adf88",
   "pinned_build_used": false,
-  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals"
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.923
  },
  {
   "surface": "s04",
@@ -66,6 +72,7 @@
   ],
   "area_cm2": 8.601049988034134,
   "area_vx2": 9813279.193880199,
+  "voxel_um": 9.362,
   "generation_limit": 75,
   "step_size": 20,
   "grow_seconds": 2158.648427709,
@@ -73,7 +80,8 @@
   "vc3d_appimage": "VC3D-78877ea-2026-09-23-linux-x86_64.AppImage",
   "vc3d_appimage_sha256": "800d98c60f655ed8239556f490b7b9e1ad8c2d81b9fd9f0931b37a79a79adf88",
   "pinned_build_used": false,
-  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals"
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.923
  },
  {
   "surface": "s05",
@@ -85,6 +93,7 @@
   ],
   "area_cm2": 7.650760534564526,
   "area_vx2": 8729056.251928838,
+  "voxel_um": 9.362,
   "generation_limit": 75,
   "step_size": 20,
   "grow_seconds": 1694.88630415,
@@ -92,7 +101,8 @@
   "vc3d_appimage": "VC3D-78877ea-2026-09-23-linux-x86_64.AppImage",
   "vc3d_appimage_sha256": "800d98c60f655ed8239556f490b7b9e1ad8c2d81b9fd9f0931b37a79a79adf88",
   "pinned_build_used": false,
-  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals"
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.918
  },
  {
   "surface": "s06",
@@ -104,6 +114,7 @@
   ],
   "area_cm2": 8.380260774519455,
   "area_vx2": 9561372.019961776,
+  "voxel_um": 9.362,
   "generation_limit": 75,
   "step_size": 20,
   "grow_seconds": 1878.459652726,
@@ -111,7 +122,8 @@
   "vc3d_appimage": "VC3D-78877ea-2026-09-23-linux-x86_64.AppImage",
   "vc3d_appimage_sha256": "800d98c60f655ed8239556f490b7b9e1ad8c2d81b9fd9f0931b37a79a79adf88",
   "pinned_build_used": false,
-  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals"
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.923
  },
  {
   "surface": "s07",
@@ -123,6 +135,7 @@
   ],
   "area_cm2": 8.887303633137963,
   "area_vx2": 10139877.335220825,
+  "voxel_um": 9.362,
   "generation_limit": 75,
   "step_size": 20,
   "grow_seconds": 1939.483605129,
@@ -130,6 +143,112 @@
   "vc3d_appimage": "VC3D-78877ea-2026-09-23-linux-x86_64.AppImage",
   "vc3d_appimage_sha256": "800d98c60f655ed8239556f490b7b9e1ad8c2d81b9fd9f0931b37a79a79adf88",
   "pinned_build_used": false,
-  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals"
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.923
+ },
+ {
+  "surface": "s08",
+  "segment_id": "PHerc0846B_s08",
+  "seed_xyz": [
+   3952,
+   4718,
+   6128
+  ],
+  "area_cm2": 7.756271532256669,
+  "area_vx2": 8849437.935539365,
+  "voxel_um": 9.362,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 1260.108861319,
+  "surface_prediction": "20250804142305-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-6bbe6e2-2026-09-24-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "9100dfe0e55504c63395d9972ab5ba047a7a15f6e6593d044a3649d69fe6cdd7",
+  "pinned_build_used": false,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.923
+ },
+ {
+  "surface": "s09",
+  "segment_id": "PHerc0846B_s09",
+  "seed_xyz": [
+   1586,
+   4563,
+   6128
+  ],
+  "area_cm2": 7.937411490856921,
+  "area_vx2": 9056107.701368555,
+  "voxel_um": 9.362,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 1699.689278446,
+  "surface_prediction": "20250804142305-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-6bbe6e2-2026-09-24-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "9100dfe0e55504c63395d9972ab5ba047a7a15f6e6593d044a3649d69fe6cdd7",
+  "pinned_build_used": false,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.923
+ },
+ {
+  "surface": "s10",
+  "segment_id": "PHerc0846B_s10",
+  "seed_xyz": [
+   2939,
+   3837,
+   5962
+  ],
+  "area_cm2": 7.667486939906955,
+  "area_vx2": 8748140.071435016,
+  "voxel_um": 9.362,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 1433.765046889,
+  "surface_prediction": "20250804142305-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-6bbe6e2-2026-09-24-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "9100dfe0e55504c63395d9972ab5ba047a7a15f6e6593d044a3649d69fe6cdd7",
+  "pinned_build_used": false,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.923
+ },
+ {
+  "surface": "s11",
+  "segment_id": "PHerc0846B_s11",
+  "seed_xyz": [
+   1968,
+   3794,
+   5104
+  ],
+  "area_cm2": 8.0477376853772,
+  "area_vx2": 9181983.234092122,
+  "voxel_um": 9.362,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 1814.713102252,
+  "surface_prediction": "20250804142305-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-6bbe6e2-2026-09-24-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "9100dfe0e55504c63395d9972ab5ba047a7a15f6e6593d044a3649d69fe6cdd7",
+  "pinned_build_used": false,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.913
+ },
+ {
+  "surface": "s12",
+  "segment_id": "PHerc0846B_s12",
+  "seed_xyz": [
+   1633,
+   5203,
+   9874
+  ],
+  "area_cm2": 8.83648855432879,
+  "area_vx2": 10081900.395625405,
+  "voxel_um": 9.362,
+  "generation_limit": 75,
+  "step_size": 20,
+  "grow_seconds": 1948.369373588,
+  "surface_prediction": "20250804142305-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+  "vc3d_appimage": "VC3D-6bbe6e2-2026-09-24-linux-x86_64.AppImage",
+  "vc3d_appimage_sha256": "9100dfe0e55504c63395d9972ab5ba047a7a15f6e6593d044a3649d69fe6cdd7",
+  "pinned_build_used": false,
+  "render": "vc_render_tifxyz --scale 1 --group-idx 0 --num-slices 31 --slice-step 1 --flip-normals",
+  "render_covered": 0.923
  }
 ]

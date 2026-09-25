@@ -1,0 +1,47 @@
+{
+    "area_cm2": 8.03142547744042,
+    "area_vx2": 10758831.713981198,
+    "bbox": [
+        [
+            1362.9163818359375,
+            2743.795166015625,
+            4942.56689453125
+        ],
+        [
+            3492.6064453125,
+            3921.710205078125,
+            7691.38818359375
+        ]
+    ],
+    "elapsed_time_s": 2273.076296664,
+    "format": "tifxyz",
+    "max_gen": 75,
+    "scale": [
+        0.05000000074505806,
+        0.05000000074505806
+    ],
+    "seed": [
+        2096.0,
+        3256.0,
+        6672.0
+    ],
+    "source": "vc_grow_seg_from_seed",
+    "target_volume": "20250521151215-surface-20260413222639-surface-m7-L0-th0.2.zarr",
+    "type": "seg",
+    "uuid": "PHerc0490B_s03",
+    "vc_gsfs_mode": "explicit_seed",
+    "vc_gsfs_params": {
+        "cache_root": "/kaggle/tmp/surface_probe/edt_cache",
+        "cache_size": 4000000000,
+        "generations": 75,
+        "min_area_cm": 0.0,
+        "mode": "seed",
+        "normal_grid_path": "/kaggle/tmp/surface_probe/normal_grids/PHerc0490B",
+        "snapshot-interval": 10,
+        "step_size": 20,
+        "thread_limit": 4,
+        "use_cuda": false,
+        "voxelsize": 8.64
+    },
+    "vc_gsfs_version": "dev"
+}
