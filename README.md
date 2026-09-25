@@ -862,6 +862,8 @@ are worth nothing and 0.018.
 | `results/<pair>/` | the 12 validation runs, complete; `results/table.md` is generated from them. Their `qc.png` title strips carry the working name this tool had before it was renamed, and `CHANGELOG.md` says so |
 | `robustness/<pair>/` | the 9 further runs, same layout, `robustness/table.md` generated the same way |
 | `coverage/<pair>/` | the last 5, so that all 26 official transforms are graded. `coverage/table.md`, same generator |
+| `surface_in_volume/` | the survey behind villa #1717's figure: do published surfaces sit inside the volume they name? |
+| `reports/` | write-ups of work done with this tool and around it, each with its data and a script that re-derives its numbers (`reports/README.md` lists them) |
 
 ## Credits and disclosure
 

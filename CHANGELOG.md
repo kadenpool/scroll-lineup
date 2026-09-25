@@ -88,6 +88,6 @@ alter a committed result is not made, because it would invalidate the runs this 
   `VALIDATION.md`.
 - **Nine further pairs, 15 Sep 2026.** `pairs_robustness.txt` and `robustness/` hold every official
   transform in the open-data catalogue that was not in the first twelve, apart from five on two
-  objects this repository does not discuss. Same script, same rule, results in `VALIDATION.md`.
+  objects this repository did not then discuss (graded from 16 Sep in `coverage/`). Same script, same rule, results in `VALIDATION.md`.
 - **Python 3.9 works.** The README used to ask for 3.10 or newer. The tool compiles and runs on 3.9.6
   with numpy 2.0.2 and scipy 1.13.1, and CI checks it on every push.

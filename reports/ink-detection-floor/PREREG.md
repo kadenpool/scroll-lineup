@@ -522,3 +522,12 @@ surface per arm) checks the pipeline first; it is the first model output on this
   fifth of the papyrus examined, not the scroll's surfaces as a whole.
 - k matches the donor to the target's texture level, not its character; the scan's 116 keV differs from PHerc0139's 113.
 - PHerc0483B is in no `ink_9um` training set (the card lists PHerc0139, Scroll 1667, PHerc. Paris 4 and PHerc0814).
+
+### Erratum to amendment 3 (26 Sep 2026, before day 4's full run was read; no rule changes)
+
+Amendment 3 says that no model has run on PHerc0483B, that our five surfaces are its only ones, and that day 4's
+smoke run is the first model output on this scroll. Each is true only of our own work. On 11 Sep 2026, gmDevi's
+`vc-windows-tools` (commit 4206088) published an ink-model screen of PHerc0483B: a tracks-only spiral fit, with every
+fifth winding rendered in both layer directions and scored (36 renders of 18 windings), all negative. It published
+the renders and their scores, not the surfaces; ours remain the first published surfaces on this scroll. Nothing in
+the rules changes.

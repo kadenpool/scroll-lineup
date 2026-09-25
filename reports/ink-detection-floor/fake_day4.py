@@ -1,4 +1,4 @@
-"""Test data for read_day4.py and the day-4 readout, as fake_day3.py is for day 3: made-up day-4 AUCs (both arms, the
+"""Test data for read_day4.py and the day-4 readout, as the day-3 one (not published) was for day 3: made-up day-4 AUCs (both arms, the
 six references copied from day 1, the six scale references, whole surfaces), run through floor_day4.py's own readout
 code and saved as a run. With "all", every case is built in its own folder, read back by read_day4.py (a separate
 process), and checked: read_day4.py must print AGREE, and the job's readout must give the case's expected verdict.

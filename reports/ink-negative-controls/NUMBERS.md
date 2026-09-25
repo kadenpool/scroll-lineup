@@ -6,6 +6,10 @@ This page adds the things a script cannot check: which rule was
 written down before which number existed, and where the prose in the
 report was cut back from.
 
+Six of the files cited below are not in this repository: `PLAN_B_0211_RESULT.md`, `PLAN_B_0813_RESULT.md`,
+`PLAN_D_RESULT.md`, `PLAN_D_STAGE2_TABLE.md`, `analyse_sweep.py` and `plan_a_files/DEVIATIONS.md`. Numbers cited
+only to them are checked as printed, not re-derived (noted 26 Sep 2026).
+
 Run it with:
 
 ```
@@ -48,7 +52,7 @@ control calibration; the off-sheet band widened to match).
 | 32 of pscamillo's 75 PHerc0813 meshes, 30 of his 90 PHerc0211 | `PLAN_B_0813_PREP.md` and `PLAN_B_0211_PREP.md`, item 1 of each |
 | section 5: every reading of TAUIL's two locations, both checkpoints | `plan_b_0813_files/v2_result/results.json` and `plan_b_0211_files/v1_result/results.json`, `per_segment` |
 | section 5: the two shape-gate windows, their directions and ratios | `plan_d_files/results.json` `gates_G1`; the shape gate recomputed in `trace_numbers.py` with `analyse_sweep.py`'s rule |
-| other people's surveys: 324, 82 and 71 meshes; 340 rendered; 12 windings; 31.2 % | `CITATIONS.md`, last section |
+| other people's surveys: 324, 82 and 71 meshes; 340 rendered; 12 windings; 31.2 %; the atlas's pass counts 5, 2, 0 and 1 | `CITATIONS.md`, last section |
 | median 11.0 % on against 9.4 % off, on/off 1.15 | `PLAN_B_0813_RESULT.md` §2 |
 | median 10.1 % on against 10.1 % off, on/off 1.00 | `PLAN_B_0211_RESULT.md` §1.2 |
 | two 0813 meshes kept, 1.96x and 1.85x | `PLAN_B_0813_RESULT.md` §1.4, §2 |

@@ -140,7 +140,9 @@ were committed on 13 Sep (`bc0660d`, 13:09 AEST) and scored that day, before his
 **rodriguescarson, `eligible-scroll-atlas`.** Created 15 Sep 2026; HEAD `2afcd00`, 16 Sep. All 340
 meshes on the eight eligible scrolls rendered into the team's layout and uploaded, 0 failures;
 screening under a pre-registered recipe with two dated amendments; per-mesh scores "follow when it
-finishes", so no ink result is quoted from it.
+finishes", so no ink result is quoted from it. Added 26 Sep 2026: the atlas's README has given the screen's pass
+counts since 21 Sep (commit `0c0566c`): 5, 2, 0 and 1 under its four pre-registered variants, none passing all four;
+the report now quotes them.
 
 **gmDevi, `vc-windows-tools`.** Commit `4206088`, 11 Sep 2026, whose message names five other
 scrolls, added `results/p0846A_batch/`. `batch.log` says 18 windings; 12 have a summary, and "best

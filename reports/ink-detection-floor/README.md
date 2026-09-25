@@ -22,7 +22,7 @@ and w043). Here w042 serves only as blank papyrus for plants and shams, never as
 
 **Day 3 result (24 Sep, run after publication): on PHerc0846B, one checkpoint gives a floor and the other fails
 its checks.** PHerc0846B is an unread First Letters scroll scanned at the same voxel size and energy as PHerc0139.
-The same donor letters were swapped into its papyrus at three strengths, in windows on the seven surfaces we grew on
+The same donor letters were swapped into its papyrus at three strengths, in windows on seven of the surfaces we grew on
 it (s01 to s07 in `../pherc0846b-surfaces/`; the targets fall on six of them), with two kinds of sham (its own papyrus, and
 PHerc0139's).
 
@@ -90,14 +90,16 @@ checked these results before publication (`REVIEW10.md`).
 
 **Day 4 (pre-registered 26 Sep, amendment 3 in `PREREG.md`; run pending): the floor on PHerc0483B, an 8.64 um scan,
 at two scales.** The same test on a second unread First Letters scroll, one step away in voxel size: on the five
-PHerc0483B surfaces (`../pherc0483b-surfaces/`), 8 target windows and 8 shams, picked before any model ran
-(`prep_day4.py`, `day4/windows_day4.json`), each read at 9.362 um, the voxel size of the models' native training
+PHerc0483B surfaces (`../pherc0483b-surfaces/`), 8 target windows and 8 shams, picked before any model of ours ran on
+it (`prep_day4.py`, `day4/windows_day4.json`), each read at 9.362 um, the voxel size of the models' native training
 scans (most of their training data was pooled to about 9.6 um; arm A, primary), and at the scan's own 8.64 um, as the
 team's code would read it (arm B); the difference between the arms is the effect of the step in scale, measured with
 resampled stand-ins (see amendment 3's limits). The job (`floor_day4.py`) is generated from the day-3 job by
 `make_day4.py`; `read_day4.py` recomputes its readout apart from it, with its margins and whether leaving out one
-target changes a result, and `fake_day4.py` tests both on made-up scores. Two independent reviews found problems,
-each fixed or stated before publication (`REVIEW11.md`).
+target changes a result, and `fake_day4.py` tests both on made-up scores. An independent review, a staging check and
+a final check found problems, each fixed or stated before publication (`REVIEW11.md`). gmDevi's `vc-windows-tools`
+had screened a spiral fit of this scroll with an ink model on 11 Sep (36 renders of 18 windings, all negative), which
+amendment 3 missed; its erratum says so.
 
 **Status: days 1, 2 and 3 done; day 4 pre-registered, its run pending.** The rules, the windows and the code below were published before any result was seen, and each
 result sits beside them, with any change to the rules as a dated amendment in `PREREG.md`. The rules were revised before publication, after three independent reviews and a dry run; `PREREG.md`

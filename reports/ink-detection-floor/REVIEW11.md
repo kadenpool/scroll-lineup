@@ -2,8 +2,8 @@
 
 Reviewer: a separate Claude Code agent, read-only, asked whether amendment 3 says exactly what the day-4 job does,
 whether the resampling to 8.64 um is right, whether the generator, the reader and the made-up test cases work, whether
-the windows follow the stated rules, and whether anything would make the result unreadable or misleading. No model
-had run on PHerc0483B. Verdict and findings as returned (lightly shortened, private paths removed), each followed by
+the windows follow the stated rules, and whether anything would make the result unreadable or misleading. No model of
+ours had run on PHerc0483B. Verdict and findings as returned (lightly shortened, private paths removed), each followed by
 what was done.
 
 READY WITH FIXES
@@ -64,3 +64,5 @@ Final check (a third reviewer, 26 Sep, of the staging fixes only): READY WITH FI
 `make_day4.py`'s docstring said one change was not named by amendment 3, though the amendment names the profile
 check (now: one detail of it differs from day 3's); "results.json holds all of it" became "every figure these come
 from" (the margins are computed by the reader); and the texts now say two reviews, whose findings were fixed or stated.
+
+*Edited 26 Sep 2026 (AEST): "no model had run on PHerc0483B" now says "no model of ours" (see the erratum to amendment 3).*

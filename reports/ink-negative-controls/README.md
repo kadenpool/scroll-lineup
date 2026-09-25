@@ -35,10 +35,6 @@ the resolution the eligibility rules require. Nothing was
 trained on any unread scroll's ink, because no such labels
 exist.
 
-> **DRAFT, NOT POSTED.** Two passages are Kaden's to write
-> and are marked below. Nothing goes public until he says
-> so.
-
 ---
 
 ## What this is not, and who showed why it matters
@@ -94,8 +90,8 @@ them with more surface than we used.**
 - **rodriguescarson's `eligible-scroll-atlas`** (15 and 16
   Sep 2026) has rendered all 340 published meshes on those
   eight scrolls into the team's layout, under a
-  pre-registered screen whose per-mesh scores were still
-  running at its last update.
+  pre-registered screen whose four variants pass 5, 2, 0
+  and 1 of them (none passes all four; checked 26 Sep 2026).
 - **gmDevi's `vc-windows-tools`** holds a PHerc0846A batch,
   added on 11 Sep 2026, that scores 12 windings with the 9
   um model for letter-like blobs and finds a single one,
@@ -442,8 +438,8 @@ As of 22 Sep 2026:
 - #1765 (the window, behind #1766), #1730 and #1734 (two
   metadata faults; SurgeFok built a checker that
   validates against #1730), #1835 and #1843 (published
-  transforms that miss their own landmarks, and one that
-  puts surfaces off the papyrus), #1845 (which mesh you
+  transforms that miss their own landmarks; correcting
+  #1843's moves the meshes onto denser papyrus), #1845 (which mesh you
   render a segment from), #1846 (the crash behind #1847).
 
 ## 9. Honest limits
@@ -560,3 +556,6 @@ down before which number existed. The times behind that
 come from our working repository's history, which is not
 public, so they are our record rather than proof anyone
 can check independently.
+
+*Edited 26 Sep 2026: a leftover draft banner is removed, and the atlas's finished screen
+and #1843's corrected wording are brought up to date.*
