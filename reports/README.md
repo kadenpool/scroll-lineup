@@ -8,14 +8,16 @@ its numbers from that data (`python3 trace_numbers.py` inside the folder, or the
 - [`pherc1203-first-letters/`](pherc1203-first-letters/): a First Letters attempt on PHerc1203, a scroll
   with two scans and no published transform between them. No letters were found.
 - [`ink-detection-floor/`](ink-detection-floor/): plants real PHerc0139 ink into papyrus to measure the weakest ink
-  the public 9 um models still recover, pre-registered before any result was seen. On PHerc0846B one checkpoint
-  detects PHerc0139-like ink from 0.87 of its full strength (median AUC 0.70) but does not read it clearly (0.80)
-  even at full strength; the other fails its checks there. On PHerc0139 (day 2), the Vesuvius Challenge team's
-  newer hecate 9.6 um model passes day 1's gates with the swap plant only narrowly (leaving out one window can flip
-  it); whether its training saw these segments cannot be ruled out, and our letter masks come from the same family
-  of models. Day 4, the floor on PHerc0483B at two scales, is pre-registered and its run pending. A blind check by
-  eye is there too. `read_day1.py`, `read_day3.py` and `read_day4.py` recompute every gate and floor from the runs'
-  own output.
+  the public 9 um models still recover, pre-registered before any result was seen. On PHerc0846B (day 3) one
+  checkpoint detects PHerc0139-like ink from 0.87 of its full strength (median AUC 0.70) but does not read it
+  clearly (0.80) even at full strength; the other fails its checks there. On PHerc0139 (day 2), the Vesuvius
+  Challenge team's newer hecate 9.6 um model passes day 1's gates with the swap plant only narrowly (leaving out
+  one window can flip it); whether its training saw these segments cannot be ruled out, and our letter masks come
+  from the same family of models. On PHerc0483B (day 4, 8.64 um) neither checkpoint reaches a floor at the models'
+  scale or the scan's: seed42 does not detect the planted letters even at full strength (with 8 targets, a result
+  that turns on single windows, and a donor mix that may explain part of the gap from day 3), and seed43 fails its
+  checks. A blind check by eye is there too. `read_day1.py`, `read_day3.py` and `read_day4.py` recompute every gate
+  and floor from the runs' own output.
 - [`pherc0846b-surfaces/`](pherc0846b-surfaces/), [`pherc0490b-surfaces/`](pherc0490b-surfaces/) and
   [`pherc0483b-surfaces/`](pherc0483b-surfaces/): the first published surfaces on three First Letters scrolls with
   none in the open-data catalogue: twelve on PHerc0846B (97.30 cm2), three on PHerc0490B (23.42 cm2) and five on

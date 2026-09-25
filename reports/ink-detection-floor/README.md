@@ -1,4 +1,4 @@
-# An ink detection floor for the public 9 um ink models (pre-registered; days 1 to 3 done, day 4 pending)
+# An ink detection floor for the public 9 um ink models (pre-registered; days 1 to 4 done)
 
 When the public 9 um ink models find nothing on an unread scroll, is that "no ink", or "no ink recovered yet"? The
 challenge's 2026 Open Problems page asks exactly this for June 2027. This folder measures it directly: real ink from
@@ -88,20 +88,40 @@ reviews of the job found problems, fixed or stated (`REVIEW7.md`, `REVIEW8.md`),
 its publication (`REVIEW9.md`), and two smoke runs checked and timed it, their scores unopened; a tenth review
 checked these results before publication (`REVIEW10.md`).
 
-**Day 4 (pre-registered 26 Sep, amendment 3 in `PREREG.md`; run pending): the floor on PHerc0483B, an 8.64 um scan,
-at two scales.** The same test on a second unread First Letters scroll, one step away in voxel size: on the five
-PHerc0483B surfaces (`../pherc0483b-surfaces/`), 8 target windows and 8 shams, picked before any model of ours ran on
-it (`prep_day4.py`, `day4/windows_day4.json`), each read at 9.362 um, the voxel size of the models' native training
-scans (most of their training data was pooled to about 9.6 um; arm A, primary), and at the scan's own 8.64 um, as the
-team's code would read it (arm B); the difference between the arms is the effect of the step in scale, measured with
-resampled stand-ins (see amendment 3's limits). The job (`floor_day4.py`) is generated from the day-3 job by
-`make_day4.py`; `read_day4.py` recomputes its readout apart from it, with its margins and whether leaving out one
-target changes a result, and `fake_day4.py` tests both on made-up scores. An independent review, a staging check and
-a final check found problems, each fixed or stated before publication (`REVIEW11.md`). gmDevi's `vc-windows-tools`
-had screened a spiral fit of this scroll with an ink model on 11 Sep (36 renders of 18 windings, all negative), which
-amendment 3 missed; its erratum says so.
+**Day 4 result (26 Sep, run after publication): on PHerc0483B, neither checkpoint reaches a floor, at either scale.**
+The rules were pushed at 16:08 UTC on 25 Sep (02:08 AEST on 26 Sep) and the run started at 16:31 UTC. PHerc0483B is
+an unread First Letters scroll scanned at 8.64 um. The same letters were swapped into its papyrus at three strengths,
+in 8 target windows (with 8 shams) on the five surfaces we grew on it (`../pherc0483b-surfaces/`), picked before any
+model of ours ran on it (`prep_day4.py`, `day4/windows_day4.json`), and every window was read twice: at 9.362 um, the
+voxel size of the models' native training scans (most of their training data was pooled to about 9.6 um; arm A,
+primary), and at the scan's own 8.64 um, as the team's code would read it (arm B). A smoke run on one target per arm
+checked the pipeline first; its numbers are not used. `seed42_step010000` passes its checks in both arms but does not
+detect the planted letters even at full strength: they read at 0.661 in arm A and 0.691 in arm B, against the 0.70
+detection line, so its floor is above full strength in both (on day 3, on PHerc0846B, it detected them from 0.87 of
+full strength). Both results turn on single windows in the ways amendment 3 requires us to report: in arm A the
+full-strength median stays at 0.660 to 0.662 without any one window, but the PHerc0139 sham check passes by only
+0.013 and fails without any one of four windows; in arm B, leaving out any one of four windows lifts full strength to
+0.715, a detection floor of 0.954 to 0.961. `seed43_step060000` fails its checks in both arms, as on day 3 (its
+PHerc0139 shams read 0.339 and 0.334 at full strength), so it gives no floor. Reading at the training scale makes no
+clear difference: for seed42, the median of arm A minus arm B lies between -0.008 and +0.025 at every strength
+(single targets -0.062 to +0.066). The control held exactly: every reference AUC is day 1's. Among amendment 3's
+limits: n is 8; donors 0 and 1 are used twice and the rest once, and that mix alone, drawn on day 3's own windows,
+moves day 3's full-strength median (0.750) between 0.668 and 0.776, below 0.70 in 4 of 16 draws, so part of the gap
+from day 3 may be the mix rather than the scroll; neither arm is a native scan at the other size; and only 17 of the
+81 cores examined passed the textureless rule, so this describes the most intact papyrus. The readout, every target
+window's AUC and each donor's contrast after resampling are in `RESULTS_DAY4.md`, and everything else from the run in
+`day4/run/results.json`; `read_day4.py` recomputes every check, floor and difference from it (AGREE), with the
+margins and the leave-one-target-out results. The models' raw output on the ten whole renders (five surfaces, two
+arms) is in the data release
+[ink-floor-day4-maps](https://github.com/kadenpool/scroll-lineup/releases/tag/ink-floor-day4-maps), with the floors
+beside it; no letters are claimed from it. The job (`floor_day4.py`) is generated from the day-3 job by
+`make_day4.py`, and `fake_day4.py` tests the job's readout and the reader on made-up scores. Before the run, an
+independent review, a staging check and a final check found problems, each fixed or stated (`REVIEW11.md`); a twelfth
+review checked these results before publication (`REVIEW12.md`). gmDevi's `vc-windows-tools` had screened a spiral
+fit of this scroll with an ink model on 11 Sep (36 renders of 18 windings, all negative), which amendment 3 missed;
+its erratum says so.
 
-**Status: days 1, 2 and 3 done; day 4 pre-registered, its run pending.** The rules, the windows and the code below were published before any result was seen, and each
+**Status: days 1 to 4 done.** The rules, the windows and the code below were published before any result was seen, and each
 result sits beside them, with any change to the rules as a dated amendment in `PREREG.md`. The rules were revised before publication, after three independent reviews and a dry run; `PREREG.md`
 says what changed and why, and the second and third reviews are here as returned (`REVIEW2.md`, `REVIEW3.md`).
 `PREREG.md` also states one mistake: a smoke run of an earlier version of the code was started by accident before
@@ -139,6 +159,10 @@ publication; its output has not been opened and is not used.
 | `read_day4.py`, `fake_day4.py` | a reader that recomputes day 4's readout apart from the job (with margins and leave-one-target-out), and made-up runs that test both |
 | `day4/dry_run_results.json` | the day-4 job's dry run on Kaggle's CPUs, with no model: every job built, k, clipping |
 | `REVIEW11.md` | the eleventh independent review, of day 4's rules, windows and job before publication, with its staging and final checks, as returned, with what was done |
+| `RESULTS_DAY4.md` | day 4's results, generated from the run's own output, with the reader's margins and leave-one-target-out results |
+| `day4/run/results.json`, `day4/run/summary.md` | the day-4 run's own output (every job's AUC in both directions, per arm; the readout) |
+| `results_day4_md.py` | writes `RESULTS_DAY4.md` from the run's own output: `python3 results_day4_md.py day4/run day1/run/results.json <out>` |
+| `REVIEW12.md` | the twelfth independent review, of the day-4 results before their publication, as returned, with what was done |
 | `results_md.py`, `results_day3_md.py`, `whole_figure_day3.py` | write the three results pages and the figure from the runs' own output: `python3 results_md.py day2/run <out> "Day 2 results (hecate 9.6 um)" day2/held_out_note.md` rebuilds `RESULTS_DAY2.md` apart from its letters-only lines, which need that run's kept maps (not published); `python3 results_day3_md.py day3/run day1/run/results.json <out>` rebuilds `RESULTS_DAY3.md` byte for byte; the day-1 page's letters-only lines also need that run's kept maps (not published); `python3 whole_figure_day3.py <folder with the data release's maps> ../pherc0846b-surfaces day3/run/results.json <out>` rebuilds the figure |
 
 Day 1 asks only whether the method works: do planted letters read at full strength, and read like the same letters

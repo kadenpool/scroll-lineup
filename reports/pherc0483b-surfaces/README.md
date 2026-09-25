@@ -61,7 +61,7 @@ wherever the grid reaches).
   | s05 | crossed fibres over the left half; swirls on the right |
 
 - These are grown patches, not a full unwrapping: 35 cm2 is a small part of the scroll.
-- No ink has been read from them.
+- No ink is read from them here; see day 4 below.
 
 The scan, and the team's surface prediction these were grown on, are the Vesuvius Challenge's open data; the
 catalogue lists the volume under CC BY-NC 4.0, and these surfaces and previews, made from it, are shared under the
@@ -70,9 +70,11 @@ same licence.
 An independent review checked this release before publication; its findings, and what was done about each, are in
 `REVIEW.md`, with a later check of the distances.
 
-Day 4 of the ink detection floor (`../ink-detection-floor/`, amendment 3) runs on these five surfaces.
+Day 4 of the ink detection floor (`../ink-detection-floor/`, amendment 3 and `RESULTS_DAY4.md`) ran the two public 9 um
+ink checkpoints on these five surfaces: neither reaches a floor (one does not detect PHerc0139 letters planted at full
+strength, and the other fails its checks), and no letters are claimed from their output.
 
-*Edited 26 Sep 2026: gmDevi's earlier ink-model screen of this scroll is credited, and the title says "first
-published surfaces".*
+*Edited 26 Sep 2026: gmDevi's earlier ink-model screen of this scroll is credited, the title says "first
+published surfaces", and day 4's result is named.*
 
 *Grown and written with Claude Code under my direction.*
