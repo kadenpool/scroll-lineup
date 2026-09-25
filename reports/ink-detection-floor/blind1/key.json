@@ -1,0 +1,224 @@
+{
+ "design": "BLIND1_DESIGN.md",
+ "checkpoint": "seed43_step060000",
+ "direction": "forward",
+ "seed": 20260925,
+ "key": [
+  {
+   "n": 1,
+   "target": "d3t02_s07",
+   "condition": "planted s=1",
+   "map": "d3t02_s07__swap__s1__forward"
+  },
+  {
+   "n": 2,
+   "target": "d3t11_s01",
+   "condition": "sham s=1",
+   "map": "d3t11_s01__swap__sham1__forward"
+  },
+  {
+   "n": 3,
+   "target": "d3t06_s02",
+   "condition": "sham s=1",
+   "map": "d3t06_s02__swap__sham1__forward"
+  },
+  {
+   "n": 4,
+   "target": "d3t00_s01",
+   "condition": "sham s=1",
+   "map": "d3t00_s01__swap__sham1__forward"
+  },
+  {
+   "n": 5,
+   "target": "d3t09_s07",
+   "condition": "sham s=1",
+   "map": "d3t09_s07__swap__sham1__forward"
+  },
+  {
+   "n": 6,
+   "target": "d3t08_s04",
+   "condition": "sham s=1",
+   "map": "d3t08_s04__swap__sham1__forward"
+  },
+  {
+   "n": 7,
+   "target": "d3t08_s04",
+   "condition": "planted s=1",
+   "map": "d3t08_s04__swap__s1__forward"
+  },
+  {
+   "n": 8,
+   "target": "d3t07_s05",
+   "condition": "planted s=1",
+   "map": "d3t07_s05__swap__s1__forward"
+  },
+  {
+   "n": 9,
+   "target": "d3t06_s02",
+   "condition": "planted s=0.5",
+   "map": "d3t06_s02__swap__s0.5__forward"
+  },
+  {
+   "n": 10,
+   "target": "d3t04_s04",
+   "condition": "sham s=1",
+   "map": "d3t04_s04__swap__sham1__forward"
+  },
+  {
+   "n": 11,
+   "target": "d3t05_s01",
+   "condition": "planted s=0.5",
+   "map": "d3t05_s01__swap__s0.5__forward"
+  },
+  {
+   "n": 12,
+   "target": "d3t03_s04",
+   "condition": "planted s=0.5",
+   "map": "d3t03_s04__swap__s0.5__forward"
+  },
+  {
+   "n": 13,
+   "target": "d3t11_s01",
+   "condition": "planted s=0.5",
+   "map": "d3t11_s01__swap__s0.5__forward"
+  },
+  {
+   "n": 14,
+   "target": "d3t04_s04",
+   "condition": "planted s=1",
+   "map": "d3t04_s04__swap__s1__forward"
+  },
+  {
+   "n": 15,
+   "target": "d3t01_s06",
+   "condition": "planted s=1",
+   "map": "d3t01_s06__swap__s1__forward"
+  },
+  {
+   "n": 16,
+   "target": "d3t00_s01",
+   "condition": "planted s=0.5",
+   "map": "d3t00_s01__swap__s0.5__forward"
+  },
+  {
+   "n": 17,
+   "target": "d3t06_s02",
+   "condition": "planted s=1",
+   "map": "d3t06_s02__swap__s1__forward"
+  },
+  {
+   "n": 18,
+   "target": "d3t02_s07",
+   "condition": "planted s=0.5",
+   "map": "d3t02_s07__swap__s0.5__forward"
+  },
+  {
+   "n": 19,
+   "target": "d3t10_s02",
+   "condition": "planted s=1",
+   "map": "d3t10_s02__swap__s1__forward"
+  },
+  {
+   "n": 20,
+   "target": "d3t03_s04",
+   "condition": "planted s=1",
+   "map": "d3t03_s04__swap__s1__forward"
+  },
+  {
+   "n": 21,
+   "target": "d3t05_s01",
+   "condition": "planted s=1",
+   "map": "d3t05_s01__swap__s1__forward"
+  },
+  {
+   "n": 22,
+   "target": "d3t04_s04",
+   "condition": "planted s=0.5",
+   "map": "d3t04_s04__swap__s0.5__forward"
+  },
+  {
+   "n": 23,
+   "target": "d3t07_s05",
+   "condition": "sham s=1",
+   "map": "d3t07_s05__swap__sham1__forward"
+  },
+  {
+   "n": 24,
+   "target": "d3t01_s06",
+   "condition": "sham s=1",
+   "map": "d3t01_s06__swap__sham1__forward"
+  },
+  {
+   "n": 25,
+   "target": "d3t07_s05",
+   "condition": "planted s=0.5",
+   "map": "d3t07_s05__swap__s0.5__forward"
+  },
+  {
+   "n": 26,
+   "target": "d3t10_s02",
+   "condition": "planted s=0.5",
+   "map": "d3t10_s02__swap__s0.5__forward"
+  },
+  {
+   "n": 27,
+   "target": "d3t09_s07",
+   "condition": "planted s=1",
+   "map": "d3t09_s07__swap__s1__forward"
+  },
+  {
+   "n": 28,
+   "target": "d3t03_s04",
+   "condition": "sham s=1",
+   "map": "d3t03_s04__swap__sham1__forward"
+  },
+  {
+   "n": 29,
+   "target": "d3t05_s01",
+   "condition": "sham s=1",
+   "map": "d3t05_s01__swap__sham1__forward"
+  },
+  {
+   "n": 30,
+   "target": "d3t09_s07",
+   "condition": "planted s=0.5",
+   "map": "d3t09_s07__swap__s0.5__forward"
+  },
+  {
+   "n": 31,
+   "target": "d3t08_s04",
+   "condition": "planted s=0.5",
+   "map": "d3t08_s04__swap__s0.5__forward"
+  },
+  {
+   "n": 32,
+   "target": "d3t00_s01",
+   "condition": "planted s=1",
+   "map": "d3t00_s01__swap__s1__forward"
+  },
+  {
+   "n": 33,
+   "target": "d3t10_s02",
+   "condition": "sham s=1",
+   "map": "d3t10_s02__swap__sham1__forward"
+  },
+  {
+   "n": 34,
+   "target": "d3t01_s06",
+   "condition": "planted s=0.5",
+   "map": "d3t01_s06__swap__s0.5__forward"
+  },
+  {
+   "n": 35,
+   "target": "d3t11_s01",
+   "condition": "planted s=1",
+   "map": "d3t11_s01__swap__s1__forward"
+  },
+  {
+   "n": 36,
+   "target": "d3t02_s07",
+   "condition": "sham s=1",
+   "map": "d3t02_s07__swap__sham1__forward"
+  }
+ ]
+}

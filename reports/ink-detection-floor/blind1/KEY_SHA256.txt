@@ -1,0 +1,3 @@
+key.json sha256 f32b594e1612ca36643e04a5a1f98239f6b3ddea5ed473c14e15a1208d03ca7b
+Recorded 22:58 from `date`, 24 Sep 2026, before Kaden has seen the page. key.json is committed only after
+Kaden has answered; its sha256 must then equal this line.

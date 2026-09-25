@@ -1,0 +1,41 @@
+false alarms (sham s=1): 6 of 12
+hits (planted s=1): 8 of 12; one-sided Fisher exact against the shams p = 0.3401
+hits (planted s=0.5): 5 of 12; one-sided Fisher exact against the shams p = 0.7932
+
+every answer:
+  01 y  planted s=1    d3t02_s07
+  02 y  sham s=1       d3t11_s01
+  03 y  sham s=1       d3t06_s02
+  04 n  sham s=1       d3t00_s01
+  05 y  sham s=1       d3t09_s07
+  06 y  sham s=1       d3t08_s04
+  07 y  planted s=1    d3t08_s04
+  08 y  planted s=1    d3t07_s05
+  09 y  planted s=0.5  d3t06_s02
+  10 n  sham s=1       d3t04_s04
+  11 n  planted s=0.5  d3t05_s01
+  12 y  planted s=0.5  d3t03_s04
+  13 y  planted s=0.5  d3t11_s01
+  14 y  planted s=1    d3t04_s04
+  15 n  planted s=1    d3t01_s06
+  16 n  planted s=0.5  d3t00_s01
+  17 y  planted s=1    d3t06_s02
+  18 n  planted s=0.5  d3t02_s07
+  19 y  planted s=1    d3t10_s02
+  20 y  planted s=1    d3t03_s04
+  21 n  planted s=1    d3t05_s01
+  22 n  planted s=0.5  d3t04_s04
+  23 y  sham s=1       d3t07_s05
+  24 n  sham s=1       d3t01_s06
+  25 y  planted s=0.5  d3t07_s05
+  26 n  planted s=0.5  d3t10_s02
+  27 n  planted s=1    d3t09_s07
+  28 n  sham s=1       d3t03_s04
+  29 n  sham s=1       d3t05_s01
+  30 n  planted s=0.5  d3t09_s07
+  31 n  planted s=0.5  d3t08_s04
+  32 n  planted s=1    d3t00_s01
+  33 y  sham s=1       d3t10_s02
+  34 y  planted s=0.5  d3t01_s06
+  35 y  planted s=1    d3t11_s01
+  36 n  sham s=1       d3t02_s07

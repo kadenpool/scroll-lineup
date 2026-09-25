@@ -57,6 +57,14 @@ which were fixed before publication (`REVIEW4.md`, `REVIEW5.md`), and a sixth ch
 published (`REVIEW6.md`). `PREREG.md` now also carries two errata to
 amendment 1, both about figures for the surfaces; no rule changes.
 
+**A blind check by eye (25 Sep).** Kaden looked at 36 of `seed43_step060000`'s day-3 output maps, shuffled: letters
+planted at full strength, at half strength, and shams of the same shape, twelve of each. He said "letters" for 8, 5
+and 6 of them: by eye, the planted letters were not told apart from the shams (one-sided Fisher exact p = 0.34 and
+0.79). This fits day 3's readout for the same checkpoint, which failed its checks on PHerc0846B. The design was fixed
+before day 3's full run was fetched (`BLIND1_DESIGN.md`; a one-window smoke run, holding the maps behind 3 of the 36
+pictures, had been read, and was not shown to Kaden); the pictures, the key, the answers and a guide to taking the test yourself are
+in `blind1/`.
+
 **Day 2 (pre-registered 25 Sep, amendment 2 in `PREREG.md`; run pending): the day-1 test with a third model,**
 `hecate` 9.6 um, released by the team on 15 Sep. Every day-1 job is resampled to 9.6 um and read by the model card's
 own code, pinned by revision and sha256 (`floor_day2.py`, generated from the day-1 job by `make_day2.py`, only the
@@ -92,6 +100,8 @@ publication; its output has not been opened and is not used.
 | `floor_day2.py`, `make_day2.py` | the day-2 Kaggle job (hecate), and the script that generates it from the day-1 job |
 | `REVIEW7.md`, `REVIEW8.md` | the seventh and eighth independent reviews, of day 2 before publication, as returned, with what was done |
 | `REVIEW9.md` | the ninth independent review, of the files staged for this publication before they went out (day 2's rules, the w042 caveat, and surface releases that follow separately), as returned, with a re-check and what was done |
+| `BLIND1_DESIGN.md`, `BLIND1_RESULT.md`, `blind1/` | a blind check by eye of 36 day-3 maps: the design (fixed before day 3's full run was fetched), the result, the pictures, the key and the answers |
+| `blind1_build.py`, `blind1_score.py`, `blind1_page.html` | build the pictures and the key from the day-3 run's window maps, score answers against the key, and the page template the pictures were shown on (in the claude.ai app, which saved each answer) |
 | `day2/ink_bucket_*.json` | the ink dataset's PHerc0139 folder listings (25 Sep), and our seven segments' own folders, behind day 2's held-out statement |
 | `results_md.py`, `results_day3_md.py`, `whole_figure_day3.py` | write the two results pages and the figure from the runs' own output: `python3 results_day3_md.py day3/run day1/run/results.json <out>` rebuilds `RESULTS_DAY3.md` byte for byte; the day-1 page's letters-only lines also need that run's kept maps (not published); `python3 whole_figure_day3.py <folder with the data release's maps> ../pherc0846b-surfaces day3/run/results.json <out>` rebuilds the figure |
 
