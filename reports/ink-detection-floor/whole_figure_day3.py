@@ -32,7 +32,7 @@ def preview(p):
 
 
 rows = []
-for s in sorted(d for d in os.listdir(surf) if d.startswith("s0")):
+for s in sorted({k.split("__")[0][len("whole_"):] for k in Z[TAGS[0]].files}):   # the surfaces the run read
     tiles = [Image.open(f"{surf}/{s}/preview_plane15.png").convert("L")]
     tiles += [preview(Z[t][f"whole_{s}__forward"]) for t in TAGS]
     row = Image.new("L", (3 * PX + 2 * 8, PX + LABEL), 0)

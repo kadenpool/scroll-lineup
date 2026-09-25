@@ -1,4 +1,4 @@
-# An ink detection floor for the public 9 um ink models (pre-registered; days 1 and 3 done)
+# An ink detection floor for the public 9 um ink models (pre-registered; days 1 and 3 done, day 2 pending)
 
 When the public 9 um ink models find nothing on an unread scroll, is that "no ink", or "no ink recovered yet"? The
 challenge's 2026 Open Problems page asks exactly this for June 2027. This folder measures it directly: real ink from
@@ -12,11 +12,18 @@ and the planted letters read at 0.81 and 0.79 at full strength. The additive pla
 below the transplant), so the swap is carried forward. Every number is in `RESULTS_DAY1.md`, generated from the run's
 own output (`day1/run/`), and `read_day1.py` recomputes every gate from it apart from the Kaggle job's own code.
 Before it, a smoke run on one target checked the pipeline end to end on the published code; its numbers are not used.
+A caveat that the eligible-scroll atlas (`rodriguescarson/eligible-scroll-atlas`) stated before day 1 was published,
+added here on 25 Sep: one of the four target segments, w042, lies between windings the models were trained on (w041
+and w043). Here w042 serves only as blank papyrus for plants and shams, never as known ink. Its two clean windows read
+0.599 and 0.442 with `seed42_step010000` (the other targets 0.36 to 0.56) and 0.605 and 0.505 with
+`seed43_step060000` (0.36 to 0.61). Leaving its two windows out changes no day-1 result: with their 28 jobs removed from
+`day1/run/results.json`, `read_day1.py` gives the same pass or fail on every gate, for both plants and both checkpoints
+(the swap's letters at full strength then read 0.805 and 0.780).
 
 **Day 3 result (24 Sep, run after publication): on PHerc0846B, one checkpoint gives a floor and the other fails
 its checks.** PHerc0846B is an unread First Letters scroll scanned at the same voxel size and energy as PHerc0139.
 The same donor letters were swapped into its papyrus at three strengths, in windows on the seven surfaces we grew on
-it (`../pherc0846b-surfaces/`; the targets fall on six of them), with two kinds of sham (its own papyrus, and
+it (s01 to s07 in `../pherc0846b-surfaces/`; the targets fall on six of them), with two kinds of sham (its own papyrus, and
 PHerc0139's).
 
 - `seed42_step010000`: every check passed. The planted letters read at median AUC 0.506, 0.559 and 0.750 at
@@ -50,8 +57,15 @@ which were fixed before publication (`REVIEW4.md`, `REVIEW5.md`), and a sixth ch
 published (`REVIEW6.md`). `PREREG.md` now also carries an erratum to
 amendment 1: two figures about the surfaces, found by the surfaces' own review; no rule changes.
 
-**Status: days 1 and 3 done.** Day 2, the same test with a third model (`hecate` 9.6 um, `PREREG.md` section 3),
-has not been run. The rules, the windows and the code below were published before any result was seen, and each
+**Day 2 (pre-registered 25 Sep, amendment 2 in `PREREG.md`; run pending): the day-1 test with a third model,**
+`hecate` 9.6 um, released by the team on 15 Sep. Every day-1 job is resampled to 9.6 um and read by the model card's
+own code, pinned by revision and sha256 (`floor_day2.py`, generated from the day-1 job by `make_day2.py`, only the
+model changed). How far these segments are held out from hecate's training is stated as far as it can be known,
+with the dataset listings behind it (`day2/`). Two more independent reviews found problems, fixed or stated before
+publication (`REVIEW7.md`, `REVIEW8.md`), and a ninth checked the files staged for this publication (`REVIEW9.md`). Two smoke runs checked and timed the job before publication; their scores were not
+opened.
+
+**Status: days 1 and 3 done; day 2 pre-registered, its run pending.** The rules, the windows and the code below were published before any result was seen, and each
 result sits beside them, with any change to the rules as a dated amendment in `PREREG.md`. The rules were revised before publication, after three independent reviews and a dry run; `PREREG.md`
 says what changed and why, and the second and third reviews are here as returned (`REVIEW2.md`, `REVIEW3.md`).
 `PREREG.md` also states one mistake: a smoke run of an earlier version of the code was started by accident before
@@ -75,6 +89,10 @@ publication; its output has not been opened and is not used.
 | `day3/run/results.json`, `day3/run/summary.md` | the day-3 run's own output (every job's AUC in both directions; the readout) |
 | `day3/whole_surfaces.png` | the models' own output on the seven whole surfaces, beside each surface's CT |
 | `REVIEW6.md` | the sixth independent review, of the day-3 results before their publication, as returned, with what was done |
+| `floor_day2.py`, `make_day2.py` | the day-2 Kaggle job (hecate), and the script that generates it from the day-1 job |
+| `REVIEW7.md`, `REVIEW8.md` | the seventh and eighth independent reviews, of day 2 before publication, as returned, with what was done |
+| `REVIEW9.md` | the ninth independent review, of the files staged for this publication before they went out (day 2's rules, the w042 caveat, and surface releases that follow separately), as returned, with a re-check and what was done |
+| `day2/ink_bucket_*.json` | the ink dataset's PHerc0139 folder listings (25 Sep), and our seven segments' own folders, behind day 2's held-out statement |
 | `results_md.py`, `results_day3_md.py`, `whole_figure_day3.py` | write the two results pages and the figure from the runs' own output: `python3 results_day3_md.py day3/run day1/run/results.json <out>` rebuilds `RESULTS_DAY3.md` byte for byte; the day-1 page's letters-only lines also need that run's kept maps (not published); `python3 whole_figure_day3.py <folder with the data release's maps> ../pherc0846b-surfaces day3/run/results.json <out>` rebuilds the figure |
 
 Day 1 asks only whether the method works: do planted letters read at full strength, and read like the same letters

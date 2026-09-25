@@ -314,3 +314,80 @@ that release was published (`reports/pherc0846b-surfaces/REVIEW.md` in this repo
   Sampled 6 by 6 in each cell (the release's `trace_numbers.py`), s04 and s07 meet within 0.16 voxels and share about
   11 to 13 mm2 within 4 voxels of each other; s01 and s05 meet within 0.12 voxels over about 3.5 mm2; s01 and s04
   within 0.34 voxels over less than 1 mm2; the closest other pair stays 38 voxels apart.
+
+### Amendment 2 (25 Sep 2026, before any day-2 result was read): day 2, hecate 9.6 um
+
+Section 3 fixed day 2 in one sentence: `hecate` 9.6 um is added under the same rules, on its own jobs, each finished
+28-layer volume resampled from 9.362 to 9.6 um in all three directions, `hecate.py` reading its central 16 planes,
+forward and with `--reverse`, and the masks carried to that grid by nearest neighbour. This amendment fixes what that
+sentence left open. Nothing in the day-1 rules changes. A seventh independent review, of the job and of an earlier
+draft of this text, found problems (`REVIEW7.md`): each is fixed here or, for a few harmless leftovers, stated in that
+review; an eighth (`REVIEW8.md`) checked the fixes, and a ninth (`REVIEW9.md`) the files staged for this publication.
+
+**What had been run before this was published.** Two smoke runs of the day-2 job, on one target each, ran on
+Kaggle before publication: the first (version 1 of the job, since changed) to check the pipeline, the second
+(version 2, the job below) to check it again and to time it. Their outputs were downloaded but their scores (AUCs,
+means, gates) were not opened: only their status, errors, job counts, map shapes and timings were read, by a script
+that prints no score. The watcher's own logs of the two runs also hold the summary table; they were not opened either,
+and are kept out of the repository until this is public. Both smoke runs also score the six day-1 reference windows, which the full run's G0 reads; that
+is why their scores stay closed until this amendment is public.
+
+#### The model and its code, pinned
+
+- `scrollprize/hecate` on Hugging Face at revision `9cb86e500e944b11a06a7020403cde5dffb5bcb2` (15 Sep 2026):
+  `hecate_9.6um.pth`, 522,576,086 bytes, sha256 `809f4f10f7cb7afa19b4bee0f7d2ab31edd7e11b664f9f210cc9c17f22fcfe5d`;
+  `hecate.py`, sha256 `c232c18a1a86cfb91257a00db13288202bb8ae33732ba26f7291a9b8adb8da59`. The job stops unless both
+  match, and unless its inputs are day 1's (`windows.json` `c3e90e83...`, `masks.npz` `f87c5cf9...`).
+- The job calls the card's own `hecate.load_model` and `hecate.predict` (what its command line runs), once per job
+  and direction, in float32 (the card's default; Kaggle's T4 GPUs have no native bfloat16), 32 patches per batch,
+  the card's default XY stride (half a patch).
+
+#### The jobs
+
+- Every day-1 job, built by day 1's own code from the same inputs: references, clean targets, both plants at three
+  strengths with their shams, and the transplants.
+- Each job's finished 28-layer volume is resampled to exactly 9.6 um in all three directions, by linear
+  interpolation (`scipy.ndimage.affine_transform`: output voxel i sits at input voxel i x 9.6 / 9.362), onto a grid
+  of 27 x 998 x 998 that lies wholly inside the input. `hecate.py` then reads the central 16 of the 27 planes:
+  planes 5 to 20 forward, and planes 6 to 21 in reverse order with `--reverse`. In the planted and transplant jobs
+  the letters sit on the target's measured sheet, layers 10 to 13 (median 12), which this grid carries to planes
+  9.8 to 12.7 (median 11.7): about 1 plane from the middle of the forward window (12.5) and 2 from the reversed one's
+  (13.5), inside both; the references' donor sheets lie at layers 11 to 14. This follows from section 3's wording
+  and the card's own window; it is stated, not changed. The clipped share and the recorded `layers` stay day 1's
+  [4, 25), which hold every layer that hecate's two windows reach (5 to 22).
+- Each job's letter mask and background mask are carried to the 998 x 998 grid by the same map, nearest neighbour,
+  and scored by day 1's pixel AUC. The kept core maps are 499 x 499 (section 3 says 512 for day 1), and each job's
+  core masks on that grid are kept beside them, so a reader can score them without resampling again.
+
+#### Held out, as far as can be known
+
+Section 2 uses only segments a model was not trained on. For `hecate` this can be checked only in part:
+
+- Its model card says development used the Scroll Prize ink dataset and scans from the Vesuvius Challenge open-data
+  collection. In that dataset (Hugging Face bucket `scrollprize/datasets`, folder `ink`, listings of 25 Sep saved as
+  `day2/ink_bucket_0139_20260925.json`, `day2/ink_bucket_unused_0139_20260925.json` and, one level down for our
+  seven segments, `day2/ink_bucket_segments_0139_20260925.json`), the PHerc0139 folder holds
+  11 segments (w016, w017, w028,
+  w029, w030, w035, w039, w040, w041, w043, w044), none of ours; all seven day-1 segments (w025, w026, w027, w036,
+  w042, w045, w046) are in the folder `ink/unused/0139`, where each segment's folder holds its render and a `preds` folder
+  of model predictions, but no ink labels (a labelled folder, such as w041's, holds `inklabels` and
+  `supervision_mask` files).
+- The 9.6 um model learned from its 2.4 um sibling's outputs, not from labels, including on renders of native coarse
+  scans supervised by the fine scan's predictions "where both scans were available"; PHerc0139 has both scans, and
+  the card does not list which segments were used.
+  If ours were among them, the model may have learned its teacher's reading of these very letters. And our letter
+  masks come from the team's 2.4 um ink map (the `ink_canonical_2um` family, `hecate`'s base model), so the masks and
+  the model share an ancestor; that could raise `hecate`'s scores on the references and the transplants. Neither can
+  be ruled out; both are stated beside every day-2 result.
+
+#### Cost
+
+The review counted about 426 GFLOP a patch, 1,922 patches a job and 174 jobs. The timed smoke run (version 2, one
+target, 20 jobs) took 49.6 minutes of inference on two T4s, about 5.0 minutes a job on each GPU (the first version,
+in emulated bfloat16, took 8.3), so the full run takes about 7.5 hours in one session, inside Kaggle's 12-hour
+limit; it is not split.
+
+#### Readout
+
+Day 1's gates, unchanged, for `hecate_9.6um` as the one checkpoint: G0 to G3 per plant, the primary direction the
+one with the higher median reference AUC. The smoke runs' numbers are not used.

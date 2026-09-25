@@ -103,7 +103,10 @@ for tag in R.get("checkpoints", {}):
             t, ink = n.split("__")[0], Mk[f"donor{J[n]['donor']}_ink"]
             a1, a2 = f"{t}__{mode}__s1__{prim}", f"{t}__transplant__{prim}"
             if a1 in M and a2 in M:
-                diffs.append(float(np.median(M[a1][ink]) - np.median(M[a2][ink])) / 255)
+                # day 2 keeps each job's core masks on its own grid beside the maps (499 px for hecate); day 1 does not
+                i1 = M[a1[:-len(prim) - 2] + "__pos"].astype(bool) if a1[:-len(prim) - 2] + "__pos" in M else ink
+                i2 = M[a2[:-len(prim) - 2] + "__pos"].astype(bool) if a2[:-len(prim) - 2] + "__pos" in M else ink
+                diffs.append(float(np.median(M[a1][i1]) - np.median(M[a2][i2])) / 255)
         if diffs:
             print(f"{tag}/{mode}: positives only, planted - transplant median output on the letters: "
                   f"median {np.median(diffs):+.4f} over {len(diffs)} targets")
