@@ -89,10 +89,10 @@ attempts, all negative, and its two scans had been registered twice before us:
   usable on-scroll windows, 92 windows in all), rendered from the 2.403 um scan through a validated
   transform and scored with the 2 um
   canonical model at a window centred on the measured sheet position in each window (section 3).
-- A blind, one-command scan-to-scan registration tool, validated on the 15 scan pairs for which the
-  challenge publishes a transform; it showed our own first PHerc. 1203 fit was about 29 um off in
-  height, which we corrected and re-ran (section 4).
-- The layer-window finding (villa issue #1765, draft PR #1766) and its measured cost on 12 windows
+- A blind, one-command scan-to-scan registration tool, validated on 15 scan pairs with a published
+  transform (12 Sep figures; since graded on all 26: 13 PASS, 9 WEAK, 4 FAIL); it showed our own first
+  PHerc. 1203 fit was about 29 um off, mostly in height, which we corrected and re-ran (section 4).
+- The layer-window finding (villa issue #1765, PR #1766) and its measured cost on 12 windows
   of a read scroll, found while calibrating this chain (section 4).
 - The survey numbers themselves: 127 windows and five 15 mm regions, each depth order reported
   separately, with a blind human check against known text (section 5).
@@ -318,8 +318,8 @@ have to come from. We did not run it on any PHerc. 1203 window, because no windo
 - **Placement control.** Given a deliberately wrong height hint (90.5 mm) the placement search
   returns 74.37 mm, the same answer as the independent 3D fit.
 - **The scan-alignment tool** (this repository's `scroll_lineup.py`, then called `scanreg`; one command, CPU; for this pair
-  about 200 s and 1.3 GB read, data/scripts_0912/scanreg/README.md:45) was validated on the 15 scan pairs for
-  which the challenge publishes a transform: 15 of 15 in the right place; by the rule written in
+  about 200 s and 1.3 GB read, data/scripts_0912/scanreg/README.md:45) was validated on 15 scan pairs with
+  a published transform (12 Sep figures; since graded on all 26: 13 PASS, 9 WEAK, 4 FAIL): 15 of 15 in the right place; by the rule written in
   advance 8 PASS and 7 WEAK, none FAIL; the median disagreement with the official transform is
   usually 4 to 18 um (1 to 2 voxels); on held-out image blocks the images agree better with ours than
   with the official transform on 11 of 15 pairs, and the other 4 are within 1 um either way
@@ -329,9 +329,9 @@ have to come from. We did not run it on any PHerc. 1203 window, because no windo
   (REPORT_0912.md:107-109). The PHerc. 1203 run read 1.26 GB and took 322 s
   (results/pherc1203/f1203/report.json:6029-6031).
 - **PHerc. 1203 specifically.** The tool's transform agrees with 7jycwjmbfn-eng's published
-  registration to 3.5 um median, 6 um max; our own 11 Sep fit and flummoxjr's published transform are
-  each about 29 um off, mostly in height (submissions/registration_tool/REPORT_0912.md:13, 72-74;
-  data/scripts_0912/scanreg/README.md:74-75). We say this because we got it wrong first.
+  registration to 3.5 um median, 6 um max; our own 11 Sep fit is about 29 um off, mostly in height (21 um), and
+  flummoxjr's published transform about 29 um, split between height (18 um) and across (21 um) (`compare1203.py`, its z-only and xy-only medians;
+  data/scripts_0912/scanreg/README.md:53-55 keeps the 12 Sep wording). We say this because we got it wrong first.
 - **An independent check of the fix.** The render-to-render depth match (a different measurement
   from the tool's own fit) on 8 windows: sheet offset -5.7 to +7.6 sharp layers with the old
   transform, -1.0 to +0.7 with the new one; match correlation 0.26-0.73 before, 0.82-0.88 after
@@ -776,15 +776,15 @@ log collector and had to be corrected by hand (5.5).
 
 ## 8. Fixes and tools that came out of it
 
-Public, in ScrollPrize/villa (states as on GitHub on 22 Sep 2026):
+Public, in ScrollPrize/villa (states as on GitHub on 26 Sep 2026):
 
-| Item | Title (as on GitHub) | What it fixes or reports | State (22 Sep 2026) |
+| Item | Title (as on GitHub) | What it fixes or reports | State (26 Sep 2026) |
 |---|---|---|---|
 | Issue #1765, https://github.com/ScrollPrize/villa/issues/1765 | optimized_inference README: the recommended 62-layer window for resnet3d-152-3d-decoder is off-centre on the published 2 um volumes | Section 4.1; correction comment of 12 Sep gives [23,85) and credits flummoxjr | Open |
-| PR #1766, https://github.com/ScrollPrize/villa/pull/1766 | optimized_inference README: centre the 62-layer window for the 2 um 3D-decoder model | README fix for #1765, two lines | Draft |
+| PR #1766, https://github.com/ScrollPrize/villa/pull/1766 | optimized_inference README: centre the 62-layer window for the 2 um 3D-decoder model | README fix for #1765, two lines | Open, ready for review since 26 Sep |
 | PR #1731, https://github.com/ScrollPrize/villa/pull/1731 | tifxyz: recompute the bbox from valid points when the stored one carries the -1 marker (refs #1618) | 28 published segments carried a bogus bounding box | Merged 10 Sep |
 | PR #1665, https://github.com/ScrollPrize/villa/pull/1665 | zarr_utils: fix public S3 access with no AWS credentials | Public data failed without credentials | Merged 11 Sep |
-| PR #1717, https://github.com/ScrollPrize/villa/pull/1717 | vc_render_tifxyz: report surface points that fall outside the volume | The renderer wrote a partly blank image and exit 0 (the failure mode of our holder surfaces, 5.5) | Open, draft |
+| PR #1717, https://github.com/ScrollPrize/villa/pull/1717 | vc_render_tifxyz: report surface points that fall outside the volume | The renderer wrote a partly blank image and exit 0 (the failure mode of our holder surfaces, 5.5) | Open, ready for review since 26 Sep |
 | PR #1682, https://github.com/ScrollPrize/villa/pull/1682 | zarr_tasks: create_level_dataset works under zarr 3 (refs #1670) | Crash under zarr 3 | Merged 22 Sep |
 | PR #1676, https://github.com/ScrollPrize/villa/pull/1676 | VcDataset: refuse a region that extends past the dataset | Out-of-bounds write on a region past the dataset | Merged 22 Sep |
 | Issue #1730, https://github.com/ScrollPrize/villa/issues/1730 | metadata.json: 20 segments declare an original volume whose scan was taken after the segment was created | Catalogue integrity | Open |

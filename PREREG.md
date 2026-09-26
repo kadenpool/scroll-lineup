@@ -38,3 +38,6 @@ and at the official's own landmarks (reported next to the official affine's own 
 - **FAIL**: anything else, or no answer.
 
 If the official's own landmark residual is large, that is reported next to the verdict, not used to excuse it.
+
+*Added 26 Sep 2026: "a scroll this repository does not discuss" was true when this file was written. The coverage
+round (VALIDATION.md section 2.7, 15 to 16 Sep) has since graded pairs on PHercParis4 and PHerc0343P.*

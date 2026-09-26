@@ -723,35 +723,20 @@ def test_corrections():
     reports = [r for r in reports if "seconds" in r and "downloaded_MB" in r]
     check("every graded run has a report with timings", len(reports) == 26, str(len(reports)))
     mins = sorted(r["seconds"] / 60.0 for r in reports)
-    gb = sum(r["downloaded_MB"] for r in reports) / 1024.0
+    gb = sum(r["downloaded_MB"] for r in reports) / 1000.0   # decimal GB, as the 21-pair total (21.7 GB) is
     check("the README's all-26 runtime range is the real one",
           "1.0 to\n22.6 minutes and %.1f GB read" % gb in readme, "%.1f to %.1f, %.1f GB"
           % (mins[0], mins[-1], gb))
     check("VALIDATION carries the same all-26 totals",
           "1.0 to 22.6 minutes" in val and "%.1f GB read" % gb in val)
 
-    took2d = 0
-    for f in graded:
-        d2 = json.load(open(f))
-        def find(o):
-            if isinstance(o, dict):
-                if "search_2d" in o:
-                    return o["search_2d"]
-                for v2 in o.values():
-                    r2 = find(v2)
-                    if r2 is not None:
-                        return r2
-            elif isinstance(o, list):
-                for v2 in o:
-                    r2 = find(v2)
-                    if r2 is not None:
-                        return r2
-            return None
-        if find(d2):
-            took2d += 1
+    # counted from each run's own log: results/n3_0814roi ran on 0.2.0, before the report had a search_2d
+    # field, so its log is the only record that it took the 2D search
+    took2d = sum(1 for f in graded
+                 if "G1 2D search" in open(os.path.join(os.path.dirname(f), "log.txt")).read())
     method = open(os.path.join(ROOT, "docs", "method.md")).read()
     check("docs/method.md's 2D-search count matches the reports",
-          "of the %s runs that took the 2D search" % {5: "five", 7: "seven"}.get(took2d, took2d)
+          "of the %s runs that took the 2D search" % {5: "five", 7: "seven", 8: "eight"}.get(took2d, took2d)
           in method, str(took2d))
 
     # 8. two wordings that claimed more than was tested

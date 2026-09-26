@@ -22,7 +22,7 @@ ax1.axhline(0.5, color="0.75", lw=1, ls=":")
 ax1.plot(x, auc_f, "o-", color="#1b5e20", lw=2, label="forward (the official depth order)")
 ax1.plot(x, auc_r, "s--", color="#9e9e9e", lw=1.4, label="reverse")
 ax1.axvline(50, color="#1565c0", lw=1, ls="--")
-ax1.annotate("the window everyone uses", xy=(50, max(v for v in auc_f if v)), xytext=(58, 0.80),
+ax1.annotate("the peak, layers 40 to 61", xy=(50, max(v for v in auc_f if v)), xytext=(58, 0.80),
              color="#1565c0", fontsize=9, arrowprops=dict(arrowstyle="->", color="#1565c0", lw=1))
 ax1.set_ylabel("reads the writing (pixel AUC)")
 ax1.set_ylim(0.3, 1.0)

@@ -406,7 +406,7 @@ and boxes already to hand.
 
 ## 8. Fixes that came out of the work
 
-As of 22 Sep 2026:
+As of 26 Sep 2026:
 
 **Merged.**
 - #1731: published surfaces were being returned for
@@ -425,12 +425,14 @@ As of 22 Sep 2026:
 - #1847: a failed chunk download killed a tool with a
   crash dump instead of an error. Bullo27 confirmed the
   fix on Linux with GCC before I opened it.
-
-**Open, and waiting on me rather than on anyone else.**
 - #1717: a render that falls outside its volume now says
-  so. Its survey figure is dated again (21 Sep); it is still a draft.
+  so. Its survey was re-run on 26 Sep (252 of 898
+  surfaces with more than 0.1 % of their points
+  outside), and it is ready for review.
 - #1766: the layer window. flummoxjr published the same
   window first, on 3 Sep, and is credited.
+
+**Open, and waiting on me rather than on anyone else.**
 - #1769: VC3D trusting a bad stored bounding box. In
   draft until the on-screen check is done.
 

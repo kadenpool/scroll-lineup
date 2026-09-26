@@ -32,7 +32,7 @@ qc image the tool writes on every run.*
 
 I was doing ink detection and kept hitting the same wall. The fine scan is where you can actually see something,
 but the First Letters rules only accept evidence from the 9.362 um scan, and I had no way to ask where a spot in one sits
-in the other. So I lined them up by hand, trusted it, and found out later it was 29 um off. I wanted something that would
+in the other. So I lined them up with a quick fit from cross-sections, trusted it, and found out later it was 29 um off. I wanted something that would
 do that for me and show its working.
 
 Version 0.2.1 (`python scroll_lineup.py
@@ -187,8 +187,8 @@ took under a minute on 12 of the 21 pairs
 and 1 to 2 minutes on four more, but on the
 ones that need the slow 2D search it is the
 slow part, 5 to 14 minutes. That split was
-counted before the coverage round: four of
-those 21 take the 2D search, and seven of
+counted before the coverage round: five of
+those 21 take the 2D search, and eight of
 all 26 do.
 
 A pair reads 0.2 to 2.1 GB straight from the
@@ -197,7 +197,7 @@ and takes 1 to 17 minutes on 8 cores: the
 range over the twenty-one pairs in
 `VALIDATION.md`. Over all 26 graded pairs,
 including the coverage round, it is 1.0 to
-22.6 minutes and 29.4 GB read in total. Peak resident memory was
+22.6 minutes and 30.1 GB read in total. Peak resident memory was
 measured on nine of them and runs 1.0 to 3.5
 GiB on eight, the exception being the 0.55 um
 partial-view pair at 8.2 GiB, which is also
@@ -215,9 +215,9 @@ same way, with no bucket involved.
 
 Worth knowing if you are working from the
 challenge's `metadata.json`: the catalogue
-spans two hosts. Three of its official
-transforms name a volume that is not in the
-S3 bucket at all, and you only find it by
+spans two hosts. Eight of the official
+transforms graded here name six volumes that
+are not in the S3 bucket at all, and you only find it by
 reading the access root the metadata gives
 rather than assuming one bucket.
 
@@ -284,7 +284,7 @@ transform, and on those the correction still
 needed is 4.6 um
 (ours), 5.0 um (7jycwjmbfn-eng), 33 um
 (flummoxjr). My own first attempt at this
-pair, by hand before this tool existed, sits
+pair, a quick cross-section fit made before this tool existed, sits
 29 um from this one and needs 27 um on the
 same cubes. That is why the tool exists.
 
@@ -509,7 +509,7 @@ table is `robustness/table.md`, and
 |---|---|---|---|---|
 | PHerc0841: 2.403 -> 9.366 | a new object; a new fixed voxel size | HIGH | 13 / 23 / 28 | PASS |
 | PHerc0172: 7.91 -> 7.91 | a new object; same resolution both sides; no official landmarks; a compressed volume | HIGH | 0 / 1 / 1 | PASS |
-| PHerc0500P2: 0.55 -> 2.215 | 0.55 um; a 73 deg turn, 8.6 deg tilt; the only official mirror; 5.9 mm of view | CHECK | 22521 / 25762 / 26989 | FAIL |
+| PHerc0500P2: 0.55 -> 2.215 | 0.55 um; a 73 deg turn, 8.6 deg tilt; one of four official mirrors; 5.9 mm of view | CHECK | 22521 / 25762 / 26989 | FAIL |
 | PHerc0332: 3.24 -> 3.24 | a new voxel size; same resolution both sides, different energies | HIGH | 4 / 5 / 7 | PASS |
 | PHerc0332: 3.24 -> 7.91 | 3.24 um onto the 2023 7.91 um scan | HIGH | 16 / 40 / 53 | WEAK |
 | PHerc1667: 1.129 -> 2.399 | a partial-view tile | HIGH | 162 / 417 / 566 | FAIL |
@@ -630,6 +630,8 @@ error numbers predicted which was which,
 blind. At tens of microns a transferred
 surface stays on its sheet; past 100 um,
 where the two scans bend, it comes off.
+That rests on two transforms and one
+surface, so it is evidence, not a rule.
 **Run this test on any transform before you
 trust a surface you carried through it**,
 including one of mine. Full reasoning and
@@ -746,15 +748,15 @@ are worth nothing and 0.018.
   `HIGH` with no reasons, and the reference
   there is better than we are. It is also
   cautious in the other direction, flagging
-  one pair in the twelve that turned out
-  fine. Read `confidence` next to
+  one pair in the twelve, and x1_0343P in the
+  coverage round, that turned out fine. Read `confidence` next to
   `blocks[-1]`, never alone.
 - **Resolutions tested: 0.55, 1.129, 2.215,
   2.399, 2.401, 2.403, 3.24, 4.317, 7.91,
   8.64, 9.362 and 9.366 um**, in the
   twenty-one pairings of `results/` and
-  `robustness/`. Outside that range,
-  untried.
+  `robustness/`, plus 2.4 and 45.532 um in
+  `coverage/`. Outside those, untried.
 - **Tilt validated to 14 degrees**, one
   pair, after the v0.2 fix. Larger tilts are
   untested.
@@ -814,8 +816,9 @@ are worth nothing and 0.018.
   that pair on 15 Sep 2026.
 
 - **It is one matrix and the evidence for
-  it.** Segmentation and ink detection are
-  somebody else's job.
+  it.** The tool does no segmentation or ink
+  detection; the write-ups in `reports/` do
+  some of both.
 
 ## Checking a result
 
@@ -889,7 +892,7 @@ are worth nothing and 0.018.
   A public PHerc1203 transform, and the
   scan-quality survey of the eligible
   scrolls. Ours differs from theirs by 29
-  um, and my own first hand-made attempt had
+  um, and my own first quick fit had
   the same 29 um error, so this is a
   statement about how easy that error is to
   make.

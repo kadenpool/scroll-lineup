@@ -14,10 +14,10 @@ depth order, which is the null: a real reading should collapse when the layers a
 `ctl_curve.json` is the whole result, nine rows. `ctl_curve.png` is the plot.
 `plot_ctl_curve.py` redraws it from the json, and needs matplotlib, which the tool does not.
 
-**One wrinkle in the committed picture:** its caption calls the peak "the window everyone uses".
-That was written before we checked, and it is not right. The peak here is layers 40 to 61, and the
-tool's own published documentation recommends a different one. The text below is correct and the
-caption is stale; the numbers in the figure are the numbers in the json.
+*Corrected 26 Sep 2026:* the picture's caption used to call the peak "the window everyone uses".
+That was written before we checked, and it was not right. The peak here is layers 40 to 61, and the
+tool's own published documentation recommends a different one. The picture is redrawn with the
+caption "the peak, layers 40 to 61"; the numbers in the figure are the numbers in the json.
 
 ## The curve
 

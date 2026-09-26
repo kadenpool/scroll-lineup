@@ -22,11 +22,12 @@ matches in many places, five at a fixed spacing do not.
 A full 2D search is added in two cases: when the best answer does not
 stand clearly above the next one, and when the shorter scan sees only
 part of the cross-section. In practice the first case is the common
-one: of the seven runs that took the 2D search, only two were triggered
-by a partial field of view, and two of the 1.129 um tiles never took
+one: of the eight runs that took the 2D search, three were triggered
+by a partial field of view (n3_0814roi, r3_0500hi, x5_Paris4), and two of the 1.129 um tiles never took
 it at all. That search is every 5 degrees, both mirror images, every height,
-and it is the slow path. Measured on the five runs that took it, it
-cost 4.2 to 13.0 minutes.
+and it is the slow path. Measured on the five of the first 21 runs that took it, it
+cost 4.2 to 13.0 minutes; over all eight, 3.1 (x1_0343P) to 17.5 minutes
+(x5_Paris4).
 
 ## G2: re-score the best answers, about 150 um
 
@@ -70,7 +71,8 @@ fit can be checked or redone by anyone.
 few blocks, or a block residual over 30 um.
 
 The flag is cautious in one direction: one pair in the twelve
-validation runs is flagged `CHECK` and is right.
+validation runs, and x1_0343P in the coverage round, are flagged `CHECK`
+and are right.
 
 In the other direction it is good but not perfect. Of the nine
 robustness pairs, it flagged both genuine failures and named the

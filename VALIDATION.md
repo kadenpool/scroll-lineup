@@ -139,12 +139,12 @@ one software stack, 8 cores.
 Totals for the nine: 55 minutes of wall clock for the whole pairs, 7.3 GB read, one non-zero
 exit (the `datacheck.py` bug in 2.6). Peak resident memory is 1.0 to
 3.5 GiB on eight of the nine and **8.2 GiB on the 0.55 um pair**,
-which is the one that needs the slow 2D search and also the one that
-fails. Across all twenty-one pairs the per-pair range is 1 to 17
+which is one of the two of the nine that needed the slow 2D search
+(r2_0172 is the other) and the one that fails. Across all twenty-one pairs the per-pair range is 1 to 17
 minutes and 0.2 to 2.1 GB, and the whole set is 2.3 hours of compute
 and 21.7 GB read. The two totals are on different bases: 55 minutes is whole-pair wall clock, 2.3 hours is scroll-lineup time only. Those figures are for the twenty-one; across all
 26 graded pairs, coverage round included, the per-pair range is 1.0 to 22.6 minutes and the whole
-set is 3.4 hours of scroll-lineup time and 29.4 GB read, all of it derived from each run's own
+set is 3.4 hours of scroll-lineup time and 30.1 GB read, all of it derived from each run's own
 `report.json` (`seconds` and `downloaded_MB`).
 
 ### 2.5 The failures, stated plainly
@@ -162,8 +162,8 @@ quotes in its CHECK reason. Block matching then produced no fit at any of its si
 rounds ("too few good blocks; transform unchanged", 0 of 25 used at a
 median correlation of 0.099), so the answer is the coarse G2 estimate
 and it is 22.5 mm out. The tool reported `CHECK` and named both
-reasons. This is also the only pair whose official transform is a
-mirror, and the tool's answer is a mirror too, so the branch fires;
+reasons. This is also the only pair among these nine whose official transform
+is a mirror (section 2.7 found three more), and the tool's answer is a mirror too, so the branch fires;
 nothing here shows it producing a correct transform.
 
 **PHerc1667 3.24 -> 7.91 um, FAIL, flagged `CHECK`.** Block matching
@@ -217,10 +217,8 @@ does `datacheck.py` in its held-out mode, so only the third check is
 affected. `robustness/r2_0172/` therefore has no
 `datacheck_landmarks.json` and that column of its row is blank.
 
-The fix is one guard, and it is **not** in 0.2.1: the version in this
-repository is the one all twenty-one runs were made with, and changing
-the code would invalidate them. `CHANGELOG.md` records it as a known
-issue.
+The guard has been in `datacheck.py` since 15 Sep; `scroll_lineup.py` is
+unchanged, so every run stands.
 
 ### 2.7 The coverage round: the last five, 15-16 Sep 2026
 
@@ -287,9 +285,8 @@ Each set is what a plain `pip install numpy scipy fsspec s3fs Pillow`
 resolved to on that interpreter. Nothing was pinned. Machines A and B
 were measured on 15 Sep 2026, machine C later the same day.
 
-Machine C is the oldest and the newest interpreter question answered
-from the other end: 3.14 is one version beyond the newest in the CI
-matrix at the time, and the five packages installed on it without
+Machine C answers the interpreter question from the newer end: 3.14 was
+one version beyond the newest in the CI matrix at the time, and the five packages installed on it without
 complaint and gave the same answers. That is the reason 3.14 was then
 added to the matrix. What machine C has **not** done is a live pair
 against the open data, so treat it as evidence about portability of the
@@ -376,8 +373,9 @@ datacheck flummoxjr    : 46/48 blocks, must move median 33.1 um
 
 Every comparison figure is identical to the 14 and 15 Sep transcripts
 to the last decimal place, and all three md5s match the committed
-example, so nothing in tonight's work moved a number the tool
-computes. `summarize.py` now regenerates **both** tables byte for
+example, so nothing in that night's work (14 to 15 Sep) moved a number the
+tool computes. The transcript above is an excerpt: `compare1203.py` also
+prints the lines comparing the 11 Sep fit, which are left out. `summarize.py` now regenerates **both** tables byte for
 byte, when the run folders are passed in the order of their pairs
 file; the plain `results/*/` glob gives the same rows in a different
 order, which `CHANGELOG.md` notes.
@@ -595,19 +593,20 @@ six exceptions.
    in this file, except the per-pair minutes and megabytes in
    `results/table.md` and `robustness/table.md`, which come from each
    run's own `report.json`.
-5. **The author's own hand-made PHerc1203 alignment**, quoted in the
-   README as 29 um from this tool's answer and needing 27 um on the
-   same held-out cubes. That transform predates the tool and is not
-   committed here, so `compare1203.py` cannot reproduce those two
-   numbers from this repository alone. It is the one comparison in
-   the README that rests only on the author's word.
+5. **The 11 Sep PHerc1203 fit's 29 um and 27 um**, quoted in the README as
+   its distance from this tool's answer and the move it needs on the same
+   held-out cubes. `compare1203.py` holds that fit and prints both when run as
+   `run_1203.sh` runs it, but the transcript in section 5 leaves those lines
+   out, so here they are a live computation rather than a stored result.
 6. **"The tolerance is about +/- 6 layers"**, which the alignment
    budget leans on. This repository's own depth curve moves ten
    layers at a time (`depth/ctl_curve.json`, nine windows at 0, 10,
    20 ... 80), so nothing at +/- 6 was ever rendered here; the finer
    figure is flummoxjr's, measured on 17 Aug 2026.
-   `depth/README.md` says so, but this list did not, and the README
-   said there were five exceptions when this was a sixth.
+   `depth/README.md` says so.
+
+*Edited 26 Sep 2026: item 5 used to say the 11 Sep PHerc1203 fit was not committed here;
+`compare1203.py` holds it, and the item now says what is missing: a stored copy of its lines.*
 
 Everything else, every row of both tables, every PHerc1203 figure,
 every residual, is in `results/`, `robustness/`, `examples/` or

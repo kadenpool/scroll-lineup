@@ -43,9 +43,9 @@ directly into an alignment budget.
 | 150 um (this tool's WEAK bar) | 16.0 | past the point of no return for ink work |
 
 **A transform whose 95th-percentile error is inside about 50 um is
-usable for ink detection at 9.362 um. A transform at the WEAK bar
-is unusable for it, even though it is in the right place and looks
-right by eye.**
+usable for ink detection at 9.362 um. A WEAK transform read worse on the one surface tested: this tool's
+43 / 107 / 152 um transform gave 0.790 against the official's 0.857, although
+it is in the right place and looks right by eye.**
 
 That is the number to check before trusting a map made through a
 transform, and it is why this tool reports the whole error
@@ -68,8 +68,8 @@ block, the gap between the official transform and this tool's
 
 ## A worked example of the size of error that matters
 
-The hand-made PHerc1203 alignment that this tool replaced was 29 um
-out, split about evenly between height (18 um) and across (21 um).
+The quick PHerc1203 fit of 11 Sep that this tool replaced was 29 um
+out, mostly in height (21 um).
 The height part is about 2 layers and the whole error about 3, so
 against the 6-layer tolerance above it is roughly half the budget.
 Real, worth catching, survivable.
