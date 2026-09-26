@@ -49,7 +49,7 @@ control calibration; the off-sheet band widened to match).
 | candidates 0 to 1.8 %, ordinary held-out 2.2 % | `PLAN_A_RESULT.md` §8, §9 |
 | 32 meshes, 128.8 of 131.8 cm2 | `plan_b_0813_files/manifest.json` |
 | 30 meshes, 127.2 of 131.1 cm2 | `plan_b_0211_files/manifest.json` |
-| 32 of pscamillo's 75 PHerc0813 meshes, 30 of his 90 PHerc0211 | `PLAN_B_0813_PREP.md` and `PLAN_B_0211_PREP.md`, item 1 of each |
+| 32 of pscamillo's 75 PHerc0813 meshes, 30 of their 90 PHerc0211 | `PLAN_B_0813_PREP.md` and `PLAN_B_0211_PREP.md`, item 1 of each |
 | section 5: every reading of TAUIL's two locations, both checkpoints | `plan_b_0813_files/v2_result/results.json` and `plan_b_0211_files/v1_result/results.json`, `per_segment` |
 | section 5: the two shape-gate windows, their directions and ratios | `plan_d_files/results.json` `gates_G1`; the shape gate recomputed in `trace_numbers.py` with `analyse_sweep.py`'s rule |
 | other people's surveys: 324, 82 and 71 meshes; 340 rendered; 12 windings; 31.2 %; the atlas's pass counts 5, 2, 0 and 1 | `CITATIONS.md`, last section |

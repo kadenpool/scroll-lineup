@@ -218,7 +218,7 @@ def main(root):
     ok("  ... windows", 27, ivb["n"], 0)
 
     # ---------------- 6. TAUIL's two candidate locations ------------------
-    # His survey (corpus-ink-survey, first published 14 Sep) names PHerc0813
+    # TAUIL's survey (corpus-ink-survey, first published 14 Sep) names PHerc0813
     # z12496_w060, forward, and PHerc0211's inner wrap z6112..z9120 on w020, in
     # reverse. Our surveys and sweep scored the same meshes a day earlier.
     print("\nTAUIL'S TWO CANDIDATE LOCATIONS  (plan_b survey results, plan_d sweep)")
@@ -234,7 +234,7 @@ def main(root):
             ok(f"{name} {c[:6]} x own off-sheet null", rat, b["on_over_off"], 0.005)
     wrap = [k for k in ("z6112_w020", "z6720_w020", "z7312_w020", "z7920_w020", "z9120_w020")
             if k in r211]
-    ok("his PHerc0211 stretch: meshes we scored", 4, len(wrap), 0)
+    ok("their PHerc0211 stretch: meshes we scored", 4, len(wrap), 0)
     ok("  ... leaning reverse on both checkpoints", 4,
        sum(all(r211[k]["by_ckpt"][c]["stronger_dir"] == "reverse" for c in ck) for k in wrap), 0)
     wr = [r211[k]["by_ckpt"][c]["on_over_off"] for k in wrap for c in ck]

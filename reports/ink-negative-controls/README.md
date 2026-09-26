@@ -57,22 +57,22 @@ demonstrably is cannot be trusted to prove one absent.
 **Jinhojeong established the deeper version of the same
 problem** in July 2026, on the 2023 grand-prize TimeSformer
 rather than these 9 um models: across 71 segments, no
-automated letterness score he tried ranks the Scroll 1
+automated letterness score they tried ranks the Scroll 1
 positive control near the top, "which means there is no
 working positive control for letterness on the unreadable
-scrolls." He measured and rejected entropy-minimisation
-test-time adaptation on those grounds; he declined to run
+scrolls." Jinhojeong measured and rejected entropy-minimisation
+test-time adaptation on those grounds, and declined to run
 CycleGAN as a letter finder at all, because its output
 would be unverifiable. Our first rescue, in section 4, is
-the negative-only adaptation he did not test, and it fails
-for a reason he would recognise.
+the negative-only adaptation they did not test, and it fails
+for a reason they would recognise.
 
-**TAUIL-Abd-Elilah supplied the cautionary case.** His own
+**TAUIL-Abd-Elilah supplied the cautionary case.** Their own
 PHerc1447 ink negative was published and then withdrawn
 within two weeks, not because the ink work was wrong but
-because he measured the surfaces underneath it and found a
+because they measured the surfaces underneath it and found a
 median 61.2 degrees against the local sheet, 0 of 14
-within 30, where a random orientation averages 60. His
+within 30, where a random orientation averages 60. In their
 words: the negative "shows no ink was recovered from these
 surfaces, not that PHerc1447 lacks ink in those regions."
 Section 9 is written so that this report cannot fail the
@@ -95,7 +95,7 @@ them with more surface than we used.**
 - **gmDevi's `vc-windows-tools`** holds a PHerc0846A batch,
   added on 11 Sep 2026, that scores 12 windings with the 9
   um model for letter-like blobs and finds a single one,
-  on one of them. His write-up does not discuss it.
+  on one of them. gmDevi's write-up does not discuss it.
 - The PHerc0813 and PHerc0211 meshes are **pscamillo's**,
   from `vesuvius-eligible-meshes`, the corpus both surveys
   above also start from.
@@ -166,7 +166,7 @@ on/off spread on both checkpoints and both orders.
 by-eye look at 1.96x and 1.85x their own null, where the
 control gives 8 to 24x.
 
-**Survey, PHerc0211.** 30 of his 90 meshes, 127.2 cm2
+**Survey, PHerc0211.** 30 of pscamillo's 90 meshes, 127.2 cm2
 rendered of 131.1 selected, same pipeline. *Rule:* the
 same rule. *Verdict:* control 0.877. Median 10.1 %
 on-sheet against 10.1 % off. Nothing qualified even for a
@@ -298,25 +298,25 @@ published the next day, names as candidates: section 5.
 
 TAUIL's survey names two places as **candidate locations,
 not discoveries**: a region of PHerc0813 at `z12496_w060`,
-read forward, on the face that carries text on his
+read forward, on the face that carries text on their
 control; and a tall stretch of PHerc0211's inner wrap from
 `z6112_w020` to `z9120_w020`, read in reverse. Our
 surveys scored meshes in both places with a different
 render, a different scoring rule and different nulls, on
 checkpoints of the same model.
 
-| his location | our reading, both checkpoints | x own off-sheet null | depth sweep |
+| TAUIL's location | our reading, both checkpoints | x own off-sheet null | depth sweep |
 |---|---|---|---|
 | PHerc0813 `z12496_w060`, forward | forward, 13.8 % against 7.8 % and 27.2 % against 19.1 % | 1.23x, 1.35x | not swept |
-| `z13088_w040`, which his survey ranks second and calls the candidate's neighbour | forward, 16.3 % against 6.0 % and 29.9 % against 16.0 % | 1.85x, 1.68x | passes the shape gate, forward |
-| PHerc0211 inner wrap, `w020`, reverse | all 4 of his meshes that we scored lean reverse on both | 1.35x to 1.90x | `z9120_w020` passes the shape gate, in reverse |
+| `z13088_w040`, which TAUIL's survey ranks second and calls the candidate's neighbour | forward, 16.3 % against 6.0 % and 29.9 % against 16.0 % | 1.85x, 1.68x | passes the shape gate, forward |
+| PHerc0211 inner wrap, `w020`, reverse | all 4 of the stretch's meshes that we scored lean reverse on both | 1.35x to 1.90x | `z9120_w020` passes the shape gate, in reverse |
 
 **The places agree, and so do the directions.** Only two
 of our 28 swept windows passed the shape gate, and they
-are `z13088_w040` beside his PHerc0813 candidate, forward,
-and `z9120_w020` at the end of his PHerc0211 stretch, in
+are `z13088_w040` beside TAUIL's PHerc0813 candidate, forward,
+and `z9120_w020` at the end of TAUIL's PHerc0211 stretch, in
 reverse. Neither survey took those places from the other:
-our windows were fixed and scored on 13 Sep, and his
+our windows were fixed and scored on 13 Sep, and TAUIL's
 survey was first published on 14 Sep.
 
 **The strength is not there.** Real text through the same code
@@ -324,14 +324,14 @@ gives 8 to 24x its own off-sheet null. None of the meshes
 in the table reaches 2x on either checkpoint, and both
 shape-gate windows fail the pre-registered bar of 3.
 
-So we put it as he does. These are the places on these two
-scrolls that look most like ink to both surveys, his by
+So we put it as TAUIL does. These are the places on these two
+scrolls that look most like ink to both surveys, theirs by
 strength and ours by the shape of the depth response, and
 they are candidate locations, not discoveries. Ink, stain, glue or a surface artefact all
 remain consistent with what both surveys see. A reverse
 reading is weaker evidence than a forward one of the same
 size, because on the control the text face reads forward.
-His `z7312_w020` was not in our selection, so we have no
+TAUIL's `z7312_w020` was not in our selection, so we have no
 reading for it.
 
 ## 6. What this is worth to someone else
@@ -341,7 +341,7 @@ flummoxjr measured the inside of the curve on 17 Aug 2026,
 at 1-voxel steps from minus 6 to plus 5, which is as far
 as a 28-slice published render reaches.
 tarikcankorkmaz00 has since shown that the best window
-moves from tile to tile, with 31.2 % of the tiles in his
+moves from tile to tile, with 31.2 % of the tiles in their
 main result putting it on the edge of the plus or minus
 47.98 um the released volumes contain. Ours measures the
 outside for one region, on a 101-layer render: fine within
@@ -416,7 +416,7 @@ As of 22 Sep 2026:
 - #1665: the Python library demanded AWS credentials for
   a public bucket, then reported the failure as "the
   array does not exist". Bullo27 reproduced it with no
-  credentials on his own machine.
+  credentials on their own machine.
 - #1676: a dataset read past the end of its own data.
   Caught by a sanitizer, not by published scroll data.
 - #1682: creating a pyramid level failed under zarr 3.
@@ -463,12 +463,12 @@ consumes.
   are drawn from, 338 of its 340 meshes, against the sheet
   normal taken from the local structure tensor of the raw
   CT. Note the instrument: that is raw CT, not the team's
-  surface prediction, which he uses only as a separate
-  second gate elsewhere. He reports **PHerc0211 at a median
+  surface prediction, which TAUIL uses only as a separate
+  second gate elsewhere. TAUIL reports **PHerc0211 at a median
   7.8 degrees with 85 of 88 within 30, and PHerc0813 at 9.0
   degrees with 71 of 75**, against a 60 degree
   random-orientation null. So the failure mode that forced
-  his own PHerc1447 withdrawal demonstrably does not apply
+  their own PHerc1447 withdrawal demonstrably does not apply
   to two of our three scrolls.
 - **PHerc0846A is not in that corpus at all**, so it has no
   equivalent clearance and we do not claim one. It is also
@@ -477,7 +477,7 @@ consumes.
   a 42.1 % average, so of the three it carries the most
   geometric risk and the least independent reassurance.
   Read the 0846A result with that in mind.
-- Carry his caveat with his numbers: **a low, tight reading
+- Carry TAUIL's caveat with TAUIL's numbers: **a low, tight reading
   is evidence; a high, scattered one is not evidence of
   anything.**
 - The argument therefore runs on the subset that is provably
@@ -559,3 +559,6 @@ can check independently.
 
 *Edited 26 Sep 2026: a leftover draft banner is removed, and the atlas's finished screen
 and #1843's corrected wording are brought up to date.*
+
+*Edited again 26 Sep 2026, wording only: the researchers this report and its CITATIONS.md cite are
+named or called "they", where the text had assumed "he".*

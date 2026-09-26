@@ -60,10 +60,10 @@ Four published pieces sit close to this, and a reader who has seen them should k
 - **tarikcankorkmaz00, `ink9um-z-window-selection`** (18 September 2026) finds each tile's best
   window within plus or minus 47.98 um and reports that **50 of 160 tiles, 31.2 %, put their best
   window on the edge of that range**, the most the released surface volumes contain, and asks for
-  renders with more layers. This one has 101 layers, so it reaches where his cannot. But be exact
-  about what that does and does not answer: his measurement is **per tile** and this one is **one
+  renders with more layers. This one has 101 layers, so it reaches where theirs cannot. But be exact
+  about what that does and does not answer: their measurement is **per tile** and this one is **one
   AUC over a whole held-out region**. This shows the region-level response is gone by 10 layers
-  (94 um). It does not show where any individual tile's best window lies, so it complements his
+  (94 um). It does not show where any individual tile's best window lies, so it complements their
   question rather than settling it.
 - **tarikcankorkmaz00, `ink9um-depth-calibration`** (6 September 2026) found that on this very
   segment, w016, two patches want offsets of **minus 28.8 and plus 28.8 um**, opposite signs, 57.6 um
@@ -84,7 +84,7 @@ the budget, and it is why a 123 um error in a published transform (see `audit/`)
 
 **What this measurement alone can support**, without flummoxjr's finer one: the window is narrower
 than 94 um, because ten layers away is already gone. It cannot get you to 50 on its own. Anyone
-relying on the tighter figure is relying on his work as well as this.
+relying on the tighter figure is relying on flummoxjr's work as well as this.
 
 ## The gate that ships inside the data file
 
@@ -106,3 +106,5 @@ condition for a depth sweep on unread scrolls, not as a test of this curve. Read
   Those are different failures and this says nothing about the second.
 - The peak window, 40 to 61, is not the window the tool's own documentation recommends. That
   discrepancy was reported upstream separately.
+
+*Edited 26 Sep 2026, wording only: tarikcankorkmaz00 and flummoxjr are named or called "they", where the text had assumed "he".*
