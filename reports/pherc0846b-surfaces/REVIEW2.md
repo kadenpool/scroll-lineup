@@ -39,7 +39,7 @@ between every two surfaces exactly, on the grower's triangles, and skips only pa
 It gives s01 and s07 36.33 voxels at their nearest; the seven overlapping pairs, and s09 and s10, cross each
 other; s01 and s09, s05 and s10, and s05 and s09 are 1.73, 1.67 and 3.18 voxels apart at their nearest.
 
-A further independent review checked this with its own code (its own triangles, and exact fraction arithmetic for the
+A further independent review, by another read-only Claude Code agent, checked this with its own code (its own triangles, and exact fraction arithmetic for the
 crossings): the geometry, the pruning and the skip rule are safe, and every distance above holds. It found the areas
 within 4 voxels still sampled, 6 by 6 in each cell, which read the seven larger overlaps about 4 to 12 % low and the
 four smallest further off, mostly low (s05 and s09 share 0.07 mm2, not "under 0.05"). **Done:** they are measured on

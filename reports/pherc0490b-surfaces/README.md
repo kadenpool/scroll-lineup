@@ -63,7 +63,7 @@ The scan, and the team's surface prediction these were grown on, are the Vesuviu
 catalogue lists the volume under CC BY-NC 4.0, and these surfaces and previews, made from it, are shared under the
 same licence.
 
-An independent review checked this release before publication; its findings, and what was done about each, are in
-`REVIEW.md`, with a later check of the distances.
+An independent review by a separate, read-only Claude Code agent checked this release before publication; its findings, and what was done about each, are in
+`REVIEW.md`, with a later check of the distances, also by a Claude Code agent.
 
 *Grown and written with Claude Code under my direction.*

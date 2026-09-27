@@ -3,7 +3,11 @@
 When the public 9 um ink models find nothing on an unread scroll, is that "no ink", or "no ink recovered yet"? The
 challenge's 2026 Open Problems page asks exactly this for June 2027. This folder measures it directly: real ink from
 PHerc0139, where the text is read, is planted into papyrus at graded strength, the same public models are run, and
-the weakest ink they still recover is found. Every claim is limited to ink like PHerc0139's.
+the weakest ink they still recover is found. Every claim is limited to ink like PHerc0139's. FrankTheRope showed earlier
+that a blank from these models on the eligible scrolls cannot be read as no ink, and Jinhojeong that there is no
+working positive control for letterness there (both credited in `../ink-negative-controls/CITATIONS.md`); this folder
+measures how faint real ink can be before these models miss it. Every review in this folder was done by a separate,
+read-only Claude Code agent, not by a person, and each `REVIEW` file says so in its first lines.
 
 **Day 1 result (24 Sep, run after publication): GO, for the swap plant with both checkpoints.** The models read the
 donor letters in place at AUC 0.754 and 0.782. The same letters swapped into blank papyrus read like the same letters

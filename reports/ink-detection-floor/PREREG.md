@@ -531,3 +531,6 @@ smoke run is the first model output on this scroll. Each is true only of our own
 fifth winding rendered in both layer directions and scored (36 renders of 18 windings), all negative. It published
 the renders and their scores, not the surfaces; ours remain the first published surfaces on this scroll. Nothing in
 the rules changes.
+
+*Added 27 Sep 2026: every review this file calls independent was done by a separate, read-only Claude Code agent, not
+by a person; each `REVIEW` file says so in its first lines.*

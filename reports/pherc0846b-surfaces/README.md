@@ -96,9 +96,9 @@ The scan, and the team's surface prediction these were grown on, are the Vesuviu
 catalogue lists the volume under CC BY-NC 4.0, and these surfaces and previews, made from it, are shared under the
 same licence.
 
-Two independent reviews checked these before publication: the first seven in `REVIEW.md`, all twelve in
+Two independent reviews by separate, read-only Claude Code agents checked these before publication: the first seven in `REVIEW.md`, all twelve in
 `REVIEW2.md`, each with its findings and what was done about each. `REVIEW2.md` also records a later finding that
 the closest distances were still too high and the areas within 4 voxels read low, and the exact measurement that
-replaced them.
+replaced them. Those later checks were also done by separate, read-only Claude Code agents.
 
 *Grown and written with Claude Code under my direction.*

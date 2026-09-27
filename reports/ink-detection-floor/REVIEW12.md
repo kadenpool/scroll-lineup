@@ -42,7 +42,7 @@ byte; `results.json`, `summary.md` and `floor_day4.py` equal the private copies,
 rules were published; the release's 40 maps match the recorded means, with the array names and shapes the notes
 give; links resolve; no dashes or private paths; every script parses on Python 3.9, and `fake_day4.py` passes.
 
-Final check (a second reviewer, 26 Sep, of the changes above only): READY WITH FIXES, all done: "every job's AUC"
+Final check (a second reviewer, also a read-only Claude Code agent, 26 Sep, of the changes above only): READY WITH FIXES, all done: "every job's AUC"
 became "every target window's AUC" (the references' reverse AUCs are only in `results.json`); the release is created
 after the push, so its tag holds the results; "among amendment 3's limits"; the PHerc0483B page says neither
 checkpoint reaches a floor; the index names PHerc0846B as day 3; "02:08 AEST"; the release notes rewrapped.

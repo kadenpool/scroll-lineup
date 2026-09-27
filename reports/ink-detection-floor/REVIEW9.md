@@ -50,7 +50,7 @@ minutes for 20 jobs); `read_day1.py` ends in AGREE; `RESULTS_DAY1.md` matches ap
 match too with the kept day-1 maps); `RESULTS_DAY3.md` rebuilds byte-identical; links resolve; no long dashes,
 private paths or draft markers, and every disclosure line is present.
 
-## Re-check (a separate reviewer, 25 Sep, of the files after the fixes above)
+## Re-check (a separate reviewer, also a read-only Claude Code agent, 25 Sep, of the files after the fixes above)
 
 READY WITH FIXES
 

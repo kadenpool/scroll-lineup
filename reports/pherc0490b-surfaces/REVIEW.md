@@ -27,4 +27,4 @@ points, but never the cell edges between them, and s07's grid point (101, 149) l
 between grid points (2, 120) and (2, 121), not 37.2. **Done:** `trace_numbers.py` now measures the least distance
 between every two surfaces exactly, on the grower's triangles, and skips only pairs it can prove are farther apart.
 Here it confirms that no two surfaces come within 4 voxels; the closest, s01 and s03, are 977.8 voxels apart. A
-further independent review, with its own code, confirmed the method and the 977.82.
+further independent review, by another read-only Claude Code agent with its own code, confirmed the method and the 977.82.

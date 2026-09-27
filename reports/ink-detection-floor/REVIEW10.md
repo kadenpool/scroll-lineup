@@ -37,7 +37,7 @@ unchanged, and the documented day-2 command rebuilds `RESULTS_DAY2.md` apart fro
 held-out text matches the saved listings and the model card; links, dashes, private paths, disclosure lines and
 parsing on Python 3.9.
 
-## Re-check (a separate reviewer, 25 to 26 Sep, of the rewritten files)
+## Re-check (a separate reviewer, also a read-only Claude Code agent, 25 to 26 Sep, of the rewritten files)
 
 NOT READY
 
@@ -55,6 +55,6 @@ NOT READY
   six windows that flip the gate are both w042 windows, all three w045 windows and target10_w046); all 348 AUCs from
   the kept maps; both results pages' rebuilds; dashes, paths, links, Python 3.9; every "Done" above it.
 
-Final check (a third reviewer, 26 Sep, of the changes above only): READY, with three notes, all done: the page gives
+Final check (a third reviewer, also a read-only Claude Code agent, 26 Sep, of the changes above only): READY, with three notes, all done: the page gives
 each job's AUC in the primary direction only (said); w042's neighbours are named as two of the 11 segments in the
 main folder; `results_md.py`'s docstring says the note is not from the run.

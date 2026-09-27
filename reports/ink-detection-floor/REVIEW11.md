@@ -47,7 +47,7 @@ either arm, the correlations 0.986 to 0.996 and the sha256 recompute; the seed w
 the renders share one build; the dry run's 182 jobs, k 0.828 to 0.963 and 0.863 to 0.989, and clipping at most
 0.229 %; villa's inference code accepts the 1109 and 2806 px inputs; no dashes; every script parses on Python 3.9.
 
-## Staging check (a separate reviewer, 26 Sep, of the exact files staged for publication)
+## Staging check (a separate reviewer, also a read-only Claude Code agent, 26 Sep, of the exact files staged for publication)
 
 READY WITH FIXES, all done: the write-up called the difference between arms "the effect of the step in scale itself",
 which amendment 3's limits contradict (now "measured with resampled stand-ins"); the amendment said `read_day4.py`
@@ -60,7 +60,7 @@ above; the PREREG diff only adds lines at the end; every figure in amendment 3 m
 sha256 on both picks, in the job and in the amendment; the staged `prep_day4.py` is the one Kaggle ran on 26 Sep;
 plain ASCII, no private paths, links resolve, Python 3.9 parses everything.
 
-Final check (a third reviewer, 26 Sep, of the staging fixes only): READY WITH FIXES, three wording fixes, all done:
+Final check (a third reviewer, also a read-only Claude Code agent, 26 Sep, of the staging fixes only): READY WITH FIXES, three wording fixes, all done:
 `make_day4.py`'s docstring said one change was not named by amendment 3, though the amendment names the profile
 check (now: one detail of it differs from day 3's); "results.json holds all of it" became "every figure these come
 from" (the margins are computed by the reader); and the texts now say two reviews, whose findings were fixed or stated.

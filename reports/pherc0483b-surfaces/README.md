@@ -67,8 +67,8 @@ The scan, and the team's surface prediction these were grown on, are the Vesuviu
 catalogue lists the volume under CC BY-NC 4.0, and these surfaces and previews, made from it, are shared under the
 same licence.
 
-An independent review checked this release before publication; its findings, and what was done about each, are in
-`REVIEW.md`, with a later check of the distances.
+An independent review by a separate, read-only Claude Code agent checked this release before publication; its findings, and what was done about each, are in
+`REVIEW.md`, with a later check of the distances, also by a Claude Code agent.
 
 Day 4 of the ink detection floor (`../ink-detection-floor/`, amendment 3 and `RESULTS_DAY4.md`) ran the two public 9 um
 ink checkpoints on these five surfaces: neither reaches a floor (one does not detect PHerc0139 letters planted at full
