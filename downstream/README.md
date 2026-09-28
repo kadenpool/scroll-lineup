@@ -47,7 +47,7 @@ changing that one thing, with one caveat on the mesh, stated where it arises bel
 | the challenge's own input | 0.912 | 70.8 % |
 | the same, with its 4-plane depth averaging removed | **0.916** | 69.4 % |
 | this folder's render, from the challenge's own 2.399 um mesh, 48 um grid | **0.897** | 72.2 % |
-| this folder's render, from the 9.362 um mesh, 187 um grid, with villa #1818's smooth surface interpolation | 0.876 | 61.7 % |
+| this folder's render, from the 9.362 um mesh, 187 um grid, with villa #1818's smooth surface interpolation (its 20 Sep head, 6fe8ac14a) | 0.876 | 61.7 % |
 | this folder's render, from the 9.362 um mesh, 187 um grid | 0.857 | 54.4 % |
 
 **Depth averaging is worth nothing here.** The challenge's input averages four planes of the 2.399 um
@@ -56,9 +56,11 @@ rebuilds their input taking one plane of each four instead of the mean, and it r
 0.912, so if anything the averaging costs a little.
 
 **Interpolation is worth about 0.018, and it does not survive a block test.** Rendering the 187 um arm
-with the smooth (Catmull-Rom) sampling from villa#1818 reads 0.876 over the region, but block by block
+with the smooth (Catmull-Rom) sampling from villa#1818 (its 20 Sep head, 6fe8ac14a) reads 0.876 over the region, but block by block
 it is higher in only 10 of 22 blocks of 64 px, with a 95 % interval of -0.086 to +0.037 across zero.
-It does find more of the labelled ink at the threshold, 61.7 % against 54.4 %.
+It does find more of the labelled ink at the threshold, 61.7 % against 54.4 %. The PR's 27 Sep head (1862c3095, rebased on
+`main`, with a seam fix) reads 0.8775 and finds 62.0 % on the same region, with the same block picture; this region
+cannot test the seam fix itself (villa#1818, comment of 27 Sep).
 
 **Which mesh you render from is worth 0.040, which is 72 % of the gap. A quarter of that is the grid step, and three quarters is the transform plus anything else that differs between the two meshes.** Each segment is
 published as several meshes, one per frame, and their grid steps differ: the mesh in the 9.362 um frame

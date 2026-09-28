@@ -719,7 +719,7 @@ one carried by the official transform, reads
 against 54 %; a quarter of that gain is the
 grid step. Depth averaging and surface
 interpolation were tested the same way and
-are worth nothing and 0.018.
+are worth nothing and about 0.02.
 `downstream/` has all eight arms.
 
 - **One affine matrix. No bending, no
@@ -882,9 +882,9 @@ are worth nothing and 0.018.
   correlation with a linear tilt term.
 - **7jycwjmbfn-eng,
   [pherc0139-physical-audit](https://github.com/7jycwjmbfn-eng/pherc0139-physical-audit).**
-  The first public 2.403 to 9.362 um
-  registration of PHerc1203, from about
-  19,000 block matches. Ours agrees with it
+  A public 2.403 to 9.362 um registration
+  of PHerc1203, published 10 Aug and built
+  from about 19,000 block matches. Ours agrees with it
   to 3.5 um, the strongest cross-check that
   exists on this pair.
 - **flummoxjr,

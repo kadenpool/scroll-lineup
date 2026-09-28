@@ -19,9 +19,12 @@ its numbers from that data (`python3 trace_numbers.py` inside the folder, or the
   checks. A blind check by eye is there too. `read_day1.py`, `read_day3.py` and `read_day4.py` recompute every gate
   and floor from the runs' own output.
 - [`pherc0846b-surfaces/`](pherc0846b-surfaces/), [`pherc0490b-surfaces/`](pherc0490b-surfaces/) and
-  [`pherc0483b-surfaces/`](pherc0483b-surfaces/): the first published surfaces on three First Letters scrolls with
-  none in the open-data catalogue: twelve on PHerc0846B (97.30 cm2), three on PHerc0490B (23.42 cm2) and five on
-  PHerc0483B (35.42 cm2), with previews and a script in each folder that re-derives its numbers. (gmDevi had
-  screened a spiral fit of PHerc0483B with an ink model on 11 Sep, publishing its renders but not the surfaces.)
+  [`pherc0483b-surfaces/`](pherc0483b-surfaces/): surfaces on three First Letters scrolls with none in the
+  open-data catalogue: twelve on PHerc0846B (97.30 cm2), three on PHerc0490B (23.42 cm2) and five on PHerc0483B
+  (35.42 cm2), with previews and a script in each folder that re-derives its numbers. Bullo27's
+  [First Letters survey](https://github.com/Bullo27/first-letters-survey) published surfaces grown with the same tool
+  on all three, with ink-model maps, from 23 Sep (UTC), before these (24 and 25 Sep); gmDevi had screened a spiral fit of PHerc0483B
+  with an ink model on 11 Sep, publishing its renders but not the surfaces. *Corrected 28 Sep 2026: this line
+  called these the first published surfaces on the three scrolls.*
 
 *Written with Claude Code under my direction.*

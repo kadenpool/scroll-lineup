@@ -1,4 +1,4 @@
-# scanreg: line up two CT scans of the same scroll
+# scanreg (snapshot of 12 Sep 2026, under the tool's earlier name; superseded by the repository's README.md): line up two CT scans of the same scroll
 
 One command. Two public OME-Zarr volumes of the same scroll in, a `transform.json` in the Vesuvius Challenge's own
 format out, plus a report with every intermediate number and a picture to check by eye. CPU only, no GPU, no

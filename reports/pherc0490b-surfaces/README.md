@@ -1,9 +1,9 @@
-# First surfaces on PHerc0490B
+# Surfaces on PHerc0490B
 
 PHerc0490B is one of the scrolls eligible for the First Letters prize (villa's `prizeEligibility.json`), and the
 open-data catalogue lists no surfaces for it (checked 24 Sep 2026, catalogue ETag
 `7b86f3272d4ffa1085fafb4e3e6383bf`), and neither pscamillo's published meshes for eight other eligible scrolls
-(`pscamillo/vesuvius-eligible-meshes`) nor the atlas built on them (`rodriguescarson/eligible-scroll-atlas`) covers it (checked 25 Sep). These are three surfaces grown on it, 23.42 cm2 in all, which do not touch one
+(`pscamillo/vesuvius-eligible-meshes`) nor the atlas built on them (`rodriguescarson/eligible-scroll-atlas`) covers it (checked 25 Sep). Bullo27's [First Letters survey](https://github.com/Bullo27/first-letters-survey) had already published three surfaces grown with the same tool on it (villa's `vc_grow_seg_from_seed` on the team's m7 prediction), with ink-model maps, the earliest on 23 Sep (UTC), before these; this page did not credit them until 28 Sep. These are three surfaces grown on it, 23.42 cm2 in all, which do not touch one
 another (below). Its eligible volume, `20250521151215`, was scanned at 8.64 um and 116 keV.
 
 | surface | seed (x, y, z) | area cm2 | VC3D build |
@@ -65,5 +65,7 @@ same licence.
 
 An independent review by a separate, read-only Claude Code agent checked this release before publication; its findings, and what was done about each, are in
 `REVIEW.md`, with a later check of the distances, also by a Claude Code agent.
+
+*Edited 28 Sep 2026: the title said "First surfaces on PHerc0490B". Bullo27's First Letters survey had published surfaces on this scroll earlier, now credited in the first paragraph.*
 
 *Grown and written with Claude Code under my direction.*

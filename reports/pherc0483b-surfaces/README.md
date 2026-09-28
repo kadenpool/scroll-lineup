@@ -1,10 +1,10 @@
-# First published surfaces on PHerc0483B
+# Surfaces on PHerc0483B
 
 PHerc0483B is one of the scrolls eligible for the First Letters prize (villa's `prizeEligibility.json`), and the
 open-data catalogue lists no surfaces for it (checked 24 Sep 2026, catalogue ETag
 `7b86f3272d4ffa1085fafb4e3e6383bf`), and neither pscamillo's published meshes for eight other eligible scrolls
 (`pscamillo/vesuvius-eligible-meshes`) nor the atlas built on them (`rodriguescarson/eligible-scroll-atlas`) covers it (checked 25 Sep). gmDevi's `vc-windows-tools` had screened a spiral fit of it with an ink model on 11 Sep 2026
-(commit 4206088: renders of 18 windings, all negative), publishing the renders but not the surfaces. These are five
+(commit 4206088: renders of 18 windings, all negative), publishing the renders but not the surfaces. Bullo27's [First Letters survey](https://github.com/Bullo27/first-letters-survey) had already published three surfaces grown with the same tool on it (villa's `vc_grow_seg_from_seed` on the team's m7 prediction), with ink-model maps, the earliest on 23 Sep (UTC), before these; this page did not credit them until 28 Sep. These are five
 surfaces grown on it, 35.42 cm2 in all, which do not touch one
 another (below). Its eligible volume, `20251124083638`, was scanned at 8.64 um and 116 keV.
 
@@ -76,5 +76,7 @@ strength, and the other fails its checks), and no letters are claimed from their
 
 *Edited 26 Sep 2026: gmDevi's earlier ink-model screen of this scroll is credited, the title says "first
 published surfaces", and day 4's result is named.*
+
+*Edited 28 Sep 2026: the title said "First published surfaces on PHerc0483B". Bullo27's First Letters survey had published surfaces on this scroll earlier, now credited in the first paragraph.*
 
 *Grown and written with Claude Code under my direction.*

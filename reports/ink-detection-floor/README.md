@@ -6,7 +6,11 @@ PHerc0139, where the text is read, is planted into papyrus at graded strength, t
 the weakest ink they still recover is found. Every claim is limited to ink like PHerc0139's. FrankTheRope showed earlier
 that a blank from these models on the eligible scrolls cannot be read as no ink, and Jinhojeong that there is no
 working positive control for letterness there (both credited in `../ink-negative-controls/CITATIONS.md`); this folder
-measures how faint real ink can be before these models miss it. Every review in this folder was done by a separate,
+measures how faint real ink can be before these models miss it. Planting known text is older than this folder:
+rodriguescarson's eligible-scroll atlas spliced a window of PHerc0139 text into two PHerc0813 surfaces at full
+strength and read it with these models (`control/planted/` and `control/planted2/`, 15 Sep), and moisescorreo's `vesuvius-uncertainty-bench`
+injected real text at graded contrast for two line-periodicity detectors (public from 29 Aug). What is new here is
+the models' own floor, at graded strength. Every review in this folder was done by a separate,
 read-only Claude Code agent, not by a person, and each `REVIEW` file says so in its first lines.
 
 **Day 1 result (24 Sep, run after publication): GO, for the swap plant with both checkpoints.** The models read the
@@ -55,11 +59,12 @@ PHerc0139's).
 - Before the run, a smoke run on one target checked the pipeline on the published code; its numbers are not used.
   Its whole-surface maps are byte-identical to the full run's.
 
-The windows were chosen before any model ran on this scroll (`prep_day3.py`, `day3/windows_day3.json`), and the job
+The windows were chosen before any model of ours ran on this scroll (`prep_day3.py`, `day3/windows_day3.json`), and the job
 (`floor_day3.py`) is the day-1 job with only the day-3 parts replaced. Two more independent reviews found problems,
 which were fixed before publication (`REVIEW4.md`, `REVIEW5.md`), and a sixth checked these results before they were
 published (`REVIEW6.md`). `PREREG.md` now also carries two errata to
-amendment 1, both about figures for the surfaces; no rule changes.
+amendment 1 about figures for the surfaces, and a 28 Sep erratum to amendments 1 and 3 crediting Bullo27's earlier
+surfaces and ink maps; no rule changes.
 
 **A blind check by eye (25 Sep).** Kaden looked at 36 of `seed43_step060000`'s day-3 output maps, shuffled: letters
 planted at full strength, at half strength, and shams of the same shape, twelve of each. He said "letters" for 8, 5
@@ -122,8 +127,8 @@ beside it; no letters are claimed from it. The job (`floor_day4.py`) is generate
 `make_day4.py`, and `fake_day4.py` tests the job's readout and the reader on made-up scores. Before the run, an
 independent review, a staging check and a final check found problems, each fixed or stated (`REVIEW11.md`); a twelfth
 review checked these results before publication (`REVIEW12.md`). gmDevi's `vc-windows-tools` had screened a spiral
-fit of this scroll with an ink model on 11 Sep (36 renders of 18 windings, all negative), which amendment 3 missed;
-its erratum says so.
+fit of this scroll with an ink model on 11 Sep (36 renders of 18 windings, all negative), which amendment 3 missed, as
+it missed Bullo27's First Letters survey (surfaces with ink-model maps on this scroll from 23 Sep); its errata say so.
 
 **Status: days 1 to 4 done.** The rules, the windows and the code below were published before any result was seen, and each
 result sits beside them, with any change to the rules as a dated amendment in `PREREG.md`. The rules were revised before publication, after three independent reviews and a dry run; `PREREG.md`

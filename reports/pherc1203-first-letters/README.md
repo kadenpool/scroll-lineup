@@ -57,15 +57,16 @@ We got through step 3. Step 4 was never reached, because nothing in step 3 earne
 **Prior public work on this scroll, which we build on.** PHerc. 1203 has had at least four public
 attempts, all negative, and its two scans had been registered twice before us:
 
-- FrankTheRope, ScrollScout (https://github.com/FrankTheRope/scrollscout): a CPU ranking of 4 cm²
+- FrankTheRope, ScrollRank (formerly ScrollScout; https://github.com/FrankTheRope/scrollrank): a CPU ranking of 4 cm²
   windows of ink predictions by text-like structure; ran the 9 um model on the public PHerc. 1203
   segments and found forward and reverse predictions indistinguishable, with fibre false positives.
-- flummoxjr, Measure Before You Hunt (https://github.com/flummoxjr/measure-before-you-hunt): a
+- flummoxjr, Measure Before You Hunt (https://github.com/flummoxjr/measure-before-you-hunt, and its mirror
+  https://github.com/flummoxjr/gp13-ink-detectability, which alone carries its work from 4 Sep 12:55 UTC on): a
   scan-quality index and a sheet-separability measure over the eligible scrolls; a corpus screen
-  that found no text; for PHerc. 1203 only 1.36 cm² of in-band surface with enough contrast. Two things in that repo matter directly here: it pre-registered, on
-  8 Sep, the same idea as our route (the 2 um model on 2.4 um renders of PHerc. 1203), with no
-  result yet at the time we checked; and its `bench/w059_c0/RESULTS.md`
-  (3 Sep) reproduced a published 2 um map exactly with layers [23,85), the setting our issue #1765
+  that found no text; for PHerc. 1203 only 1.36 cm² of in-band surface with enough contrast (the mirror's `out/bet_b/c1_rank.md`). Two things there matter directly here: flummoxjr
+  pre-registered, in the mirror on 8 Sep (`bench/betB_c2a/PREREG_C2A.md`), the same idea as our route (the 2 um model on 2.4 um renders of PHerc. 1203), with no
+  result yet at the time we checked; and `bench/w059_c0/RESULTS.md`
+  (3 Sep, in both) reproduced a published 2 um map exactly with layers [23,85), the setting our issue #1765
   now credits.
 - robertlangdonn, PHerc1203 Readability Atlas
   (https://github.com/robertlangdonn/pherc1203-readability-atlas): a CPU geometry diagnostic that
@@ -294,7 +295,7 @@ maps at r 0.82 to 0.92, with ink shares within a few points of the published one
 50.3 vs 48.9, 17.1 vs 17.6, 10.8 vs 13.0, 22.0 vs 22.3, 16.4 vs 15.9, 44.4 vs 47.8, 14.0 vs 13.5 %);
 blanks 0.2 to 1.2 % against 0.0 to 0.4 % published. The documented window
 matches at 0.23 to 0.62 (median 0.51) and is 13 to 62 % low on 7 of the 8 text windows. This is the content of villa issue #1765; flummoxjr had reproduced a
-published map exactly with [23,85) on 3 Sep, which the issue now credits (930-931). On our 12 windows [23,85) beats [24,86) on all 8 text windows, median r 0.905 vs 0.874.
+published map exactly with [23,85) on 3 Sep, which the issue now credits (in its body and a 12 Sep comment). On our 12 windows [23,85) beats [24,86) on all 8 text windows, median r 0.905 vs 0.874.
 
 What this control does and does not show: it shows the model plus our runner reproduce the
 challenge's own results when given the challenge's own surface volumes. It does not test our
@@ -324,9 +325,12 @@ have to come from. We did not run it on any PHerc. 1203 window, because no windo
   usually 4 to 18 um (1 to 2 voxels); on held-out image blocks the images agree better with ours than
   with the official transform on 11 of 15 pairs, and the other 4 are within 1 um either way
   (submissions/registration_tool/REPORT_0912.md:10-12, 56-58;
-  results/table_current_version.txt). We do not claim the official transforms are off: the image
-  referee uses the same matching method as our fit, and an independent viewer check is still to do
-  (REPORT_0912.md:107-109). The PHerc. 1203 run read 1.26 GB and took 322 s
+  results/table_current_version.txt). This image referee cannot show that an official transform is off,
+  since it uses the same matching method as our fit (REPORT_0912.md:107-109). A later check against the official
+  transforms' own published landmarks shows one: PHerc1667 1.129 to 2.399 um misses its six landmarks by 123.3 um
+  RMS, where the best affine fit to them misses by 2.2 um. Three more of the 25 that publish landmarks sit over 30 um
+  from theirs, but no affine fits those landmarks better, so that says nothing against those matrices (villa #1835
+  and its follow-up; the tool's `audit/`). The PHerc. 1203 run read 1.26 GB and took 322 s
   (results/pherc1203/f1203/report.json:6029-6031).
 - **PHerc. 1203 specifically.** The tool's transform agrees with 7jycwjmbfn-eng's published
   registration to 3.5 um median, 6 um max; our own 11 Sep fit is about 29 um off, mostly in height (21 um), and

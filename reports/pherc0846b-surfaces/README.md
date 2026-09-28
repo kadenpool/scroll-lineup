@@ -1,8 +1,8 @@
-# First surfaces on PHerc0846B
+# Surfaces on PHerc0846B
 
 PHerc0846B is one of the scrolls eligible for the First Letters prize, and the open-data catalogue lists no surfaces
 for it (checked 24 Sep 2026, catalogue ETag `7b86f3272d4ffa1085fafb4e3e6383bf`), and neither pscamillo's published meshes for eight other eligible scrolls
-(`pscamillo/vesuvius-eligible-meshes`) nor the atlas built on them (`rodriguescarson/eligible-scroll-atlas`) covers it (checked 25 Sep). These are twelve surfaces grown on
+(`pscamillo/vesuvius-eligible-meshes`) nor the atlas built on them (`rodriguescarson/eligible-scroll-atlas`) covers it (checked 25 Sep). Bullo27's [First Letters survey](https://github.com/Bullo27/first-letters-survey) had already published a surface grown with the same tool on it (villa's `vc_grow_seg_from_seed` on the team's m7 prediction), with ink-model maps, on 23 Sep (UTC), before any of these, and two more on 24 Sep; this page did not credit them until 28 Sep. These are twelve surfaces grown on
 it, 97.30 cm2 in all by the grower's own figures, of which about 1.1 to 1.2 cm2 is covered twice where surfaces meet
 (below). Its eligible volume, `20250804142305`, was scanned at 9.362 um and 113 keV: the voxel size and energy of
 PHerc0139's native scan, part of the data the public `ink_9um` models were trained on.
@@ -100,5 +100,7 @@ Two independent reviews by separate, read-only Claude Code agents checked these 
 `REVIEW2.md`, each with its findings and what was done about each. `REVIEW2.md` also records a later finding that
 the closest distances were still too high and the areas within 4 voxels read low, and the exact measurement that
 replaced them. Those later checks were also done by separate, read-only Claude Code agents.
+
+*Edited 28 Sep 2026: the title said "First surfaces on PHerc0846B". Bullo27's First Letters survey had published surfaces on this scroll earlier, now credited in the first paragraph.*
 
 *Grown and written with Claude Code under my direction.*

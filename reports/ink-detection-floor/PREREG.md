@@ -534,3 +534,13 @@ the rules changes.
 
 *Added 27 Sep 2026: every review this file calls independent was done by a separate, read-only Claude Code agent, not
 by a person; each `REVIEW` file says so in its first lines.*
+
+### Erratum to amendments 1 and 3 (28 Sep 2026, after days 3 and 4 were read; no rule changes)
+
+Bullo27's First Letters survey (`Bullo27/first-letters-survey`) published surfaces grown with the same tool as ours,
+each with ink-model maps, on PHerc0483B, PHerc0490B and PHerc0846B on 23 Sep 2026 (UTC; commits fef8dcb and
+65fe3b4). That was before amendment 1 was published (11:17 UTC, 24 Sep) and before our surfaces (24 and 25 Sep). So
+these were false when written: amendment 1's "before any ink model had run on PHerc0846B", "no public surfaces", "no
+ink map exists for it" and its smoke run as "the first model output on this scroll"; amendment 3's "only surfaces are our five" and "no ink map exists for it";
+and its erratum's "ours remain the first published surfaces". We found the survey on 28 Sep. Nothing in the rules
+changes.

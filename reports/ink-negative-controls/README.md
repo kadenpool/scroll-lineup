@@ -69,12 +69,19 @@ for a reason they would recognise.
 
 **TAUIL-Abd-Elilah supplied the cautionary case.** Their own
 PHerc1447 ink negative was published and then withdrawn
-within two weeks, not because the ink work was wrong but
-because they measured the surfaces underneath it and found a
-median 61.2 degrees against the local sheet, 0 of 14
-within 30, where a random orientation averages 60. In their
+within two weeks, after they measured the surfaces
+underneath it: a median 61.2 degrees against the local
+sheet, 0 of 14 within 30, where a random orientation
+averages 60, and later that they sit about half off the
+scan. In their
 words: the negative "shows no ink was recovered from these
 surfaces, not that PHerc1447 lacks ink in those regions."
+On 24 Sep the team took PHerc1447 off the First Letters
+list, which now leaves out scrolls "where letters have now
+been found" (villa #1887); TAUIL reports the team's
+announcement that a new 9 um recipe shows ink there, and now
+puts their negative down to the off-sheet surfaces and the
+released `ink_9um` checkpoints, the ones this report uses.
 Section 9 is written so that this report cannot fail the
 same way silently.
 
@@ -82,8 +89,8 @@ same way silently.
 them with more surface than we used.**
 
 - **TAUIL-Abd-Elilah's `corpus-ink-survey`** (from 14 Sep
-  2026) scores 324 meshes across all eight eligible
-  scrolls, 82 of them on PHerc0211 and 71 on PHerc0813,
+  2026) scores 324 meshes across all eight scrolls in
+  pscamillo's public corpus, 82 of them on PHerc0211 and 71 on PHerc0813,
   with `ink_9um` and the team's `hecate` model against a
   known-ink control. No letters. It names two candidate
   locations, and section 5 reads both through our numbers.
@@ -469,7 +476,7 @@ consumes.
   second gate elsewhere. TAUIL reports **PHerc0211 at a median
   7.8 degrees with 85 of 88 within 30, and PHerc0813 at 9.0
   degrees with 71 of 75**, against a 60 degree
-  random-orientation null. So the failure mode that forced
+  random-orientation null. So the surface obliquity behind
   their own PHerc1447 withdrawal demonstrably does not apply
   to two of our three scrolls.
 - **PHerc0846A is not in that corpus at all**, so it has no

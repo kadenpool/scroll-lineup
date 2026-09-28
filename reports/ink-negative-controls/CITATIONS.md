@@ -88,9 +88,14 @@ follow the sheets".
 > pipeline-validation half of this repo ... is unaffected and still stands. The scroll-level
 > conclusion is withdrawn."
 
+*Checked again 28 Sep 2026:* HEAD `431e36c`, 26 Sep. `028c25c` (16 Sep) adds that the surfaces sit on nonzero CT a
+median 46 % of the time; the 26 Sep note reports the team's 24 Sep announcement of ink on PHerc1447 and says the
+negative "came from off-sheet surfaces and the released `ink_9um` checkpoints". villa #1887 (merged 24 Sep, 21:46
+UTC) removed PHerc1447 from `first-letters-2027`.
+
 ## axiosdevs, `herculaneum-scroll-tools`
 
-HEAD `c836a52`, 14 Sep 2026, the newest item cited here.
+HEAD `c836a52`, 14 Sep 2026.
 
 The seating test, from one README passage:
 
@@ -127,7 +132,7 @@ already missed on 16 Sep: gmDevi's PHerc0846A batch is dated 11 Sep. Each item b
 the live repository on 19 Sep.
 
 **TAUIL-Abd-Elilah, `corpus-ink-survey`.** First commit `6e7c66b`, 14 Sep 2026 11:53 UTC; HEAD
-`297c4d9`, 18 Sep. The README says 324 meshes and 1,518.2 cm2 across all eight eligible scrolls,
+`297c4d9`, 18 Sep. The README says 324 meshes and 1,518.2 cm2 across all eight scrolls in the public First Letters corpus,
 PHerc0211 82 meshes and 397.8 cm2, PHerc0813 71 meshes and 341.0 cm2, scored with 4 `ink_9um`
 checkpoints and `hecate` against the known-ink control PHerc0139 w043. (The repository's one-line
 description still says 237 cm2; the README is newer and is what we quote.) It names two candidate
@@ -138,7 +143,7 @@ through our numbers, which `trace_numbers.py` re-derives from our own result fil
 were committed on 13 Sep (`bc0660d`, 13:09 AEST) and scored that day, before their first commit.
 
 **rodriguescarson, `eligible-scroll-atlas`.** Created 15 Sep 2026; HEAD `2afcd00`, 16 Sep. All 340
-meshes on the eight eligible scrolls rendered into the team's layout and uploaded, 0 failures;
+meshes on the eight scrolls in pscamillo's corpus rendered into the team's layout and uploaded, 0 failures;
 screening under a pre-registered recipe with two dated amendments; per-mesh scores "follow when it
 finishes", so no ink result is quoted from it. Added 26 Sep 2026: the atlas's README has given the screen's pass
 counts since 21 Sep (commit `0c0566c`): 5, 2, 0 and 1 under its four pre-registered variants, none passing all four;
