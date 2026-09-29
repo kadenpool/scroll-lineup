@@ -6,6 +6,7 @@
   B.  The committed evidence, for results/ and robustness/ alike: every cell of each table that comes
       from a committed JSON file is re-derived from that file and compared.
   C.  The worked example: the inverse really inverts, and the report carries the same matrix.
+  C1. The second worked example, PHerc0846A: the same, and every figure the README quotes for it.
   C2. The README's own hand-made table against the generated one.
   D.  The same pairs run on a second Python and a second numpy/scipy, committed under
       robustness/second_stack/, must agree with the first to better than 0.01 um.
@@ -283,6 +284,42 @@ def test_example():
           b["n_used"] <= b["n_matched"] <= b["n_tried"] and len(b["blocks"]) == b["n_matched"]
           and sum(b["used"]) == b["n_used"],
           f"{b['n_tried']} tried, {b['n_matched']} matched, {b['n_used']} used")
+
+
+def test_example_0846a():
+    """The second worked example, PHerc0846A (run by Kaden on 29 Sep 2026): the same three checks as the first,
+    and every figure the README quotes for it re-derived from its committed report."""
+    print("C1. the second worked example, PHerc0846A")
+    ex = os.path.join(ROOT, "examples", "pherc0846a")
+    T = to4(json.load(open(os.path.join(ex, "transform.json")))["transformation_matrix"])
+    Ti = to4(json.load(open(os.path.join(ex, "transform_inverse.json")))["transformation_matrix"])
+    P = np.random.default_rng(3).normal(0, 3000, (200, 3))
+    check("the PHerc0846A example's transform_inverse.json really is the inverse",
+          close(apply(Ti, apply(T, P)), P, 1e-6),
+          f"max round-trip error {np.max(np.abs(apply(Ti, apply(T, P)) - P)):.2e} moving voxels")
+    rep = json.load(open(os.path.join(ex, "report.json")))
+    check("the PHerc0846A example's report.json carries the same matrix",
+          close(rep["transform_moving_to_fixed_voxels_xyz"], T[:3], 0))
+    b = rep["blocks"][-1]
+    check("the PHerc0846A example's final block round is self-consistent",
+          b["n_used"] <= b["n_matched"] <= b["n_tried"] and len(b["blocks"]) == b["n_matched"]
+          and sum(b["used"]) == b["n_used"],
+          f"{b['n_tried']} tried, {b['n_matched']} matched, {b['n_used']} used")
+    d = rep["decomposition_moving_to_fixed_um"]
+    want = [f"{rep['seconds']:.1f} s and {rep['downloaded_MB'] / 1000:.2f} GB read",
+            f"Confidence `{rep['confidence']['level']}`",
+            f"At the finest block level ({b['level_um']:.0f} um), all {b['n_tried']} blocks matched and were used"
+            if b["n_tried"] == b["n_matched"] == b["n_used"] else "(not all blocks were used)",
+            f"a median block correlation of {b['ncc_median']:.2f}",
+            f"residual of {b['resid_rms_um']:.1f} um RMS ({b['resid_max_um']:.1f} um at worst)",
+            f"voxel z {T[2, 3]:.1f} ({T[2, 3] * rep['volumes']['fixed']['um'] / 1000:.2f} mm along the scroll)",
+            f"and its centre at {(T @ [rep['volumes']['moving']['shape'][2] / 2, rep['volumes']['moving']['shape'][1] / 2, 0, 1])[2] * rep['volumes']['fixed']['um'] / 1000:.2f} mm",
+            f"scale {(1 - d['scale']) * 100:.2f} % under nominal, tilt {d['tilt_deg']:.2f} degrees"]
+    top = " ".join(open(os.path.join(ROOT, "README.md")).read().split())
+    sec = top.partition("## Second example: PHerc0846A")[2].split(" ## ", 1)[0]
+    miss = [w for w in want if w not in sec]
+    check("every README figure for PHerc0846A is its committed report's", not miss,
+          "" if not miss else "missing: " + "; ".join(miss))
 
 
 def test_readme_table():
@@ -987,6 +1024,7 @@ if __name__ == "__main__":
     test_committed("robustness", "pairs_robustness.txt")
     test_committed("coverage", "pairs_coverage.txt")
     test_example()
+    test_example_0846a()
     test_readme_table()
     test_cross_stack()
     test_cli()

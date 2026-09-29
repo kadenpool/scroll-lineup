@@ -293,6 +293,38 @@ consistent. Whether either is right is a
 separate question, and the seating check
 below is the test for it.
 
+## Second example: PHerc0846A
+
+PHerc0846A is the same kind of pair: a
+2.403 um scan of 36 mm of the scroll, a
+9.362 um scan 131 mm long, and no transform
+between them in the catalogue. I ran this
+one myself on 29 Sep 2026, on an 8 GB
+MacBook Air:
+
+```
+B=s3://vesuvius-challenge-open-data/PHerc0846A/volumes
+python scroll_lineup.py $B/20260319102732-2.403um-0.2m-77keV-masked.zarr \
+                        $B/20250728152254-9.362um-1.2m-113keV-masked.zarr --out out_0846A --write-inverse
+```
+
+292.5 s and 1.47 GB read. Confidence `HIGH`.
+At the finest block level (19 um), all 36
+blocks matched and were used in the fit, at
+a median block correlation of 0.94 and a
+residual of 8.2 um RMS (15.3 um at worst).
+The sharp scan's first slice has its corner
+at 9.362 um voxel z 1888.8 (17.68 mm along the
+scroll) and its centre at 17.46 mm, scale
+0.06 % under nominal, tilt 0.29 degrees. The run is in
+`examples/pherc0846a/` with its log; the
+output path in the log and report is
+shortened to `out_0846A`. The
+catalogue has no transform for this pair to
+compare it with, so the QC picture and the
+block residuals are its check so far; the
+seating check below has not been run on it.
+
 ## Output
 
 | file | what |
@@ -862,6 +894,7 @@ are worth nothing and about 0.02.
 | `tests/`, `.github/workflows/ci.yml` | the offline checks and the fresh-run comparison. The workflow runs them on five Python versions, 3.9, 3.11, 3.12, 3.13 and 3.14, plus one public pair end to end. 3.10 is not in the matrix and has never been tried. Every command in it was also run by hand on this machine and passed in 4 min 17 s. On GitHub it has run and passed on every one of those six jobs, which is what the badge at the top reports. |
 | `docs/` | method in full, the seating check in full, the ink alignment budget |
 | `examples/pherc1203/` | one complete PHerc1203 run |
+| `examples/pherc0846a/` | one complete PHerc0846A run |
 | `results/<pair>/` | the 12 validation runs, complete; `results/table.md` is generated from them. Their `qc.png` title strips carry the working name this tool had before it was renamed, and `CHANGELOG.md` says so |
 | `robustness/<pair>/` | the 9 further runs, same layout, `robustness/table.md` generated the same way |
 | `coverage/<pair>/` | the last 5, so that all 26 official transforms are graded. `coverage/table.md`, same generator |
@@ -909,9 +942,9 @@ are worth nothing and about 0.02.
   above.
 
 **Disclosure.** Claude Code wrote the code; I directed it. The decisions about what it does and how it gets checked were mine,
-I ran it on the public PHerc1203 pair myself, and I went over the QC image and the numbers before this went out.
-`results/` has it checked against twelve of the challenge's own published transforms. `examples/` is a real run off my
-machine, not a tidied-up one.
+I ran it on the public PHerc1203 and PHerc0846A pairs myself, and I went over the QC image and the numbers before this went out.
+`results/` has it checked against twelve of the challenge's own published transforms. `examples/` holds two real runs off
+my machine, left as the tool wrote them except PHerc0846A's output path, shortened in its log and report.
 
 Every number in this file traces to a
 committed file, with six named exceptions

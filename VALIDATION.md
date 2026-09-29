@@ -10,6 +10,7 @@ results; this file carries the evidence and the commands.
 |---|---|---|---|
 | validation, 12-13 Sep 2026 | 12 official pairs on 7 objects | `results/`, table in `results/table.md` | the graded result against the challenge's own transforms, under a rule fixed in advance (`PREREG.md`) |
 | worked example, 11-15 Sep 2026 | PHerc1203, for which no official transform exists | `examples/pherc1203/` | five runs over four days, three of them from a clean clone into an empty environment; all five byte-identical |
+| second worked example, 29 Sep 2026 | PHerc0846A, for which no official transform exists | `examples/pherc0846a/` | one run, mine: M2 MacBook Air, 8 cores, 8 GiB, macOS 26.0.1, Python 3.14.0, numpy 2.5.2, scipy 1.18.1; 292.5 s, 1466 MB read, confidence HIGH; nothing independent to compare it with |
 | robustness, 15 Sep 2026 | the 9 remaining official pairs in the catalogue | `robustness/`, table in `robustness/table.md` | every publishable official pair now has a graded result, including three the tool gets wrong |
 | coverage, 15-16 Sep 2026 | the last 5, on PHerc0343P and PHercParis4 | `coverage/`, table in `coverage/table.md` | all 26 official transforms are now graded, with nothing excluded. Machine D, section 3 |
 | landmark audit, 16 Sep 2026 | all 26 official transforms, no scan data read | `audit/`, output in `audit/results.txt` | whether each published transform fits the landmarks published with it. 4 of the 25 that carry landmarks do not |
