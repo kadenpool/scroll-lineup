@@ -525,11 +525,8 @@ re-run, nothing dropped.
 
 The open-data `metadata.json` carries 26
 official transforms. Twelve are in the table
-above and five more are in `coverage/`,
-which an earlier version of this sentence
-described as being kept private; they are
-not, and all 26 are graded here. **The other
-nine were all run**, on 15 Sep 2026, same script,
+above, five more are in `coverage/`, and
+**the other nine were all run**, on 15 Sep 2026, same script,
 same rule, this same version, no fixes and
 no re-runs. Running the whole remainder is
 the point: there is nothing to pick. The
@@ -943,8 +940,9 @@ are worth nothing and about 0.02.
 
 **Disclosure.** Claude Code wrote the code; I directed it. The decisions about what it does and how it gets checked were mine,
 I ran it on the public PHerc1203 and PHerc0846A pairs myself, and I went over the QC image and the numbers before this went out.
-`results/` has it checked against twelve of the challenge's own published transforms. `examples/` holds two real runs off
-my machine, left as the tool wrote them except PHerc0846A's output path, shortened in its log and report.
+`results/`, `robustness/` and `coverage/` have it checked against all 26 of the challenge's published transforms.
+`examples/` holds two real runs, left as the tool wrote them except PHerc0846A's output path, shortened in its log and report. PHerc0846A is my own run
+on my laptop; PHerc1203 is the 14 Sep clean-clone rerun, whose transform is byte-identical to my own 12 Sep run.
 
 Every number in this file traces to a
 committed file, with six named exceptions

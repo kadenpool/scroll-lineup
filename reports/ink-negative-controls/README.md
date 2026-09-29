@@ -106,6 +106,15 @@ them with more surface than we used.**
 - The PHerc0813 and PHerc0211 meshes are **pscamillo's**,
   from `vesuvius-eligible-meshes`, the corpus both surveys
   above also start from.
+- *Added 29 Sep 2026, later work:* **Jashann and nnm2602's
+  `vesuvius-scrolling`** (29 Sep) surveys about 600 windings
+  on ten scrolls, PHerc0813 and PHerc0211 among them, and
+  vets its text-range hotspots against the neighbouring
+  wraps, the same idea as our off-sheet null: none survives
+  except one unreadable patch on PHerc0826.
+  **aviad12g's `vesuvius-depth-order-control`** (27 Sep)
+  adds a depth-shuffle control and cross-model agreement,
+  on PHerc0800 and PHerc1203.
 
 **What is ours**, after checking: the four controls as one
 set, and an independent reading of the two places TAUIL's

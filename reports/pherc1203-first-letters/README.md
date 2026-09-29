@@ -342,8 +342,9 @@ have to come from. We did not run it on any PHerc. 1203 window, because no windo
   (data/p1203_survey/layer_windows_rr_b0.json and layer_windows_rr2_b0.json). Hand test on one window before the rerun: offset -0.1 layers,
   correlation 0.87.
 - **Kaden ran the tool himself** on the PHerc. 1203 pair on 12 Sep (from his Mac, on box B):
-  confidence HIGH, 198 s, 1.26 GB read, sharp-scan first slice at coarse z 7935.2 against the
-  agent run's 7935.3 (submissions/registration_tool/kaden_run/report.json and log.txt).
+  confidence HIGH, 198 s, 1.26 GB read, and a `transform.json` byte-identical to
+  `examples/pherc1203/transform.json` (md5 `e278bd0e692ba9b47f531d51d93e2cd6`;
+  submissions/registration_tool/kaden_run/report.json and log.txt).
 
 ### 4.4 What we do not have
 
@@ -790,7 +791,7 @@ Public, in ScrollPrize/villa (states as on GitHub on 26 Sep 2026):
 | PR #1665, https://github.com/ScrollPrize/villa/pull/1665 | zarr_utils: fix public S3 access with no AWS credentials | Public data failed without credentials | Merged 11 Sep |
 | PR #1717, https://github.com/ScrollPrize/villa/pull/1717 | vc_render_tifxyz: report surface points that fall outside the volume | The renderer wrote a partly blank image and exit 0 (the failure mode of our holder surfaces, 5.5) | Open, ready for review since 26 Sep |
 | PR #1682, https://github.com/ScrollPrize/villa/pull/1682 | zarr_tasks: create_level_dataset works under zarr 3 (refs #1670) | Crash under zarr 3 | Merged 22 Sep |
-| PR #1676, https://github.com/ScrollPrize/villa/pull/1676 | VcDataset: refuse a region that extends past the dataset | Out-of-bounds write on a region past the dataset | Merged 22 Sep |
+| PR #1676, https://github.com/ScrollPrize/villa/pull/1676 | VcDataset: refuse a region that extends past the dataset, and make callers check it | Out-of-bounds write on a region past the dataset | Merged 22 Sep |
 | Issue #1730, https://github.com/ScrollPrize/villa/issues/1730 | metadata.json: 20 segments declare an original volume whose scan was taken after the segment was created | Catalogue integrity | Open |
 | Issue #1734, https://github.com/ScrollPrize/villa/issues/1734 | metadata.json: volume_coverage.bbox_transformed is the stored bbox pushed through the downscale, -1 marker included, for the 28 segments in #1618 | Catalogue integrity | Open |
 

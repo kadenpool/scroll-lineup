@@ -276,7 +276,7 @@ known limitation of the tool.
 | fsspec / s3fs | 2026.7.0 | 2025.10.0 | 2026.7.0 | 2026.7.0 |
 | pillow | 12.3.0 | 11.3.0 | 12.3.0 | 12.3.0 |
 | numcodecs | 0.16.5 | 0.12.1 | not installed | not installed |
-| what it ran | all 9 robustness pairs, and the clean-clone reproduction | 7 pairs as a second opinion, and every CI command | the offline suite, 36 checks, all passed | all 5 coverage pairs (section 2.7) |
+| what it ran | all 9 robustness pairs, and the clean-clone reproduction | 7 pairs as a second opinion, and every CI command | the offline suite as it stood on 15 Sep (36 checks), all passed | all 5 coverage pairs (section 2.7) |
 
 Machine D is **ARM Linux**, a third architecture. The five pairs it
 graded went through the same pre-registered rule as every other pair
@@ -460,8 +460,10 @@ registration itself.
   the megabytes. Block accounting is checked for every round of every
   run: `n_used <= n_matched <= n_tried`, the listed blocks equal
   `n_matched`, and the boolean mask sums to `n_used`.
-- **The worked example**: `transform_inverse.json` has to be the
-  actual inverse, and `report.json` has to carry the same matrix.
+- **The two worked examples**: each `transform_inverse.json` has to
+  be the actual inverse and each `report.json` has to carry the same
+  matrix; for PHerc0846A the README's run figures are re-derived from
+  its report (part C1).
 - **The second stack**: every committed machine-B transform has to
   agree with its machine-A counterpart to better than 0.01 um.
 - **The command line**: `--version`, `--help`, and a bare invocation

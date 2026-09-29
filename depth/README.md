@@ -1,8 +1,7 @@
 # How far the ink model's depth window can move before it stops reading
 
 The alignment budget in the main README says a transform needs to land inside about 50 um. This is
-the measurement that number comes from. It used to be cited to a repository that does not exist yet,
-which made it the one claim in this package a reader could not check. The data is now here.
+the measurement that number comes from.
 
 ## What was measured
 
