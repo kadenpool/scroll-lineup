@@ -10,7 +10,9 @@ measures how faint real ink can be before these models miss it. Planting known t
 rodriguescarson's eligible-scroll atlas spliced a window of PHerc0139 text into two PHerc0813 surfaces at full
 strength and read it with these models (`control/planted/` and `control/planted2/`, 15 Sep), and moisescorreo's `vesuvius-uncertainty-bench`
 injected real text at graded contrast for two line-periodicity detectors (public from 29 Aug). What is new here is
-the models' own floor, at graded strength. Every review in this folder was done by a separate,
+the models' own floor for real letters at graded strength. Villa [#1924](https://github.com/ScrollPrize/villa/pull/1924)
+(axiosdevs, 29 Sep) measures a related floor one window at a time, with synthetic pen-width strokes, to tell whether a
+blank prediction could have shown ink; its example is the 2 um model on PHerc0139. Every review in this folder was done by a separate,
 read-only Claude Code agent, not by a person, and each `REVIEW` file says so in its first lines.
 
 **Day 1 result (24 Sep, run after publication): GO, for the swap plant with both checkpoints.** The models read the
