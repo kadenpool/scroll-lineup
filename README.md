@@ -14,9 +14,14 @@ python scroll_lineup.py MOVING_URL FIXED_URL --out DIR [--write-inverse]
 ```
 
 **Graded against every transform the
-challenge publishes:** 13 PASS, 9 WEAK and 4
+challenge had published by 28 Sep:** 13 PASS, 9 WEAK and 4
 FAIL over all 26 official pairs, nothing
 excluded ([how](#how-good-is-it-graded-against-the-challenges-own-transforms)).
+*(As of 29 Sep 2026 the catalogue lists 28 transforms. The two added
+since the 26 graded here run from two other exports of PHerc0139's
+9.362 um scan, volumes 20251107132835 and 20251107135911, to the
+same scan's earlier export, 20250728140407; neither has landmarks,
+and I have not graded them. Transform counts in this README use the 26.)*
 Grading it that way turned up four published
 transforms that do not fit their own
 published landmarks
@@ -62,7 +67,7 @@ transforms turned up something about the
 published transforms.
 
 25 of the 26 official transforms in
-`metadata.json` ship the landmark pairs they
+`metadata.json` on 28 Sep ship the landmark pairs they
 were built from. Applying each matrix to its
 own landmarks should land on its own
 targets. **Four of the 25 miss by more than
@@ -523,8 +528,9 @@ re-run, nothing dropped.
 
 ## The rest of the catalogue: nine more pairs, nothing dropped
 
-The open-data `metadata.json` carries 26
-official transforms. Twelve are in the table
+The open-data `metadata.json` carried 26
+official transforms on 28 Sep (28 by 29 Sep; see the note
+at the top). Twelve are in the table
 above, five more are in `coverage/`, and
 **the other nine were all run**, on 15 Sep 2026, same script,
 same rule, this same version, no fixes and
@@ -940,7 +946,7 @@ are worth nothing and about 0.02.
 
 **Disclosure.** Claude Code wrote the code; I directed it. The decisions about what it does and how it gets checked were mine,
 I ran it on the public PHerc1203 and PHerc0846A pairs myself, and I went over the QC image and the numbers before this went out.
-`results/`, `robustness/` and `coverage/` have it checked against all 26 of the challenge's published transforms.
+`results/`, `robustness/` and `coverage/` have it checked against the 26 transforms the challenge had published by 28 Sep.
 `examples/` holds two real runs, left as the tool wrote them except PHerc0846A's output path, shortened in its log and report. PHerc0846A is my own run
 on my laptop; PHerc1203 is the 14 Sep clean-clone rerun, whose transform is byte-identical to my own 12 Sep run.
 

@@ -45,7 +45,8 @@ machine at low priority and the most likely explanation is that it was interrupt
 that row depends on it, and the pair's graded verdict comes from `validation.json`, which is
 present and complete.
 
-The open-data `metadata.json` carries **26 official transforms**, and
+The open-data `metadata.json` carried **26 official transforms** when these were
+graded (28 as of 29 Sep 2026; the two added are not graded here), and
 **all 26 now have a graded result here**, with nothing excluded. An
 earlier version of this file said five were "on two objects this
 repository does not discuss". That was an unexplained exclusion in a

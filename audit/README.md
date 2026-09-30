@@ -16,7 +16,9 @@ repository, so it can be lifted out and run on its own.
 ## What it reports today
 
 `results.txt` is the output of the run committed here. Of the 26 official transforms, **25 publish
-landmarks and 4 of those miss their own by more than 30 um**:
+landmarks and 4 of those miss their own by more than 30 um** (re-run against the 29 Sep 2026 catalogue, the header
+reads 28 transforms, 25 with landmarks and 3 without: two PHerc0139 transforms that publish none were added after
+this run; the table is identical):
 
 | object | moving to fixed (um) | landmarks | RMS um | worst point um | best affine um |
 |---|---|---|---|---|---|
